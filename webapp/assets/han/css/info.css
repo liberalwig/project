@@ -95,13 +95,13 @@ a:hover {text-decoration: none; color: #000}
 		margin: 0px 0px 50px 0px;
 	}
 	#container #profile{
-		padding: 20px 0px 50px 110px;
+		padding: 20px 60px 50px 110px;
 		border-bottom: 1px solid #DDD;
 	}
 	#container #hostimg{
 		width:250px;
 		height:250px;
-		margin:20px 30px 20px 20px;
+		margin:30px 30px 20px 20px;
 		float:left;
 	}
 	#container #hostinfo{
@@ -204,6 +204,9 @@ a:hover {text-decoration: none; color: #000}
 #tapbox .nav{
 	height:41px;
 }
+#imgbox2{
+	margin: 0px 0px 10px 15px;
+}
 /**4. 캘린더**/
 #calendar{
 	padding: 0px 0px 0px 20px;
@@ -215,7 +218,7 @@ a:hover {text-decoration: none; color: #000}
 	.reviewbox {
 		text-align:left;
 		width: 850px;
-		margin:0px 0px 20px 0px;
+		margin:0px 0px 10px 0px;
 		padding: 10px 0px 0px 30px;
 		
 		padding-bottom: 20px;
@@ -224,8 +227,14 @@ a:hover {text-decoration: none; color: #000}
 	#review h3{
 		margin: 15px 0px 15px 0px;
 	}
-	.reviewbox p{
-		margin: 20px 0px 0px 0px;
+	.reviewbox .row h4{
+		margin: 7px 0px 0px 0px;
+	}
+	.reviewbox .row .toph4{
+		margin: 15px 0px 0px 0px;
+	}
+	.reviewbox .row p{
+		margin: 5px 0px 0px 0px;
 	}
 	.reviewbox img {
 		float: left;
