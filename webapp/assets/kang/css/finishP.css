@@ -1,0 +1,145 @@
+/* clearfix */
+.clearfix{*zoom:1;}
+.clearfix:before, .clearfix:after {display: block; content: ""; line-height: 0;}
+.clearfix:after {clear: both;}
+
+.close {margin: 10px;}
+
+#header{
+  text-align: center;
+  margin: 40px 0px 20px 0px;
+}
+
+.modal-title{
+  font-weight: bolder;
+}
+
+.modal-body {margin: 0px 100px 0px 100px;}
+
+.small{
+  font-size: 12px;
+  color: #8d8d8d;
+  padding: 10px 0px 10px 0px;
+  border-bottom: 1px solid #8d8d8d;;
+}
+
+
+.modal-footer p{
+  text-align: center;
+  margin: 10px;
+  font-size: 10px;
+  color: #8d8d8d;
+}
+
+/*버튼*/
+
+.w-btn-outline {
+  position: relative;
+  margin-right: 210px;
+  padding: 15px 60px;
+  border-radius: 15px;
+  font-family: "paybooc-Light", sans-serif;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+  text-decoration: none;
+  font-weight: 600;
+  transition: 0.25s;
+}
+
+.w-btn-blue-outline {
+  border: 3px solid rgba(84, 150, 207, 85%);
+  color: #6e6e6e;
+}
+
+.w-btn-outline:hover {
+  letter-spacing: 2px;
+  transform: scale(1.2);
+  cursor: pointer;
+}
+
+.w-btn-blue-outline:hover {
+  background-color: rgba(84, 150, 207, 85%);
+  color: #d4dfe6;
+}
+
+.w-btn-outline:active {
+  transform: scale(1.5);
+}
+
+
+/*finish1
+#checked {
+  width: 100px;
+  height: 100px;
+  margin-left: 130px;
+}
+
+h2 {text-align: center;}
+
+.sm{
+  font-size: 12px;
+  color: #6e6e6e;
+  padding: 10px 0px 10px 0px;
+  text-align: center;
+}
+
+#footer1 {
+  margin: 0px 210px 0px 0px;
+}
+*/
+
+/*finish*/
+#header {
+  margin: 20px 0px 50px 0px;
+  border-bottom: 1px solid #6e6e6e;
+}
+
+.bi-check2-circle{
+  font-size: 30px;
+}
+
+#header img {
+  width: 70px;
+  height: 35px;
+}
+
+.modal-title{
+  padding-top: 10px;
+}
+
+.mar{
+  font-weight: bold;
+}
+
+#re {
+  width: 190px;
+  height: 100px;
+}
+
+.modal-body h4 {margin: 0px 0px 30px 0px;}
+.inform{margin: 20px 0px 20px 0px;}
+
+/*스크롤*/
+.scroll {
+  width: 20px;
+  height: 100px;
+  overflow: auto;
+  float: left;
+  margin: 0 0px;
+}
+
+.scroll1::-webkit-scrollbar {
+  width: 5px;
+}
+ 
+.scroll1::-webkit-scrollbar-track {
+  background: #ddd;
+}
+ 
+.scroll1::-webkit-scrollbar-thumb {
+  background: #666; 
+}
+
+.line {
+  padding-bottom: 20px;
+  border-bottom: 1px solid #8d8d8d;
+}
