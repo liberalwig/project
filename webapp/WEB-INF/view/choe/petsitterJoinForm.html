@@ -1,77 +1,208 @@
 <!DOCTYPE html>
-
-<html lang="ko">
+<html>
     <head>
         <meta charset="UTF-8">
-        <title>호스트 등록</title>
-        <link rel="stylesheet" href="../../assets/css/petsitterJoinForm.css">
+        <title>펫시터 등록 폼</title>
+
+        <link href="../../../assets/css/petsitterJoinForm.css" rel="stylesheet" type="text/css">
+        <link href="../../../assets/bootstrap/css/bootstrap.css" rel="stylesheet">
+
+        <script type="text/javascript" src="../../../assets/js/jquery/jquery-1.12.4.js"></script>
+        <script type="text/javascript" src="../../../assets/bootstrap/js/bootstrap.js"></script>
+
+        <script type="text/javascript" src="../../../assets/js/dragdrop.js"></script>
+        <script type="text/javascript" src="../../../assets/js/maxLength.js"></script>
     </head>
 
     <body>
-        
-
-        <!-- wrap -->
-        <div id="wrap">
-            <!-- header -->
-            <div id="header" class="clearfix">
+        <div id="header">
+            <div id="logo" class="col-xs-3">
+                <img class="logo-img" src="../../../assets/images/headerlogo.jpg"></a>
             </div>
-            <!-- container -->
-            <div id="container">
-                
-                <p class="list">
-                    1. 강아지를 맞이할 펫시터님의 위치를 알려주세요!
-                </p>
-                <p class="list">
-                    2. 펫시터 님의 사진을 올려주세요! (최소 5장입니다.)
-                </p>
-                 <!-- 사진 박스-->
-                <canvas id = "canv"></canvas>
-
-                <p>
-                    <input id = "fileInput" type = "file" multiple = "false" accept = "image/*" onchange = "uploadPicture()">
-                </p>
-
-                <p class="list">
-                    3. 펫시터님의 특징은 무엇인가요?
-                </P>
-
-                <!-- 아이콘 넣기 -->
-                <div id="icon" style="font-size: 30px;">
-                    <img src="../../assets/image/icon/park.png">
-                    <img src="../../assets/image/icon/veter.png">
-                    <img src="../../assets/image/icon//box.png">
-                    <img src="../../assets/image/icon//feed.png">
-                    <img src="../../assets/image/icon//conver.png">
-                    <img src="../../assets/image/icon//24h.png">
-                </div>
-                    
-                <P class="list">
-                    4. 펫시터님이 어떤 사람인지 적어주세요!
-                </P>
-                <textarea id="intro" ></textarea>
-                    
-                    
-                <P class="list">
-                    5. 펫시터님이 강아지를 돌봐주는 댓가로 개스트로부터 얼마의 돌봄료를 받으시겠습니까?
-                    1박을 기준으로 하는 가격입니다.(마이페이지에서 수정이 가능합니다.)
-                </P>
-
-                
-
-                <P class="list">
-                    6. 마지막 단계입니다. 개어비앤비는 개스트님과 펫시터 님간 원활한 소통과 신뢰를 지향합니다.
-                    <br>소중한 반려견을 맡기는 개스트는 펫시터에게 자신의 반려견을 돌보는 것에 대해 몇 가지 요청을 할 수 있으며 개스트와의 매칭을 수락한 펫시터는 이를 준수합니다. 개스트의 요청사항을 성실히 이행한 펫시터는 개어비앤비에서 보장하는 퍼피력을 획득하게 되며 퍼피력은 펫시터가 강아지를 돌보는 능력을 증명합니다.
-                    <br><br>
-                    만일 호스트께서 예비 개스트가 기재한 요청 사항을 이행하기 어려울 것 같다면, 이 개스트와의 매칭을 거절하시면 됩니다.
-                </P>
-               
-                <!-- 동의 버튼-->
-                <button>동의합니다.</button>
-                    
+            <div id="search" class="col-xs-5">
+                <div></div>
             </div>
-                
-        
+            <div id="menu" class="col-xs-3">
+                <button type="button" class="btn btn-default menu">펫시터되기</button>
+                <button type="button" class="btn btn-default menu"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span><span class="badge">0</span></button>
+                <p class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></p>
+            </div>
         </div>
+    
+
+        <div id="wrap">
+            
+
+            <div id="container" class="clearfix">  
+                <div class="col-xs-2">
+                </div> 
+            
+                <div class="row">
+                  <div class="col-xs-8">
+                    <div id="joinQuestion" class="row Q">
+                        <div class="photo">
+                            <h4>01. 사진 업로드</h4>
+                            <p><span class="label label-info">참고</span> 최대 8장입니다. 강아지와 찍은 다정한 사진, 강아지를 능숙하게 훈련하는 사진이라면 더 좋겠죠?</p>
+                            <div class="contents">
+                                    <div class="upload-box">
+                                        <div id="drop-file" class="drag-file">
+                                            <img src="https://img.icons8.com/pastel-glyph/2x/image-file.png" alt="파일 아이콘" class="image" >
+                                            <p class="message">마우스로 드래그해서 이미지를 추가해주세요</p>
+                                            <img src="" alt="미리보기 이미지" class="preview">
+                                        </div>
+                                        <div id="drop-file" class="drag-file">
+                                            <img src="https://img.icons8.com/pastel-glyph/2x/image-file.png" alt="파일 아이콘" class="image" >
+                                            <p class="message">마우스로 드래그해서 이미지를 추가해주세요</p>
+                                            <img src="" alt="미리보기 이미지" class="preview">
+                                        </div>
+                                        <label class="file-label" for="chooseFile">직접 추가하기</label>
+                                        <input class="file" id="chooseFile" type="file" onchange="dropFile.handleFiles(this.files)" accept="image/png, image/jpeg, image/gif">
+                                    </div>
+                                </div>
+                        </div>
+                    </div>    
+                    
+
+                    <div id="joinQuestion" class="row Q">
+                        <h4>02. 키워드 선택</h4>
+                        <p>회원님에게 해당되는 키워드를 선택해주세요! (중복체크 가능)</p>
+                        <table>
+                            <colgroup>
+                                <col width="140px">
+                                <col width="140px">
+                                <col width="140px">
+                                <col width="140px">
+                                <col width="140px">
+                                <col width="140px">
+                                <col width="140px">
+                            </colgroup>
+                            <tr height="50">
+                                <td>
+                                    <input type="checkbox" class="btn-check" id="btn-check1" autocomplete="off">
+                                    <label class="tag" for="btn-check1">집 근처 공원</label>
+                                </td>
+                                <td>
+                                    <input type="checkbox" class="btn-check" id="btn-check2" autocomplete="off">
+                                    <label class="tag" for="btn-check2">펫 용품 구비</label>
+                                </td>
+                                <td>
+                                    <input type="checkbox" class="btn-check" id="btn-check3" autocomplete="off">
+                                    <label class="tag" for="btn-check3">집 근처 동물병원</label>
+                                </td>
+                                <td>
+                                    <input type="checkbox" class="btn-check" id="btn-check4" autocomplete="off">
+                                    <label class="tag" for="btn-check4">응급처치 가능</label>
+                                </td>
+                                <td>
+                                    <input type="checkbox" class="btn-check" id="btn-check5" autocomplete="off">
+                                    <label class="tag" for="btn-check5">돌봄 경력 3년이상</label>
+                                </td>
+                                <td>
+                                    <input type="checkbox" class="btn-check" id="btn-check6" autocomplete="off">
+                                    <label class="tag" for="btn-check6">전문교육 수료</label>
+                                </td>
+                                <td>
+                                    <input type="checkbox" class="btn-check" id="btn-check7" autocomplete="off">
+                                    <label class="tag" for="btn-check7">보험 가입</label>
+                                </td>
+                            </tr>
+                            <tr height="50">
+                                <td>
+                                    <input type="checkbox" class="btn-check" id="btn-check8" autocomplete="off">
+                                    <label class="tag"for="btn-check8">약물투여 가능</label>
+                                </td>
+                                <td>
+                                    <input type="checkbox" class="btn-check" id="btn-check9" autocomplete="off">
+                                    <label class="tag" for="btn-check9">매일 산책 가능</label>
+                                </td>
+                                <td>
+                                    <input type="checkbox" class="btn-check" id="btn-check10" autocomplete="off">
+                                    <label class="tag" for="btn-check10">비흡연</label>
+                                </td>
+                                <td>
+                                    <input type="checkbox" class="btn-check" id="btn-check11" autocomplete="off">
+                                    <label class="tag" for="btn-check11">개가 없음</label>
+                                </td>
+                                <td>
+                                    <input type="checkbox" class="btn-check" id="btn-check12" autocomplete="off">
+                                    <label class="tag" for="btn-check12">어린이 없음</label>
+                                </td>
+                                <td>
+                                    <input type="checkbox" class="btn-check" id="btn-check13" autocomplete="off">
+                                    <label class="tag" for="btn-check13">마당 있음</label>
+                                </td>
+                                <td>
+                                    <input type="checkbox" class="btn-check" id="btn-check14" autocomplete="off">
+                                    <label class="tag" for="btn-check14">응답 빠름</label>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <div id="joinQuestion" class="row Q">
+                        <h4>03. 자기소개</h4>
+                        <p>회원님을 소개해주세요!</p>
+                        <textarea id="intro" name="contents" maxlength="200" onKeyUp="javascript:fnChkByte(this,'80')" placeholder="텍스트를 입력하세요."></textarea>
+                    </div>
+
+                    <div id="joinQuestion" class="row Q">
+                        <h4>04. 펫에 대해 알고싶은 내용</h4>
+                        <p><span class="label label-info">참고</span> 질문을 적어보세요! 작성하신 내용은 회원들이 펫에 대한 설명 사항을 작성할 때 참고 할 수 있습니다!</p>
+                        <textarea id="intro" maxlength="200" placeholder="텍스트를 입력하세요."></textarea>
+                    </div>
+
+                    <div id="joinQuestion" class="row Q">
+                        <h4>05. 펫시팅 주소</h4>
+                        <p>강아지를 돌볼 장소는 어디인가요? 주소를 입력해주세요!</p>
+                        <div id="address">
+                            <input type="text" id="sample6_postcode" placeholder="우편번호">
+                            <input type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br>
+                            <input type="text" id="sample6_address" placeholder="주소"><br>
+                            <input type="text" id="sample6_detailAddress" placeholder="상세주소">
+                            <input type="text" id="sample3_extraAddress" placeholder="참고항목">
+                        </div>
+
+                    </div>
+
+
+                    <div id="joinQuestion" class="row Q"> 
+                        <h4>06. 돌봄료 책정</h4>
+                        <p><span class="label label-info">참고</span> 설정하신 금액은 1박, 1마리당 가격입니다..</p>
+                            <input id="cost" type="number" name="cost" placeholder="1박의 돌봄료를 입력해주세요" required class="cost" value="10000"> 원(1박/1마리당)
+                    </div>
+
+                    <div id="joinQuestion" class="row Q">
+                        <div id="agreement">
+                        GairBnB는 개스트 님과 펫시터 님간 원활한 소통과 신뢰를 지향합니다.<br>
+                        개스트와의 매칭을 수락한 펫시터는 GariBnB에서 제안 드리는 바에 따라 개스트에게 강아지를 돌보는 모습을 증빙합니다.<br>
+                        강아지를 성실히 돌본 펫시터는 GairBnB에서 보장하는 퍼피력을 획득하게 되며 퍼피력은 펫시터가 강아지를 돌보는 능력을 반영합니다.<br>
+                        펫시터는 원하지 않는 개스트와의 매칭을 거절할 수 있습니다.
+                        GairBnB의 원칙에 동의하십니까?</div>
+                        
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox">동의합니다
+                            </label>
+                        </div>
+                       
+                    </div>
+                    <br>
+                    <div class="finalbtn">
+                    <button type="submit">펫시터 등록 완료</button>
+                    </div>
+                </div>
+
+                    <div class="col-xs-2">
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <br><br><br><br>    
     </body>
 
+    <script>
+ 
+    </script>   
 </html>
