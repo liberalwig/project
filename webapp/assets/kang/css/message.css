@@ -28,15 +28,14 @@ a:hover {text-decoration: none; color: #000}
 	margin: 0px auto;
     height: 80px;
     border-bottom: 1px solid #BBB;
-    z-index: 1;
-
-   position: fixed;
-    top: 0;
-    /* width: 100% */
-    left: 0;
-    right: 0;
-    background-color: #ffffff;
+	z-index: 1;
+	background-color: #ffffff;
+	position: fixed;
+     top: 0;
+     left: 0;
+     right: 0;
 }
+
     #header #logo {
         float:center;
     }
@@ -49,21 +48,21 @@ a:hover {text-decoration: none; color: #000}
             color:#000;
             font-size:35px;
         }
-    #header #search {
-        padding: 10px 0px 0px 300px;
-        float:center;
-    }
-        #header #search img{
-            height: 50px;
+        #header #search {
+            padding: 15px 40px 0px 170px;
+            float:center;
         }
-        #header #menu {
-			float: center;
-            line-height: 30px;
-			margin: 0px 0px 0px 150px;
-            padding: 10px 0px 0px 210px;
-            color:#000;
-            font-size: 16px;
-        }
+            #header #search img{
+                height: 50px;
+            }
+            #header #menu {
+                float: center;
+                line-height: 30px;
+                margin: 0px 0px 0px 400px;
+                padding: 25px 0px 0px 50px;
+                color:#000;
+                font-size: 16px;
+            }
         #header #menu span {
             margin: 0px 0px 0px 10px;
         }
@@ -86,7 +85,7 @@ a:hover {text-decoration: none; color: #000}
 	width: 240px;
     font-size: 18px;
 }
-/* 왼쪽메뉴(aside) */
+/* 왼쪽메뉴(aside) **/
 #aside #b-aside {
     padding: 45px 0px 0px 0px;
     width: 240px;
@@ -263,7 +262,6 @@ a:hover {text-decoration: none; color: #000}
 #pdetail {
     float: left;
     width: 750px;
-    margin-left: 20px;
     border: 1px solid #bdbdbd;
     background-color: #EEEEEE;
 }
@@ -294,7 +292,6 @@ a:hover {text-decoration: none; color: #000}
     float: left;
     width: 750px;
     height: 400px;
-    margin-left: 20px;
     border-bottom: 1px solid #bdbdbd;
     border-left: 1px solid #bdbdbd;
     border-right: 1px solid #bdbdbd;
@@ -353,7 +350,6 @@ a:hover {text-decoration: none; color: #000}
     float: left;
     width: 750px;
     height: 130px;
-    margin-left: 20px;
     border-bottom: 1px solid #bdbdbd;
     border-left: 1px solid #bdbdbd;
     border-right: 1px solid #bdbdbd;
