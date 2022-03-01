@@ -4,52 +4,52 @@ function DropFile(dropAreaId, fileListId) {
     let fileList = document.getElementById(fileListId);
 
     function preventDefaults(e) {
-    e.preventDefault();
-    e.stopPropagation();
+      e.preventDefault();
+      e.stopPropagation();
     }
 
     function highlight(e) {
-    preventDefaults(e);
-    dropArea.classList.add("highlight");
+      preventDefaults(e);
+      dropArea.classList.add("highlight");
     }
 
     function unhighlight(e) {
-    preventDefaults(e);
-    dropArea.classList.remove("highlight");
+      preventDefaults(e);
+      dropArea.classList.remove("highlight");
     }
 
     function handleDrop(e) {
-    unhighlight(e);
-    let dt = e.dataTransfer;
-    let files = dt.files;
+      unhighlight(e);
+      let dt = e.dataTransfer;
+      let files = dt.files;
 
-    handleFiles(files);
+      handleFiles(files);
 
-    const fileList = document.getElementById(fileListId);
-    if (fileList) {
+      const fileList = document.getElementById(fileListId);
+      if (fileList) {
         fileList.scrollTo({ top: fileList.scrollHeight });
-    }
+      }
     }
 
     function handleFiles(files) {
-    files = [...files];
-    // files.forEach(uploadFile);
-    files.forEach(previewFile);
+      files = [...files];
+      // files.forEach(uploadFile);
+      files.forEach(previewFile);
     }
 
     function previewFile(file) {
-    console.log(file);
-    renderFile(file);
+      console.log(file);
+      renderFile(file);
     }
 
     function renderFile(file) {
-    let reader = new FileReader();
-    reader.readAsDataURL(file);
-    reader.onloadend = function () {
+      let reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onloadend = function () {
         let img = dropArea.getElementsByClassName("preview")[0];
         img.src = reader.result;
         img.style.display = "block";
-    };
+      };
     }
 
     dropArea.addEventListener("dragenter", highlight, false);
@@ -58,8 +58,8 @@ function DropFile(dropAreaId, fileListId) {
     dropArea.addEventListener("drop", handleDrop, false);
 
     return {
-    handleFiles
+      handleFiles
     };
-}
+  }
 
 const dropFile = new DropFile("drop-file", "files");

@@ -31,6 +31,15 @@ a:hover {text-decoration: none; color: #000}
 	margin: 0px auto;
     height: 80px;
     border-bottom: 1px solid #BBB;
+	z-index: 1;
+	background-color: #ffffff;
+	position: fixed;
+     top: 0;
+     left: 0;
+     right: 0;
+}
+body{
+	margin-top:80px;
 }
     #header #logo {
         float:center;
@@ -44,21 +53,21 @@ a:hover {text-decoration: none; color: #000}
             color:#000;
             font-size:35px;
         }
-    #header #search {
-        padding: 10px 0px 0px 300px;
-        float:center;
-    }
-        #header #search img{
-            height: 50px;
+        #header #search {
+            padding: 15px 40px 0px 170px;
+            float:center;
         }
-        #header #menu {
-			float: center;
-            line-height: 30px;
-			margin: 0px 0px 0px 150px;
-            padding: 10px 0px 0px 210px;
-            color:#000;
-            font-size: 16px;
-        }
+            #header #search img{
+                height: 50px;
+            }
+            #header #menu {
+                float: center;
+                line-height: 30px;
+                margin: 0px 0px 0px 400px;
+                padding: 25px 0px 0px 50px;
+                color:#000;
+                font-size: 16px;
+            }
         #header #menu span {
             margin: 0px 0px 0px 10px;
         }
@@ -68,6 +77,8 @@ a:hover {text-decoration: none; color: #000}
             margin: 20px 0px 0px 15px;
         }
 
+
+    /*어사이드*/
     #aside {
     float: left;
     width: 240px;
@@ -157,7 +168,8 @@ a:hover {text-decoration: none; color: #000}
 #nav {font-size: 12px;}
 
 
-/*01.프로필사진 변경*/
+/*질문01. 사진*/
+/* 드래그 앤 드롭 */
 #root {
     width: 100%;
     margin: 0 auto;
@@ -230,7 +242,6 @@ a:hover {text-decoration: none; color: #000}
   display: none;
   }
   
-  
   .contents {
      display: flex;
      flex-direction: column;
@@ -250,7 +261,7 @@ a:hover {text-decoration: none; color: #000}
      margin-right: 0;
      overflow: initial;
   }
- /* //드래그앤드롭 */ 
+  
 
 
 #profilephoto {
