@@ -1,39 +1,41 @@
 <!DOCTYPE html>
 <html>
-
     <head>
         <meta charset="UTF-8"/>
         <title>펫시팅 정보수정 폼</title>
         
-        <link href="../../../assets/css/petsitterModifyForm.css" rel="stylesheet" type="text/css"/>
-        <link href="../../../assets/bootstrap/css/bootstrap.css"rel="stylesheet">
+        <link href="../../../assets/choe/css/petsitterModifyForm.css" rel="stylesheet" type="text/css"/>
+        <link href="../../../assets/choe/bootstrap/css/bootstrap.css"rel="stylesheet">
 
-        <script type="text/javascript" src="../../../assets/js/jquery/jquery-1.12.4.js"></script>
-        <script type="text/javascript" src="../../../assets/bootstrap/js/bootstrap.js"></script>
-        <script type="text/javascript" src="../../../assets/js/dragdrop.js"></script>  
+        <script type="text/javascript" src="../../../assets/choe/js/jquery-1.12.4.js"></script>
+        <script type="text/javascript" src="../../../assets/choe/bootstrap/js/bootstrap.js"></script>
+
+        <script type="text/javascript" src="../../../assets/choe/js/dragdrop.js"></script>
     </head>
 
 
-    <body>
+    <body style="margin-top:90px;">
         <div id="header">
             <div id="logo" class="col-xs-3">
-                <img class="logo-img" src="../../../assets/images/headerlogo.jpg"></a>
+                <img class="logo-img" src="../../../assets/han/images/logo2.jpg">
             </div>
-            <div id="search" class="col-xs-5">
-                <div></div>
+            <div id="search" class="col-xs-4">
+                <img class="logo-img" src="../../../assets/han/images/2.png">
             </div>
-            <div id="menu" class="col-xs-3">
+            <div id="menu" class="col-xs-2">
                 <button type="button" class="btn btn-default menu">펫시터되기</button>
-                <button type="button" class="btn btn-default menu"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span><span class="badge">0</span></button>
-                <p class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></p>
+                <button type="button" class="btn btn-default menu"><span class="glyphicon glyphicon-envelope" aria-hidden="true" style="margin:0px;"></span><span class="badge">0</span></button>
+                <button type="button" class="btn btn-default menu"><span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true" style="margin:0px;"></span></button>
             </div>
         </div>
 
+
+       
         <div id="wrap">
             <div id="container" class="clearfix">            
                 <div id="aside">
                     <ul id="b-aside">
-                       <li class="menu">예약관리<img src="../../../assets/images/aside.png" class="aside-img"></li>
+                       <li class="menu">예약관리<img src="../../../assets/choe/images/aside.png" class="aside-img"></li>
                        <ul id="s-aside" class="hide">
                           <li>대기내역</li>
                           <li>예약신청관리</li>
@@ -45,7 +47,7 @@
                     </ul>
                 </div>
 
-                <div id="content">
+                <div id="content" class="clearfix">
                     <div class="content-head">
                         <p id="nav">마이 사이트 > 내 정보 수정</p>
                         <p id="now">펫시팅 정보 수정</p>
@@ -53,28 +55,28 @@
                     
                     <div class="row">
                         <div class="col-xs-11">
-                          <div id="joinQuestion" class="row Q">
-                              <div class="photo">
-                                  <h4>01. 사진 업로드</h4>
-                                  <p><span class="label label-info">참고</span> 최대 8장입니다. 강아지와 찍은 다정한 사진, 강아지를 능숙하게 훈련하는 사진이라면 더 좋겠죠?</p>
-                                      <div class="contents">
-                                          <div class="upload-box">
-                                              <div id="drop-file" class="drag-file">
-                                                  <img src="https://img.icons8.com/pastel-glyph/2x/image-file.png" alt="파일 아이콘" class="image" >
-                                                  <p class="message">마우스로 드래그해서 이미지를 추가해주세요</p>
-                                                  <img src="" alt="미리보기 이미지" class="preview">
-                                              </div>
-                                              <div id="drop-file" class="drag-file">
-                                                  <img src="https://img.icons8.com/pastel-glyph/2x/image-file.png" alt="파일 아이콘" class="image" >
-                                                  <p class="message">마우스로 드래그해서 이미지를 추가해주세요</p>
-                                                  <img src="" alt="미리보기 이미지" class="preview">
-                                              </div>
-                                              <label class="file-label" for="chooseFile">직접 추가하기</label>
-                                              <input class="file" id="chooseFile" type="file" onchange="dropFile.handleFiles(this.files)" accept="image/png, image/jpeg, image/gif">
-                                          </div>
-                                      </div>
-                              </div>
-                          </div>    
+                            <div id="joinQuestion" class="row Q">
+                                <div class="photo">
+                                    <h4>01. 사진 업로드</h4>
+                                    <p><span class="label label-info">참고</span> 최대 8장입니다. 강아지와 찍은 다정한 사진, 강아지를 능숙하게 훈련하는 사진이라면 더 좋겠죠?</p>
+                                    <div class="contents">
+                                            <div class="upload-box">
+                                                <div id="drop-file" class="drag-file">
+                                                    <img src="https://img.icons8.com/pastel-glyph/2x/image-file.png" alt="파일 아이콘" class="image" >
+                                                    <p class="message">마우스로 드래그해서 이미지를 추가해주세요</p>
+                                                    <img src="" alt="미리보기 이미지" class="preview">
+                                                </div>
+                                                <div id="drop-file" class="drag-file">
+                                                    <img src="https://img.icons8.com/pastel-glyph/2x/image-file.png" alt="파일 아이콘" class="image" >
+                                                    <p class="message">마우스로 드래그해서 이미지를 추가해주세요</p>
+                                                    <img src="" alt="미리보기 이미지" class="preview">
+                                                </div>
+                                                <input id = "fileInput" type = "file" multiple = "false" accept = "image/*" onchange = "uploadPicture()">
+                                                <input class="file" id="chooseFile" type="file" onchange="dropFile.handleFiles(this.files)" accept="image/png, image/jpeg, image/gif">
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>  
 
                           <div id="joinQuestion" class="row Q">
                             <h4>02. 키워드 선택</h4>
@@ -181,8 +183,8 @@
                                 <input type="text" id="sample6_address" placeholder="주소"><br>
                                 <input type="text" id="sample6_detailAddress" placeholder="상세주소">
                                 <input type="text" id="sample3_extraAddress" placeholder="참고항목">                                                            
+                            </div>
                         </div>
-    
     
                         <div id="joinQuestion" class="row Q"> 
                             <h4>06. 돌봄료 책정</h4>
@@ -190,8 +192,7 @@
                                 <input id="cost" type="number" name="cost" placeholder="1박의 돌봄료를 입력해주세요" required class="cost" value="10000"> 원(1박/1마리당)
                         </div>
 
-                            <button type="submit" class="button" style="width:200px;">내 정보 수정 완료</button>
-                        
+                        <button type="submit" class="btn btn-default btn-lg btn-block">펫시팅 정보 수정 완료</button>
                     </div>
                 </div>
             </div>
