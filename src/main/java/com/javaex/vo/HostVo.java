@@ -1,6 +1,6 @@
 package com.javaex.vo;
 
-public class hostVo {	
+public class HostVo {	
 	//필드
 	private int hostNo;
 	private int usersNo;
@@ -17,10 +17,10 @@ public class hostVo {
 
 	
 	//생성자
-	public hostVo() {
+	public HostVo() {
 		
 	}
-	public hostVo(int hostNo, int usersNo, int zipcode, String adress1, String adress2, String adress3, int x, int y,
+	public HostVo(int hostNo, int usersNo, int zipcode, String adress1, String adress2, String adress3, int x, int y,
 			String intro, String asking, int cost, int view) {
 		this.hostNo = hostNo;
 		this.usersNo = usersNo;

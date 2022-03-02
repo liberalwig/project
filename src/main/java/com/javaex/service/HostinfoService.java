@@ -1,5 +1,5 @@
 package com.javaex.service;
 
-public class hostinfoService {
+public class HostinfoService {
 
 }
