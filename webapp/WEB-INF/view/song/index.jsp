@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <!DOCTYPE html>
 
@@ -9,18 +10,18 @@
 	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	   
 	    <!-- CSS -->
-	    <link rel="stylesheet" href="./assets/css/main.css">
+	    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/main.css">
 	    <!--menu 버튼 링크-->
-	    <link rel="stylesheet" href="./assets/bootstrap/css/bootstrap.css">
+	    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/bootstrap/css/bootstrap.css">
 	    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css">
 	
 	    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 	    <!--jquery 버튼 링크-->
 	    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	
-	    <script src="./assets/js/header.js"></script>
+	    <script src="${pageContext.request.contextPath}/assets/js/header.js"></script>
 	    <!-- 부가적인 테마 -->
-	    <title>header</title>
+	    <title>index</title>
 	</head>
 	<body>
 		<div id="header" class="container">
@@ -53,7 +54,7 @@
         <div id="main" class="container-fluid">
             <div class="video-container">
                 <video controlslist="nodownload" autoplay loop muted>
-                    <source src="./assets/video/pexels-ron-lach-9986449.mp4" type="video/mp4">
+                    <source src="${pageContext.request.contextPath}/assets/video/pexels-ron-lach-9986449.mp4" type="video/mp4">
                 </video>
                 <div id="main-title">
                     <p class="title-a title_a_padding-right80">Easy, Fast & Convenient</p>
@@ -70,7 +71,7 @@
             <div class="row">
                 <div class="footer col-xs-4">
                     <div class="col-xs-2">
-                        <img class="footer-img" src="./assets/image/집.jpg">
+                        <img class="footer-img" src="${pageContext.request.contextPath}/assets/image/집.jpg">
                     </div>
                     <div class="footer-text  col-xs-2">
                         <p class="footer-h">House</p>
@@ -79,7 +80,7 @@
                 </div>
                 <div class="footer col-xs-4">
                     <div class="col-xs-2">
-                        <img class="footer-img" src="./assets/image/버스.jpg">
+                        <img class="footer-img" src="${pageContext.request.contextPath}/assets/image/버스.jpg">
                     </div>
                     <div class="footer-text col-xs-2">
                         <p class="footer-h">Pickup</p>
@@ -88,7 +89,7 @@
                 </div>
                 <div class="footer col-xs-4">
                     <div class="col-xs-2">
-                        <img class="footer-img" src="./assets/image/문의.jpg">
+                        <img class="footer-img" src="${pageContext.request.contextPath}/assets/image/문의.jpg">
                     </div>
                     <div class="footer-text col-xs-2">
                         <p class="footer-h">Available for You</p>
@@ -97,7 +98,7 @@
                 </div>
                 <div class="footer col-xs-4">
                     <div class="col-xs-2">
-                        <img class="footer-img" src="./assets/image/메세지.jpg">
+                        <img class="footer-img" src="${pageContext.request.contextPath}/assets/image/메세지.jpg">
                     </div>  
                     <div class="footer-text col-xs-2">
                        <p class="footer-h">Order on the Go</p> 
@@ -116,6 +117,6 @@
     </div>
 
 	<!--메뉴 버튼-->
-	<script src="./assets/js/menu-button.js"></script>
+	<script src="${pageContext.request.contextPath}/assets/js/menu-button.js"></script>
 	</body>
 </html>
