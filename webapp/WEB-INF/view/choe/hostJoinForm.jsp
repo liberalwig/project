@@ -9,7 +9,7 @@
         <title>펫시터 등록 폼</title>
 
         <link href="${pageContext.request.contextPath}/assets/bootstrap/css/bootstrap.css" rel="stylesheet">
-        <link href="${pageContext.request.contextPath}/assets/css/petsitterJoinForm.css" rel="stylesheet" type="text/css">
+        <link href="${pageContext.request.contextPath}/assets/css/hostJoin.css" rel="stylesheet" type="text/css">
 
 
         <script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/jquery-1.12.4.js"></script>
@@ -21,7 +21,7 @@
     </head>
 
 	<body>
-		<c:import url="/WEB-INF/views/includes/header.jsp"></c:import>
+		<c:import url="/WEB-INF/view/includes/header.jsp"></c:import>
 
         <div id="wrap">
             <div id="container" class="clearfix">  
@@ -177,6 +177,7 @@
                 </div>
             </div>
         </div>
+        <c:import url="/WEB-INF/view/includes/footer.jsp"></c:import>
     </body>
 
     <script>

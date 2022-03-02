@@ -74,6 +74,24 @@ body{
     padding: 0px 0px 0px 15px;
     margin: 20px 0px 0px 15px;
   }
+<!--푸터-->
+#footer {
+	color: #333;
+	margin: 50px 0px 0px 0px;
+	padding: 40px 0px 40px 100px;
+	background: #CCC;
+	text-align: center;
+}
+#footer #copyright{
+	width:1440px;
+	padding: 0px;
+	margin: 0px;
+}
+#footer #copyright h4{
+	padding: 0px;
+	margin: 0px;
+}
+
 
 /* clearfix */
 .clearfix{*zoom:1;}
