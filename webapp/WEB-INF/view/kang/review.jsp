@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 
@@ -5,10 +7,12 @@
         <meta charset="utf-8"/>
 
         <!--CSS-->
-        <link href="../../../assets/kang/css/review.css" rel="stylesheet" type="text/css"/>
-        <link href="../../../assets/kang/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css">
-        <!--자바스크립트-->
-        <script type="text/javascript" src="../../assets/js/bootstrap.js"></script>
+        <link href="/project/assets/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css">
+        <link href="/project/assets/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css">
+        <link href="/project/assets/css/review.css" rel="stylesheet" type="text/css">
+        <!-- 자바스크립트 -->
+        <script type="text/javascript" src="/project/assets/js/jquery-1.12.4.js"></script>
+        <script type="text/javascript" src="/project/assets/bootstrap/js/bootstrap.js"></script>
 
 
         <title>리뷰 하기</title>
