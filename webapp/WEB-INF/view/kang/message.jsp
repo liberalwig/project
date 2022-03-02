@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+    
 <!DOCTYPE html>
 <html>
     <head>
@@ -8,12 +11,12 @@
         <!--메타데이터-->
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!--CSS -->
-        <link href="../../../assets/kang/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css">
-        <link rel="stylesheet" href="../../../assets/kang/css/header_img.css">
-        <link href="../../../assets/kang/css/message.css" rel="stylesheet" type="text/css">
+        <link href="/project/assets/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css">
+        <link href="/project/assets/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css">
+        <link href="/project/assets/css/message.css" rel="stylesheet" type="text/css">
         <!-- 자바스크립트 -->
-        <script type="text/javascript" src="../../assets/js/jquery/jquery-1.12.4.js"></script>
-        <script type="text/javascript" src="../../assets/bootstrap/js/bootstrap.js"></script>
+        <script type="text/javascript" src="/project/assets/js/jquery-1.12.4.js"></script>
+        <script type="text/javascript" src="/project/assets/bootstrap/js/bootstrap.js"></script>
 
         <title>메세지</title>
     </head>
@@ -21,10 +24,10 @@
 
         <div id="header">
             <div id="logo" class="col-xs-3">
-                <img class="logo-img" src="../../../assets/han/images/logo2.jpg">
+                <img class="logo-img" src="/project/assets/images/logo2.jpg">
             </div>
             <div id="search" class="col-xs-4">
-                <img class="logo-img" src="../../../assets/han/images/2.png">
+                <img class="logo-img" src="/project/assets/images/2.png">
             </div>
             <div id="menu" class="col-xs-2">
                 <button type="button" class="btn btn-default menu">펫시터되기</button>
@@ -38,7 +41,7 @@
             <div id="container" >
                 <div id="aside">
                     <ul id="b-aside">
-                       <li class="menu">예약관리<img src="../../../assets/kang/images/aside.png" class="aside-img"></li>
+                       <li class="menu">예약관리<img src="/project/assets/images/aside.png" class="aside-img"></li>
                        <ul id="s-aside" class="hide">
                           <li>대기내역</li>
                           <li>예약신청관리</li>
@@ -68,11 +71,11 @@
                     <div id="content-main">
                         <div class=" row clearfix">
                             <div id="list" class="col-md-12">
-                                <img class="profile" src="../../../assets/kang/images/profile4.jpeg">
+                                <img class="profile" src="/project/assets/images/message_profile4.jpeg">
                                 <p>안녕 나는 호스트</p>
                             </div>
                             <div id="pdetail" class="col-md-12 clearfix">
-                                <a href=""><img class="profile" src="../../../assets/kang/images/profile1.jpg"></a>
+                                <a href=""><img class="profile" src="/project/assets/images/message_profile1.jpg"></a>
                                 <p class="name"> 뿡빵 </p>
                                 <p class="btn-re-gradient blue mini">승인 대기</p>
                             </div>
@@ -80,50 +83,50 @@
                         <div class=" row clearfix">
                             <div id="dList" class="col-md-12 clearfix scroll scroll1">
                                 <a href=""><div class="clearfix">
-                                    <img class="profile" src="../../../assets/kang/images/profile1.jpg">
+                                    <img class="profile" src="/project/assets/images/message_profile1.jpg">
                                     <p class="name"> 뿡빵 </p>
                                     <p class="timeL">21/02/27 19:00</p>
                                     <div class="state col-md-6">펫시팅 중</div></a>
                                     
                                 </div>
                                 <div class="clearfix">
-                                    <a href=""><img class="profile" src="../../../assets/kang/images/profile2.jpg"></a>
+                                    <a href=""><img class="profile" src="/project/assets/images/message_profile2.jpg"></a>
                                     <p class="name"> 뿡빵 </p>
                                     <p class="timeL">21/02/27 19:00</p>
                                     <div class="state col-md-6">결제 대기</div>
                                 </div>
                                 <div class="clearfix">
-                                    <a href=""><img class="profile" src="../../../assets/kang/images/profile3.jpg"></a>
+                                    <a href=""><img class="profile" src="/project/assets/images/message_profile3.jpg"></a>
                                     <p class="name"> 뿡빵 </p>
                                     <p class="timeL">21/02/27 19:00</p>
                                     <div class="state col-md-6">승인 대기</div>
                                 </div>
                                 <div class="clearfix">
-                                    <a href=""><img class="profile" src="../../../assets/kang/images/profile4.jpeg"></a>
+                                    <a href=""><img class="profile" src="/project/assets/images/message_profile4.jpeg"></a>
                                     <p class="name"> 뿡빵 </p>
                                     <p class="timeL">21/02/27 19:00</p>
                                     <div class="state col-md-6">문의</div>
                                 </div>
                                 <div class="clearfix">
-                                    <a href=""><img class="profile" src="../../../assets/kang/images/profile4.jpeg"></a>
+                                    <a href=""><img class="profile" src="/project/assets/images/message_profile4.jpeg"></a>
                                     <p class="name"> 뿡빵 </p>
                                     <p class="timeL">21/02/27 19:00</p>
                                     <div class="state col-md-6">문의</div>
                                 </div>
                                 <div class="clearfix">
-                                    <a href=""><img class="profile" src="../../../assets/kang/images/profile4.jpeg"></a>
+                                    <a href=""><img class="profile" src="/project/assets/images/message_profile4.jpeg"></a>
                                     <p class="name"> 뿡빵 </p>
                                     <p class="timeL">21/02/27 19:00</p>
                                     <div class="state col-md-6">문의</div>
                                 </div>
                                 <div class="clearfix">
-                                    <a href=""><img class="profile" src="../../../assets/kang/images/profile4.jpeg"></a>
+                                    <a href=""><img class="profile" src="/project/assets/images/message_profile4.jpeg"></a>
                                     <p class="name"> 뿡빵 </p>
                                     <p class="timeL">21/02/27 19:00</p>
                                     <div class="state col-md-6">문의</div>
                                 </div>
                                 <div class="clearfix">
-                                    <a href=""><img class="profile" src="../../../assets/kang/images/profile4.jpeg"></a>
+                                    <a href=""><img class="profile" src="/project/assets/images/message_profile4.jpeg"></a>
                                     <p class="name"> 뿡빵 </p>
                                     <p class="timeL">21/02/27 19:00</p>
                                     <div class="state col-md-6">문의</div>
@@ -156,7 +159,8 @@
                             </div>
                             <div id="text" class="clearfix">
                                 <textarea id="insert" class="col-md-7" placeholder="메세지를 입력하세요"></textarea>
-                                <button id="btn" class=" w-btn-outline w-btn-skin-outline">보내기</button>
+                                <!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
+								<button class="btn btn-default" type="submit">보내기</button>
                             </div>
                             
                         </div>

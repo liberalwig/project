@@ -8,32 +8,20 @@
         <meta charset="UTF-8">
         <title>펫시터 등록 폼</title>
 
-        <link href="../../../assets/bootstrap/css/bootstrap.css" rel="stylesheet">
-        <link href="../../../assets/css/petsitterJoinForm.css" rel="stylesheet" type="text/css">
+        <link href="${pageContext.request.contextPath}/assets/bootstrap/css/bootstrap.css" rel="stylesheet">
+        <link href="${pageContext.request.contextPath}/assets/css/petsitterJoinForm.css" rel="stylesheet" type="text/css">
 
 
-        <script type="text/javascript" src="../../../assets/js/jquery-1.12.4.js"></script>
-        <script type="text/javascript" src="../../../assets/bootstrap/js/bootstrap.js"></script>
+        <script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/jquery-1.12.4.js"></script>
+        <script type="text/javascript" src="${pageContext.request.contextPath}/assets/bootstrap/js/bootstrap.js"></script>
 
-        <script type="text/javascript" src="../../../assets/js/dragdrop.js"></script>
-        <script type="text/javascript" src="../../../assets/js/maxLength.js"></script>
+        <script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/dragdrop.js"></script>
+        <script type="text/javascript" src=".${pageContext.request.contextPath}/assets/js/maxLength.js"></script>
         <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
     </head>
 
-    <body>
-        <div id="header">
-            <div id="logo" class="col-xs-3">
-                <img class="logo-img" src="../../../assets/images/logo2.jpg">
-            </div>
-            <div id="search" class="col-xs-4">
-                <img class="logo-img" src="../../../assets/images/2.png">
-            </div>
-            <div id="menu" class="col-xs-2">
-                <button type="button" class="btn btn-default menu">펫시터되기</button>
-                <button type="button" class="btn btn-default menu"><span class="glyphicon glyphicon-envelope" aria-hidden="true" style="margin:0px;"></span><span class="badge">0</span></button>
-                <button type="button" class="btn btn-default menu"><span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true" style="margin:0px;"></span></button>
-            </div>
-        </div>
+	<body>
+		<c:import url="/WEB-INF/views/includes/header.jsp"></c:import>
 
         <div id="wrap">
             <div id="container" class="clearfix">  
