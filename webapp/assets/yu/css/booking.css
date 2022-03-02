@@ -15,7 +15,7 @@
 }
 
 #btn-area1 {
-	margin: 0px 0px 10px 870px;
+	margin: 0px 0px 10px 1000px;
 }
 
 #btn-area2 {
@@ -66,8 +66,7 @@
 	margin: 0px 0px 30px 0px;
 }
 
-.wrapper>h3 {
-	margin: 0px 0px 0px 10px;
+.wrapper h3 {
 	font-size: 18px;
 }
 
@@ -89,6 +88,20 @@
 .item {
 	display: inline-block;
 	margin: 2rem 2px 0px 2px;
+}
+
+.img-date>h3 {
+	display: inline;
+}
+.img-date {
+	float: left;
+	padding-top: 8px;
+}
+.img-btn {
+	float: right;
+}
+.img-btn>button {
+	margin: 0px 10px 0px 0px;
 }
 
 
