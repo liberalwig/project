@@ -26,10 +26,10 @@
 	<body>
 		<div id="header" class="container">
         <div id="logo" class="col-xs-3">
-            <img class="logo-img" src="./assets/image/logo2.jpg">
+            <img class="logo-img" src="${pageContext.request.contextPath}/assets/images/header_logo.jpg">
         </div>
         <div id="search" class="col-xs-4">
-            <img class="logo-img-search" src="./assets/image/검색이미지.png">
+            <img class="logo-img-search" src="${pageContext.request.contextPath}/assets/images/header_search.png">
         </div>
         <div id="menu" class="col-xs-2">
             <button type="button" class="btn btn-default menu">펫시터되기</button>
@@ -71,7 +71,7 @@
             <div class="row">
                 <div class="footer col-xs-4">
                     <div class="col-xs-2">
-                        <img class="footer-img" src="${pageContext.request.contextPath}/assets/image/집.jpg">
+                        <img class="footer-img" src="${pageContext.request.contextPath}/assets/images/main_house.jpg">
                     </div>
                     <div class="footer-text  col-xs-2">
                         <p class="footer-h">House</p>
@@ -80,7 +80,7 @@
                 </div>
                 <div class="footer col-xs-4">
                     <div class="col-xs-2">
-                        <img class="footer-img" src="${pageContext.request.contextPath}/assets/image/버스.jpg">
+                        <img class="footer-img" src="${pageContext.request.contextPath}/assets/images/main_pickup.jpg">
                     </div>
                     <div class="footer-text col-xs-2">
                         <p class="footer-h">Pickup</p>
@@ -89,7 +89,7 @@
                 </div>
                 <div class="footer col-xs-4">
                     <div class="col-xs-2">
-                        <img class="footer-img" src="${pageContext.request.contextPath}/assets/image/문의.jpg">
+                        <img class="footer-img" src="${pageContext.request.contextPath}/assets/images/main_pickup.jpg">
                     </div>
                     <div class="footer-text col-xs-2">
                         <p class="footer-h">Available for You</p>
@@ -98,7 +98,7 @@
                 </div>
                 <div class="footer col-xs-4">
                     <div class="col-xs-2">
-                        <img class="footer-img" src="${pageContext.request.contextPath}/assets/image/메세지.jpg">
+                        <img class="footer-img" src="${pageContext.request.contextPath}/assets/imasges/support.jpg">
                     </div>  
                     <div class="footer-text col-xs-2">
                        <p class="footer-h">Order on the Go</p> 
