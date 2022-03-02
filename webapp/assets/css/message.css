@@ -157,7 +157,6 @@ body {
  
 #content-main {
     margin: 45px 0px 0px 30px;
-    쟝
 }
  
  
@@ -369,40 +368,10 @@ body {
 
 /*버튼*/
 
-#btn {
-    float: rights;
-    margin: 30px 0px 0px 70px;
-}
-
-.w-btn-outline {
-    position: relative;
-    padding: 15px 20px;
-    border-radius: 15px;
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
-    text-decoration: none;
-    font-weight: 600;
-    transition: 0.25s;
-}
-
-.w-btn-outline:hover {
-    letter-spacing: 2px;
-    transform: scale(1.2);
-    cursor: pointer;
-}
-
-.w-btn-outline:active {
-    transform: scale(1.5);
-}
-
-.w-btn-skin-outline {
-    border: 3px solid #5899E3;
-    color: #000000;
-}
-
-.w-btn-skin-outline:hover {
-    background-color: #5899E3;
-    color: #000000;
-}
+.btn {
+	background-color :#6EB6F0;
+	margin: 30px 0px 0px 30px;
+	}
 
 /*상태 버튼 */
 /* 결제대기버튼 */
