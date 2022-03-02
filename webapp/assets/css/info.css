@@ -1,0 +1,265 @@
+@charset "UTF-8";
+/******************************************
+초기화 관련
+******************************************/
+
+/*여백 초기화*/
+body, div, ul, li, dl, dt, ol, td, h2, h3, h4, h5, h6,
+input, fieldset, legend, p, select, table, th, td, tr,
+textarea, button, form {margin:0; padding:0;}
+
+body {font-size:18px; font-family: "Helvetica Neue", "맑은 고딕", 돋움, 굴림; color: #333; background-color: #fff;}
+ul, ol {list-style-type: none;}
+a:link {text-decoration: none; color: #000}
+a:visited {text-decoration: none; color: #000}
+a:active {text-decoration: none; color: #000}
+a:hover {text-decoration: none; color: #000}
+
+/* clearfix */
+.clearfix{*zoom:1;}
+.clearfix:before, .clearfix:after {display: block; content: ""; line-height: 0;}
+.clearfix:after {clear: both;}
+
+.color {
+    background-color:#3D9BE9;
+}
+/* 공통 레이아웃*/
+#wrap {margin: 0px auto; width: 1440px;}
+
+#header{
+	width: 1920px;
+	margin: 0px auto;
+    height: 80px;
+    border-bottom: 1px solid #BBB;
+	z-index: 1;
+	background-color: #ffffff;
+	position: fixed;
+     top: 0;
+     left: 0;
+     right: 0;
+}
+body{
+	margin-top:80px;
+}
+    #header #logo {
+        float:center;
+    }
+    #header #logo img {
+        width: 140px;
+        margin: 0px 0px 0px 60px;
+        padding: 10px 0px 0px 0px;
+    }
+        #header #logo h4 {
+            color:#000;
+            font-size:35px;
+        }
+    #header #search {
+        padding: 15px 40px 0px 170px;
+        float:center;
+    }
+        #header #search img{
+            height: 50px;
+        }
+        #header #menu {
+			float: center;
+            line-height: 30px;
+			margin: 0px 0px 0px 400px;
+            padding: 25px 0px 0px 50px;
+            color:#000;
+            font-size: 16px;
+        }
+        #header #menu span {
+            margin: 0px 0px 0px 10px;
+        }
+        #header #menu p{
+            display: inline-block;
+			padding: 0px 0px 0px 15px;
+            margin: 20px 0px 0px 15px;
+        }
+	
+	#container { width: 1440px;}
+	#aside {float: left; width: 360px; padding: 0px 0px 0px 0px;}
+	#content { float: left; width: 1080px; margin: 0px 0px 100px 0px;}
+
+#footer {
+	color: #333;
+	margin: 50px 0px 0px 0px;
+	padding: 40px 0px 40px 100px;
+	background: #CCC;
+	text-align: center;
+}
+#footer #copyright{
+	width:1440px;
+	padding: 0px;
+	margin: 0px;
+}
+#footer #copyright h4{
+	padding: 0px;
+	margin: 0px;
+}
+
+/* 컨테이너 */
+/** 1. 호스트정보 **/
+	#container .row1{
+		margin: 0px 0px 50px 0px;
+	}
+	#container #profile{
+		padding: 20px 60px 50px 110px;
+		border-bottom: 1px solid #DDD;
+	}
+	#container #hostimg{
+		width:250px;
+		height:250px;
+		margin:30px 30px 20px 20px;
+		float:left;
+	}
+	#container #hostinfo{
+		margin: 20px 0px 0px 0px;
+		padding: 0px 0px 0px 400px;
+		height: 60px;
+	}
+	#container #hostinfo .info{
+		margin: 0px 0px 15px 0px;
+	}
+
+	.tag{
+		display: inline-block;
+		padding: .2em .6em .3em;
+		margin: 0px 2px 0px 0px;
+		font-size: 12px;
+		font-weight: bold;
+		line-height: 1;
+		color: #666;
+		text-align: center;
+		white-space: nowrap;
+		vertical-align: baseline;
+		border-radius: .25em;
+		background-color: #FFF;
+		border:1px solid #666;
+	}
+	.tag:hover{
+		background-color: #DDD;
+	}
+	#container #btnbox1{
+		margin: 10px 0px 0px 0px;
+	}
+	#container #btnbox1 #btn1{
+		margin: 10px 0px 0px 0px;
+		padding: 13px 0px 0px 0px;
+		width: 200px;
+		height: 50px;
+	}
+/** 2. 퍼피력 **/
+#container #puppypoint{
+	text-align:left;
+	margin: 10px 0px 0px 40px;
+	padding: 15px 0px 10px 40px;
+	border: 1px solid #DDD;
+	border-radius: 10px;
+}
+#container #point{
+	margin: 30px 25px 0px 0px;
+	text-align: center;
+}
+	#container #point div h4{
+		margin: 0px 0px 0px 0px;
+	}
+	#container #point .normal{
+		font-weight: 1000;
+		margin : 0px;
+	}
+	.pointname{
+		padding: 0px;
+	}
+#container #graph{
+	padding: 30px 0px;
+}
+#container .progress{
+	width: 290px;
+	height: 23px;
+}
+.bar {
+	padding: 10px 0px 0px 0px;
+}
+.progress-bar{
+	background: #777;
+	
+}
+.top-bar{
+	background-color:#3D9BE9;
+}
+.warning-bar{
+	background-color:#d9534f;
+}
+/** 3. 사진 **/
+#container #picbox {
+	height: 500px;
+	margin: 0px 0px 0px 50px;
+	padding: 0px 0px 0px 0px;
+}
+#container #imgbox {
+	border: 1px solid #EEE;
+	border-radius:5px;
+	padding: 40px 19px 19px 19px;
+}
+#picbox img{
+	width: 200px;
+	height: 180px;
+	margin: 10px 0px 0px 0px;
+}
+#picbox img:hover{
+	border: 5px solid #3D9BE9;
+}
+#tapbox .nav{
+	height:41px;
+}
+#imgbox2{
+	margin: 0px 0px 10px 15px;
+}
+/**4. 캘린더**/
+#calendar{
+	padding: 0px 0px 0px 20px;
+}
+/**5. 리뷰**/
+#review{
+	padding:10px 0px 0px 30px;
+}
+	.reviewbox {
+		text-align:left;
+		width: 850px;
+		margin:10px 0px 10px 0px;
+		padding: 10px 0px 0px 30px;
+		
+		padding-bottom: 20px;
+		border-bottom:1px solid #BBB;
+	}
+	#review h3{
+		margin: 15px 0px 15px 0px;
+	}
+	.reviewbox .row h4{
+		margin: 5px 0px 0px 0px;
+	}
+	.reviewbox .row .toph4{
+		margin: 1px 0px 0px 0px;
+	}
+	.reviewbox .row p{
+		margin: 5px 0px 0px 0px;
+	}
+	.reviewbox img {
+		float: left;
+		margin: 0px 10px 0px 0px;
+	}
+	.reviewimg {
+		width:50px;
+	}
+
+/**6. 지도**/
+#map {
+	padding: 30px 0px 0px 60px;
+}
+#map h2, h4 {
+	margin: 0px 0px 20px 0px;
+}
+#map img{
+	width:440px;
+}
