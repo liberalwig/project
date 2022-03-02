@@ -1,49 +1,32 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
-
 <head>
 <meta charset="utf-8"/>
-
+<title>예약하기</title>
 <!--CSS-->
-<link href="../../../assets/css/booking.css" rel="stylesheet" type="text/css"/>
-<link href="../../../assets/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css">
-<link href="../../../assets/booking/css/fullcalendar.css" rel="stylesheet" type="text/css">
-<link href="../../../assets/booking/css/reservation.css" rel="stylesheet" type="text/css">
-
+<link href="${pageContext.request.contextPath}/assets/css/booking.css" rel="stylesheet" type="text/css"/>
+<link href="${pageContext.request.contextPath}/assets/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css">
 
 <!--자바스크립트-->
-<script type="text/javascript" src="../../../assets/js/bootstrap.js"></script>
-<script type="text/javascript" src="../../../assets/booking/js/jquery-1.12.4.js"></script>
-<script type="text/javascript" src="../../../assets/booking/js/fullcalendar.js"></script>
-<script type="text/javascript" src="../../../assets/booking/js/locales-all.js"></script>
-
-<title>예약하기</title>
+<script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/bootstrap.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/assets/booking/js/jquery-1.12.4.js"></script>
 
 </head>
 
 <body>
-    <div id="header">
-        <div id="logo" class="col-xs-3">
-            <img class="logo-img" src="../../../assets/images/logo2.jpg"></a>
-        </div>
-        <div id="search" class="col-xs-4">
-        </div>
-        <div id="menu" class="col-xs-2">
-            <button type="button" class="btn btn-default menu">펫시터되기</button>
-            <button type="button" class="btn btn-default menu"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span><span class="badge">0</span></button>
-            <p class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></p>
-        </div>
-    </div>
+	<c:import url="/WEB-INF/views/includes/header.jsp"></c:import>
     <div id="wrap">
         <div id="container">
             <div id="booking" class="col-xs-7 left info">
-                <div calss="row">
+                <div class="row">
                     <h2>예약신청/결제하기</h2>
                 </div>
                 <div class="row">
                     <div class="Q">
                         <h4>1단계. 날짜 선택하기</h4>
-                        <img src="../../../assets/han/images/calendarex.png" width="430px" style="margin-left:150px">
+                        <img src="${pageContext.request.contextPath}/assets/images/booking_calendar.png" width="430px" style="margin-left:150px">
                     </div>
                 </div>
                     <div class="Q">
@@ -79,7 +62,7 @@
             </div>
             <div id="hostprofile" class="col-xs-4">
                 <div id="profile" class="row">
-                    <img id="hostimg" src="../../../assets/han/images/sample.jpg" class="img-circle">
+                    <img id="hostimg" src="${pageContext.request.contextPath}/assets/images/hostinfo_sample.jpg" class="img-circle">
                     <h4>개장수님</h4>
                     <h4>서울시 관악구 봉천동</h4>
                     <button id="btn1" type="button" class="btn btn-default"><h5><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>&nbsp;메시지 보내기</h5></button>
@@ -106,7 +89,7 @@
                 </div>       
             </div>
         </div>
-    </div>
+        <c:import url="/WEB-INF/views/includes/footer.jsp"></c:import>
     <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 
 </body>
