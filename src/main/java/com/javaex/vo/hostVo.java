@@ -1,5 +1,5 @@
 package com.javaex.vo;
 
-public class ex {
+public class hostVo {
 
 }

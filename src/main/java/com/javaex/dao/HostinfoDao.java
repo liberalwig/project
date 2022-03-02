@@ -1,5 +1,5 @@
 package com.javaex.dao;
 
-public class ex {
+public class HostinfoDao {
 
 }
