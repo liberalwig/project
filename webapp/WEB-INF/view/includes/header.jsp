@@ -5,7 +5,7 @@
         <img class="logo-img" src="${pageContext.request.contextPath}/assets/images/header_logo.jpg">
     </div>
     <div id="search" class="col-xs-4">
-    	<img class="logo-img" src="${pageContext.request.contextPath}/assets/images/header_search.jpg">
+    	<img class="logo-img" src="${pageContext.request.contextPath}/assets/images/header_search.png">
     </div>
     <div id="menu" class="col-xs-2">
         <button type="button" class="btn btn-default menu">펫시터되기</button>

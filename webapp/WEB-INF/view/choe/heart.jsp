@@ -8,34 +8,22 @@
         <meta charset="UTF-8">
         <title>찜목록</title>
 
-        <link href="../../../assets/bootstrap/css/bootstrap.css" rel="stylesheet">
-        <link href="../../../assets/css/heart.css" rel="stylesheet" type="text/css">
+        <link href="${pageContext.request.contextPath}/assets/bootstrap/css/bootstrap.css" rel="stylesheet">
+        <link href="${pageContext.request.contextPath}" rel="stylesheet" type="text/css">
         
-        <script type="text/javascript" src="../../../assets/bootstrap/js/bootstrap.js"></script>
-        <script type="text/javascript" src="../../../assets/js/jquery-1.12.4.js"></script>   
+        <script type="text/javascript" src="${pageContext.request.contextPath}/assets/bootstrap/js/bootstrap.js"></script>
+        <script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/jquery-1.12.4.js"></script>   
     </head>
     
     
     <body>
-        <div id="header">
-            <div id="logo" class="col-xs-3">
-                <img class="logo-img" src="../../../assets/images/logo2.jpg">
-            </div>
-            <div id="search" class="col-xs-4">
-                <img class="logo-img" src="../../../assets/images/2.png">
-            </div>
-            <div id="menu" class="col-xs-2">
-                <button type="button" class="btn btn-default menu">펫시터되기</button>
-                <button type="button" class="btn btn-default menu"><span class="glyphicon glyphicon-envelope" aria-hidden="true" style="margin:0px;"></span><span class="badge">0</span></button>
-                <button type="button" class="btn btn-default menu"><span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true" style="margin:0px;"></span></button>
-            </div>
-        </div>
+    	<c:import url="/WEB-INF/views/includes/header.jsp"></c:import>
 
         <div id="wrap">
             <div id="container" class="clearfix">            
                 <div id="aside">
                     <ul id="b-aside">
-                       <li class="menu">예약관리<img src="../../../assets/images/aside.png" class="aside-img"></li>
+                       <li class="menu">예약관리<img src="${pageContext.request.contextPath}/assets/images/guestModifyForm_01dropdown.png" class="aside-img"></li>
                        <ul id="s-aside" class="hide">
                           <li>대기내역</li>
                           <li>예약신청관리</li>
@@ -61,7 +49,7 @@
                                 <div class="row">
                                     <div>
                                         <div class="col-md-6">
-                                            <img class="result-img" src="../../../assets/images/hostSample01.jpeg">
+                                            <img class="result-img" src="${pageContext.request.contextPath}/assets/images/heart_01hostSample01.jpeg">
                                         </div>
                                         <div class="search_result_text col-md-6">
                                             <div class="result_text row">
@@ -84,7 +72,7 @@
                                  <div class="row">
                                     <div>
                                         <div class="col-md-6">
-                                            <img class="result-img" src="../../../assets/images/hostSample02.jpeg">
+                                            <img class="result-img" src="${pageContext.request.contextPath}/assets/images/heart_02hostSample02.jpeg">
                                         </div>
                                         <div class="search_result_text col-md-6">
                                             <div class="result_text row">
@@ -107,7 +95,7 @@
                                 <div class="row">
                                     <div>
                                         <div class="col-md-6">
-                                            <img class="result-img" src="../../../assets/images/hostSample03.jpeg">
+                                            <img class="result-img" src="${pageContext.request.contextPath}/assets/images/heart_01hostSample01.jpeg">
                                         </div>
                                         <div class="search_result_text col-md-6">
                                             <div class="result_text row">
