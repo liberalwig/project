@@ -14,7 +14,6 @@ public class HostVo {
 	private String asking;
 	private int cost;
 	private int view;
-
 	
 	//생성자
 	public HostVo() {
