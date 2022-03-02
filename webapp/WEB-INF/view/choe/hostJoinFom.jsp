@@ -9,8 +9,7 @@
         <title>펫시터 등록 폼</title>
 
         <link href="${pageContext.request.contextPath}/assets/bootstrap/css/bootstrap.css" rel="stylesheet">
-        <link href="${pageContext.request.contextPath}/assets/css/petsitterJoinForm.css" rel="stylesheet" type="text/css">
-
+        <link href="${pageContext.request.contextPath}/assets/css/hostJoin.css" rel="stylesheet" type="text/css">
 
         <script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/jquery-1.12.4.js"></script>
         <script type="text/javascript" src="${pageContext.request.contextPath}/assets/bootstrap/js/bootstrap.js"></script>
