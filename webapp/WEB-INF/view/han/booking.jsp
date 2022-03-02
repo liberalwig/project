@@ -6,8 +6,8 @@
 <meta charset="utf-8"/>
 <title>예약하기</title>
 <!--CSS-->
-<link href="${pageContext.request.contextPath}/assets/css/booking.css" rel="stylesheet" type="text/css"/>
 <link href="${pageContext.request.contextPath}/assets/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css">
+<link href="${pageContext.request.contextPath}/assets/css/booking2.css" rel="stylesheet" type="text/css"/>
 
 <!--자바스크립트-->
 <script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/bootstrap.js"></script>
@@ -16,7 +16,7 @@
 </head>
 
 <body>
-	<c:import url="/WEB-INF/views/includes/header.jsp"></c:import>
+	<c:import url="/WEB-INF/view/includes/header.jsp"></c:import>
     <div id="wrap">
         <div id="container">
             <div id="booking" class="col-xs-7 left info">
@@ -56,10 +56,7 @@
                           </div>
                         <textarea class="form-control" rows="3"></textarea>
                     </div>
-                    <div>
-                    </div>
                 </div>
-            </div>
             <div id="hostprofile" class="col-xs-4">
                 <div id="profile" class="row">
                     <img id="hostimg" src="${pageContext.request.contextPath}/assets/images/hostinfo_sample.jpg" class="img-circle">
@@ -87,114 +84,8 @@
                         <button id="btn2" type="button" class="btn btn-primary">예약 요청/결제하기</button>
                     </div>
                 </div>       
-            </div>
+            </div>   
         </div>
-        <c:import url="/WEB-INF/views/includes/footer.jsp"></c:import>
-    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-
+    </div>
 </body>
-<script>
-	/* aside */
-	// html dom 이 다 로딩된 후 실행된다.
-	$(document).ready(function() {
-		// memu 클래스 바로 하위에 있는 a 태그를 클릭했을때
-		$(".menu").click(function() {
-			// 현재 클릭한 태그가 a 이기 때문에
-			// a 옆의 태그중 ul 태그에 hide 클래스 태그를 넣던지 빼던지 한다.
-			$(this).next("ul").toggleClass("hide");
-		});
-	});
-
-	/* 달력 */
-	document.addEventListener('DOMContentLoaded', function() {
-
-	var calendarEl = document.getElementById('l-calendar');
-	var calendar = new FullCalendar.Calendar(calendarEl, {
-
-		initialView : 'dayGridMonth', // 월 달력
-
-		// 달력 툴
-		headerToolbar : {
-			left : 'prev',
-			center : 'title',
-			right : 'next today,dayGridMonth'
-		},
-
-		editable : true, // 드래그 수정 가능
-		locale : 'ko', // 한국어 설정(lib/locales/ko.js)
-
-		// 요일 클릭 이벤트
-		dateClick : function() {
-			alert('요일 클릭!');
-		},
-
-		// 일정 클릭 이벤트
-		eventClick : function() {
-			alert('일정 클릭!');
-		},
-
-	});
-
-	// 데이터 삽입방식
-
-	// calendar.addEvent({
-	// 	'title' : '게스트1',
-	// 	'start' : '2022-02-01'
-	// });
-
-	// calendar.addEvent({
-	// 	'title' : '게스트2',
-	// 	'start' : '2022-02-18',
-	// 	'end' : '2022-02-23'
-	// });
-
-	// 렌더링
-
-	calendar.render();
-
-	});
-
-	document.addEventListener('DOMContentLoaded', function() {
-
-	var calendarEl = document.getElementById('l-calendar2');
-	var calendar = new FullCalendar.Calendar(calendarEl, {
-
-		initialView : 'dayGridMonth', // 월 달력
-		initialDate: '2022-03-01',
-
-		// 달력 툴
-		headerToolbar : {
-			left : 'prev',
-			center : 'title',
-			right : 'next today,dayGridMonth'
-		},
-
-		editable : true, // 드래그 수정 가능
-		locale : 'ko', // 한국어 설정(lib/locales/ko.js)
-
-		// 요일 클릭 이벤트
-		dateClick : function() {
-			alert('요일 클릭!');
-		},
-
-		// 일정 클릭 이벤트
-		eventClick : function() {
-			alert('일정 클릭!');
-		},
-
-	});
-
-	// 데이터 삽입방식
-
-	calendar.addEvent({
-		'title' : '게스트3',
-		'start' : '2022-03-05'
-	});
-
-	// 렌더링
-
-	calendar.render();
-
-	});
-</script>
 </html>

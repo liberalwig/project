@@ -4,8 +4,7 @@
 <html>
 <head>
 <meta charset="utf-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-
+<title>펫시터 정보 페이지</title>
 <!--CSS-->
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/bootstrap/css/bootstrap.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/info.css">
@@ -14,7 +13,6 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/bootstrap/js/bootstrap.js">
 <script type="text/javascript" src=".${pageContext.request.contextPath}/assets/booking/js/jquery-1.12.4.js"></script>
 
-<title>펫시터 정보 페이지</title>
 </head>
 <body>
     <c:import url="/WEB-INF/view/includes/header.jsp"></c:import>
@@ -34,7 +32,7 @@
                                 
                             </div>
                             <div id="btnbox1">
-                                <button id="btn1" type="button" class="btn btn-primary"><h4>예약 요청</h4></button>
+                                <a href="${pageContext.request.contextPath}/hostinfo/booking"><button id="btn1" type="button" class="btn btn-primary"><h4>예약 요청</h4></button></a>
                                 <button id="btn1" type="button" class="btn btn-default"><h4><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>&nbsp;메시지 보내기</h4></button>
                             </div>
                         </div>

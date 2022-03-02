@@ -14,4 +14,11 @@ public class hostinfoController {
 		
 		return "/han/hostinfo";
 	}
+	
+	@RequestMapping(value = "/booking", method = { RequestMethod.GET, RequestMethod.POST })
+	public String booking() {
+		System.out.println("[hostinfoController.booking()]");
+		
+		return "/han/booking";
+	}
 }

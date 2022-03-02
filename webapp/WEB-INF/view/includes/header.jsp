@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/header.css">
 <div id="header">
     <div id="logo" class="col-xs-3">
         <img class="logo-img" src="${pageContext.request.contextPath}/assets/images/header_logo.jpg">

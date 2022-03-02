@@ -1,21 +1,29 @@
 @charset "UTF-8";
 
-/*header 공통*/
-.header-logo {
-  box-sizing: border-box;
-  margin-right: 100px;
-}
-
-.search_input_box {
-  height: 60px;
-}
-
-#menu {
-}
-
-/* 로고 */
-#logo {
-  margin: 10px 0px 10px 0px;
-  width: 150px;
-}
-
+#header{width: 1920px; 
+        margin: 0px auto; 
+        height: 80px; 
+        border-bottom: 1px solid #BBB;
+	 	z-index: 1; 
+	 	background-color: #ffffff; 
+	 	position: fixed;
+        top: 0; 
+        left: 0; 
+        right: 0;}
+#header #logo {float:center;}
+#header #logo img {width: 140px; margin: 0px 0px 0px 60px; padding: 10px 0px 0px 0px;}
+#header #logo h4 {color:#000; font-size:35px;}
+	    
+#header #search {padding: 15px 40px 0px 170px; 
+				 float:center;}
+#header #search img{height: 50px;}
+        
+#header #menu {float: center; 
+			   line-height: 30px; margin: 0px 0px 0px 400px;
+               padding: 10px 0px 0px 50px; 
+               color:#000; 
+               font-size: 16px;}
+#header #menu span {margin: 0px 0px 0px 10px;}
+#header #menu p{display: inline-block; 
+				padding: 0px 0px 0px 15px; 
+				margin: 20px 0px 0px 15px;}
