@@ -12,20 +12,23 @@
 	</select>
 	<select id="getHost" parameterType="int" resultType="com.javaex.vo.HostVo">
 		<![CDATA[
-				select hostNo,
-       				   userNo,
-				       zipcode,
-				       adress1,
-				       adress2,
-				       adress3,
-				       x,
-				       y,
-				       intro,
-				       asking,
-				       hostcost,
-				       hostview
-				from   host
-				where  hostNo = #{hostNo}
+				select ho.hostNo,
+				       ho.userNo,
+				       us.name,
+				       us.hp,
+				       us.path,
+				       ho.zipcode,
+				       ho.adress1,
+				       ho.adress2,
+				       ho.adress3,
+				       ho.x,
+				       ho.y,
+				       ho.intro,
+				       ho.asking,
+				       ho.hostcost,
+				       ho.hostview
+				from   users us, host ho 
+				where  hostNo = #{hostNo};
 		]]>
 	</select>
 </mapper>

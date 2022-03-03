@@ -4,6 +4,9 @@ public class HostVo {
 	//필드
 	private int hostNo;
 	private int usersNo;
+	private String name;
+	private String hp;
+	private String path;
 	private int zipcode;
 	private String adress1;
 	private String adress2;
@@ -12,17 +15,20 @@ public class HostVo {
 	private int y;
 	private String intro;
 	private String asking;
-	private int cost;
-	private int view;
+	private int hostcost;
+	private int hostview;
 	
 	//생성자
 	public HostVo() {
 		
 	}
-	public HostVo(int hostNo, int usersNo, int zipcode, String adress1, String adress2, String adress3, int x, int y,
-			String intro, String asking, int cost, int view) {
+	public HostVo(int hostNo, int usersNo, String name, String hp, String path, int zipcode, String adress1,
+			String adress2, String adress3, int x, int y, String intro, String asking, int hostcost, int hostview) {
 		this.hostNo = hostNo;
 		this.usersNo = usersNo;
+		this.name = name;
+		this.hp = hp;
+		this.path = path;
 		this.zipcode = zipcode;
 		this.adress1 = adress1;
 		this.adress2 = adress2;
@@ -31,10 +37,11 @@ public class HostVo {
 		this.y = y;
 		this.intro = intro;
 		this.asking = asking;
-		this.cost = cost;
-		this.view = view;
+		this.hostcost = hostcost;
+		this.hostview = hostview;
 	}
 	
+
 	//메소드 g-s
 	public int getHostNo() {
 		return hostNo;
@@ -47,6 +54,24 @@ public class HostVo {
 	}
 	public void setUsersNo(int usersNo) {
 		this.usersNo = usersNo;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getHp() {
+		return hp;
+	}
+	public void setHp(String hp) {
+		this.hp = hp;
+	}
+	public String getPath() {
+		return path;
+	}
+	public void setPath(String path) {
+		this.path = path;
 	}
 	public int getZipcode() {
 		return zipcode;
@@ -96,24 +121,28 @@ public class HostVo {
 	public void setAsking(String asking) {
 		this.asking = asking;
 	}
-	public int getCost() {
-		return cost;
+	public int getHostcost() {
+		return hostcost;
 	}
-	public void setCost(int cost) {
-		this.cost = cost;
+	public void setHostcost(int hostcost) {
+		this.hostcost = hostcost;
 	}
-	public int getView() {
-		return view;
+	public int getHostview() {
+		return hostview;
 	}
-	public void setView(int view) {
-		this.view = view;
+	public void setHostview(int hostview) {
+		this.hostview = hostview;
 	}
 
 	//메소드 일반
 	@Override
 	public String toString() {
-		return "hostVo [hostNo=" + hostNo + ", usersNo=" + usersNo + ", zipcode=" + zipcode + ", adress1=" + adress1
-				+ ", adress2=" + adress2 + ", adress3=" + adress3 + ", x=" + x + ", y=" + y + ", intro=" + intro
-				+ ", asking=" + asking + ", cost=" + cost + ", view=" + view + "]";
+		return "HostVo [hostNo=" + hostNo + ", usersNo=" + usersNo + ", name=" + name + ", hp=" + hp + ", path=" + path
+				+ ", zipcode=" + zipcode + ", adress1=" + adress1 + ", adress2=" + adress2 + ", adress3=" + adress3
+				+ ", x=" + x + ", y=" + y + ", intro=" + intro + ", asking=" + asking + ", hostcost=" + hostcost
+				+ ", hostview=" + hostview + "]";
 	}
+
+	
+	
 }

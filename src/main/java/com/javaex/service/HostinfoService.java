@@ -23,13 +23,12 @@ public class HostinfoService {
 	}
 	
 	//호스트 데이터 가져오기
-	public Map<String, Object> getHost(int hostNo) {
+	public HostVo getHost(int hostNo) {
 		System.out.println("[HostinfoService.list()]");
-		Map<String, Object> hostMap =new HashMap<String, Object>();
 		
 		//호스트 정보 가져오기
 		HostVo hostVo = hostinfoDao.getHost(hostNo);
 		
-		return hostMap;
+		return hostVo;
 	}
 }
