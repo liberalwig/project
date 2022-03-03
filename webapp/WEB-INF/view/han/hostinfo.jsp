@@ -37,9 +37,9 @@
 							</c:forEach>
 						</div>
 						<div id="btnbox1">
-								<a href="${pageContext.request.contextPath}/hostinfo/booking"><button id="btn1" type="button" class="btn btn-primary">
-									<h4>예약 요청</h4>
-								</button></a>
+							<a href="${pageContext.request.contextPath}/hostinfo/booking?hostNo=${requestScope.hostVo.hostNo}"><button id="btn1" type="button" class="btn btn-primary">
+								<h4>예약 요청</h4>
+							</button></a>
 							<button id="btn1" type="button" class="btn btn-default">
 								<h4>
 									<span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>&nbsp;메시지 보내기

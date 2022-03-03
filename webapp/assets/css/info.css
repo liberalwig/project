@@ -47,7 +47,7 @@ body{margin-top:80px;}
 		float:left;
 	}
 	#container #hostinfo{
-		margin: 20px 0px 0px 0px;
+		margin: 40px 0px 0px 0px;
 		padding: 0px 0px 0px 400px;
 		height: 60px;
 	}
@@ -55,6 +55,10 @@ body{margin-top:80px;}
 		margin: 0px 0px 15px 0px;
 	}
 
+	#tagbox {
+	height: 50px;
+	}
+	
 	.tag{
 		display: inline-block;
 		padding: .2em .6em .3em;
@@ -82,13 +86,15 @@ body{margin-top:80px;}
 		width: 200px;
 		height: 50px;
 	}
+	
 /** 2. 퍼피력 **/
 #container #puppypoint{
 	text-align:left;
-	margin: 10px 0px 0px 40px;
+	margin: 0px 0px 0px 40px;
 	padding: 15px 0px 10px 40px;
 	border: 1px solid #DDD;
 	border-radius: 10px;
+	height: 452.35294103622437px;
 }
 #container #point{
 	margin: 30px 25px 0px 0px;
@@ -112,7 +118,7 @@ body{margin-top:80px;}
 	height: 23px;
 }
 .bar {
-	padding: 10px 0px 0px 0px;
+	padding: 20px 0px 0px 0px;
 }
 .progress-bar{
 	background: #777;
@@ -130,10 +136,15 @@ body{margin-top:80px;}
 	margin: 0px 0px 0px 50px;
 	padding: 0px 0px 0px 0px;
 }
+#picbox #tapbox ul li a{
+	height: 42.352941036224365px;
+}
 #container #imgbox {
 	border: 1px solid #EEE;
+	border-top: 0px;
 	border-radius:5px;
-	padding: 40px 19px 19px 19px;
+	padding: 10px 19px 10px 19px;
+	height: 411.1764705181122px;
 }
 #picbox img{
 	width: 200px;
@@ -187,12 +198,9 @@ body{margin-top:80px;}
 	}
 
 /**6. 지도**/
-#map {
+#maparea {
 	padding: 30px 0px 0px 60px;
 }
-#map h2, h4 {
+#maparea h2, h4 {
 	margin: 0px 0px 20px 0px;
-}
-#map img{
-	width:440px;
 }
