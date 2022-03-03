@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.javaex.service.HostinfoService;
 import com.javaex.vo.HostVo;
 import com.javaex.vo.KeywordVo;
+import com.javaex.vo.ReviewVo;
 
 @Controller
 @RequestMapping(value = "/host2", method = { RequestMethod.GET, RequestMethod.POST })
@@ -30,10 +31,16 @@ public class HostinfoController {
 			//호스트 정보 리스트 가져오기
 			HostVo hostVo = hostinfoService.getHost(hostNo);
 			List<KeywordVo> keyList = hostinfoService.getKeyword(hostNo);
+			List<ReviewVo> reviewList = hostinfoService.getReview(hostNo);
+			double puppypoint = hostinfoService.getPuppyPoint(hostNo);
+			ReviewVo point = hostinfoService.getPoint(hostNo);
+			System.out.println("point"+point);
 			
 			model.addAttribute("hostVo", hostVo);
 			model.addAttribute("keyList", keyList);
-			//리뷰 및 점수 계산해서 가져오기
+			model.addAttribute("reviewList", reviewList);
+			model.addAttribute("puppypoint", puppypoint);
+			model.addAttribute("point", point);
 			
 			return "/han/hostinfo";
 			

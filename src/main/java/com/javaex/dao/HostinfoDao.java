@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import com.javaex.vo.HostVo;
 import com.javaex.vo.KeywordVo;
+import com.javaex.vo.ReviewVo;
 
 @Repository
 public class HostinfoDao {
@@ -26,7 +27,7 @@ public class HostinfoDao {
 	
 	//호스트 정보
 	public HostVo getHost(int hostNo) {
-		System.out.println("[HostinfoDao.getList()]");
+		System.out.println("[HostinfoDao.getHost()]");
 		
 		return sqlSession.selectOne("hostinfo.getHost", hostNo);
 	}
@@ -38,5 +39,55 @@ public class HostinfoDao {
 		List<KeywordVo> keyList = sqlSession.selectList("hostinfo.getKeywordList", hostNo);
 		
 		return keyList;
+	}
+	
+	//호스트 리뷰
+	public List<ReviewVo> getReview(int hostNo){
+		System.out.println("[HostinfoDao.getReview()]");
+		
+		List<ReviewVo> reviewList = sqlSession.selectList("hostinfo.getReview", hostNo);
+		
+		return reviewList;
+	}
+	
+	//호스트 리뷰 갯수
+	public int getReviewCount(int hostNo){
+		System.out.println("[HostinfoDao.getReviewCount()]");
+		
+		return sqlSession.selectOne("hostinfo.getReviewCount", hostNo);
+	}
+	
+	//호스트 점수 합계
+	public double getSum(int hostNo){
+		System.out.println("[HostinfoDao.getSum()]");
+		
+		return sqlSession.selectOne("hostinfo.getSum", hostNo);
+	}
+	
+	//각각 점수 가져오기
+	public double getClean(int hostNo){
+		System.out.println("[HostinfoDao.getClean()]");
+		
+		return sqlSession.selectOne("hostinfo.getClean", hostNo);
+	}
+	public double getFood(int hostNo){
+		System.out.println("[HostinfoDao.getFood()]");
+		
+		return sqlSession.selectOne("hostinfo.getFood", hostNo);
+	}
+	public double getPlay(int hostNo){
+		System.out.println("[HostinfoDao.getPlay()]");
+		
+		return sqlSession.selectOne("hostinfo.getPlay", hostNo);
+	}
+	public double getWalk(int hostNo){
+		System.out.println("[HostinfoDao.getWalk()]");
+		
+		return sqlSession.selectOne("hostinfo.getWalk", hostNo);
+	}
+	public double getCommunication(int hostNo){
+		System.out.println("[HostinfoDao.getCommunication()]");
+		
+		return sqlSession.selectOne("hostinfo.getCommunication", hostNo);
 	}
 }

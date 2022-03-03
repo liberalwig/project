@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.javaex.dao.HostinfoDao;
 import com.javaex.vo.HostVo;
 import com.javaex.vo.KeywordVo;
+import com.javaex.vo.ReviewVo;
 
 @Service
 public class HostinfoService {
@@ -37,5 +38,32 @@ public class HostinfoService {
 		System.out.println("[HostinfoService.getKeyword()]");
 		
 		return hostinfoDao.getHostKeyword(hostNo);
+	}
+	
+	//리뷰 정보 가져오기
+	public List<ReviewVo> getReview(int hostNo) {
+		System.out.println("[HostinfoService.getKeyword()]");
+		
+		return hostinfoDao.getReview(hostNo);
+	}
+	
+	//퍼피력 계산
+	public double getPuppyPoint(int hostNo) {
+		System.out.println("[HostinfoService.getPuppyPoint()]");
+		
+		return (hostinfoDao.getSum(hostNo)/5)/hostinfoDao.getReviewCount(hostNo);
+	}
+	
+	//항목점수 계산
+	public ReviewVo getPoint(int hostNo) {
+		System.out.println("[HostinfoService.getPoint()]");
+		ReviewVo point = new ReviewVo();
+		point.setClean(hostinfoDao.getClean(hostNo));
+		point.setFood(hostinfoDao.getFood(hostNo));
+		point.setPlay(hostinfoDao.getPlay(hostNo));
+		point.setWalk(hostinfoDao.getWalk(hostNo));
+		point.setCommunication(hostinfoDao.getCommunication(hostNo));
+		
+		return point;
 	}
 }

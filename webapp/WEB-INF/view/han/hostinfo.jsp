@@ -53,7 +53,7 @@
 				<div class="col-xs-4 left">
 					<div class="row" id="puppypoint">
 						<div id="point" class="row">
-							<h4 class="normal">${requestScope.hostVo.hostcost}원/1박&nbsp;<span class="glyphicon glyphicon-asterisk" aria-hidden="true"></span>퍼피력 9.9&nbsp;리뷰 4개
+							<h4 class="normal">${requestScope.hostVo.hostcost}원/1박&nbsp;<span class="glyphicon glyphicon-asterisk" aria-hidden="true"></span>퍼피력 ${requestScope.puppypoint}&nbsp;리뷰 ${requestScope.hostVo.reviewcount}개
 							</h4>
 						</div>
 						<div id="graph">
@@ -64,8 +64,8 @@
 									</h4>
 								</div>
 								<div class="progress">
-									<div id="bar" class="progress-bar progress-bar-alert top-bar" role="progress-bar" aria-valuenow="6.7" aria-valuemin="0" aria-valuemax="10" style="width: 99%;">
-										<h4>9.9</h4>
+									<div id="bar" class="progress-bar progress-bar-alert top-bar" role="progress-bar" aria-valuenow="6.7" aria-valuemin="0" aria-valuemax="10" style="width: ${(requestScope.point.food)*10}%;">
+										<h4>${requestScope.point.food}</h4>
 									</div>
 								</div>
 							</div>
@@ -76,8 +76,8 @@
 									</h4>
 								</div>
 								<div class="progress">
-									<div id="bar" class="progress-bar progress-bar-alert" role="progress-bar" aria-valuenow="9.2" aria-valuemin="0" aria-valuemax="10" style="width: 82%;">
-										<h4>8.2</h4>
+									<div id="bar" class="progress-bar progress-bar-alert" role="progress-bar" aria-valuenow="9.2" aria-valuemin="0" aria-valuemax="10" style="width: ${(requestScope.point.walk)*10}%;">
+										<h4>${requestScope.point.walk}</h4>
 									</div>
 								</div>
 							</div>
@@ -88,8 +88,8 @@
 									</h4>
 								</div>
 								<div class="progress">
-									<div id="bar" class="progress-bar progress-bar-alert" role="progress-bar" aria-valuenow="6.7" aria-valuemin="0" aria-valuemax="10" style="width: 82%;">
-										<h4>8.2</h4>
+									<div id="bar" class="progress-bar progress-bar-alert" role="progress-bar" aria-valuenow="6.7" aria-valuemin="0" aria-valuemax="10" style="width: ${(requestScope.point.clean)*10}%;">
+										<h4>${requestScope.point.clean}</h4>
 									</div>
 								</div>
 							</div>
@@ -100,8 +100,8 @@
 									</h4>
 								</div>
 								<div class="progress">
-									<div id="bar" class="progress-bar progress-bar-alert top-bar" role="progress-bar" aria-valuenow="8.8" aria-valuemin="0" aria-valuemax="10" style="width: 98%;">
-										<h4>9.8</h4>
+									<div id="bar" class="progress-bar progress-bar-alert top-bar" role="progress-bar" aria-valuenow="8.8" aria-valuemin="0" aria-valuemax="10" style="width: ${(requestScope.point.play)*10}%;">
+										<h4>${requestScope.point.play}</h4>
 									</div>
 								</div>
 							</div>
@@ -112,8 +112,8 @@
 									</h4>
 								</div>
 								<div class="progress">
-									<div id="bar" class="progress-bar progress-bar-alert warning-bar" role="progress-bar" aria-valuenow="9.8" aria-valuemin="0" aria-valuemax="10" style="width: 64%;">
-										<h4>6.4</h4>
+									<div id="bar" class="progress-bar progress-bar-alert warning-bar" role="progress-bar" aria-valuenow="9.8" aria-valuemin="0" aria-valuemax="10" style="width: ${(requestScope.point.communication)*10}%;">
+										<h4>${requestScope.point.communication}</h4>
 									</div>
 								</div>
 							</div>
@@ -160,14 +160,18 @@
 					<div id="review">
 						<h3>리뷰</h3>
 						<div class="row reviewbox clearfix">
-							<div class="row reviewinfo">
-								<img class="img-circle reviewimg" src="${pageContext.request.contextPath}/assets/images/hostinfo_sample.jpg">
-								<h4 class="toph4">유재석</h4>
-								<h4>2022-02-24</h4>
-							</div>
-							<div>
-								<p>개장수는 굉장했다! 그녀는 매우 친절했다! 우리 강아지 말숙이와 함께 최고의 시간을 보냈습니다</p>
-							</div>
+							<c:forEach items="${requestScope.reviewList}" var="vo">
+								<div>
+									<div class="row reviewinfo">
+										<img class="img-circle reviewimg" src="${pageContext.request.contextPath}/assets/images/hostinfo_sample.jpg">
+										<h4 class="toph4">${vo.name}</h4>
+										<h4>${vo.reviewDate}</h4>
+									</div>
+									<div>
+										<p>${vo.review}</p>
+									</div>
+								</div>
+							</c:forEach>
 						</div>
 					</div>
 				</div>

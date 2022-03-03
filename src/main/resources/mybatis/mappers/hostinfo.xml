@@ -20,16 +20,17 @@
 			       us.path,
 			       ho.zipcode,
 			       ho.adress1,
-			       ho.adress2,
-			       ho.adress3,
 			       ho.x,
 			       ho.y,
 			       ho.intro,
 			       ho.asking,
 			       ho.hostcost,
+			       co.reviewcount,
 			       ho.hostview
-			from   users us, host ho 
+			from   users us, host ho, (select count(review) reviewcount
+                              		  from    booking) co
 			where  hostNo = #{hostNo}
+            and    us.usersNo = ho.userNo
 		]]>
 	</select>
 	
@@ -41,6 +42,76 @@
 			where    hk.keywordNo = ke.keywordNo
 			and      hk.hostNo = #{hostNo}
 			order by ke.keywordno asc
+		]]>
+	</select>
+	
+	<select id="getReview" parameterType="int" resultType="ReviewVo">
+		<![CDATA[
+			select bo.bookingNo,
+			       us.usersno,
+			       us.name,
+			       us.path,
+			       bo.review,
+			       bo.reviewDate
+			from   booking bo, users us
+			where  bo.usersNo = us.usersNo
+			and    bo.hostNo = #{hostNo}
+		]]>
+	</select>
+	
+	<select id="getSum" parameterType="int" resultType="double">
+		<![CDATA[
+			select SUM(clean) + SUM(food) + SUM(play) + SUM(walk) + SUM(communication)
+			from   booking
+			where  hostNo = #{hostNo}
+		]]>
+	</select>
+	
+	<select id="getReviewCount" parameterType="int" resultType="int">
+		<![CDATA[
+			select count(review)
+			from   booking
+			where  hostNo = #{hostNo}
+		]]>
+	</select>
+	
+	<select id="getClean" parameterType="int" resultType="double">
+		<![CDATA[
+			select avg(clean)
+			from   booking
+			where  hostNo = #{hostNo}
+		]]>
+	</select>
+	
+	<select id="getFood" parameterType="int" resultType="double">
+		<![CDATA[
+			select avg(food)
+			from   booking
+			where  hostNo = #{hostNo}
+		]]>
+	</select>
+	
+	<select id="getPlay" parameterType="int" resultType="double">
+		<![CDATA[
+			select avg(play)
+			from   booking
+			where  hostNo = #{hostNo}
+		]]>
+	</select>
+	
+	<select id="getWalk" parameterType="int" resultType="double">
+		<![CDATA[
+			select avg(walk)
+			from   booking
+			where  hostNo = #{hostNo}
+		]]>
+	</select>
+	
+	<select id="getCommunication" parameterType="int" resultType="double">
+		<![CDATA[
+			select avg(communication)
+			from   booking
+			where  hostNo = #{hostNo}
 		]]>
 	</select>
 </mapper>
