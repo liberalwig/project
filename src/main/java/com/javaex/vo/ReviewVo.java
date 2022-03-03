@@ -6,31 +6,34 @@ public class ReviewVo {
 	private int bookingNo;
 	private int usersNo;
 	private String name;
+	private String path;
 	private String review;
 	private String reviewDate;
-	private int clean;
-	private int food;
-	private int play;
-	private int work;
-	private int communication;
-
+	private double clean;
+	private double food;
+	private double play;
+	private double walk;
+	private double communication;
+	
 	//생성자
 	public ReviewVo() {
+		
 	}
-	public ReviewVo(int bookingNo, int usersNo, String name, String review, String reviewDate, int clean, int food,
-			int play, int work, int communication) {
+	public ReviewVo(int bookingNo, int usersNo, String name, String path, String review, String reviewDate,
+			double clean, double food, double play, double walk, double communication) {
 		this.bookingNo = bookingNo;
 		this.usersNo = usersNo;
 		this.name = name;
+		this.path = path;
 		this.review = review;
 		this.reviewDate = reviewDate;
 		this.clean = clean;
 		this.food = food;
 		this.play = play;
-		this.work = work;
+		this.walk = walk;
 		this.communication = communication;
 	}
-	
+
 	//메소드 g/s
 	public int getBookingNo() {
 		return bookingNo;
@@ -50,6 +53,12 @@ public class ReviewVo {
 	public void setName(String name) {
 		this.name = name;
 	}
+	public String getPath() {
+		return path;
+	}
+	public void setPath(String path) {
+		this.path = path;
+	}
 	public String getReview() {
 		return review;
 	}
@@ -62,43 +71,43 @@ public class ReviewVo {
 	public void setReviewDate(String reviewDate) {
 		this.reviewDate = reviewDate;
 	}
-	public int getClean() {
+	public double getClean() {
 		return clean;
 	}
-	public void setClean(int clean) {
+	public void setClean(double clean) {
 		this.clean = clean;
 	}
-	public int getFood() {
+	public double getFood() {
 		return food;
 	}
-	public void setFood(int food) {
+	public void setFood(double food) {
 		this.food = food;
 	}
-	public int getPlay() {
+	public double getPlay() {
 		return play;
 	}
-	public void setPlay(int play) {
+	public void setPlay(double play) {
 		this.play = play;
 	}
-	public int getWork() {
-		return work;
+	public double getWalk() {
+		return walk;
 	}
-	public void setWork(int work) {
-		this.work = work;
+	public void setWalk(double walk) {
+		this.walk = walk;
 	}
-	public int getCommunication() {
+	public double getCommunication() {
 		return communication;
 	}
-	public void setCommunication(int communication) {
+	public void setCommunication(double communication) {
 		this.communication = communication;
 	}
-	
+
 	//메소드 일반
 	@Override
 	public String toString() {
-		return "ReviewVo [bookingNo=" + bookingNo + ", usersNo=" + usersNo + ", name=" + name + ", review=" + review
-				+ ", reviewDate=" + reviewDate + ", clean=" + clean + ", food=" + food + ", play=" + play + ", work="
-				+ work + ", communication=" + communication + "]";
+		return "ReviewVo [bookingNo=" + bookingNo + ", usersNo=" + usersNo + ", name=" + name + ", path=" + path
+				+ ", review=" + review + ", reviewDate=" + reviewDate + ", clean="
+				+ clean + ", food=" + food + ", play=" + play + ", work=" + walk + ", communication=" + communication
+				+ "]";
 	}
-	
 }
