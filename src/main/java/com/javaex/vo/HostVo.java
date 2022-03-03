@@ -1,6 +1,7 @@
 package com.javaex.vo;
 
 public class HostVo {	
+	
 	//필드
 	private int hostNo;
 	private int usersNo;

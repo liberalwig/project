@@ -32,4 +32,15 @@
 			where  hostNo = #{hostNo}
 		]]>
 	</select>
+	
+	<select id="getKeywordList" parameterType="int" resultType="KeywordVo">
+		<![CDATA[
+			select   hk.hostNo,
+			         ke.keywordName
+			from     hostkeyword hk, keyword ke
+			where    hk.keywordNo = ke.keywordNo
+			and      hk.hostNo = #{hostNo}
+			order by ke.keywordno asc
+		]]>
+	</select>
 </mapper>
