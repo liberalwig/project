@@ -19,7 +19,7 @@ public class UserController {
    public String UserModifyForm() {
       System.out.println("[ UserController > userModifyForm() ]");
       
-      return "/choe/guestModifyForm";
+      return "/choe/userModifyForm";
    }
    
    // 유저_2> 찜

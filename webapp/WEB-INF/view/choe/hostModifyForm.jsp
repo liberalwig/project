@@ -19,7 +19,7 @@
 
 
     <body style="margin-top:90px;">
-        <c:import url="/WEB-INF/views/includes/header.jsp"></c:import>
+        <c:import url="/WEB-INF/view/includes/header.jsp"></c:import>
 
         <div id="wrap">
             <div id="container" class="clearfix">            
