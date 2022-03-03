@@ -8,17 +8,17 @@
 	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
 	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	   
-	    <!-- CSS -->
-		<link href="${pageContext.request.contextPath}/assets/css/main.css" rel="stylesheet" type="text/css">
-	    <!--menu 버튼 링크-->
+	   
+	    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 	    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/bootstrap/css/bootstrap.css">
 	    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css">
-	
-	    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+	    <!-- CSS -->
+		 <link rel="stylesheet"  href="${pageContext.request.contextPath}/assets/css/main.css" type="text/css">
+	   
+	    
 	    <!--jquery 버튼 링크-->
 	    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	
-	    <script src="${pageContext.request.contextPath}/assets/js/header.js"></script>
 	    <!-- 부가적인 테마 -->
 	    <title>header</title>
 	</head>
@@ -31,7 +31,7 @@
         <div id="main" class="container-fluid">
             <div class="video-container">
                 <video controlslist="nodownload" autoplay loop muted>
-                    <source src="./assets/video/pexels-ron-lach-9986449.mp4" type="video/mp4">
+                    <source src="${pageContext.request.contextPath}/assets/video/main_video.mp4" type="video/mp4">
                 </video>
                 <div id="main-title">
                     <p class="title-a title_a_padding-right80">Easy, Fast & Convenient</p>
@@ -57,7 +57,7 @@
                 </div>
                 <div class="footer col-xs-4">
                     <div class="col-xs-2">
-                        <img class="footer-img" src="${pageContext.request.contextPath}/assets/images/main_oder.jpg">
+                        <img class="footer-img" src="${pageContext.request.contextPath}/assets/images/main_order.jpg">
                     </div>
                     <div class="footer-text col-xs-2">
                         <p class="footer-h">Pickup</p>
@@ -85,7 +85,7 @@
             </div>
             <div class="row">
                 <div class="footer-text2 col-md-1">
-                    © 2022 최승은 한상선 강소 송성빈 유다운GariBnB.com
+                    © 2022 최승은 한상선 강소이 송성빈 유다운GariBnB.com
                 </div>
             </div>
         </div>
@@ -93,7 +93,5 @@
 
     </div>
 
-	<!--메뉴 버튼-->
-	<script src="./assets/js/menu-button.js"></script>
 	</body>
 </html>
