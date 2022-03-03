@@ -12,10 +12,13 @@ public class HostinfoDao {
 	@Autowired
 	SqlSession sqlSession;
 	
+	//호스트 넘버가 존재하는지 체크
 	public int checkNo(int hostNo) {
 		System.out.println("[HostinfoDao.checkNo()]");
 		
-		return sqlSession.selectOne("hostinfo.checkNo", hostNo);
+		int no = sqlSession.selectOne("hostinfo.checkNo", hostNo);
+		System.out.println(no);
+		return no;
 	}
 	
 	public HostVo getHost(int hostNo) {

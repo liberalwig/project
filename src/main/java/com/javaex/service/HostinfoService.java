@@ -1,8 +1,5 @@
 package com.javaex.service;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,18 +13,18 @@ public class HostinfoService {
 	HostinfoDao hostinfoDao;
 	
 	//hostNo 체크
-	public int checkNo(int hostNo) {
+	public int checkNo(int no) {
 		System.out.println("[HostinfoService.checkNo()]");
 		
-		return hostinfoDao.checkNo(hostNo);
+		return hostinfoDao.checkNo(no);
 	}
 	
 	//호스트 데이터 가져오기
-	public HostVo getHost(int hostNo) {
+	public HostVo getHost(int no) {
 		System.out.println("[HostinfoService.list()]");
 		
 		//호스트 정보 가져오기
-		HostVo hostVo = hostinfoDao.getHost(hostNo);
+		HostVo hostVo = hostinfoDao.getHost(no);
 		
 		return hostVo;
 	}

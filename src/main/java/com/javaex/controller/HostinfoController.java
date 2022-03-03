@@ -11,20 +11,24 @@ import com.javaex.service.HostinfoService;
 import com.javaex.vo.HostVo;
 
 @Controller
-@RequestMapping(value = "/host", method = { RequestMethod.GET, RequestMethod.POST })
+@RequestMapping(value = "/host2", method = { RequestMethod.GET, RequestMethod.POST })
 public class HostinfoController {
 	
 	@Autowired
 	HostinfoService hostinfoService;
 	
-	@RequestMapping(value = "/info/{hostNo}", method = { RequestMethod.GET, RequestMethod.POST })
-	public String hostinfo(@PathVariable("hostNo") int hostNo, Model model) {
+	@RequestMapping(value = "/info/2", method = { RequestMethod.GET, RequestMethod.POST })
+	public String hostinfo(Model model) {
 		System.out.println("[hostinfoController.hostinfo()]");
+		int no = 2;
 		
-		int no = hostinfoService.checkNo(hostNo);
-		if(no > 0) {//호스트가 있음
+		int authNo = hostinfoService.checkNo(no);
+		
+		if(authNo > 0) {//호스트가 있음
 			//호스트 정보 리스트 가져오기
-			HostVo hostVo = hostinfoService.getHost(hostNo);
+			HostVo hostVo = hostinfoService.getHost(no);
+			System.out.println(hostVo);
+			
 			model.addAttribute("hostVo", hostVo);
 					
 			//리뷰 및 점수 계산해서 가져오기

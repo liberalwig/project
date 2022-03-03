@@ -22,10 +22,10 @@
                     <div id="profile" class="col-xs-12 left">
                         <img id="hostimg" src="${pageContext.request.contextPath}/assets/images/hostinfo_sample.jpg" alt="PetSitter Image" class="img-circle">
                         <div id="hostinfo">
-                            <h3 class="info">개장수님</h3>
-                            <h4 class="info">서울시 관악구 봉천동</h4>
+                            <h3 class="info">${requestScope.hostVo.name}님</h3>
+                            <h4 class="info">${requestScope.hostVo.adress1}</h4>
                             <div>
-                                <p class="info">나는 가능하면 공원에 가거나 하이킹을 하는 것을 좋아합니다. 달리기도 내가 좋아하는 일이고 개와 함께 할수있습니다. 저는 도림천 바로 옆에 살아서 그곳으로 갑니다. 내 강아지는 매일 최소 3시간 동안 공을 치는것을 좋아하기 때문에 몇시간 동안 가져올 수 있습니다!글자수글자수글자수글자수글자수글자수글자수글자수글자수글자수글자수글자수글자수글자수글자수퓨</p>
+                                <p class="info">${requestScope.hostVo.intro}</p>
                             </div>
                             <div id="tagbox">
                                 <span class="tag">24시간 상주 가능</span><span class="tag">펫 용품 구비</span><span class="tag">집 근처 공원</span><span class="tag">집 근처 동물병원</span><span class="tag">응급처치 가능</span><span class="tag">돌봄 경력 3년이상</span><span class="tag">전문교육 수료</span><span class="tag">보험가입</span><span class="tag">약물투여 가능</span><span class="tag">매일 산책 가능</span><span class="tag">비흡연</span><span class="tag">개가 없음</span><span class="tag">어린이 없음</span><span class="tag">마당 있음</span>
@@ -42,7 +42,7 @@
                     <div class="col-xs-4 left">
                         <div class="row" id="puppypoint">
                             <div id="point" class="row">
-                                <h4 class="normal">10,000원/1박&nbsp;<span class="glyphicon glyphicon-asterisk" aria-hidden="true"></span>퍼피력 9.9&nbsp;리뷰 4개</h4>
+                                <h4 class="normal">${requestScope.hostVo.hostcost}원/1박&nbsp;<span class="glyphicon glyphicon-asterisk" aria-hidden="true"></span>퍼피력 9.9&nbsp;리뷰 4개</h4>
                             </div>
                                 <div id="graph">
                                 <div class="row bar">
@@ -91,7 +91,6 @@
                     <div id="picbox" class="col-xs-7">
                         <div id="tapbox">
                             <ul class="nav nav-tabs">
-                                <li role="presentation"><a href="#">전체</a></li>
                                 <li role="presentation" class="active"><a href="#">호스트 사진</a></li>
                                 <li role="presentation"><a href="#">식사</a></li>
                                 <li role="presentation"><a href="#">산책</a></li>
@@ -125,8 +124,8 @@
                         </div>
                         <div class="row">
                             <div id="map" class="row">
-                                <h3>개장수의 동네</h3>
-                                <h4>서울특별시 관악구 봉천동</h4>
+                                <h3>${requestScope.hostVo.name} 동네</h3>
+                                <h4>${requestScope.hostVo.adress1} ${requestScope.hostVo.adress2} ${requestScope.hostVo.adress3}</h4>
                                 <img src="${pageContext.request.contextPath}/assets/images/hostinfo_map.png">
                             </div>
                         </div>
