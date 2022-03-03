@@ -4,7 +4,6 @@
 <head>
 <meta charset="UTF-8">
 <link href="/project/assets/css/booking.css" rel="stylesheet" type="text/css"/>
-<script type="text/javascript" src="/project/assets/js/jquery-1.12.4.js"></script>
 </head>
 <body>
 	<div id="aside">
