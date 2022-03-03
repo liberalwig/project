@@ -12,8 +12,8 @@ public class HostVo {
 	private String adress1;
 	private String adress2;
 	private String adress3;
-	private int x;
-	private int y;
+	private double x;
+	private double y;
 	private String intro;
 	private String asking;
 	private int hostcost;
@@ -24,7 +24,8 @@ public class HostVo {
 		
 	}
 	public HostVo(int hostNo, int usersNo, String name, String hp, String path, int zipcode, String adress1,
-			String adress2, String adress3, int x, int y, String intro, String asking, int hostcost, int hostview) {
+			String adress2, String adress3, double x, double y, String intro, String asking, int hostcost,
+			int hostview) {
 		this.hostNo = hostNo;
 		this.usersNo = usersNo;
 		this.name = name;
@@ -41,7 +42,7 @@ public class HostVo {
 		this.hostcost = hostcost;
 		this.hostview = hostview;
 	}
-	
+
 
 	//메소드 g-s
 	public int getHostNo() {
@@ -98,16 +99,16 @@ public class HostVo {
 	public void setAdress3(String adress3) {
 		this.adress3 = adress3;
 	}
-	public int getX() {
+	public double getX() {
 		return x;
 	}
-	public void setX(int x) {
+	public void setX(double x) {
 		this.x = x;
 	}
-	public int getY() {
+	public double getY() {
 		return y;
 	}
-	public void setY(int y) {
+	public void setY(double y) {
 		this.y = y;
 	}
 	public String getIntro() {
@@ -135,6 +136,7 @@ public class HostVo {
 		this.hostview = hostview;
 	}
 
+
 	//메소드 일반
 	@Override
 	public String toString() {
@@ -143,7 +145,4 @@ public class HostVo {
 				+ ", x=" + x + ", y=" + y + ", intro=" + intro + ", asking=" + asking + ", hostcost=" + hostcost
 				+ ", hostview=" + hostview + "]";
 	}
-
-	
-	
 }
