@@ -1,0 +1,270 @@
+package com.javaex.vo;
+
+public class BookingVo {
+
+	// 예약테이블
+	private int bookingNo;
+	private int hostNo;
+	private int usersNo;
+	private String checkin;
+	private String checkout;
+	private int ea;
+	private int bookingDate;
+	private int days;
+	private String note;
+	private String status;
+	private String review;
+	private String reviewDate;
+	private int clean;
+	private int food;
+	private int play;
+	private int work;
+	private int communication;
+
+	// 호스트테이블(조인)
+	private String hostName;
+	private String hostHp;
+	private String adress1;
+	private String adress2;
+	private String adress3;
+
+	public BookingVo() {
+	}
+
+	public BookingVo(int bookingNo, int hostNo, int usersNo, String checkin, String checkout, int ea, int bookingDate,
+			int days, String note, String status, String review, String reviewDate, int clean, int food, int play,
+			int work, int communication) {
+		this.bookingNo = bookingNo;
+		this.hostNo = hostNo;
+		this.usersNo = usersNo;
+		this.checkin = checkin;
+		this.checkout = checkout;
+		this.ea = ea;
+		this.bookingDate = bookingDate;
+		this.days = days;
+		this.note = note;
+		this.status = status;
+		this.review = review;
+		this.reviewDate = reviewDate;
+		this.clean = clean;
+		this.food = food;
+		this.play = play;
+		this.work = work;
+		this.communication = communication;
+	}
+
+	public BookingVo(int bookingNo, int hostNo, int usersNo, String checkin, String checkout, int ea, int bookingDate,
+			int days, String note, String status, String review, String reviewDate, int clean, int food, int play,
+			int work, int communication, String hostName, String hostHp, String adress1, String adress2,
+			String adress3) {
+		this.bookingNo = bookingNo;
+		this.hostNo = hostNo;
+		this.usersNo = usersNo;
+		this.checkin = checkin;
+		this.checkout = checkout;
+		this.ea = ea;
+		this.bookingDate = bookingDate;
+		this.days = days;
+		this.note = note;
+		this.status = status;
+		this.review = review;
+		this.reviewDate = reviewDate;
+		this.clean = clean;
+		this.food = food;
+		this.play = play;
+		this.work = work;
+		this.communication = communication;
+		this.hostName = hostName;
+		this.hostHp = hostHp;
+		this.adress1 = adress1;
+		this.adress2 = adress2;
+		this.adress3 = adress3;
+	}
+
+	public int getBookingNo() {
+		return bookingNo;
+	}
+
+	public void setBookingNo(int bookingNo) {
+		this.bookingNo = bookingNo;
+	}
+
+	public int getHostNo() {
+		return hostNo;
+	}
+
+	public void setHostNo(int hostNo) {
+		this.hostNo = hostNo;
+	}
+
+	public int getUsersNo() {
+		return usersNo;
+	}
+
+	public void setUsersNo(int usersNo) {
+		this.usersNo = usersNo;
+	}
+
+	public String getCheckin() {
+		return checkin;
+	}
+
+	public void setCheckin(String checkin) {
+		this.checkin = checkin;
+	}
+
+	public String getCheckout() {
+		return checkout;
+	}
+
+	public void setCheckout(String checkout) {
+		this.checkout = checkout;
+	}
+
+	public int getEa() {
+		return ea;
+	}
+
+	public void setEa(int ea) {
+		this.ea = ea;
+	}
+
+	public int getBookingDate() {
+		return bookingDate;
+	}
+
+	public void setBookingDate(int bookingDate) {
+		this.bookingDate = bookingDate;
+	}
+
+	public int getDays() {
+		return days;
+	}
+
+	public void setDays(int days) {
+		this.days = days;
+	}
+
+	public String getNote() {
+		return note;
+	}
+
+	public void setNote(String note) {
+		this.note = note;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
+	public String getReview() {
+		return review;
+	}
+
+	public void setReview(String review) {
+		this.review = review;
+	}
+
+	public String getReviewDate() {
+		return reviewDate;
+	}
+
+	public void setReviewDate(String reviewDate) {
+		this.reviewDate = reviewDate;
+	}
+
+	public int getClean() {
+		return clean;
+	}
+
+	public void setClean(int clean) {
+		this.clean = clean;
+	}
+
+	public int getFood() {
+		return food;
+	}
+
+	public void setFood(int food) {
+		this.food = food;
+	}
+
+	public int getPlay() {
+		return play;
+	}
+
+	public void setPlay(int play) {
+		this.play = play;
+	}
+
+	public int getWork() {
+		return work;
+	}
+
+	public void setWork(int work) {
+		this.work = work;
+	}
+
+	public int getCommunication() {
+		return communication;
+	}
+
+	public void setCommunication(int communication) {
+		this.communication = communication;
+	}
+
+	public String getHostName() {
+		return hostName;
+	}
+
+	public void setHostName(String hostName) {
+		this.hostName = hostName;
+	}
+
+	public String getHostHp() {
+		return hostHp;
+	}
+
+	public void setHostHp(String hostHp) {
+		this.hostHp = hostHp;
+	}
+
+	public String getAdress1() {
+		return adress1;
+	}
+
+	public void setAdress1(String adress1) {
+		this.adress1 = adress1;
+	}
+
+	public String getAdress2() {
+		return adress2;
+	}
+
+	public void setAdress2(String adress2) {
+		this.adress2 = adress2;
+	}
+
+	public String getAdress3() {
+		return adress3;
+	}
+
+	public void setAdress3(String adress3) {
+		this.adress3 = adress3;
+	}
+
+	@Override
+	public String toString() {
+		return "BookingVo [bookingNo=" + bookingNo + ", hostNo=" + hostNo + ", usersNo=" + usersNo + ", checkin="
+				+ checkin + ", checkout=" + checkout + ", ea=" + ea + ", bookingDate=" + bookingDate + ", days=" + days
+				+ ", note=" + note + ", status=" + status + ", review=" + review + ", reviewDate=" + reviewDate
+				+ ", clean=" + clean + ", food=" + food + ", play=" + play + ", work=" + work + ", communication="
+				+ communication + ", hostName=" + hostName + ", hostHp=" + hostHp + ", adress1=" + adress1
+				+ ", adress2=" + adress2 + ", adress3=" + adress3 + "]";
+	}
+
+}

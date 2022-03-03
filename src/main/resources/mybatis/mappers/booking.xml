@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="booking">
+
+	<select id="bookingList" parameterType="int" resultType="com.javaex.vo.BookingVo">
+		<![CDATA[
+			select bookingNo,
+			       hostNo,
+			       usersno,
+			       checkin,
+			       checkout,
+			       ea,
+			       booking_date,
+			       days,
+			       note,
+			       status,
+			       review,
+			       review_date,
+			       clean,
+			       food,
+			       play,
+			       work,
+			       communication
+			from booking
+			where usersno = #{usersNo}
+		]]>
+	</select>
+	
+	<!-- 결제대기리스트(게스트) -->
+	<select id="bookingHostList" parameterType="int" resultType="com.javaex.vo.BookingVo">
+		<![CDATA[
+			select bookingNo,
+			       b.hostNo,
+			       b.usersno,
+			       to_char(checkin, 'yyyy-mm-dd') checkin,
+       			   to_char(checkout, 'yyyy-mm-dd') checkout,
+			       ea,
+			       booking_date bookingDate,
+			       days,
+			       note,
+			       status,
+			       review,
+			       review_date reviewDate,
+			       clean,
+			       food,
+			       play,
+			       work,
+			       communication,
+			       u.name hostName,
+			       u.hp hostHp
+			from booking b, host h, users u
+			where b.hostno = h.hostno
+			and h.userno = u.usersno
+			and b.usersno = #{usersNo}
+		]]>
+	</select>
+	
+	<!-- 예약상세(게스트) -->
+	<select id="bookingDetailHost" parameterType="int" resultType="com.javaex.vo.BookingVo">
+		<![CDATA[
+			select bookingNo,
+			       b.hostNo,
+			       b.usersno,
+			       to_char(checkin, 'yyyy-mm-dd') checkin,
+       			   to_char(checkout, 'yyyy-mm-dd') checkout,
+			       ea,
+			       booking_date bookingDate,
+			       days,
+			       note,
+			       status,
+			       review,
+			       review_date reviewDate,
+			       clean,
+			       food,
+			       play,
+			       work,
+			       communication,
+			       u.name hostName,
+			       u.hp hostHp,
+			       h.adress1 adress1,
+			       h.adress2 adress2,
+			       h.adress3 adress3
+			from booking b, host h, users u
+			where b.hostno = h.hostno
+			and h.userno = u.usersno
+			and bookingNo = #{bookingNo}
+		]]>
+	</select>
+	
+	<!-- 예약상세갤러리 -->
+	<select id="photoList" parameterType="int" resultType="com.javaex.vo.PhotoVo">
+		<![CDATA[
+			select photono,
+			       bookingno,
+			       category,
+			       to_char(photodate, 'yyyy-mm-dd day') photodate,
+			       photopath,
+			       phototitle
+			from photo
+			where bookingno = #{bookingNo}
+		]]>
+	</select>
+	
+</mapper>
