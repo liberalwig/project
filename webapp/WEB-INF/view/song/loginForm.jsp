@@ -38,11 +38,11 @@
 
             <div id="u-idPass" class="row">
                 <div>
-                        <input id="u-id" type="text" placeholder="아이디">
+                        <input id="u-id" type="text"name="id" placeholder="아이디">
                 </div>
     
                 <div>
-                        <input id="u-pass" type="password" placeholder="비밀번호">
+                        <input id="u-pass" type="password" name="password" placeholder="비밀번호">
                 </div>
             </div>
             
