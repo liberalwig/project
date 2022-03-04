@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 
 <html>
@@ -7,42 +7,23 @@
 		<meta charset="UTF-8">
 	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
 	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	   
 	    <!-- CSS -->
-	    <link rel="stylesheet" href="./assets/css/searchList.css">
+	    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/searchList.css">
 	    <!--menu 버튼 링크-->
-	    <link rel="stylesheet" href="./assets/bootstrap/css/bootstrap.css">
+	    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/bootstrap/css/bootstrap.css">
 	    <!--지도관련-->
-	    <script src="./assets/js/map.js"></script>
+	    <script src="${pageContext.request.contextPath}/assets/js/map.js"></script>
 	    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
 	     <!--부트스트랩-->
 	    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-	    <!--jquery 버튼 링크-->
-	    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-	    <!--해더 모달-->
-	    <script src="./assets/js/header.js"></script>
-	    <!-- dribbble -->
-	    <a class="dribbble" href="https://dribbble.com/shots/7441241-Button-Hover-Effects" target="_blank">
-	    <img src="https://cdn.dribbble.com/assets/dribbble-ball-mark-2bd45f09c2fb58dbbfb44766d5d1d07c5a12972d602ef8b32204d28fa3dda554.svg" alt=""></a>
-	  
+	   
 	    <!-- 부가적인 테마 -->
 	    <title>searchList</title>
 	</head>
 	<body>
-		 <div id="header" class="container">
-            <div id="logo" class="col-xs-3">
-                <img class="logo-img" src="./assets/image/logo2.jpg">
-            </div>
-            <div id="search" class="col-xs-4">
-                <img class="logo-img-search" src="./assets/image/검색이미지.png">
-            </div>
-            <div id="menu" class="col-xs-2">
-                <button type="button" class="btn btn-default menu">펫시터되기</button>
-                <button type="button" class="btn btn-default menu"><span class="glyphicon glyphicon-envelope" aria-hidden="true" style="margin:0px;"></span><span class="badge">0</span></button>
-                <button type="button" class="btn btn-default menu"><span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true" style="margin:0px;"></span></button>
-            </div>
-        </div> 
-    </div>
+		<!-- header -->
+		<c:import url="/WEB-INF/view/includes/header.jsp"></c:import>
+	
     <div id="header_line" class="row"></div>
     <div id="wrap" class="container">
         <!-- main -->
