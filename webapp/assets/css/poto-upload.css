@@ -5,7 +5,7 @@
 }
 
 label {
-    font-size: 15ps;
+    font-size: 12px;
     font-weight: normal;
 }
 
@@ -14,10 +14,15 @@ label {
     font-weight: bold;
 }
 
+p {
+	font-size: 12px;
+	margin-left: 18px;
+}
+
 /* 셀렉트박스 & 텍스트박스*/
 input[type="text"] {
     margin-left: 18px;
-    width: 300px;
+    width: 265px;
     border: 1px solid #ddd;
     border-radius: 4px;
 }
@@ -83,6 +88,7 @@ width: 40px;
 margin-bottom: 0;
 margin-top: 10px;
 color: #707070;
+font-size: 14px;
 }
 .contents .upload-box .drag-file .preview {
 display: none;

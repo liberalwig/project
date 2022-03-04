@@ -71,7 +71,7 @@
 									<td><img src="/project/assets/images/reservation-dog.png"></td>
 									<td>${BookingVo.hostName}</td>
 									<td>${BookingVo.checkin} ~ ${BookingVo.checkout}</td>
-									<td>₩ ${BookingVo.bookingDate}</td>
+									<td>₩ ${BookingVo.bookingDate * BookingVo.days * BookingVo.ea}</td>
 									<td>${BookingVo.hostHp}</td>
 									<c:choose>
 										<c:when test="${BookingVo.status == '승인대기'}">

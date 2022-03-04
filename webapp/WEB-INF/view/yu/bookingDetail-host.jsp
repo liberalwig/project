@@ -54,165 +54,65 @@
                             <h2>펫사진</h2>
                             <hr>
                             
-                            <div class="wrapper">
-                                <div class="clearfix">
-                                    <div class="img-date"><h3>22-02-05 토요일</h3></div>
-                                    <div class="img-btn"><button id="imgupload" class="btn btn-default add-img" data-toggle="modal" data-target="#imgupdateModal">이미지 업로드</button></div>
-                                </div>
-                                <div>
-                                    <div class="item">
-                                        <div class="polaroid"><img src="/project/assets/images/bookingDetail_gray.png" class="wrapper-img">
-                                            <div class="caption">놀이</div>
-                                        </div>
-                                    </div>
-                                
-                                    <div class="item">
-                                        <div class="polaroid"><img src="/project/assets/images/bookingDetail_gray.png" class="wrapper-img">
-                                            <div class="caption">산책</div>
-                                        </div>
-                                    </div>
-                                
-                                    <div class="item">
-                                        <div class="polaroid"><img src="/project/assets/images/bookingDetail_gray.png" class="wrapper-img">
-                                            <div class="caption">식사</div>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="item">
-                                        <div class="polaroid"><img src="/project/assets/images/bookingDetail_gray.png" class="wrapper-img">
-                                            <div class="caption">청결</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            <c:forEach items="${pList}" var="pvo">
+                            	<div class="wrapper">
+	                                <div class="clearfix">
+	                                    <div class="img-date"><h3>${pvo.photoDate}</h3></div>
+	                                    <div class="img-btn"><button name="imgupload" class="btn btn-default add-img" data-photodate="${pvo.photoDate}">이미지 업로드</button></div>
+	                                </div>
+	                                <div>
+	                                    <div class="item">
+	                                        <div class="polaroid">
+		                                        <c:if test="${pvo.photoPath == null}">
+		                                        	<img src="/project/assets/images/bookingDetail_gray.png" class="wrapper-img">
+		                                		</c:if>
+		                                		<c:if test="${pvo.photoPath != null}">
+	                                        		<img src="${pvo.photoPath}" class="wrapper-img">
+	                                        	</c:if>
+	                                            <div class="caption">놀이</div>
+	                                        </div>
+	                                    </div>
+	                                
+	                                    <div class="item">
+	                                        <div class="polaroid">
+	                                        	<c:if test="${pvo.photoPath == null}">
+		                                        	<img src="/project/assets/images/bookingDetail_gray.png" class="wrapper-img">
+		                                		</c:if>
+		                                		<c:if test="${pvo.photoPath != null}">
+	                                        		<img src="${pvo.photoPath}" class="wrapper-img">
+	                                        	</c:if>
+	                                            <div class="caption">산책</div>
+	                                        </div>
+	                                    </div>
+	                                
+	                                    <div class="item">
+	                                        <div class="polaroid">
+	                                        	<c:if test="${pvo.photoPath == null}">
+		                                        	<img src="/project/assets/images/bookingDetail_gray.png" class="wrapper-img">
+		                                		</c:if>
+		                                		<c:if test="${pvo.photoPath != null}">
+	                                        		<img src="${pvo.photoPath}" class="wrapper-img">
+	                                        	</c:if>
+	                                            <div class="caption">식사</div>
+	                                        </div>
+	                                    </div>
+	                                    
+	                                    <div class="item">
+	                                        <div class="polaroid">
+	                                        	<c:if test="${pvo.photoPath == null}">
+		                                        	<img src="/project/assets/images/bookingDetail_gray.png" class="wrapper-img">
+		                                		</c:if>
+		                                		<c:if test="${pvo.photoPath != null}">
+	                                        		<img src="${pvo.photoPath}" class="wrapper-img">
+	                                        	</c:if>
+	                                            <div class="caption">청결</div>
+	                                        </div>
+	                                    </div>
+	                                </div>
+	                            </div>
+                            </c:forEach>
                             
-                            <div class="wrapper">
-                                <div class="clearfix">
-                                    <div class="img-date"><h3>22-02-04 금요일</h3></div>
-                                    <div class="img-btn"><button class="btn btn-default add-img" data-toggle="modal" data-target="#imgupdateModal">이미지 업로드</button></div>
-                                </div>
-                                <div>
-                                    <div class="item">
-                                        <div class="polaroid"><img src="/project/assets/images/bookingDetail_img1.jpg" class="wrapper-img">
-                                            <div class="caption">놀이</div>
-                                        </div>
-                                    </div>
-                                
-                                    <div class="item">
-                                        <div class="polaroid"><img src="/project/assets/images/bookingDetail_img2.jpg" class="wrapper-img">
-                                            <div class="caption">산책</div>
-                                        </div>
-                                    </div>
-                                
-                                    <div class="item">
-                                        <div class="polaroid"><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/210284/l867sBU.jpg" class="wrapper-img">
-                                            <div class="caption">식사</div>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="item">
-                                        <div class="polaroid"><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/210284/7cQCk5I.jpg" class="wrapper-img">
-                                            <div class="caption">청결</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="wrapper">
-                                <div class="clearfix">
-                                    <div class="img-date"><h3>22-02-04 토요일</h3></div>
-                                    <div class="img-btn"><button class="btn btn-default add-img" data-toggle="modal" data-target="#imgupdateModal">이미지 업로드</button></div>
-                                </div>
-                                <div>
-                                   <div class="item">
-                                        <div class="polaroid"><img src="/project/assets/images/bookingDetail_img1.jpg" class="wrapper-img">
-                                            <div class="caption">놀이</div>
-                                        </div>
-                                    </div>
-                                
-                                    <div class="item">
-                                        <div class="polaroid"><img src="/project/assets/images/bookingDetail_img2.jpg" class="wrapper-img">
-                                            <div class="caption">산책</div>
-                                        </div>
-                                    </div>
-                                
-                                    <div class="item">
-                                        <div class="polaroid"><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/210284/l867sBU.jpg" class="wrapper-img">
-                                            <div class="caption">식사</div>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="item">
-                                        <div class="polaroid"><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/210284/7cQCk5I.jpg" class="wrapper-img">
-                                            <div class="caption">청결</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="wrapper">
-                                <div class="clearfix">
-                                    <div class="img-date"><h3>22-02-04 토요일</h3></div>
-                                    <div class="img-btn"><button class="btn btn-default add-img" data-toggle="modal" data-target="#imgupdateModal">이미지 업로드</button></div>
-                                </div>
-                                <div>
-                                   <div class="item">
-                                        <div class="polaroid"><img src="/project/assets/images/bookingDetail_img1.jpg" class="wrapper-img">
-                                            <div class="caption">놀이</div>
-                                        </div>
-                                    </div>
-                                
-                                    <div class="item">
-                                        <div class="polaroid"><img src="/project/assets/images/bookingDetail_img2.jpg" class="wrapper-img">
-                                            <div class="caption">산책</div>
-                                        </div>
-                                    </div>
-                                
-                                    <div class="item">
-                                        <div class="polaroid"><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/210284/l867sBU.jpg" class="wrapper-img">
-                                            <div class="caption">식사</div>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="item">
-                                        <div class="polaroid"><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/210284/7cQCk5I.jpg" class="wrapper-img">
-                                            <div class="caption">청결</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="wrapper">
-                                <div class="clearfix">
-                                    <div class="img-date"><h3>22-02-04 토요일</h3></div>
-                                    <div class="img-btn"><button id="imgupload" class="btn btn-default add-img" data-toggle="modal" data-target="#imgupdateModal">이미지 업로드</button></div>
-                                </div>
-                                <div>
-                                    <div class="item">
-                                        <div class="polaroid"><img src="/project/assets/images/bookingDetail_img1.jpg" class="wrapper-img">
-                                            <div class="caption">놀이</div>
-                                        </div>
-                                    </div>
-                                
-                                    <div class="item">
-                                        <div class="polaroid"><img src="/project/assets/images/bookingDetail_img2.jpg" class="wrapper-img">
-                                            <div class="caption">산책</div>
-                                        </div>
-                                    </div>
-                                
-                                    <div class="item">
-                                        <div class="polaroid"><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/210284/l867sBU.jpg" class="wrapper-img">
-                                            <div class="caption">식사</div>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="item">
-                                        <div class="polaroid"><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/210284/7cQCk5I.jpg" class="wrapper-img">
-                                            <div class="caption">청결</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                           
                         </div>
                     </div>
 
@@ -223,12 +123,12 @@
                             <hr>
                             <div class="container-fluid">
                                 <div class="row">
-                                    <div class="col-xs-6">이름</div>
-                                    <div class="col-xs-6">게스트1</div>
+                                    <div class="col-xs-6">게스트이름</div>
+                                    <div class="col-xs-6">${bvo.guestName}</div>
                                 </div>
                                 <div class="row">
                                     <div class="col-xs-6">연락처</div>
-                                    <div class="col-xs-6">010-0000-0000</div>
+                                    <div class="col-xs-6">${bvo.guestHp}</div>
                                 </div>
                             </div>
                         </div>
@@ -240,11 +140,11 @@
                             <div class="container-fluid">
                                 <div class="row">
                                     <div class="col-xs-6">위치</div>
-                                    <div class="col-xs-6">서울특별시 관악구 봉천동</div>
+                                    <div class="col-xs-6">${bvo.adress1} ${bvo.adress2} (${bvo.adress3})</div>
                                 </div>
                                 <div class="row">
                                     <div class="col-xs-6">펫설명/요청사항</div>
-                                    <div class="col-xs-6">하루에 1번 꼭 산책을 시켜주세요!</div>
+                                    <div class="col-xs-6">${bvo.note}</div>
                                 </div>
                             </div>
                         </div>
@@ -256,19 +156,19 @@
                             <div class="container-fluid">
                                 <div class="row">
                                     <div class="col-xs-6">가격(1박)</div>
-                                    <div class="col-xs-6">₩ 20,000</div>
+                                    <div class="col-xs-6">₩ ${bvo.bookingDate}</div>
                                 </div>
                                 <div class="row">
                                     <div class="col-xs-6">시팅일수</div>
-                                    <div class="col-xs-6">4일</div>
+                                    <div class="col-xs-6">${bvo.days}일</div>
                                 </div>
                                 <div class="row">
                                     <div class="col-xs-6">반려견 수</div>
-                                    <div class="col-xs-6">2마리</div>
+                                    <div class="col-xs-6">${bvo.ea}마리</div>
                                 </div>
                                 <div class="row">
                                     <div class="col-xs-6">총 결제 금액</div>
-                                    <div class="col-xs-6">₩ 160,000</div>
+                                    <div class="col-xs-6">₩ ${bvo.bookingDate * bvo.days * bvo.ea}</div>
                                 </div>
                             </div>
                         </div>
@@ -507,9 +407,10 @@
           <path d="M26 10.109c0 .281-.203.547-.406.75l-5.672 5.531 1.344 7.812c.016.109.016.203.016.313 0 .406-.187.781-.641.781a1.27 1.27 0 0 1-.625-.187L13 21.422l-7.016 3.687c-.203.109-.406.187-.625.187-.453 0-.656-.375-.656-.781 0-.109.016-.203.031-.313l1.344-7.812L.39 10.859c-.187-.203-.391-.469-.391-.75 0-.469.484-.656.875-.719l7.844-1.141 3.516-7.109c.141-.297.406-.641.766-.641s.625.344.766.641l3.516 7.109 7.844 1.141c.375.063.875.25.875.719z"/>
         </symbol>
     </svg>
-    
-    <div><!--class="modal fade"-->
-    <div class="modal fade" id="imgupdateModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <!-- tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" -->
+    <!--class="modal fade"-->
+    <div class="modal fade" id="imgupdateModal">
+    	<form id="uploadForm" enctype="multipart/form-data">
 	    <div class="modal-dialog">
 	      <div class="modal-content">
 	        <div class="modal-header">
@@ -525,7 +426,7 @@
 	                <div id="root">
 	                  <div id="cate">
 	                    <label>카테고리</label>
-	                    <select class="bo_w_select">
+	                    <select id="modalCate" class="bo_w_select">
 	                      <option>식사</option>  
 	                      <option>산책</option>  
 	                      <option>청결</option>
@@ -534,7 +435,7 @@
 	                  </div>
 	                    
 	                    <label>글제목</label>
-	                    <input type="text">
+	                    <input id="modalTitle" type="text">
 	                  
 	                  <hr>
 	                  <div class="contents">
@@ -543,9 +444,10 @@
 	                        <img src="https://img.icons8.com/pastel-glyph/2x/image-file.png" alt="파일 아이콘" class="image" >
 	                        <p class="message">마우스로 드래그해서 이미지를 추가해주세요</p>
 	                        <img src="" alt="미리보기 이미지" class="preview">
+	                        <input class="file" id="chooseFile" type="file" onchange="dropFile.handleFiles(this.files)" accept="image/png, image/jpeg, image/gif" >
 	                      </div>
-	                      <label class="file-label" for="chooseFile">확인</label>
-	                      <input class="file" id="chooseFile" type="file" onchange="dropFile.handleFiles(this.files)" accept="image/png, image/jpeg, image/gif">
+	                      <label id="modalSubmit" class="file-label">확인</label>
+	                      
 	                    </div>
 	                  </div>
 	                </div>
@@ -553,14 +455,61 @@
 	
 	            </div>
 	        </div>
-	      </div><!— /.modal-content —>
-	    </div><!— /.modal-dialog —>
-	  </div><!— /.modal —>
+	      </div><!--/.modal-content-->
+	    </div><!--/.modal-dialog-->
+	    </form>
+	  </div><!--/.modal-->
 	  	
   	
 </body>
 
 <script>
+	//이미지업로드 버튼을 눌렀을때
+	$("[name='imgupload']").on("click", function(){
+		//데이터수집
+		var $this = $(this);
+		var photoDate = $this.data("photodate");
+		console.log(photoDate);
+		
+		//초기화
+		$("#modalCate").val("");
+		$("#modalTitle").val("");
+		
+		$('#imgupdateModal').modal('show');
+		
+	});	
+	
+	//모달창에서 업로드 버튼을 눌렀을떄
+	$("#modalSubmit").on("click", function(){
+
+		var photoPath = $("#chooseFile")[0];
+		var photoTitle = $("#modalTitle").val();
+		var category = $("#modalCate").val();
+		
+		var formData = new FormData();
+		formData.append("photoPath", photoPath.files[0]);
+		formData.append("photoTitle", photoTitle);
+		formData.append("category", category);
+		
+		$.ajax({
+		    type:"POST",
+		    url: "${pageContext.request.contextPath}/photoInsert?bookingNo=${bvo.bookingNo}",
+		    processData: false,
+		    contentType: false,
+		    data: formData,
+		    success: function(){
+		    },
+		    err: function(){
+		      console.log("err:", err)
+		    }
+		})
+		
+	});		
+		
+		
+		
+		
+		
     function DropFile(dropAreaId, fileListId) {
 
       let dropArea = document.getElementById(dropAreaId);

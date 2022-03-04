@@ -56,6 +56,63 @@
 		]]>
 	</select>
 	
+	<!-- 결제대기리스트(호스트) -->
+	<select id="bookingGuestList" parameterType="int" resultType="com.javaex.vo.BookingVo">
+		<![CDATA[
+			select b.bookingNo,
+			       b.hostNo,
+			       b.usersNo,
+			       to_char(checkin, 'yyyy-mm-dd') checkin,
+			       to_char(checkout, 'yyyy-mm-dd') checkout,
+			       b.ea,
+			       b.booking_date bookingDate,
+			       b.days,
+			       b.note,
+			       b.status,
+			       b.review,
+			       b.review_date reviewDate,
+			       b.clean,
+			       b.food,
+			       b.play,
+			       b.work,
+			       b.communication,
+			       u.name guestName,
+			       u.hp guestHp
+			from booking b, users u
+			where b.usersNo = u.usersNo
+			and hostNo = #{hostNo}
+		]]>
+	</select>
+	
+	<!-- 결제대기리스트(호스트) -->
+	<select id="bookingDateList" parameterType="com.javaex.vo.BookingVo" resultType="com.javaex.vo.BookingVo">
+		<![CDATA[
+			select b.bookingNo,
+			       b.hostNo,
+			       b.usersNo,
+			       to_char(checkin, 'yyyy-mm-dd') checkin,
+			       to_char(checkout, 'yyyy-mm-dd') checkout,
+			       b.ea,
+			       b.booking_date bookingDate,
+			       b.days,
+			       b.note,
+			       b.status,
+			       b.review,
+			       b.review_date reviewDate,
+			       b.clean,
+			       b.food,
+			       b.play,
+			       b.work,
+			       b.communication,
+			       u.name guestName,
+			       u.hp guestHp
+			from booking b, users u
+			where b.usersNo = u.usersNo
+			and hostNo = #{hostNo}
+			and	checkin = #{checkin}
+		]]>
+	</select>
+	
 	<!-- 예약상세(게스트) -->
 	<select id="bookingDetailHost" parameterType="int" resultType="com.javaex.vo.BookingVo">
 		<![CDATA[
@@ -84,6 +141,38 @@
 			from booking b, host h, users u
 			where b.hostno = h.hostno
 			and h.userno = u.usersno
+			and bookingNo = #{bookingNo}
+		]]>
+	</select>
+	
+	<!-- 예약상세(호스트) -->
+	<select id="bookingDetailGuest" parameterType="int" resultType="com.javaex.vo.BookingVo">
+		<![CDATA[
+			select bookingNo,
+			       b.hostNo,
+			       b.usersno,
+			       to_char(checkin, 'yyyy-mm-dd') checkin,
+       			   to_char(checkout, 'yyyy-mm-dd') checkout,
+			       ea,
+			       booking_date bookingDate,
+			       days,
+			       note,
+			       status,
+			       review,
+			       review_date reviewDate,
+			       clean,
+			       food,
+			       play,
+			       work,
+			       communication,
+			       u.name guestName,
+       			   u.hp guestHp,
+			       h.adress1 adress1,
+			       h.adress2 adress2,
+			       h.adress3 adress3
+			from booking b, host h, users u
+			where b.hostno = h.hostno
+			and b.usersno = u.usersno
 			and bookingNo = #{bookingNo}
 		]]>
 	</select>

@@ -28,6 +28,10 @@ public class BookingVo {
 	private String adress2;
 	private String adress3;
 
+	// 유저테이블(조인)
+	private String guestName;
+	private String guestHp;
+
 	public BookingVo() {
 	}
 
@@ -51,6 +55,30 @@ public class BookingVo {
 		this.play = play;
 		this.work = work;
 		this.communication = communication;
+	}
+
+	public BookingVo(int bookingNo, int hostNo, int usersNo, String checkin, String checkout, int ea, int bookingDate,
+			int days, String note, String status, String review, String reviewDate, int clean, int food, int play,
+			int work, int communication, String guestName, String guestHp) {
+		this.bookingNo = bookingNo;
+		this.hostNo = hostNo;
+		this.usersNo = usersNo;
+		this.checkin = checkin;
+		this.checkout = checkout;
+		this.ea = ea;
+		this.bookingDate = bookingDate;
+		this.days = days;
+		this.note = note;
+		this.status = status;
+		this.review = review;
+		this.reviewDate = reviewDate;
+		this.clean = clean;
+		this.food = food;
+		this.play = play;
+		this.work = work;
+		this.communication = communication;
+		this.guestName = guestName;
+		this.guestHp = guestHp;
 	}
 
 	public BookingVo(int bookingNo, int hostNo, int usersNo, String checkin, String checkout, int ea, int bookingDate,
@@ -257,6 +285,22 @@ public class BookingVo {
 		this.adress3 = adress3;
 	}
 
+	public String getGuestName() {
+		return guestName;
+	}
+
+	public void setGuestName(String guestName) {
+		this.guestName = guestName;
+	}
+
+	public String getGuestHp() {
+		return guestHp;
+	}
+
+	public void setGuestHp(String guestHp) {
+		this.guestHp = guestHp;
+	}
+
 	@Override
 	public String toString() {
 		return "BookingVo [bookingNo=" + bookingNo + ", hostNo=" + hostNo + ", usersNo=" + usersNo + ", checkin="
@@ -264,7 +308,8 @@ public class BookingVo {
 				+ ", note=" + note + ", status=" + status + ", review=" + review + ", reviewDate=" + reviewDate
 				+ ", clean=" + clean + ", food=" + food + ", play=" + play + ", work=" + work + ", communication="
 				+ communication + ", hostName=" + hostName + ", hostHp=" + hostHp + ", adress1=" + adress1
-				+ ", adress2=" + adress2 + ", adress3=" + adress3 + "]";
+				+ ", adress2=" + adress2 + ", adress3=" + adress3 + ", guestName=" + guestName + ", guestHp=" + guestHp
+				+ "]";
 	}
 
 }

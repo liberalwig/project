@@ -52,12 +52,22 @@
 							<button class="btn btn-default hover-boot" type="submit">예약거절</button>
 						</div>
 						<table class="table table-hover">
+							<colgroup>
+								<col style="width: 5%;">
+								<col style="width: 10%;">
+								<col style="width: 10%;">
+								<col style="width: 10%;">
+								<col style="width: 25%;">
+								<col style="width: 15%;">
+								<col style="width: 15%;">
+								<col style="width: 10%;">
+							</colgroup>
 							<thead id="guest-table">
 								<tr>
 									<th></th>
 									<th>예약번호</th>
 									<th>프로필사진</th>
-									<th>닉네임</th>
+									<th>게스트이름</th>
 									<th>예약날짜</th>
 									<th>가격</th>
 									<th>휴대전화</th>
@@ -66,81 +76,44 @@
 							</thead>
 
 							<tbody>
-								<tr>
-									<td><input type="radio" name="list-radio"></td>
-									<td id="no">11111</td>
-									<td><img src="/project/assets/images/reservation-dog.png""></td>
-									<td>게스트1</td>
-									<td>22/05/01 ~ 22/05/03</td>
-									<td>₩ 20,000</td>
-									<td>010-1111-1111</td>
-									<td><div class="btn-re-gradient yellow mini">결제대기</div></td>
-								</tr>
-								<tr>
-									<td><input type="radio" name="list-radio"></td>
-									<td id="no">22222</td>
-									<td><img src="/project/assets/images/reservation-dog.png"></td>
-									<td>게스트2</td>
-									<td>22/05/01 ~ 22/05/03</td>
-									<td>₩ 20,000</td>
-									<td>010-2222-2222</td>
-									<td><div class="btn-re-gradient yellow mini">결제대기</div></td>
-								</tr>
-								<tr>
-									<td><input type="radio" name="list-radio"></td>
-									<td id="no">33333</td>
-									<td><img src="/project/assets/images/reservation-dog.png"></td>
-									<td>게스트3</td>
-									<td>22/05/01 ~ 22/05/03</td>
-									<td>₩ 20,000</td>
-									<td>010-3333-3333</td>
-									<td><div id="approval" class="btn-re-gradient blue mini">예약승인</div></td>
-								</tr>
-								<tr>
-									<td><input type="radio" name="list-radio"></td>
-									<td id="no">44444</td>
-									<td><img src="/project/assets/images/reservation-dog.png"></td>
-									<td>게스트4</td>
-									<td>22/05/01 ~ 22/05/03</td>
-									<td>₩ 100,000</td>
-									<td>010-4444-4444</td>
-									<td><div id="approval" class="btn-re-gradient blue mini">예약승인</div></td>
-								</tr>
-								<tr>
-									<td><input type="radio" name="list-radio"></td>
-									<td id="no">55555</td>
-									<td><img src="/project/assets/images/reservation-dog.png"></td>
-									<td>게스트5</td>
-									<td>22/05/01 ~ 22/05/03</td>
-									<td>₩ 20,000</td>
-									<td>010-1111-1111</td>
-									<td><div class="btn-re-gradient yellow mini">결제대기</div></td>
-								</tr>
+								<c:forEach items="${bList}" var="BookingVo">
+						
+									<tr onClick="location.href='${pageContext.request.contextPath}/bookingDetailHost?bookingNo=${BookingVo.bookingNo}'">
+										<td><input type="radio" name="list-radio"></td>
+										<td id="no" data-bookingno="${BookingVo.bookingNo}">${BookingVo.bookingNo}</td>
+										<td><img src="/project/assets/images/reservation-dog.png"></td>
+										<td>${BookingVo.guestName}</td>
+										<td>${BookingVo.checkin} ~ ${BookingVo.checkout}</td>
+										<td>₩ ${BookingVo.bookingDate * BookingVo.days * BookingVo.ea}</td>
+										<td>${BookingVo.guestHp}</td>
+										<c:choose>
+											<c:when test="${BookingVo.status == '승인대기'}">
+												<td><div class="btn-re-gradient blue mini">예약승인</div></td>
+											</c:when>
+											<c:when test="${BookingVo.status == '결제대기'}">
+												<td><div class="btn-re-gradient orange mini">결제대기</div></td>
+											</c:when>
+										</c:choose>
+									</tr>
+								</c:forEach>
 							</tbody>
 						</table>
 					</div>
-
+			
 				</div>
 			</div>
 		</div>
+	</div>
 </body>
 
 <script>
-	/* aside */
-	// html dom 이 다 로딩된 후 실행된다.
-	$(document).ready(function() {
-		// memu 클래스 바로 하위에 있는 a 태그를 클릭했을때
-		$(".menu").click(function() {
-			// 현재 클릭한 태그가 a 이기 때문에
-			// a 옆의 태그중 ul 태그에 hide 클래스 태그를 넣던지 빼던지 한다.
-			$(this).next("ul").toggleClass("hide");
-		});
-	});
 
+	
 	/* 달력 */
 	document.addEventListener('DOMContentLoaded', function() {
 
 		var calendarEl = document.getElementById('l-calendar');
+		var bookingNo = document.getElementById('no').getAttribute('data-bookingno') ;
 		var calendar = new FullCalendar.Calendar(calendarEl, {
 
 			initialView : 'dayGridMonth', // 월 달력
@@ -154,45 +127,55 @@
 
 			editable : true, // 드래그 수정 가능
 			locale : 'ko', // 한국어 설정(lib/locales/ko.js)
-
-			// 요일 클릭 이벤트
-			dateClick : function() {
-				alert('요일 클릭!');
-			},
-
+			
 			// 일정 클릭 이벤트
 			eventClick : function() {
-				alert('일정 클릭!');
+				
+				window.location.href = '${pageContext.request.contextPath}/bookingDetailHost?bookingNo='+bookingNo;
 			},
+			
+			//날짜 클릭 이벤트
+		  	dateClick: function(info) {
+			    window.location.href = '/project/bookingBeforeHostDate?hostNo=${param.hostNo}&date='+info.dateStr;
+			},
+			
+			events: [
+				// ajax 처리로 데이터를 로딩 시킨다. 
+				$.ajax({ 
+					type:"get", 
+					url:"${pageContext.request.contextPath}/calendar?hostNo=${param.hostNo}", 
+					dataType : "json",
+					success: function (bList) {
+						for(var i=0; i<bList.length; i++) {
+							calendar.addEvent({
+								title: bList[i].guestName,
+								start: bList[i].checkin,
+								end: bList[i].checkout
+							});
+						}
+						
+					}
+				})
+			]
 
 		});
-
-		// 데이터 삽입방식
-
-		calendar.addEvent({
-			'title' : '게스트1',
-			'start' : '2022-02-01'
-		});
-
-		calendar.addEvent({
-			'title' : '게스트2',
-			'start' : '2022-02-18',
-			'end' : '2022-02-23'
-		});
-
+		
 		// 렌더링
-
 		calendar.render();
 
 	});
+	
+	
+	
 
 	document.addEventListener('DOMContentLoaded', function() {
 
 		var calendarEl = document.getElementById('l-calendar2');
+		var bookingNo = document.getElementById('no').getAttribute('data-bookingno');
 		var calendar = new FullCalendar.Calendar(calendarEl, {
 
 			initialView : 'dayGridMonth', // 월 달력
-			initialDate : '2022-03-01',
+			initialDate : '2022-04-01',
 
 			// 달력 툴
 			headerToolbar : {
@@ -204,29 +187,41 @@
 			editable : true, // 드래그 수정 가능
 			locale : 'ko', // 한국어 설정(lib/locales/ko.js)
 
-			// 요일 클릭 이벤트
-			dateClick : function() {
-				alert('요일 클릭!');
-			},
-
 			// 일정 클릭 이벤트
 			eventClick : function() {
-				alert('일정 클릭!');
+				window.location.href = '${pageContext.request.contextPath}/bookingDetailHost?bookingNo='+bookingNo;
 			},
+			
+			//날짜 클릭 이벤트
+		  	dateClick: function(info) {
+			    window.location.href = '/project/bookingBeforeHostDate?hostNo=${param.hostNo}&date='+info.dateStr;
+			},
+			
+			events: [
+				// ajax 처리로 데이터를 로딩 시킨다. 
+				$.ajax({ 
+					type:"get", 
+					url:"${pageContext.request.contextPath}/calendar?hostNo=${param.hostNo}", 
+					dataType : "json",
+					success: function (bList) {
+						for(var i=0; i<bList.length; i++) {
+							calendar.addEvent({
+								title: bList[i].guestName,
+								start: bList[i].checkin,
+								end: bList[i].checkout
+							});
+						}
+						
+					}
+				})
+			]
 
-		});
-
-		// 데이터 삽입방식
-
-		calendar.addEvent({
-			'title' : '게스트3',
-			'start' : '2022-03-05'
 		});
 
 		// 렌더링
-
 		calendar.render();
-
 	});
+	
+	
 </script>
 </html>
