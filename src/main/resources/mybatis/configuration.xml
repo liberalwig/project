@@ -2,7 +2,16 @@
 <!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 	<typeAliases>
+		<typeAlias alias="HostVo" type="com.javaex.vo.HostVo" />
+		<typeAlias alias="KeywordVo" type="com.javaex.vo.KeywordVo" />
+		<typeAlias alias="ReviewVo" type="com.javaex.vo.ReviewVo" />
+		<typeAlias alias="PhotoVo" type="com.javaex.vo.PhotoVo" />
+		<typeAlias alias="FinishPVo" type="com.javaex.vo.FinishPVo" />
 	</typeAliases>
 	<mappers>
+		<mapper resource="mybatis/mappers/hostinfo.xml" />
+		<mapper resource="mybatis/mappers/host.xml" />
+		<mapper resource="mybatis/mappers/finishP.xml" />
+		<mapper resource="mybatis/mappers/booking.xml" />
 	</mappers>
 </configuration>

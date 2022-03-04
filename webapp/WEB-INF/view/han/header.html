@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   
+    <!-- CSS -->
+    <link rel="stylesheet" href="./assets/css/header.css">
+    <!--menu 버튼 링크-->
+    <link rel="stylesheet" href="https://cdn.linearicons.com/free/1.0.0/icon-font.min.css">
+    <link rel="stylesheet" href="./assets/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css">
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    <!--jquery 버튼 링크-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <script src="./assets/js/header.js"></script>
+  
+    <!-- 부가적인 테마 -->
+    <title>header</title>
+</head>
+<body>
+    <div id="header" class="container">
+        <div class="row">
+            <div id="logo" class="col-md-4">
+                <a href=""><img class="logo-img" src="./assets/image/logo2.jpg"></a>
+            </div>
+
+            <from>
+                <div class="search_input_box" class="col-md-4">
+                    <div class="search_input rooms_box">
+                        <div>
+                            <a href="#">
+                            <div>위치</div>
+                            <input type="text" placeholder="어디에 맡기세요?">
+                            </a>
+                        </div>
+                        <div id="check_in_box" class="search_input__start_date">
+                            <a href="#">
+                            <div class="check_in">체크인</div>
+                            <input class="date_time" type="datetime" placeholder="날짜 추가" readonly>
+                            </a>
+                        </div>
+                        <div id="check_out_box" class="search_input__end_date">
+                            <a href="#">
+                            <div class="check_out">체크아웃</div>
+                            <input class="date_time" type="datetime" placeholder="날짜 추가" readonly>
+                            </a>
+                        </div>
+                        <!--
+                        <div>
+                            <a href="#">
+                            <div>마릿수</div>
+                            <input type="number" placeholder="마릿수 추가">
+                            </a>
+                        </div>
+                        -->
+                        <div>
+                            <button type="submit" class="search_button" style="text-align: center;" >검색</button>
+                        </div>
+                    </div>
+                </from>
+
+                <div id="nav_button" class="search_input nav text_center experience_box display_none">
+                    <div>
+                        <div class="search_location">위치</div> 
+                        <input class="search_location" type="text" placeholder="어디로 여행가세요?">
+                    </div>
+                    <div class="search_input__full_date" >
+                        <div class="search_date">날짜</div> 
+                        <input class="search_date" type="datetime" placeholder="원하는 날짜를 입력하세요." readonly>
+                    </div>
+                </div>
+            </div>
+
+
+            <div id="menu" class="col-md-4">
+                <div id="btn1" class="text_end height54">
+                    <a href="#"><span>펫트너되기</span></a>
+                </div>
+
+                <div id="btn2"><a href="#"><img class="lnr email-icon" src="./assets/image/email_icon.jpg"></div>
+                
+                <div id="btn3">
+                    <div class="dropdown"><span class="lnr lnr-menu"></span><img class="menu-img" src="./assets/image/menu-img.jpg"></div>
+                        <ul class="dropdown-list">
+                        <li><span class="lnr"></span>홈</li>
+                        <li><span class="lnr"></span>펫트너되기</li>
+                        <li><span class="lnr"></span>메세지</li>
+                        <li><span class="lnr"></span>회원가입</li>
+                        <li><span class="lnr"></span>로그아웃</li>
+                        <li><span class="lnr"></span>계정</li>
+                        </ul>
+                        </div>
+                </div>
+            </div>
+
+        </div> 
+    </div>
+    <!--herder-->
+    
+    <div id="header_line" class="row"></div>
+
+</body>
+
+
+
+<!--메뉴 버튼-->
+<script src="./assets/js/menu-button.js"></script>
+
+
+</html>

@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.javaex.dao.HostinfoDao;
 import com.javaex.vo.HostVo;
 import com.javaex.vo.KeywordVo;
+import com.javaex.vo.PhotoVo;
 import com.javaex.vo.ReviewVo;
 
 @Service
@@ -65,5 +66,14 @@ public class HostinfoService {
 		point.setCommunication(hostinfoDao.getCommunication(hostNo));
 		
 		return point;
+	}
+	
+	//호스트 사진 가져오기
+	public List<PhotoVo> getHostPhoto(int hostNo){
+		System.out.println("[HostinfoService.getHostPhoto()]");
+		
+		List<PhotoVo> photoList = hostinfoDao.getHostPhoto(hostNo);
+		
+		return photoList;
 	}
 }

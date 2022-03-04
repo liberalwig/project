@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import com.javaex.vo.HostVo;
 import com.javaex.vo.KeywordVo;
+import com.javaex.vo.PhotoVo;
 import com.javaex.vo.ReviewVo;
 
 @Repository
@@ -89,5 +90,14 @@ public class HostinfoDao {
 		System.out.println("[HostinfoDao.getCommunication()]");
 		
 		return sqlSession.selectOne("hostinfo.getCommunication", hostNo);
+	}
+	
+	//호스트 사진 가져오기
+	public List<PhotoVo> getHostPhoto(int hostNo) {
+		System.out.println("[HostinfoDao.HostPhoto()]");
+		
+		List<PhotoVo> photoList = sqlSession.selectList("hostinfo.getHostPhotoList", hostNo);
+		
+		return photoList;
 	}
 }

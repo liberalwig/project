@@ -11,9 +11,8 @@
 <link href="${pageContext.request.contextPath}/assets/css/fullcalendar.min.css" rel="stylesheet" type="text/css">
 
 <!--자바스크립트-->
-<script type="text/javascript" src="${pageContext.request.contextPath}/assets/bootstrap/js/bootstrap.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/jquery-1.12.4.js"></script>
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c32fc6713e09b64980ab9a6dd7766e97"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/assets/bootstrap/js/bootstrap.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/fullcalendar.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/locales-all.min.js"></script>
 
@@ -57,8 +56,8 @@
 							</h4>
 						</div>
 						<div id="graph">
-							<div class="row bar">
-								<div class="col-xs-2 pointname" data-toggle="tooltip" data-placement="top" title="Tooltip on left">
+							<div class="row bar" data-toggle="tooltip" data-placement="top" title="식사에 대한 점수">
+								<div class="col-xs-2 pointname">
 									<h4>
 										<span class="glyphicon glyphicon-apple" aria-hidden="true"></span>&nbsp;식사
 									</h4>
@@ -69,7 +68,7 @@
 									</div>
 								</div>
 							</div>
-							<div class="row bar">
+							<div class="row bar" data-toggle="tooltip" data-placement="top" title="산책에 대한 점수">
 								<div class="col-xs-2 pointname">
 									<h4>
 										<span class="glyphicon glyphicon-grain" aria-hidden="true"></span>&nbsp;산책
@@ -81,7 +80,7 @@
 									</div>
 								</div>
 							</div>
-							<div class="row bar">
+							<div class="row bar" data-toggle="tooltip" data-placement="top" title="목욕, 빗질등 청결관리에 대한 점수">
 								<div class="col-xs-2 pointname">
 									<h4>
 										<span class="glyphicon glyphicon-tint" aria-hidden="true"></span>&nbsp;청결
@@ -93,10 +92,10 @@
 									</div>
 								</div>
 							</div>
-							<div class="row bar">
+							<div class="row bar" data-toggle="tooltip" data-placement="top" title="놀이에 대한 점수">
 								<div class="col-xs-2 pointname">
 									<h4>
-										<span class="glyphicon glyphicon-leaf" aria-hidden="true"></span>&nbsp;놀이
+										<span class="glyphicon glyphicon-leaf" aria-hidden="true" ></span>&nbsp;놀이
 									</h4>
 								</div>
 								<div class="progress">
@@ -105,7 +104,7 @@
 									</div>
 								</div>
 							</div>
-							<div class="row bar">
+							<div class="row bar" data-toggle="tooltip" data-placement="top" title="소통에 대한 점수">
 								<div class="col-xs-2 pointname">
 									<h4>
 										<span class="glyphicon glyphicon-comment" aria-hidden="true"></span>&nbsp;소통
@@ -134,7 +133,9 @@
 					<div id="imgbox">
 						<div class="row">
 							<div id="imgbox2">
-								<img src="${pageContext.request.contextPath}/assets/images/hostinfo_dog1.png"> <img src="${pageContext.request.contextPath}/assets/images/hostinfo_dog2.png"> <img src="${pageContext.request.contextPath}/assets/images/hostinfo_dog3.png"> <img src="${pageContext.request.contextPath}/assets/images/hostinfo_dog3.png"> <img src="${pageContext.request.contextPath}/assets/images/hostinfo_dog3.png"> <img src="${pageContext.request.contextPath}/assets/images/hostinfo_dog3.png"> <img src="${pageContext.request.contextPath}/assets/images/hostinfo_dog3.png"> <img src="${pageContext.request.contextPath}/assets/images/hostinfo_dog3.png">
+								<c:forEach items="${requestScope.photoList}" var="vo">
+									<img src="${pageContext.request.contextPath}/assets/upload/${vo.photoPath}">
+								</c:forEach>
 							</div>
 						</div>
 					</div>
@@ -150,8 +151,8 @@
 					<div class="row">
 						<div id="maparea" class="row">
 							<h3>${requestScope.hostVo.name}동네</h3>
-							<h4>${requestScope.hostVo.adress1}${requestScope.hostVo.adress2} ${requestScope.hostVo.adress3}</h4>
-							<div id="map"></div>
+							<h4>${requestScope.hostVo.adress1}</h4>
+							<div id="map" style="width:300px;height:300px;"></div>
 						</div>
 					</div>
 
@@ -178,19 +179,45 @@
 			</div>
 		</div>
 	</div>
-	<c:import url="/WEB-INF/view/includes/footer.jsp"></c:import>
-
+	<c:import url="/WEB-INF/view/includes/footer.jsp"></c:import>	
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c32fc6713e09b64980ab9a6dd7766e97"></script>
 <script>
+	$(function () {
+		  $('[data-toggle="tooltip"]').tooltip()
+		});
+	
 	//사진
 	//탭을 클릭했을때
 	$("#tapbox ul li").on("click", function(){
 		var $this = $(this);
+		
 		var name = $this.data('name');
+		
 		$("#tapbox ul li").removeClass("active");
+		
 		$(this).addClass("active");
 		
+		var photoVo = {
+			Category : name
+		};
+		
 		$("#imgbox2 img").remove();
-		$("#imgbox2").html('<img src="${pageContext.request.contextPath}/assets/images/hostinfo_dog1.png">');
+		
+		//요청
+		$.ajax({
+			//요청할때
+			url : "${pageContext.request.contextPath}/host2/photo",    
+			type : "post",
+			data : photoVo,// 자바스크립트 객체를 제이슨으로 바꿔주는 함수
+			
+			success : function(photoList) {
+				console.log(photoList);
+				$("#imgbox2").html('<img src="${pageContext.request.contextPath}/assets/images/hostinfo_dog1.png">');
+			},
+			error : function(XHR, status, error) {
+				console.error(status + " : " + error);
+			}
+		});
 	});
 
 	//지도 API

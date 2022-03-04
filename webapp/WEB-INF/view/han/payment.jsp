@@ -6,13 +6,12 @@
 <meta charset="utf-8"/>
 <title>예약하기</title>
 <!--CSS-->
-<link href="${pageContext.request.contextPath}/assets/css/booking2.css?after" rel="stylesheet" type="text/css"/>
+<link href="${pageContext.request.contextPath}/assets/css/booking2.css" rel="stylesheet" type="text/css"/>
 <link href="${pageContext.request.contextPath}/assets/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css">
 
 <!--자바스크립트-->
-<script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/jquery-1.12.4.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/bootstrap.js"></script>
-
+<script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/jquery-1.12.4.js"></script>
 
 </head>
 
@@ -20,10 +19,9 @@
 	<c:import url="/WEB-INF/view/includes/header.jsp"></c:import>
     <div id="wrap">
         <div id="container">
-        
             <div id="booking" class="col-xs-7 left info">
                 <div class="row">
-                    <h2>예약신청</h2>                    
+                    <h2>예약신청/결제하기</h2>
                 </div>
                 <div class="row">
                     <div class="Q">
@@ -83,7 +81,7 @@
                     <div class="row">
                         <br>
                         <p><span class="label label-danger">!</span>&nbsp;펫시터가 요청을 수락하면 결제가 이루어집니다.</p>
-                        <button id="btn2" type="button" class="btn btn-primary">예약 요청</button>
+                        <button id="btn2" type="button" class="btn btn-primary">예약 요청/결제하기</button>
                     </div>
                 </div>       
             </div>   
@@ -91,10 +89,7 @@
     </div>
 </body>
 <script>
-$(function () {
-	  $('[data-toggle="tooltip"]').tooltip()
-	})
-	//2단계 마릿수 클릭
+	//2단계 버튼 클릭
 	$(".btn-group.btn-group button").on("click", function(){
 		var $this = $(this);
 		$(".btn-group.btn-group button").removeClass("active");
@@ -103,27 +98,6 @@ $(function () {
 		$("#ea").text(ea + "마리");
 		var cost = ${requestScope.hostVo.hostcost} * ea
 		$("#cost").text(cost + "원");
-	});
-	
-	//예약완료 버튼 클릭
-	$("#btn2").on("click", function(){
-		console.log("예약완료")
-		
-		//요청
-		$.ajax({
-			//요청할때
-			url : "${pageContext.request.contextPath}/host2/booking",    
-			type : "post",
-			data : photoVo,// 자바스크립트 객체를 제이슨으로 바꿔주는 함수
-			
-			success : function(photoList) {
-				console.log(photoList);
-				$("#imgbox2").html('<img src="${pageContext.request.contextPath}/assets/images/hostinfo_dog1.png">');
-			},
-			error : function(XHR, status, error) {
-				console.error(status + " : " + error);
-			}
-		});
 	});
 </script>
 </html>

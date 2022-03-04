@@ -28,7 +28,7 @@
 			       co.reviewcount,
 			       ho.hostview
 			from   users us, host ho, (select count(review) reviewcount
-                              		  from    booking) co
+                              		   from   booking) co
 			where  hostNo = #{hostNo}
             and    us.usersNo = ho.userNo
 		]]>
@@ -111,6 +111,15 @@
 		<![CDATA[
 			select avg(communication)
 			from   booking
+			where  hostNo = #{hostNo}
+		]]>
+	</select>
+	
+	<select id="getHostPhotoList" parameterType="int" resultType="PhotoVo">
+		<![CDATA[
+			select hostNo,
+			       hostprofilepath as photoPath
+			from   hostprofile
 			where  hostNo = #{hostNo}
 		]]>
 	</select>
