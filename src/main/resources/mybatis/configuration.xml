@@ -13,5 +13,6 @@
 		<mapper resource="mybatis/mappers/host.xml" />
 		<mapper resource="mybatis/mappers/finishP.xml" />
 		<mapper resource="mybatis/mappers/booking.xml" />
+		<mapper resource="mybatis/mappers/serchList.xml" />
 	</mappers>
 </configuration>
