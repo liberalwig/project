@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="finishP">
+	
+	<!-- 쿼리문 작성 -->
+	<select id="getinfoP"   parameterType="FinishPVo"  resultType="FinishPVo">
+		<![CDATA[
+		select  u.name, 
+				u.hp, 
+				h.adress1,
+				h.adress2,
+				h.adress3, 
+				b.bookingNo,
+				b.checkin, 
+				b.checkout, 
+				b.ea, 
+				b.note, 
+				b.booking_date*b.days*b.ea totalprice
+		from users u, host h, booking b
+		where u.usersno = h.userno and h.hostno = b.hostno
+		and b.bookingNo = #{bookingNo}
+	        ]]>
+	</select>
+	
+	<select id="getPay"   parameterType="int"  resultType="FinishPVo">
+		<![CDATA[
+		select  u.name, 
+				u.hp, 
+				h.adress1,
+				h.adress2,
+				h.adress3, 
+				b.bookingNo,
+				b.checkin, 
+				b.checkout, 
+				b.ea, 
+				b.note, 
+				b.booking_date*b.days*b.ea totalprice
+		from users u, host h, booking b
+		where u.usersno = h.userno and h.hostno = b.hostno
+		and b.bookingNo = #{bookingNo}
+	        ]]>
+	</select>
+
+</mapper>
