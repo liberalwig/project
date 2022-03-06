@@ -58,10 +58,26 @@ public class BookingDao {
 	}
 	
 	//예약상세갤러리(게스트)
-	public List<PhotoVo> bookingGallery(int bookingNo) {
+	public List<PhotoVo> bookingGallery(int bookingNo, int day) {
 		
-		List<PhotoVo> PhotoList = sqlsession.selectList("booking.photoList", bookingNo);
+		PhotoVo pvo = new PhotoVo();
+		pvo.setBookingNo(bookingNo);
+		pvo.setDay(day);
+		
+		List<PhotoVo> PhotoList = sqlsession.selectList("booking.photoList", pvo);
 		
 		return PhotoList;
+	}
+	
+	//사진업로드
+	public void photoInsert(PhotoVo pvo) {
+		
+		sqlsession.selectOne("booking.photoInsert", pvo);
+	}
+	
+	//사진상세보기
+	public PhotoVo photoView(int photoNo) {
+		
+		return sqlsession.selectOne("booking.photoView", photoNo);
 	}
 }

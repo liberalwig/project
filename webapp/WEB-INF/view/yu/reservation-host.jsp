@@ -136,6 +136,7 @@
 			
 			//날짜 클릭 이벤트
 		  	dateClick: function(info) {
+		  		
 			    window.location.href = '/project/bookingBeforeHostDate?hostNo=${param.hostNo}&date='+info.dateStr;
 			},
 			

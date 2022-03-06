@@ -10,6 +10,7 @@
     <link href="/project/assets/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css">
     <link href="/project/assets/css/yu_main.css" rel="stylesheet" type="text/css">
     <link href="/project/assets/css/booking.css" rel="stylesheet" type="text/css"/>
+	<link href="/project/assets/css/poto-upload.css" rel="stylesheet" type="text/css"/>
 
     <!--자바스크립트-->
     <script type="text/javascript" src="/project/assets/js/jquery-1.12.4.js"></script>
@@ -53,60 +54,62 @@
                             <h2>펫사진</h2>
                             <hr>
                             
-                            <c:forEach items="${pList}" var="pvo">
+                            <c:forEach items="${pList}" var="pListDate">
                             	<div class="wrapper">
 	                                <div class="clearfix">
-	                                    <div class="img-date"><h3>${pvo.photoDate}</h3></div>
+	                                    <div class="img-date"><h3>${pListDate[0].photoDate}</h3></div>
 	                                </div>
 	                                <div>
 	                                    <div class="item">
 	                                        <div class="polaroid">
-		                                        <c:if test="${pvo.photoPath == null}">
+		                                        <c:if test="${pListDate[0].photoPath == null}">
 		                                        	<img src="/project/assets/images/bookingDetail_gray.png" class="wrapper-img">
 		                                		</c:if>
-		                                		<c:if test="${pvo.photoPath != null}">
-	                                        		<img src="${pvo.photoPath}" class="wrapper-img">
+		                                		<c:if test="${pListDate[0].photoPath != null}">
+	                                        		<img data-no="${pListDate[0].photoNo}" src="${pageContext.request.contextPath }/photo/${pListDate[0].saveName}" class="wrapper-img viewImg">
 	                                        	</c:if>
-	                                            <div class="caption">놀이</div>
+	                                            <div class="caption">${pListDate[0].category}</div>
+	                                        </div>
+	                                    </div> 
+	                                    
+	                                
+	                                    <div class="item">
+	                                        <div class="polaroid">
+	                                        	<c:if test="${pListDate[1].photoPath == null}">
+		                                        	<img src="/project/assets/images/bookingDetail_gray.png" class="wrapper-img">
+		                                		</c:if>
+		                                		<c:if test="${pListDate[1].photoPath != null}">
+	                                        		<img data-no="${pListDate[1].photoNo}" src="${pageContext.request.contextPath }/photo/${pListDate[1].saveName}" class="wrapper-img viewImg">
+	                                        	</c:if>
+	                                            <div class="caption">${pListDate[1].category}</div>
 	                                        </div>
 	                                    </div>
 	                                
 	                                    <div class="item">
 	                                        <div class="polaroid">
-	                                        	<c:if test="${pvo.photoPath == null}">
+	                                        	<c:if test="${pListDate[2].photoPath == null}">
 		                                        	<img src="/project/assets/images/bookingDetail_gray.png" class="wrapper-img">
 		                                		</c:if>
-		                                		<c:if test="${pvo.photoPath != null}">
-	                                        		<img src="${pvo.photoPath}" class="wrapper-img">
+		                                		<c:if test="${pListDate[2].photoPath != null}">
+	                                        		<img data-no="${pListDate[2].photoNo}" src="${pageContext.request.contextPath }/photo/${pListDate[2].saveName}" class="wrapper-img viewImg">
 	                                        	</c:if>
-	                                            <div class="caption">산책</div>
-	                                        </div>
-	                                    </div>
-	                                
-	                                    <div class="item">
-	                                        <div class="polaroid">
-	                                        	<c:if test="${pvo.photoPath == null}">
-		                                        	<img src="/project/assets/images/bookingDetail_gray.png" class="wrapper-img">
-		                                		</c:if>
-		                                		<c:if test="${pvo.photoPath != null}">
-	                                        		<img src="${pvo.photoPath}" class="wrapper-img">
-	                                        	</c:if>
-	                                            <div class="caption">식사</div>
+	                                            <div class="caption">${pListDate[2].category}</div>
 	                                        </div>
 	                                    </div>
 	                                    
 	                                    <div class="item">
 	                                        <div class="polaroid">
-	                                        	<c:if test="${pvo.photoPath == null}">
+	                                        	<c:if test="${pListDate[3].photoPath == null}">
 		                                        	<img src="/project/assets/images/bookingDetail_gray.png" class="wrapper-img">
 		                                		</c:if>
-		                                		<c:if test="${pvo.photoPath != null}">
-	                                        		<img src="${pvo.photoPath}" class="wrapper-img">
+		                                		<c:if test="${pListDate[3].photoPath != null}">
+	                                        		<img data-no="${pListDate[3].photoNo}" src="${pageContext.request.contextPath }/photo/${pListDate[3].saveName}" class="wrapper-img viewImg">
 	                                        	</c:if>
-	                                            <div class="caption">청결</div>
+	                                            <div class="caption">${pListDate[3].category}</div>
 	                                        </div>
 	                                    </div>
-	                                </div>
+	                                   
+	                                </div> 
 	                            </div>
                             </c:forEach>
                             
@@ -404,5 +407,64 @@
           <path d="M26 10.109c0 .281-.203.547-.406.75l-5.672 5.531 1.344 7.812c.016.109.016.203.016.313 0 .406-.187.781-.641.781a1.27 1.27 0 0 1-.625-.187L13 21.422l-7.016 3.687c-.203.109-.406.187-.625.187-.453 0-.656-.375-.656-.781 0-.109.016-.203.031-.313l1.344-7.812L.39 10.859c-.187-.203-.391-.469-.391-.75 0-.469.484-.656.875-.719l7.844-1.141 3.516-7.109c.141-.297.406-.641.766-.641s.625.344.766.641l3.516 7.109 7.844 1.141c.375.063.875.25.875.719z"/>
         </symbol>
     </svg>
+    
+<!-- 이미지보기 팝업(모달)창 -->
+<div class="modal fade" id="viewModal">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+				<h4 class="modal-title">이미지보기</h4>
+			</div>
+			<div class="modal-body">
+				<div class="formgroup">
+					<img id="viewModelImg" src="">
+					<!-- ajax로 처리 : 이미지출력 위치-->
+				</div>
+				<div class="formgroup">
+					<p id="viewModelContent"></p>
+				</div>
+				<input type="hidden" id="listNo" val="">
+			</div>
+		</div> <!-- /.modal-content -->
+	</div> <!-- /.modal-dialog -->
+</div> <!-- /.modal -->
+    
 </body>
+
+<script type="text/javascript">
+//이미지 눌렀을때(이미지보기)
+$(".viewImg").on("click", function() {
+	var $this = $(this);
+	var no = $this.data("no");
+	getImg(no);
+});
+
+//이미지 불러오기(이미지보기)
+function getImg(no) {
+
+	//var authUserNo = $("#btnImgUpload").data("uno");
+
+	$.ajax({
+		
+		url : "${pageContext.request.contextPath}/viewImg",
+		type : "post",
+		//contentType : "application/json",
+		data : { no : no },
+		dataType : "json",
+		success : function(pvo) {
+			$("#viewModal").modal('show');
+			$("#viewModelImg").attr("src", '${pageContext.request.contextPath}/photo/' + pvo.saveName);
+			$("#viewModelContent").html(pvo.photoTitle);
+			$("#listNo").val(pvo.photoNo);
+		},
+		error : function(XHR, status, error) {
+			console.error(status + " : " + error);
+		}
+	});
+}
+</script>
+
 </html>
