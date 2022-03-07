@@ -102,10 +102,30 @@ public class HostinfoDao {
 		return photoList;
 	}
 	
+	//결제내역
+	public BookingVo getPayment(int bookingNo) {
+		System.out.println("[HostinfoDao.getBooking()]");
+		
+		BookingVo bookingVo = sqlSession.selectOne("hostinfo.getPayment", bookingNo);
+		
+		return bookingVo;
+	}
+	
 	//예약하기
 	public void bookinginsert(BookingVo bookingVo) {
 		System.out.println("[HostinfoDao.bookinginsert()]");
 		
 		sqlSession.insert("hostinfo.bookingisert", bookingVo);
+	}
+	
+	//상태값 변경
+	public int setStatus(BookingVo bookingVo) {
+		System.out.println("[HostinfoDao.setStatus()]");
+		
+		int count = sqlSession.update("hostinfo.setStatus", bookingVo);
+		
+		System.out.println("["+count+"건이 업데이트 되었습니다.(hostinfoDao)]");
+		
+		return count;
 	}
 }

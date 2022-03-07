@@ -10,6 +10,7 @@ public class BookingVo {
 	private String checkout;
 	private int ea;
 	private int bookingDate;
+	private int totalCost;
 	private int days;
 	private String note;
 	private String status;
@@ -109,6 +110,7 @@ public class BookingVo {
 		this.adress3 = adress3;
 	}
 
+	//메소드 g/s
 	public int getBookingNo() {
 		return bookingNo;
 	}
@@ -163,6 +165,14 @@ public class BookingVo {
 
 	public void setBookingDate(int bookingDate) {
 		this.bookingDate = bookingDate;
+	}
+
+	public int getTotalCost() {
+		return totalCost;
+	}
+
+	public void setTotalCost(int totalCost) {
+		this.totalCost = totalCost;
 	}
 
 	public int getDays() {
@@ -301,15 +311,15 @@ public class BookingVo {
 		this.guestHp = guestHp;
 	}
 
+	//메소드 일반
 	@Override
 	public String toString() {
 		return "BookingVo [bookingNo=" + bookingNo + ", hostNo=" + hostNo + ", usersNo=" + usersNo + ", checkin="
-				+ checkin + ", checkout=" + checkout + ", ea=" + ea + ", bookingDate=" + bookingDate + ", days=" + days
-				+ ", note=" + note + ", status=" + status + ", review=" + review + ", reviewDate=" + reviewDate
-				+ ", clean=" + clean + ", food=" + food + ", play=" + play + ", work=" + work + ", communication="
-				+ communication + ", hostName=" + hostName + ", hostHp=" + hostHp + ", adress1=" + adress1
-				+ ", adress2=" + adress2 + ", adress3=" + adress3 + ", guestName=" + guestName + ", guestHp=" + guestHp
-				+ "]";
+				+ checkin + ", checkout=" + checkout + ", ea=" + ea + ", bookingDate=" + bookingDate + ", totalCost="
+				+ totalCost + ", days=" + days + ", note=" + note + ", status=" + status + ", review=" + review
+				+ ", reviewDate=" + reviewDate + ", clean=" + clean + ", food=" + food + ", play=" + play + ", work="
+				+ work + ", communication=" + communication + ", hostName=" + hostName + ", hostHp=" + hostHp
+				+ ", adress1=" + adress1 + ", adress2=" + adress2 + ", adress3=" + adress3 + ", guestName=" + guestName
+				+ ", guestHp=" + guestHp + "]";
 	}
-
 }

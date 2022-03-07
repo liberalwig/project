@@ -5,7 +5,7 @@
 
 .close {margin: 10px;}
 
-#header{
+#modal-header{
   text-align: center;
   margin: 40px 0px 20px 0px;
 }
@@ -65,39 +65,18 @@
   transform: scale(1.5);
 }
 
-
-/*finish1
-#checked {
-  width: 100px;
-  height: 100px;
-  margin-left: 130px;
+#modal-header {
+  margin: 20px 0px 10px 0px;
 }
-
-h2 {text-align: center;}
-
-.sm{
-  font-size: 12px;
-  color: #6e6e6e;
-  padding: 10px 0px 10px 0px;
-  text-align: center;
-}
-
-#footer1 {
-  margin: 0px 210px 0px 0px;
-}
-*/
-
-/*finish*/
-#header {
-  margin: 20px 0px 50px 0px;
-  border-bottom: 1px solid #6e6e6e;
+#modal-header h3 {
+  padding: 0px 0px 0px 40px;
 }
 
 .bi-check2-circle{
   font-size: 30px;
 }
 
-#header img {
+#modal-header img {
   width: 70px;
   height: 35px;
 }
@@ -111,11 +90,11 @@ h2 {text-align: center;}
 }
 
 #re {
-  width: 190px;
+  width: 150px;
   height: 100px;
 }
 
-.modal-body h4 {margin: 0px 0px 30px 0px;}
+.modal-body h4 {margin: 0px 0px 15px 0px;}
 .inform{margin: 20px 0px 20px 0px;}
 
 /*스크롤*/

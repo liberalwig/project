@@ -110,8 +110,27 @@ public class HostinfoService {
 		
 		//예약테이블 인서트
 		hostinfoDao.bookinginsert(bookingVo);
+	}
+	
+	//결제정보
+	public BookingVo getPaymentForm(int bookingNo) {
+		System.out.println("[HostinfoService.bookinginsert()]");
 		
-		//포토테이블 인서트(일수만큼)
+		//결제정보 가져오기
+		BookingVo bookingVo = hostinfoDao.getPayment(bookingNo);
+		bookingVo.setTotalCost((bookingVo.getBookingDate() * bookingVo.getDays() * bookingVo.getEa()));
+		
+		return bookingVo;
+	}
+	
+	//결제이후 상태 변경
+	public int setPayment(BookingVo bookingVo) {
+		System.out.println("[HostinfoService.setPayment()]");
+		
+		bookingVo.setStatus("예약완료");
+		int count = hostinfoDao.setStatus(bookingVo);
+		
+		return count;
 	}
 	
 }

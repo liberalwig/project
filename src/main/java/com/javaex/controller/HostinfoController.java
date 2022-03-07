@@ -59,8 +59,8 @@ public class HostinfoController {
 	
 	//예약페이지
 	@RequestMapping(value = "/booking", method = { RequestMethod.GET, RequestMethod.POST })
-	public String bookingForm(@RequestParam("hostNo") int hostNo, Model model) {
-		System.out.println("[hostinfoController.bookingForm()]");
+	public String bookinginsertForm(@RequestParam("hostNo") int hostNo, Model model) {
+		System.out.println("[hostinfoController.bookinginsertForm()]");
 		
 		HostVo hostVo = hostinfoService.getHost(hostNo);
 		
@@ -79,5 +79,31 @@ public class HostinfoController {
 		hostinfoService.bookinginsert(bookingVo);
 		
 		System.out.println(bookingVo);
+	}
+	
+	//결제완료 페이지
+	@RequestMapping(value = "/payment/{bookingNo}", method = { RequestMethod.GET, RequestMethod.POST })
+	public String paymentForm(@PathVariable("bookingNo") int bookingNo, Model model) {
+		System.out.println("[hostinfoController.paymentForm()]");
+		
+		//예약정보 가져오기
+		BookingVo bookingVo = hostinfoService.getPaymentForm(bookingNo);
+		HostVo hostVo = hostinfoService.getHost(bookingVo.getHostNo());
+		
+		model.addAttribute("bookingVo", bookingVo);
+		model.addAttribute("hostVo", hostVo);
+		
+		return "/han/payment";
+	}
+	
+	//결제
+	@ResponseBody
+	@RequestMapping(value = "/payment", method = { RequestMethod.GET, RequestMethod.POST })
+	public int payment(@ModelAttribute BookingVo bookingVo) {
+		System.out.println("[hostinfoController.payment()]");
+		
+		int count = hostinfoService.setPayment(bookingVo);
+		
+		return count;
 	}
 }

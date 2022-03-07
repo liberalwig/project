@@ -10,9 +10,11 @@
 <link href="${pageContext.request.contextPath}/assets/css/booking2.css?after" rel="stylesheet" type="text/css"/>
 <link href="${pageContext.request.contextPath}/assets/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css">
 <link href="${pageContext.request.contextPath}/assets/bootstrap/css/bootstrap-datepiker.css" rel="stylesheet" type="text/css">
+<link href="${pageContext.request.contextPath}/assets/css/finishR.css" rel="stylesheet" type="text/css">
 
 <!--자바스크립트-->
 <script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/jquery-1.12.4.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/assets/bootstrap/js/bootstrap.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/bootstrap-datepiker.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/bootstrap-datepiker.ko.min.js"></script>
 
@@ -22,7 +24,6 @@
 	<c:import url="/WEB-INF/view/includes/header.jsp"></c:import>
     <div id="wrap">
         <div id="container">
-        
             <div id="booking" class="col-xs-7 left info">
                 <div class="row">
                     <h2>예약신청</h2>                    
@@ -31,8 +32,14 @@
                     <div class="Q">
                         <h4>1단계. 날짜 선택하기</h4>
                         <img src="${pageContext.request.contextPath}/assets/images/booking_calendar.png" width="430px" style="margin-left:150px">
-                        <input type="text" id="datePicker1" class="form-control" value="2022-00-00">
-                        <input type="text" id="datePicker2" class="form-control" value="2022-00-00">
+                        <div style="text-align:center;">
+	                        <span>체크인: </span>
+	                        <input type="text" id="datePicker1" class="form-control" value="2022-00-00" style="display:inline-block; width:150px;">
+	                    </div>
+	                    <div style="text-align:center;">
+	                        <span>체크아웃: </span>
+	                        <input type="text" id="datePicker2" class="form-control" value="2022-00-00" style="display:inline-block; width:150px;">
+                        </div>
                     </div>
                 </div>
                     <div class="Q">
@@ -79,9 +86,9 @@
                             <h4>총 금액</h4>
                         </div>
                         <div id="check2" class="col-xs-3">
-                            <h4 id="bookingDate">${requestScope.hostVo.hostcost}</h4><span style="display=inline;">원/1박</span>
-                            <h4 id="ea">1</h4><span style="display=inline-block;">마리</span>
-                            <h4 id="cost">${requestScope.hostVo.hostcost}원</h4>
+                            <h4><span id="bookingDate">${requestScope.hostVo.hostcost}</span><span>원/1박</span></h4>
+                            <h4><span id="ea">1</span><span>마리</span></h4>
+                            <h4><span id="cost">${requestScope.hostVo.hostcost}원</span></h4>
                         </div>
                     </div>
                     <div class="row">
@@ -95,6 +102,27 @@
             </div>   
         </div>
     </div>
+    	<!-- 결제완료 모달창 -->
+	<div class="modal fade" id="bookingOk">
+      <div class="modal-dialog">
+        <div class="modal-content">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <div class="modal-body">
+	            <img id="checked"  src="${pageContext.request.contextPath}/assets/images/finishR_check2-circle.svg">
+	            <h2>예약이 완료 되었습니다.</h2>
+	            <p class="sm">상세 내역은 마이페이지에서 확인 가능합니다.</p>
+            </div>
+          <div class="modal-footer">
+            <div id="footer1">
+              <button class="w-btn-outline w-btn-blue-outline" type="button">
+                확인
+              </button>
+            </div>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog-->
+	</div>
+	<!-- /.modal -->
 </body>
 <script>
 //예약완료 버튼 클릭
@@ -118,8 +146,8 @@ $("#btn2").on("click", function(){
 		type : "post",
 		data : bookingVo,// 자바스크립트 객체를 제이슨으로 바꿔주는 함수
 		
-		success : function() {
-
+		success : function(count) {
+			$('#bookingOk').modal('show');
 		},
 		error : function(XHR, status, error) {
 			console.error(status + " : " + error);
