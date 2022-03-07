@@ -123,4 +123,12 @@
 			where  hostNo = #{hostNo}
 		]]>
 	</select>
+	
+	<insert id="bookinginsert" parameterType="BookingVo">
+		<![CDATA[
+			insert into booking
+			values(seq_booking_no.nextval, #{hostNo}, #{usersNo}, #{checkin}, #{checkout}, #{ea}, #{bookingDate}, #{days}, #{note}, '승인대기', null, null, null, null, null, null, null)
+		]]>
+	</insert>
+	
 </mapper>

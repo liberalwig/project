@@ -1,11 +1,15 @@
 package com.javaex.service;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.javaex.dao.HostinfoDao;
+import com.javaex.vo.BookingVo;
 import com.javaex.vo.HostVo;
 import com.javaex.vo.KeywordVo;
 import com.javaex.vo.PhotoVo;
@@ -76,4 +80,38 @@ public class HostinfoService {
 		
 		return photoList;
 	}
+	
+	//일수 계산하기
+	public void checkdays(BookingVo bookingVo) {
+		System.out.println("[HostinfoService.checkdays()]");
+		
+		//일수 계산하기
+		try {
+			Date format1 = new SimpleDateFormat("yyyy-MM-dd").parse(bookingVo.getCheckout());
+		    Date format2 = new SimpleDateFormat("yyyy-MM-dd").parse(bookingVo.getCheckin());
+		    long diffSec = (format1.getTime() - format2.getTime()) / 1000;
+		    long diffDays = (diffSec / (24*60*60)) + 1; //일자수
+		    
+		    System.out.println(bookingVo.getCheckin());
+		    System.out.println(bookingVo.getCheckout());
+		    System.out.println(diffDays + "일 차이");
+		    
+		    bookingVo.setDays((int)diffDays);
+		    
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+	    
+	}
+	
+	//예약하기
+	public void bookinginsert(BookingVo bookingVo) {
+		System.out.println("[HostinfoService.bookinginsert()]");
+		
+		//예약테이블 인서트
+		hostinfoDao.bookinginsert(bookingVo);
+		
+		//포토테이블 인서트(일수만큼)
+	}
+	
 }

@@ -5,14 +5,16 @@
 <head>
 <meta charset="utf-8"/>
 <title>예약하기</title>
+
 <!--CSS-->
 <link href="${pageContext.request.contextPath}/assets/css/booking2.css?after" rel="stylesheet" type="text/css"/>
 <link href="${pageContext.request.contextPath}/assets/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css">
+<link href="${pageContext.request.contextPath}/assets/bootstrap/css/bootstrap-datepiker.css" rel="stylesheet" type="text/css">
 
 <!--자바스크립트-->
 <script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/jquery-1.12.4.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/bootstrap.js"></script>
-
+<script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/bootstrap-datepiker.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/bootstrap-datepiker.ko.min.js"></script>
 
 </head>
 
@@ -29,19 +31,21 @@
                     <div class="Q">
                         <h4>1단계. 날짜 선택하기</h4>
                         <img src="${pageContext.request.contextPath}/assets/images/booking_calendar.png" width="430px" style="margin-left:150px">
+                        <input type="text" id="datePicker1" class="form-control" value="2022-00-00">
+                        <input type="text" id="datePicker2" class="form-control" value="2022-00-00">
                     </div>
                 </div>
                     <div class="Q">
                         <h4>2단계. 반려견 마릿수 선택하기</h4>
                         <div class="btn-group btn-group-justified" role="group" aria-label="...">
                             <div class="btn-group" role="group">
-                            <button type="button" data-ea="1" class="btn btn-default active">1마리</button>
+                            <button type="button" data-ea="1" class="btn btn-default active" value="1">1마리</button>
                             </div>
                             <div class="btn-group" role="group">
-                            <button type="button" data-ea="2" class="btn btn-default">2마리</button>
+                            <button type="button" data-ea="2" class="btn btn-default" value="2">2마리</button>
                             </div>
                             <div class="btn-group" role="group">
-                            <button type="button" data-ea="3" class="btn btn-default">3마리</button>
+                            <button type="button" data-ea="3" class="btn btn-default" value="3">3마리</button>
                             </div>
                         </div>
                     </div>
@@ -56,7 +60,7 @@
                                 ${requestScope.hostVo.asking}
                             </div>
                           </div>
-                        <textarea class="form-control" rows="3"></textarea>
+                        <textarea id="note" class="form-control" rows="3"></textarea>
                     </div>
                 </div>
             <div id="hostprofile" class="col-xs-4">
@@ -75,8 +79,8 @@
                             <h4>총 금액</h4>
                         </div>
                         <div id="check2" class="col-xs-3">
-                            <h4>${requestScope.hostVo.hostcost}원</h4>
-                            <h4 id="ea">1마리</h4>
+                            <h4 id="bookingDate">${requestScope.hostVo.hostcost}</h4><span style="display=inline;">원/1박</span>
+                            <h4 id="ea">1</h4><span style="display=inline-block;">마리</span>
                             <h4 id="cost">${requestScope.hostVo.hostcost}원</h4>
                         </div>
                     </div>
@@ -84,6 +88,8 @@
                         <br>
                         <p><span class="label label-danger">!</span>&nbsp;펫시터가 요청을 수락하면 결제가 이루어집니다.</p>
                         <button id="btn2" type="button" class="btn btn-primary">예약 요청</button>
+                        <input type="text" id="hostNo" value="1">
+                        <input type="text" id="usersNo" value="2">
                     </div>
                 </div>       
             </div>   
@@ -91,39 +97,103 @@
     </div>
 </body>
 <script>
-$(function () {
-	  $('[data-toggle="tooltip"]').tooltip()
-	})
-	//2단계 마릿수 클릭
-	$(".btn-group.btn-group button").on("click", function(){
-		var $this = $(this);
-		$(".btn-group.btn-group button").removeClass("active");
-		$(this).addClass("active");
-		var ea = $this.data('ea');
-		$("#ea").text(ea + "마리");
-		var cost = ${requestScope.hostVo.hostcost} * ea
-		$("#cost").text(cost + "원");
-	});
+//예약완료 버튼 클릭
+$("#btn2").on("click", function(){
+	console.log("예약완료")
+	var bookingVo = {
+		hostNo : $("#hostNo").val(),
+		usersNo : $("#usersNo").val(),
+		checkin : $("#datePicker1").val(),
+		checkout : $("#datePicker2").val(),
+		ea : $("#ea").text(),
+		bookingDate : $("#bookingDate").text(),
+		note : $("#note").val()
+	};
+	console.log(bookingVo);
 	
-	//예약완료 버튼 클릭
-	$("#btn2").on("click", function(){
-		console.log("예약완료")
+    //요청
+	$.ajax({
+		//요청할때
+		url : "${pageContext.request.contextPath}/host2/bookinginsert",    
+		type : "post",
+		data : bookingVo,// 자바스크립트 객체를 제이슨으로 바꿔주는 함수
 		
-		//요청
-		$.ajax({
-			//요청할때
-			url : "${pageContext.request.contextPath}/host2/booking",    
-			type : "post",
-			data : photoVo,// 자바스크립트 객체를 제이슨으로 바꿔주는 함수
-			
-			success : function(photoList) {
-				console.log(photoList);
-				$("#imgbox2").html('<img src="${pageContext.request.contextPath}/assets/images/hostinfo_dog1.png">');
-			},
-			error : function(XHR, status, error) {
-				console.error(status + " : " + error);
-			}
-		});
+		success : function() {
+
+		},
+		error : function(XHR, status, error) {
+			console.error(status + " : " + error);
+		}
 	});
+});
+
+//달력
+$(function() {	
+    $('#datePicker1').datepicker({
+        format: "yyyy-mm-dd",	//데이터 포맷 형식(yyyy : 년 mm : 월 dd : 일 )
+        startDate: '-10d',	//달력에서 선택 할 수 있는 가장 빠른 날짜. 이전으로는 선택 불가능 ( d : 일 m : 달 y : 년 w : 주)
+        endDate: '+10d',	//달력에서 선택 할 수 있는 가장 느린 날짜. 이후로 선택 불가 ( d : 일 m : 달 y : 년 w : 주)
+        autoclose : true,	//사용자가 날짜를 클릭하면 자동 캘린더가 닫히는 옵션
+        calendarWeeks : false, //캘린더 옆에 몇 주차인지 보여주는 옵션 기본값 false 보여주려면 true
+        clearBtn : false, //날짜 선택한 값 초기화 해주는 버튼 보여주는 옵션 기본값 false 보여주려면 true
+        datesDisabled : ['2019-06-24','2019-06-26'],//선택 불가능한 일 설정 하는 배열 위에 있는 format 과 형식이 같아야함.
+        daysOfWeekDisabled : [0,6],	//선택 불가능한 요일 설정 0 : 일요일 ~ 6 : 토요일
+        daysOfWeekHighlighted : [3], //강조 되어야 하는 요일 설정
+        disableTouchKeyboard : false,	//모바일에서 플러그인 작동 여부 기본값 false 가 작동 true가 작동 안함.
+        immediateUpdates: false,	//사용자가 보는 화면으로 바로바로 날짜를 변경할지 여부 기본값 :false 
+        multidate : false, //여러 날짜 선택할 수 있게 하는 옵션 기본값 :false 
+        multidateSeparator :",", //여러 날짜를 선택했을 때 사이에 나타나는 글짜 2019-05-01,2019-06-01
+        templates : {
+            leftArrow: '&laquo;',
+            rightArrow: '&raquo;'
+        }, //다음달 이전달로 넘어가는 화살표 모양 커스텀 마이징 
+        showWeekDays : true ,// 위에 요일 보여주는 옵션 기본값 : true
+        title: "체크인",	//캘린더 상단에 보여주는 타이틀
+        todayHighlight : true ,	//오늘 날짜에 하이라이팅 기능 기본값 :false 
+        toggleActive : true,	//이미 선택된 날짜 선택하면 기본값 : false인경우 그대로 유지 true인 경우 날짜 삭제
+        weekStart : 0 ,//달력 시작 요일 선택하는 것 기본값은 0인 일요일 
+        language : "ko"	//달력의 언어 선택, 그에 맞는 js로 교체해줘야한다.
+        
+    });//datepicker end
+});//ready end
+$(function() {	
+    $('#datePicker2').datepicker({
+        format: "yyyy-mm-dd",	//데이터 포맷 형식(yyyy : 년 mm : 월 dd : 일 )
+        startDate: '-10d',	//달력에서 선택 할 수 있는 가장 빠른 날짜. 이전으로는 선택 불가능 ( d : 일 m : 달 y : 년 w : 주)
+        endDate: '+10d',	//달력에서 선택 할 수 있는 가장 느린 날짜. 이후로 선택 불가 ( d : 일 m : 달 y : 년 w : 주)
+        autoclose : true,	//사용자가 날짜를 클릭하면 자동 캘린더가 닫히는 옵션
+        calendarWeeks : false, //캘린더 옆에 몇 주차인지 보여주는 옵션 기본값 false 보여주려면 true
+        clearBtn : false, //날짜 선택한 값 초기화 해주는 버튼 보여주는 옵션 기본값 false 보여주려면 true
+        datesDisabled : ['2019-06-24','2019-06-26'],//선택 불가능한 일 설정 하는 배열 위에 있는 format 과 형식이 같아야함.
+        daysOfWeekDisabled : [0,6],	//선택 불가능한 요일 설정 0 : 일요일 ~ 6 : 토요일
+        daysOfWeekHighlighted : [3], //강조 되어야 하는 요일 설정
+        disableTouchKeyboard : false,	//모바일에서 플러그인 작동 여부 기본값 false 가 작동 true가 작동 안함.
+        immediateUpdates: false,	//사용자가 보는 화면으로 바로바로 날짜를 변경할지 여부 기본값 :false 
+        multidate : false, //여러 날짜 선택할 수 있게 하는 옵션 기본값 :false 
+        multidateSeparator :",", //여러 날짜를 선택했을 때 사이에 나타나는 글짜 2019-05-01,2019-06-01
+        templates : {
+            leftArrow: '&laquo;',
+            rightArrow: '&raquo;'
+        }, //다음달 이전달로 넘어가는 화살표 모양 커스텀 마이징 
+        showWeekDays : true ,// 위에 요일 보여주는 옵션 기본값 : true
+        title: "체크아웃",	//캘린더 상단에 보여주는 타이틀
+        todayHighlight : true ,	//오늘 날짜에 하이라이팅 기능 기본값 :false 
+        toggleActive : true,	//이미 선택된 날짜 선택하면 기본값 : false인경우 그대로 유지 true인 경우 날짜 삭제
+        weekStart : 0 ,//달력 시작 요일 선택하는 것 기본값은 0인 일요일 
+        language : "ko"	//달력의 언어 선택, 그에 맞는 js로 교체해줘야한다.
+        
+    });//datepicker end
+});//ready end
+
+//마릿수
+$(".btn-group.btn-group button").on("click", function(){
+	var $this = $(this);
+	$(".btn-group.btn-group button").removeClass("active");
+	$(this).addClass("active");
+	var ea = $this.data('ea');
+	$("#ea").text(ea + "마리");
+	var cost = ${requestScope.hostVo.hostcost} * ea
+	$("#cost").text(cost + "원");
+});
 </script>
 </html>

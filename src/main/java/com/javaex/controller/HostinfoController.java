@@ -71,9 +71,12 @@ public class HostinfoController {
 	
 	//예약처리
 	@ResponseBody
-	@RequestMapping("/booking/insert")
-	public void booking(@ModelAttribute BookingVo bookingVo) {
-		System.out.println("[hostinfoController.booking()]");
+	@RequestMapping(value = "/bookinginsert", method = { RequestMethod.GET, RequestMethod.POST })
+	public void bookinginsert(@ModelAttribute BookingVo bookingVo) {
+		System.out.println("[hostinfoController.bookinginsert()]");
+		
+		hostinfoService.checkdays(bookingVo);//일수 계산
+		hostinfoService.bookinginsert(bookingVo);
 		
 		System.out.println(bookingVo);
 	}

@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.javaex.vo.BookingVo;
 import com.javaex.vo.HostVo;
 import com.javaex.vo.KeywordVo;
 import com.javaex.vo.PhotoVo;
@@ -99,5 +100,12 @@ public class HostinfoDao {
 		List<PhotoVo> photoList = sqlSession.selectList("hostinfo.getHostPhotoList", hostNo);
 		
 		return photoList;
+	}
+	
+	//예약하기
+	public void bookinginsert(BookingVo bookingVo) {
+		System.out.println("[HostinfoDao.bookinginsert()]");
+		
+		sqlSession.insert("hostinfo.bookingisert", bookingVo);
 	}
 }
