@@ -166,7 +166,7 @@ display: none;
 }
 
 /*질문03,질문04.소개박스*/
-#intro {
+#input-intro {
   width : 700px;
   height : 100px;
   margin: 0 0 0 140px;
@@ -176,6 +176,19 @@ display: none;
   display : block;
   resize: none;
 }
+
+/*질문04.소개박스*/
+#intput-question {
+  width : 700px;
+  height : 100px;
+  margin: 0 0 0 140px;
+  border : 1px solid gray;
+  border-radius : 20px;
+  text-align: left;
+  display : block;
+  resize: none;
+}
+
 
 /*질문05번.주소*/
 #address {
