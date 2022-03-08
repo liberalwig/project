@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.javaex.service.BookingService;
+import com.javaex.vo.AbleVo;
 import com.javaex.vo.BookingVo;
 import com.javaex.vo.PhotoVo;
 
@@ -21,15 +22,52 @@ public class BookingController {
 	@Autowired
 	BookingService bookingService;
 	
-	//달력
+	//달력 이벤트
 	@ResponseBody
 	@RequestMapping("/calendar")
 	public List<BookingVo> date(@RequestParam int hostNo) {
 		
 		//예약 + 게스트 리스트 가져오기
-		List<BookingVo> bList = bookingService.bookingBeforeHost(hostNo);
+		List<BookingVo> bList = bookingService.bookingEndHost(hostNo);
 		
 		return bList;
+	}
+	
+	//달력 이벤트(가능날짜)
+	@ResponseBody
+	@RequestMapping("/calendarAble")
+	public List<AbleVo> dateAble(@RequestParam int hostNo) {
+		
+		List<AbleVo> aList = bookingService.ableList(hostNo);
+
+		
+		return aList;
+	}
+	
+	//달력
+	//예약리스트(호스트)에서 가능날짜추가
+	@RequestMapping("/bookingEndHostDate")
+	public String bookingEndHostDate(@RequestParam int hostNo, @RequestParam String date) {
+		System.out.println("BookingController > bookingEndHost");
+
+		String[] array = date.split(" ");
+		date = array[0].replace("-", "");
+		
+		List<AbleVo> aList = bookingService.ableList(hostNo);
+		String result = null;
+		
+		for(int i=0; i<aList.size(); i++) {
+			String date2 = aList.get(i).getAbleDate();
+			if(date.equals(date2)) {
+				result = "중복";
+			}
+		}
+		
+		if(result != "중복") {
+			bookingService.ableInsert(hostNo, date);
+		}
+		
+		return "redirect:/bookingEndHost?hostNo="+hostNo;
 	}
 	
 	
@@ -59,7 +97,7 @@ public class BookingController {
 		return "yu/reservation-host";
 	}
 	
-	//결제대기화면(호스트)띄우기
+	//결제대기화면(호스트)띄우기, 특정일자만
 	@RequestMapping("/bookingBeforeHostDate")
 	public String bookingBeforeHost(Model model, @RequestParam int hostNo, @RequestParam String date) {
 		System.out.println("결제대기날짜입력(호스트)");
@@ -80,7 +118,6 @@ public class BookingController {
 		
 	}
 	
-	
 	//예약상세페이지 띄우기(게스트)
 	@RequestMapping("/bookingDetailGuest")
 	public String bookingDetailGuest(Model model, @RequestParam int bookingNo) {
@@ -89,7 +126,7 @@ public class BookingController {
 		//예약 + 호스트 가져오기
 		BookingVo bvo = bookingService.bookingDetailGuest(bookingNo);
 		model.addAttribute("bvo", bvo);
-		
+
 		List<List<PhotoVo>> pList = new ArrayList<List<PhotoVo>>();
 
 		for(int i=0; (i+1)<=bvo.getDays(); i++) {
@@ -129,13 +166,18 @@ public class BookingController {
 		return "yu/bookingDetail-host";
 	}
 	
+	//인증사진 업로드
 	@RequestMapping("/photoInsert")
 	public String photoInsert(Model model, @ModelAttribute PhotoVo pvo) {
 		System.out.println("사진업로드");
 		
-		String date = pvo.getUploadDate();
+		/*String date = pvo.getUploadDate();
 		String[] array = date.split(" ");
-		pvo.setUploadDate(array[0]);
+		pvo.setUploadDate(array[0]);*/
+		
+		String date = pvo.getPhotoDate();
+		date = date.replace(",", "");
+		pvo.setPhotoDate(date);
 
 		System.out.println(pvo);
 		bookingService.photoInsert(pvo);
@@ -143,6 +185,7 @@ public class BookingController {
 		return "redirect:/bookingDetailHost?bookingNo="+pvo.getBookingNo();
 	}
 	
+	//이미지 클릭시 상세보기
 	@ResponseBody
 	@RequestMapping("/viewImg")
 	public PhotoVo photoInsert(@RequestParam("no") int photoNo) {
@@ -152,6 +195,21 @@ public class BookingController {
 
 		return pvo;
 	}
+	
+	//예약리스트(호스트)
+	@RequestMapping("/bookingEndHost")
+	public String bookingEndHost(Model model, @RequestParam int hostNo) {
+		System.out.println("BookingController > bookingEndHost");
+		
+		//예약 + 게스트 리스트 가져오기
+		List<BookingVo> BookingList = bookingService.bookingEndHost(hostNo);
+		
+		model.addAttribute("bList", BookingList);
+
+		return "yu/reservation-end-host";
+	}
+	
+	
 	
 
 }

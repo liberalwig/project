@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.javaex.dao.BookingDao;
+import com.javaex.vo.AbleVo;
 import com.javaex.vo.BookingVo;
 import com.javaex.vo.PhotoVo;
 
@@ -98,6 +99,28 @@ public class BookingService {
 	public PhotoVo photoView(int photoNo) {
 		
 		return bookingDao.photoView(photoNo);
+	}
+	
+	//예약완료리스트(호스트)
+	public List<BookingVo> bookingEndHost(int hostNo) {
+		
+		return bookingDao.bookingEndHost(hostNo);
+	}
+	
+	//가능날짜추가
+	public void ableInsert(int hostNo, String date) {
+		
+		AbleVo avo = new AbleVo();
+		avo.setHostNo(hostNo);
+		avo.setAbleDate(date);
+		
+		bookingDao.ableInsert(avo);
+	}
+	
+	//가능날짜리스트
+	public List<AbleVo> ableList(int hostNo) {
+		
+		return bookingDao.ableList(hostNo);
 	}
 }
 

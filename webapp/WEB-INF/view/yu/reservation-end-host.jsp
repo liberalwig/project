@@ -12,8 +12,8 @@
 <link href="/project/assets/css/fullcalendar.css" rel="stylesheet" type="text/css">
 </head>
 
-<script type="text/javascript" src="/project/assets/bootstrap/js/bootstrap.js"></script>
 <script type="text/javascript" src="/project/assets/js/jquery-1.12.4.js"></script>
+<script type="text/javascript" src="/project/assets/bootstrap/js/bootstrap.js"></script>
 <script type="text/javascript" src="/project/assets/js/fullcalendar.js"></script>
 <script type="text/javascript" src="/project/assets/js/locales-all.js"></script>
 
@@ -62,15 +62,24 @@
 								<div id="r-impossible2">차단됨</div>
 							</div>
 						</div>
-						<button class="allBtn">예약모두닫기</button>
-						<button class="allBtn">예약모두열기</button>
+						<!-- <button class="allBtn">예약모두닫기</button>
+						<button class="allBtn">예약모두열기</button> -->
 
 					</div>
 					<div id="r-list">
 
                         <button class="btn btn-default hover-boot list-btn" type="submit">메세지보내기</button>
 						<table class="table table-hover">
-                            
+                            <colgroup>
+								<col style="width: 5%;">
+								<col style="width: 10%;">
+								<col style="width: 10%;">
+								<col style="width: 10%;">
+								<col style="width: 25%;">
+								<col style="width: 15%;">
+								<col style="width: 15%;">
+								<col style="width: 10%;">
+							</colgroup>
 							<thead id="guest-table">
 								<tr>
                                     <th></th>
@@ -85,54 +94,29 @@
 							</thead>
 
 							<tbody>
-								<tr>
-                                    <td><input type="radio" name="list-radio"></td>
-									<td id="no">11111</td>
-									<td><img src="/project/assets/images/reservation-dog.png"></td>
-									<td>개장수</td>
-									<td>22/05/01 ~ 22/05/03
-									</td>
-									<td>₩ 20,000</td>
-									<td>010-1111-1111</td>
-									<td><div class="btn-re-gradient yellow mini">예약완료</div></td>
-								</tr>
-								<tr>
-                                    <td><input type="radio" name="list-radio"></td>
-									<td id="no">22222</td>
-									<td><img src="/project/assets/images/reservation-dog.png"></td>
-									<td>강형욱</td>
-									<td>22/05/0 ~ 22/05/03
-									</td>
-									<td>₩ 20,000</td>
-									<td>010-2222-2222</td>
-									<td><div class="btn-re-gradient orange mini">펫시팅중</div></td>
-								</tr>
-								<tr>
-                                    <td><input type="radio" name="list-radio"></td>
-									<td id="no">33333</td>
-									<td><img src="/project/assets/images/reservation-dog.png"></td>
-									<td>이경규</td>
-									<td>22/05/01 ~ 22/05/03
-									</td>
-									<td>₩ 20,000</td>
-									<td>010-3333-3333</td>
-									<td>
-										<div class="btn-re-gradient blue mini">&nbsp&nbsp&nbsp완료&nbsp&nbsp&nbsp</div>
-									</td>
-								</tr>
-								<tr>
-                                    <td><input type="radio" name="list-radio"></td>
-									<td id="no">33333</td>
-									<td><img src="/project/assets/images/reservation-dog.png"></td>
-									<td>이경규</td>
-									<td>22/05/01 ~ 22/05/03
-									</td>
-									<td>₩ 20,000</td>
-									<td>010-4444-4444</td>
-									<td>
-										<div class="btn-re-gradient blue mini">&nbsp&nbsp&nbsp완료&nbsp&nbsp&nbsp</div>
-									</td>
-								</tr>
+								<c:forEach items="${bList}" var="BookingVo">
+									<tr onClick="location.href='${pageContext.request.contextPath}/bookingDetailHost?bookingNo=${BookingVo.bookingNo}'">
+	                                    <td><input type="radio" name="list-radio"></td>
+										<td id="no" data-bookingno="${BookingVo.bookingNo}">${BookingVo.bookingNo}</td>
+										<td><img src="/project/assets/images/reservation-dog.png"></td>
+										<td>${BookingVo.guestName}</td>
+										<td>${BookingVo.checkin} ~ ${BookingVo.checkout}</td>
+										<td>₩ ${BookingVo.bookingDate * BookingVo.days * BookingVo.ea}</td>
+										<td>${BookingVo.guestHp}</td>
+										<c:choose>
+											<c:when test="${BookingVo.status == '예약완료'}">
+												<td><div class="btn-re-gradient yellow mini">예약완료</div></td>
+											</c:when>
+											<c:when test="${BookingVo.status == '펫시팅중'}">
+												<td><div class="btn-re-gradient orange mini">펫시팅중</div></td>
+											</c:when>
+											<c:when test="${BookingVo.status == '시팅완료'}">
+												<td><div class="btn-re-gradient blue mini">시팅완료</div></td>
+											</c:when>
+										</c:choose>
+									</tr>
+									
+								</c:forEach>
 							</tbody>
 						</table>
                     </div>
@@ -144,21 +128,11 @@
 </body>
 
 <script>
-	/* aside */
-	// html dom 이 다 로딩된 후 실행된다.
-	$(document).ready(function() {
-		// memu 클래스 바로 하위에 있는 a 태그를 클릭했을때
-		$(".menu").click(function() {
-			// 현재 클릭한 태그가 a 이기 때문에
-			// a 옆의 태그중 ul 태그에 hide 클래스 태그를 넣던지 빼던지 한다.
-			$(this).next("ul").toggleClass("hide");
-		});
-	});
-
 	/* 달력 */
 	document.addEventListener('DOMContentLoaded', function() {
 
 		var calendarEl = document.getElementById('l-calendar');
+		var bookingNo = document.getElementById('no').getAttribute('data-bookingno') ;
 		var calendar = new FullCalendar.Calendar(calendarEl, {
 
 			initialView : 'dayGridMonth', // 월 달력
@@ -170,43 +144,82 @@
 				right : 'next today,dayGridMonth'
 			},
 
-			editable : true, // 드래그 수정 가능
+			editable : false, // 드래그 수정 불가능
 			locale : 'ko', // 한국어 설정(lib/locales/ko.js)
 
 			// 요일 클릭 이벤트
 			dateClick : function() {
-				alert('요일 클릭!');
 			},
 
 			// 일정 클릭 이벤트
-			eventClick : function() {
-				alert('일정 클릭!');
+			eventClick : function(info) {
+				if(info.event.extendedProps.status == 'booking'){
+					window.location.href = '${pageContext.request.contextPath}/bookingDetailHost?bookingNo='+bookingNo;
+				}
+				
 			},
+			
+			//날짜 클릭 이벤트
+		  	dateClick: function(info) {
+		  		if(info.event == null){
+		  			window.location.href = '/project/bookingEndHostDate?hostNo=${param.hostNo}&date='+info.dateStr;
+		  		}			
+		  	},
+
+			events: [
+				// ajax 처리로 데이터를 로딩 시킨다. 
+				$.ajax({ 
+					type:"get", 
+					url:"${pageContext.request.contextPath}/calendar?hostNo=${param.hostNo}", 
+					dataType : "json",
+					success: function (bList) {
+						for(var i=0; i<bList.length; i++) {
+							calendar.addEvent({
+								title: bList[i].guestName,
+								start: bList[i].checkin,
+								end: bList[i].checkout,
+								status: 'booking'
+							});
+						}
+						
+					}
+				}),
+				
+				$.ajax({ 
+					type:"get", 
+					url:"${pageContext.request.contextPath}/calendarAble?hostNo=${param.hostNo}", 
+					dataType : "json",
+					success: function (aList) {
+						for(var i=0; i<aList.length; i++) {
+							calendar.addEvent({
+								start: aList[i].ableDate,
+								end: aList[i].ableDate,
+								allDay: true,
+								status: 'done'
+							});
+						}
+						
+					}
+				})
+			],
+			
+			eventDidMount: function(info) {
+				if(info.event.extendedProps.status == 'done') {
+					info.el.style.backgroundColor = 'white';
+					info.el.style.borderColor = 'white';
+					info.el.style.height = '30px';
+				}
+			}
 
 		});
 
-		// 데이터 삽입방식
-
-		calendar.addEvent({
-			'title' : '개장수',
-			'start' : '2022-02-01'
-		});
-
-		calendar.addEvent({
-			'title' : '고객2-펌',
-			'start' : '2020-07-18T22:00'
-		});
-
-		calendar.addEvent({
-			'title' : '강형욱',
-			'start' : '2022-02-18',
-			'end' : '2022-02-23'
-		});
+		
 
 		// 렌더링
 
 		calendar.render();
 
-	});
+	});  
+
 </script>
 </html>
