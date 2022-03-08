@@ -103,6 +103,24 @@ public class HostinfoDao {
 	}
 	
 	//결제내역
+	public List<BookingVo> getCalendur(int bookingNo) {
+		System.out.println("[HostinfoDao.getCalendur()]");
+		
+		List<BookingVo> CalendurList = sqlSession.selectList("hostinfo.getCalendur", bookingNo);
+		
+		return CalendurList;
+	}
+	
+	//사진
+	public List<PhotoVo> getPhoto(PhotoVo photoVo) {
+		System.out.println("[HostinfoDao.getPhoto()]");
+		
+		List<PhotoVo> photoList = sqlSession.selectList("hostinfo.getPhoto", photoVo);
+		
+		return photoList;
+	}
+	
+	//결제내역
 	public BookingVo getPayment(int bookingNo) {
 		System.out.println("[HostinfoDao.getBooking()]");
 		

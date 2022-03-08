@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
     
-    
 <!DOCTYPE html>
 <html>
     <head>
@@ -24,14 +23,11 @@
 
         <div id="wrap">
             <div id="container" class="clearfix">  
-                <div class="col-xs-2">
-                </div> 
-            
                 <div class="col-xs-8">
                     <div class="row">
                         <div id="joinQuestion" class="row Q">
                             <div class="photo">
-                                <h4>01. 사진 업로드</h4>
+                                <h3>01. 사진 업로드</h3>
                                 <p><span class="label label-info">참고</span> 최대 8장입니다. 강아지와 찍은 다정한 사진, 강아지를 능숙하게 훈련하는 사진이라면 더 좋겠죠?</p>
                                 <div class="contents">
                                         <div class="upload-box">
@@ -53,7 +49,7 @@
                         </div>  
                    
                     <div id="joinQuestion" class="row Q">
-                        <h4>02. 키워드 선택</h4>
+                        <h3>02. 키워드 선택</h3>
                         <p>회원님에게 해당되는 키워드를 선택해주세요! (중복체크 가능)</p>
                         <table>
                             <colgroup>
@@ -129,19 +125,19 @@
                     </div>
 
                     <div id="joinQuestion" class="row Q">
-                        <h4>03. 자기소개</h4>
+                        <h3>03. 자기소개</h3>
                         <p>회원님을 소개해주세요!</p>
                         <textarea id="intro" name="contents" maxlength="200" onKeyUp="javascript:fnChkByte(this,'80')" placeholder="텍스트를 입력하세요."></textarea>
                     </div>
 
                     <div id="joinQuestion" class="row Q">
-                        <h4>04. 펫에 대해 알고싶은 내용</h4>
+                        <h3>04. 펫에 대해 알고싶은 내용</h3>
                         <p><span class="label label-info">참고</span> 질문을 적어보세요! 작성하신 내용은 회원들이 펫에 대한 설명 사항을 작성할 때 참고 할 수 있습니다!</p>
                         <textarea id="intro" maxlength="200" placeholder="텍스트를 입력하세요."></textarea>
                     </div>
 
                     <div id="joinQuestion" class="row Q">
-                        <h4>05. 펫시팅 주소</h4>
+                        <h3>05. 펫시팅 주소</h3>
                         <p>강아지를 돌볼 장소는 어디인가요? 주소를 입력해주세요!</p>
                         <div id="address">
                             <input type="text" id="sample6_postcode" placeholder="우편번호">
@@ -153,7 +149,7 @@
                     </div>
 
                     <div id="joinQuestion" class="row Q"> 
-                        <h4>06. 돌봄료 책정</h4>
+                        <h3>06. 돌봄료 책정</h3>
                         <p><span class="label label-info">참고</span> 설정하신 금액은 1박, 1마리당 가격입니다..</p>
                             <input id="cost" type="number" name="cost" placeholder="1박의 돌봄료를 입력해주세요" required class="cost" value="10000"> 원(1박/1마리당)
                     </div>

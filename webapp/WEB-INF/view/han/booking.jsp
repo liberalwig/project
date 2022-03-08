@@ -4,22 +4,24 @@
 <html>
 <head>
 <meta charset="utf-8"/>
-<title>예약하기</title>
+<title>GairBnB - 펫시팅 예약하기</title>
 
 <!--CSS-->
-<link href="${pageContext.request.contextPath}/assets/css/booking2.css?after" rel="stylesheet" type="text/css"/>
+<link href="${pageContext.request.contextPath}/assets/css/bookingForm.css?after" rel="stylesheet" type="text/css"/>
 <link href="${pageContext.request.contextPath}/assets/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css">
 <link href="${pageContext.request.contextPath}/assets/bootstrap/css/bootstrap-datepiker.css" rel="stylesheet" type="text/css">
 <link href="${pageContext.request.contextPath}/assets/css/finishR.css" rel="stylesheet" type="text/css">
+<link href="${pageContext.request.contextPath}/assets/css/fullcalendar.min.css" rel="stylesheet" type="text/css">
 
 <!--자바스크립트-->
 <script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/jquery-1.12.4.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/assets/bootstrap/js/bootstrap.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/bootstrap-datepiker.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/bootstrap-datepiker.ko.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/fullcalendar.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/locales-all.min.js"></script>
 
 </head>
-
 <body>
 	<c:import url="/WEB-INF/view/includes/header.jsp"></c:import>
     <div id="wrap">
@@ -29,19 +31,20 @@
                     <h2>예약신청</h2>                    
                 </div>
                 <div class="row">
+                   	<div id="calendar" style="width=350px; margin: 20px 80px 20px 35px;">
+						<div id="l-calendar" style="font-size=1em;"></div>						
+					</div>
                     <div class="Q">
-                        <h4>1단계. 날짜 선택하기</h4>
-                        <img src="${pageContext.request.contextPath}/assets/images/booking_calendar.png" width="430px" style="margin-left:150px">
+                        <h4>1단계. 예약날짜 선택</h4>
                         <div style="text-align:center;">
 	                        <span>체크인: </span>
 	                        <input type="text" id="datePicker1" class="form-control" value="2022-00-00" style="display:inline-block; width:150px;">
-	                    </div>
-	                    <div style="text-align:center;">
 	                        <span>체크아웃: </span>
 	                        <input type="text" id="datePicker2" class="form-control" value="2022-00-00" style="display:inline-block; width:150px;">
+                        	<button id="btndays"type="button" class="btn btn-default">날짜 저장</button>
                         </div>
                     </div>
-                </div>
+                
                     <div class="Q">
                         <h4>2단계. 반려견 마릿수 선택하기</h4>
                         <div class="btn-group btn-group-justified" role="group" aria-label="...">
@@ -70,33 +73,37 @@
                         <textarea id="note" class="form-control" rows="3"></textarea>
                     </div>
                 </div>
+                </div>
             <div id="hostprofile" class="col-xs-4">
                 <div id="profile" class="row">
                     <img id="hostimg" src="${pageContext.request.contextPath}/assets/images/hostinfo_sample.jpg" class="img-circle">
                     <h3>${requestScope.hostVo.name}님</h3>
                     <h4>${requestScope.hostVo.adress1}</h4>
+                    <h4>${requestScope.hostVo.hp}</h4>
                     <button id="btn1" type="button" class="btn btn-default"><h5><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>&nbsp;메시지 보내기</h5></button>
                 </div>
                 <div id="checkbox" class="row">
-                    <h4>결제정보</h4>
+                    <h4>예약 및 결제정보</h4>
                     <div class="row">
-                        <div id="check" class="col-xs-5">
+                        <div id="check" class="col-xs-2" style="padding: 0px 0px 0px 0px;">
+                        	<h4>날짜</h4>
                             <h4>일수</h4>
-                            <h4>마릿수</h4>
+                            <h4>가격</h4>
                             <h4>총 금액</h4>
                         </div>
-                        <div id="check2" class="col-xs-3">
-                            <h4><span id="bookingDate">${requestScope.hostVo.hostcost}</span><span>원/1박</span></h4>
-                            <h4><span id="ea">1</span><span>마리</span></h4>
-                            <h4><span id="cost">${requestScope.hostVo.hostcost}원</span></h4>
+                        <div id="check2" class="col-xs-6">
+                        	<h4><span id="date">- </span></h4>
+                            <h4><span id="days">- </span><span>일</span></h4>
+                            <h4><span id="bookingDate">${requestScope.hostVo.hostcost}</span><span>원</span> X <span id="ea">1</span><span>마리</span></h4>
+                            <h4><span id="hostcost">${requestScope.hostVo.hostcost}</span><span>원</span></h4>
                         </div>
                     </div>
                     <div class="row">
                         <br>
                         <p><span class="label label-danger">!</span>&nbsp;펫시터가 요청을 수락하면 결제가 이루어집니다.</p>
                         <button id="btn2" type="button" class="btn btn-primary">예약 요청</button>
-                        <input type="text" id="hostNo" value="1">
-                        <input type="text" id="usersNo" value="2">
+                        <input type="hidden" id="hostNo" value="${requestScope.hostVo.hostNo}">
+                        <input type="hidden" id="usersNo" value="2">
                     </div>
                 </div>       
             </div>   
@@ -125,14 +132,53 @@
 	<!-- /.modal -->
 </body>
 <script>
+//날짜저장 버튼 클릭
+$("#btndays").on("click", function(){
+	var checkin = $("#datePicker1").val();
+	var checkout = $("#datePicker2").val();
+	
+	var dayinArr = checkin.split("-");
+	var dayoutArr = checkout.split("-");
+	
+	var stDate = new Date(dayinArr[0], dayinArr[1], dayinArr[2]);
+	var endDate = new Date(dayoutArr[0], dayoutArr[1], dayoutArr[2]);
+	
+	var btMs = endDate.getTime() - stDate.getTime();
+	var days = btMs / (1000*60*60*24);
+	var cost = days * ${requestScope.hostVo.hostcost}
+	
+	$("#date").html('<span id="checkin">'+ checkin +'</span><span id="checkout">'+checkout+'</sapn>');
+	$("#days").html(days);
+	
+	$("#bookingDate").text(cost);
+	
+	var ea = $("#ea").text();
+	var day = $("#bookingDate").text();
+	$("#hostcost").text(ea * day);
+});
+
+//마릿수
+$(".btn-group.btn-group button").on("click", function(){
+	var $this = $(this);
+	$(".btn-group.btn-group button").removeClass("active");
+	$(this).addClass("active");
+	var ea = $this.data('ea');
+	$("#ea").text(ea);
+	var cost = ${requestScope.hostVo.hostcost} * ea
+	$("#cost").text(cost + "원");
+	var ea = $("#ea").text();
+	var day = $("#bookingDate").text();
+	$("#hostcost").text(ea * day);
+});
+
 //예약완료 버튼 클릭
 $("#btn2").on("click", function(){
 	console.log("예약완료")
 	var bookingVo = {
 		hostNo : $("#hostNo").val(),
 		usersNo : $("#usersNo").val(),
-		checkin : $("#datePicker1").val(),
-		checkout : $("#datePicker2").val(),
+		checkin : $("#checkin").text(),
+		checkout : $("#checkout").text(),
 		ea : $("#ea").text(),
 		bookingDate : $("#bookingDate").text(),
 		note : $("#note").val()
@@ -155,20 +201,95 @@ $("#btn2").on("click", function(){
 	});
 });
 
+//캘린더 라이브러리
+document.addEventListener('DOMContentLoaded', function() {
+
+	var calendarEl = document.getElementById('l-calendar');
+	var calendar = new FullCalendar.Calendar(calendarEl, {
+
+		initialView : 'dayGridMonth', // 월 달력
+
+		// 달력 툴
+		headerToolbar : {
+			left : 'prev',
+			center : 'title',
+			right : 'next today,dayGridMonth'
+		},
+		editable : true, // 드래그 수정 가능
+		locale : 'ko', // 한국어 설정(lib/locales/ko.js)
+
+		// 요일 클릭 이벤트
+		dateClick : function() {
+			alert('요일 클릭!');
+		},
+
+		// 일정 클릭 이벤트
+		eventClick : function() {
+			alert('일정 클릭!');
+		},
+
+
+	// 데이터 삽입방식
+	events: [
+		// ajax 처리로 데이터를 로딩 시킨다. 
+		$.ajax({ 
+			type:"get", 
+			url:"${pageContext.request.contextPath}/calendar?hostNo=${requestScope.hostVo.hostNo}", 
+			dataType : "json",
+			success: function (bList) {
+				for(var i=0; i<bList.length; i++) {
+					calendar.addEvent({
+						title: bList[i].guestName,
+						start: bList[i].checkin,
+						end: bList[i].checkout,
+						status: 'booking'
+					});
+				}
+			}
+		}),
+		$.ajax({ 
+			type:"get", 
+			url:"${pageContext.request.contextPath}/calendarAble?hostNo=${requestScope.hostVo.hostNo}", 
+			dataType : "json",
+			success: function (aList) {
+				for(var i=0; i<aList.length; i++) {
+					calendar.addEvent({
+						start: aList[i].ableDate,
+						end: aList[i].ableDate,
+						allDay: true,
+						status: 'done'
+					}); 
+				}
+			}
+		})
+	],
+	eventDidMount: function(info) {
+		if(info.event.extendedProps.status == 'done') {
+			info.el.style.backgroundColor = 'white';
+			info.el.style.borderColor = 'white';
+			info.el.style.height = '30px';
+		}
+	}
+});
+	// 렌더링
+	calendar.render();
+
+});
+
 //달력
 $(function() {	
     $('#datePicker1').datepicker({
         format: "yyyy-mm-dd",	//데이터 포맷 형식(yyyy : 년 mm : 월 dd : 일 )
-        startDate: '-10d',	//달력에서 선택 할 수 있는 가장 빠른 날짜. 이전으로는 선택 불가능 ( d : 일 m : 달 y : 년 w : 주)
-        endDate: '+10d',	//달력에서 선택 할 수 있는 가장 느린 날짜. 이후로 선택 불가 ( d : 일 m : 달 y : 년 w : 주)
+        startDate: '-30d',	//달력에서 선택 할 수 있는 가장 빠른 날짜. 이전으로는 선택 불가능 ( d : 일 m : 달 y : 년 w : 주)
+        endDate: '+30d',	//달력에서 선택 할 수 있는 가장 느린 날짜. 이후로 선택 불가 ( d : 일 m : 달 y : 년 w : 주)
         autoclose : true,	//사용자가 날짜를 클릭하면 자동 캘린더가 닫히는 옵션
         calendarWeeks : false, //캘린더 옆에 몇 주차인지 보여주는 옵션 기본값 false 보여주려면 true
         clearBtn : false, //날짜 선택한 값 초기화 해주는 버튼 보여주는 옵션 기본값 false 보여주려면 true
-        datesDisabled : ['2019-06-24','2019-06-26'],//선택 불가능한 일 설정 하는 배열 위에 있는 format 과 형식이 같아야함.
-        daysOfWeekDisabled : [0,6],	//선택 불가능한 요일 설정 0 : 일요일 ~ 6 : 토요일
-        daysOfWeekHighlighted : [3], //강조 되어야 하는 요일 설정
+        datesDisabled : [],//선택 불가능한 일 설정 하는 배열 위에 있는 format 과 형식이 같아야함.
+        daysOfWeekDisabled : [],	//선택 불가능한 요일 설정 0 : 일요일 ~ 6 : 토요일
+        daysOfWeekHighlighted : [], //강조 되어야 하는 요일 설정
         disableTouchKeyboard : false,	//모바일에서 플러그인 작동 여부 기본값 false 가 작동 true가 작동 안함.
-        immediateUpdates: false,	//사용자가 보는 화면으로 바로바로 날짜를 변경할지 여부 기본값 :false 
+        immediateUpdates: true,	//사용자가 보는 화면으로 바로바로 날짜를 변경할지 여부 기본값 :false 
         multidate : false, //여러 날짜 선택할 수 있게 하는 옵션 기본값 :false 
         multidateSeparator :",", //여러 날짜를 선택했을 때 사이에 나타나는 글짜 2019-05-01,2019-06-01
         templates : {
@@ -187,13 +308,13 @@ $(function() {
 $(function() {	
     $('#datePicker2').datepicker({
         format: "yyyy-mm-dd",	//데이터 포맷 형식(yyyy : 년 mm : 월 dd : 일 )
-        startDate: '-10d',	//달력에서 선택 할 수 있는 가장 빠른 날짜. 이전으로는 선택 불가능 ( d : 일 m : 달 y : 년 w : 주)
-        endDate: '+10d',	//달력에서 선택 할 수 있는 가장 느린 날짜. 이후로 선택 불가 ( d : 일 m : 달 y : 년 w : 주)
+        startDate: '-30d',	//달력에서 선택 할 수 있는 가장 빠른 날짜. 이전으로는 선택 불가능 ( d : 일 m : 달 y : 년 w : 주)
+        endDate: '+30d',	//달력에서 선택 할 수 있는 가장 느린 날짜. 이후로 선택 불가 ( d : 일 m : 달 y : 년 w : 주)
         autoclose : true,	//사용자가 날짜를 클릭하면 자동 캘린더가 닫히는 옵션
         calendarWeeks : false, //캘린더 옆에 몇 주차인지 보여주는 옵션 기본값 false 보여주려면 true
         clearBtn : false, //날짜 선택한 값 초기화 해주는 버튼 보여주는 옵션 기본값 false 보여주려면 true
-        datesDisabled : ['2019-06-24','2019-06-26'],//선택 불가능한 일 설정 하는 배열 위에 있는 format 과 형식이 같아야함.
-        daysOfWeekDisabled : [0,6],	//선택 불가능한 요일 설정 0 : 일요일 ~ 6 : 토요일
+        datesDisabled : [],//선택 불가능한 일 설정 하는 배열 위에 있는 format 과 형식이 같아야함.
+        daysOfWeekDisabled : [],	//선택 불가능한 요일 설정 0 : 일요일 ~ 6 : 토요일
         daysOfWeekHighlighted : [3], //강조 되어야 하는 요일 설정
         disableTouchKeyboard : false,	//모바일에서 플러그인 작동 여부 기본값 false 가 작동 true가 작동 안함.
         immediateUpdates: false,	//사용자가 보는 화면으로 바로바로 날짜를 변경할지 여부 기본값 :false 
@@ -213,15 +334,6 @@ $(function() {
     });//datepicker end
 });//ready end
 
-//마릿수
-$(".btn-group.btn-group button").on("click", function(){
-	var $this = $(this);
-	$(".btn-group.btn-group button").removeClass("active");
-	$(this).addClass("active");
-	var ea = $this.data('ea');
-	$("#ea").text(ea + "마리");
-	var cost = ${requestScope.hostVo.hostcost} * ea
-	$("#cost").text(cost + "원");
-});
+
 </script>
 </html>

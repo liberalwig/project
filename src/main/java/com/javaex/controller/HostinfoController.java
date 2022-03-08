@@ -26,6 +26,14 @@ public class HostinfoController {
 	@Autowired
 	HostinfoService hostinfoService;
 	
+	//호스트 신청 폼
+	@RequestMapping(value = "/hostjoin", method = { RequestMethod.GET, RequestMethod.POST })
+	public String hostJoinForm() {
+		System.out.println("[hostinfoController.hostJoinForm()]");
+		
+		return "/han/hostJoinForm";
+	}
+	
 	//호스트 정보
 	@RequestMapping(value = "/info/{hostNo}", method = { RequestMethod.GET, RequestMethod.POST })
 	public String hostinfoForm(@PathVariable("hostNo") int hostNo, Model model) {

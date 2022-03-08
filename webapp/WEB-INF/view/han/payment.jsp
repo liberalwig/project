@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="utf-8"/>
-<title>결제하기</title>
+<title>GairBnB - 결제하기</title>
 
 <!--CSS-->
 <link href="${pageContext.request.contextPath}/assets/css/booking2.css?after" rel="stylesheet" type="text/css"/>

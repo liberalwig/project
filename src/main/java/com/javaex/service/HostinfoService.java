@@ -81,6 +81,22 @@ public class HostinfoService {
 		return photoList;
 	}
 	
+	//캘린더 정보 가져오기
+	public List<BookingVo> getCalendur(int hostNo){
+		System.out.println("[HostinfoService.getCalendur()]");
+		
+		return hostinfoDao.getCalendur(hostNo);
+	}
+	
+	//카테고리 사진 가져오기
+	public List<PhotoVo> getPhoto(PhotoVo photoVo){
+		System.out.println("[HostinfoService.getPhoto()]");
+		
+		List<PhotoVo> photoList = hostinfoDao.getPhoto(photoVo);
+		
+		return photoList;
+	}
+	
 	//일수 계산하기
 	public void checkdays(BookingVo bookingVo) {
 		System.out.println("[HostinfoService.checkdays()]");
