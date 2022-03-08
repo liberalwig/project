@@ -8,9 +8,11 @@
 	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
 	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	    <!-- CSS -->
-	    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/searchList.css">
+	 
 	    <!--menu 버튼 링크-->
-	    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/bootstrap/css/bootstrap.css">
+	    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/searchList.css" type="text/css">
+	    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/bootstrap/css/bootstrap.css" type="text/css">
+	    
 	    <!--지도관련-->
 	    <script src="${pageContext.request.contextPath}/assets/js/map.js"></script>
 	    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
@@ -21,17 +23,16 @@
 	    <title>searchList</title>
 	</head>
 	<body>
-		<!-- header -->
-		<c:import url="/WEB-INF/view/includes/header.jsp"></c:import>
 	
-    <div id="header_line" class="row"></div>
+	<c:import url="/WEB-INF/view/includes/header.jsp"></c:import>
+	
     <div id="wrap" class="container">
         <!-- main -->
         <div id="search_list" class="container">
             <div id="search_button" class="row">
                  <!-- 버튼 오른쪽 -->
                 <div class="search_button_left col-md-4">
-      				 <div class="col-xs-2"><a href="" id="filter_button_width" class="button fast white">청결</a></div>
+      				<div class="col-xs-2"><a href="" id="filter_button_width" class="button fast white">청결</a></div>
                     <div class="col-xs-2"><a href="" id="filter_button_width" class="button fast white">산책</a></div>
                     <div class="col-xs-2"><a href="" id="filter_button_width" class="button fast white">환경</a></div>
                     <div class="col-xs-2"><a href="" id="filter_button_width" class="button fast white">소통</a></div>
