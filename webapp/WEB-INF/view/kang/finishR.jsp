@@ -1,10 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 
 <head>
-<meta charset="utf-8"/>
+<meta charset="utf-8" />
 
 <!--CSS-->
 <link href="/project/assets/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css">
@@ -18,32 +17,36 @@
 
 </head>
 
-  <body>
-    <div><!--class="modal fade"-->
+<body>
+	<div>
+		<!--class="modal fade"-->
 
-      <div class="modal-dialog">
+		<div class="modal-dialog">
 
-        <div class="modal-content">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <div class="modal-body">
-              <img id="checked"  src="/project/assets/images/finishR_check2-circle.svg">
-              <h2>예약이 완료 되었습니다.</h2>
-              <p class="sm">상세 내역은 마이페이지에서 확인 가능합니다.</p>
-                
-            </div>
+			<div class="modal-content">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+				<div class="modal-body">
+					<img id="checked" src="/project/assets/images/finishR_check2-circle.svg">
+					<h2>예약이 완료 되었습니다.</h2>
+					<p class="sm">상세 내역은 마이페이지에서 확인 가능합니다.</p>
 
-          <div class="modal-footer">
-            <div id="footer1">
-              <button class="w-btn-outline w-btn-blue-outline" type="button">
-                확인
-              </button>
-            </div>
-          </div>
+				</div>
 
-        </div><!-- /.modal-content -->
+				<div class="modal-footer">
+					<div id="footer1">
+						<button class="w-btn-outline w-btn-blue-outline" type="button">확인</button>
+					</div>
+				</div>
 
-      </div><!-- /.modal-dialog-->
+			</div>
+			<!-- /.modal-content -->
 
-    </div><!-- /.modal -->
-  </body> 
+		</div>
+		<!-- /.modal-dialog-->
+
+	</div>
+	<!-- /.modal -->
+</body>
 </html>
