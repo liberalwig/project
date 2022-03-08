@@ -45,7 +45,6 @@
                 <div id="content-main" class="clearfix container-fluid">
 
                     <div id="btn-area1">
-                    	<button name="imgupload" class="btn btn-default add-img" data-photodate="${pListDate[0].photoDate}">이미지 업로드</button>
                         <button class="btn btn-default add-img">목록으로 돌아가기</button>
                     </div>
 
@@ -55,55 +54,69 @@
                             <h2>펫사진</h2>
                             <hr>
                             
-                            <c:forEach items="${pList}" var="pListDate">
-                         		
+                            <c:forEach begin="1" end="${bvo.days}" varStatus="status">
+                            <%-- <c:forEach items="${pList}" var="pListDate"> --%>
                             	<div class="wrapper">
-                           		<c:if test="${pListDate[0].photoDate != null}">
+                            
 	                                <div class="clearfix">
-	                                    <div class="img-date"><h3>${pListDate[0].photoDate}</h3></div>
+	                                    <div class="img-date"><h3>${bvo.checkin}</h3></div>
+	                                    <div class="img-btn"><button name="imgupload" class="btn btn-default add-img" data-photodate="${pListDate[0].photoDate}">이미지 업로드</button></div>
 	                                </div>
-	                                <div>
-	                                	<c:if test="${pListDate[0].photoPath != null}">
-		                                    <div class="item">
-		                                        <div class="polaroid">
-			                                		
-		                                        		<img data-no="${pListDate[0].photoNo}" src="${pageContext.request.contextPath }/photo/${pListDate[0].saveName}" class="wrapper-img viewImg">
-		                                        	
-		                                            <div class="caption">${pListDate[0].category}</div>
-		                                        </div>
-		                                    </div> 
-	                                    </c:if>
-	                                	<c:if test="${pListDate[1].photoPath != null}">
-		                                    <div class="item">
-		                                        <div class="polaroid">
-		                                        		<img data-no="${pListDate[1].photoNo}" src="${pageContext.request.contextPath }/photo/${pListDate[1].saveName}" class="wrapper-img viewImg">
-		                                            <div class="caption">${pListDate[1].category}</div>
-		                                        </div>
-		                                    </div>
-	                                    </c:if>
-	                                	<c:if test="${pListDate[2].photoPath != null}">
+	                               
+	                                
+	                                <%-- <div>
 	                                    <div class="item">
 	                                        <div class="polaroid">
+		                                        <c:if test="${pListDate[0].photoPath == null}">
+		                                        	<img src="/project/assets/images/bookingDetail_gray.png" class="wrapper-img">
+		                                		</c:if>
+		                                		<c:if test="${pListDate[0].photoPath != null}">
+	                                        		<img data-no="${pListDate[0].photoNo}" src="${pageContext.request.contextPath }/photo/${pListDate[0].saveName}" class="wrapper-img viewImg">
+	                                        	</c:if>
+	                                            <div class="caption">${pListDate[0].category}</div>
+	                                        </div>
+	                                    </div> 
+	                                    
+	                                
+	                                    <div class="item">
+	                                        <div class="polaroid">
+	                                        	<c:if test="${pListDate[1].photoPath == null}">
+		                                        	<img src="/project/assets/images/bookingDetail_gray.png" class="wrapper-img">
+		                                		</c:if>
+		                                		<c:if test="${pListDate[1].photoPath != null}">
+	                                        		<img data-no="${pListDate[1].photoNo}" src="${pageContext.request.contextPath }/photo/${pListDate[1].saveName}" class="wrapper-img viewImg">
+	                                        	</c:if>
+	                                            <div class="caption">${pListDate[1].category}</div>
+	                                        </div>
+	                                    </div>
+	                                
+	                                    <div class="item">
+	                                        <div class="polaroid">
+	                                        	<c:if test="${pListDate[2].photoPath == null}">
+		                                        	<img src="/project/assets/images/bookingDetail_gray.png" class="wrapper-img">
+		                                		</c:if>
+		                                		<c:if test="${pListDate[2].photoPath != null}">
 	                                        		<img data-no="${pListDate[2].photoNo}" src="${pageContext.request.contextPath }/photo/${pListDate[2].saveName}" class="wrapper-img viewImg">
+	                                        	</c:if>
 	                                            <div class="caption">${pListDate[2].category}</div>
 	                                        </div>
 	                                    </div>
-	                                    </c:if>
-	                                    <c:if test="${pListDate[3].photoPath != null}">
-		                                    <div class="item">
-		                                        <div class="polaroid">
-			                                		
-		                                        		<img data-no="${pListDate[3].photoNo}" src="${pageContext.request.contextPath }/photo/${pListDate[3].saveName}" class="wrapper-img viewImg">
-		                                        	
-		                                            <div class="caption">${pListDate[3].category}</div>
-		                                        </div>
-		                                    </div>
-	                                    </c:if>
+	                                    
+	                                    <div class="item">
+	                                        <div class="polaroid">
+	                                        	<c:if test="${pListDate[3].photoPath == null}">
+		                                        	<img src="/project/assets/images/bookingDetail_gray.png" class="wrapper-img">
+		                                		</c:if>
+		                                		<c:if test="${pListDate[3].photoPath != null}">
+	                                        		<img data-no="${pListDate[3].photoNo}" src="${pageContext.request.contextPath }/photo/${pListDate[3].saveName}" class="wrapper-img viewImg">
+	                                        	</c:if>
+	                                            <div class="caption">${pListDate[3].category}</div>
+	                                        </div>
+	                                    </div>
 	                                   
-	                                </div>
-	                            </c:if>
+	                                </div>  --%>
+	                                 
 	                            </div>
-	                            
                             </c:forEach>
                             
                            
@@ -139,10 +152,6 @@
                                 <div class="row">
                                     <div class="col-xs-6">펫설명/요청사항</div>
                                     <div class="col-xs-6">${bvo.note}</div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-xs-6">펫시팅일자</div>
-                                    <div class="col-xs-6">${bvo.checkin} ~ ${bvo.checkout}</div>
                                 </div>
                             </div>
                         </div>
@@ -424,45 +433,16 @@
 						<div id="root">
 							<form id="uploadForm" enctype="multipart/form-data" action="${pageContext.request.contextPath}/photoInsert?bookingNo=${bvo.bookingNo}" method="post">
 								<div id="cate">
-									<label>카테고리</label>
-									<select id="modalCate" class="bo_w_select" name="category">
-									  <option>식사</option>  
-									  <option>산책</option>  
-									  <option>청결</option>
-									  <option>놀이</option>
-									</select>
+								  <label>카테고리</label>
+								  <select id="modalCate" class="bo_w_select" name="category">
+								    <option>식사</option>  
+								    <option>산책</option>  
+								    <option>청결</option>
+								    <option>놀이</option>
+								  </select>
 								</div>
-								<div>
-									<label class="pDate">등록일</label>
-									<select class="bo_w_select" name="photoDate">
-										<option>2022</option>
-									</select>
-									년
-									<select id="photoDateM" class="bo_w_select" name="photoDate">
-										<option>03</option>
-										<option>04</option>
-									</select>
-									월
-									<select id="photoDateD" class="bo_w_select" name="photoDate">
-										<c:forEach begin="1" end="31" varStatus="status">
-											<option>${status.count}</option>
-										</c:forEach>
-									</select>
-									일
-								</div>
-									<label class="pDate days">일차</label>
-									<select id="days" class="bo_w_select" name="day">
-										<c:forEach begin="1" end="62" varStatus="status">
-											<option>${status.count}</option>
-										</c:forEach>
-									</select>
-									일차
-								<div>
-								</div>
-								<div>
-									<label>글제목</label>
-									<input id="modalTitle" type="text" name="photoTitle">
-								</div>
+								<label>글제목</label>
+								<input id="modalTitle" type="text" name="photoTitle">
 								<hr>
 								<div class="contents">
 									<div class="upload-box">
@@ -520,13 +500,14 @@
 	$("[name='imgupload']").on("click", function(){
 		//데이터수집
 		var $this = $(this);
+		var uploadDate = $this.data("photodate");
+		console.log(uploadDate);
 		
 		//초기화
 		$("#modalCate").val("");
 		$("#modalTitle").val("");
 		$("#myFile").val();
-		$("#photoDateM").val("");
-		$("#photoDateD").val("");
+		$("#uploadDate").val(uploadDate);
 		
 		$('#imgupdateModal').modal('show');
 		

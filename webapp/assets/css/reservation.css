@@ -295,6 +295,16 @@ a:hover {color: #000000; text-decoration-line: none;}
 	margin: 60px 0px 0px 0px;
 }
 
+.fc-daygrid-day {
+	background-color: #eeeeee;
+}
+
+.eventDate {
+	background-color: #ffff00;
+	height: 100px;
+	width: 50px;
+}
+
 /* 폰트 사이즈 */
 .font-l {
 	font-size: 20px;

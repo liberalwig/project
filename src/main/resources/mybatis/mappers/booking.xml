@@ -53,6 +53,7 @@
 			where b.hostno = h.hostno
 			and h.userno = u.usersno
 			and b.usersno = #{usersNo}
+			and b.status in('승인대기', '결제대기')
 		]]>
 	</select>
 	
@@ -81,6 +82,7 @@
 			from booking b, users u
 			where b.usersNo = u.usersNo
 			and hostNo = #{hostNo}
+			and b.status in('승인대기', '결제대기')
 		]]>
 	</select>
 	
@@ -110,6 +112,7 @@
 			where b.usersNo = u.usersNo
 			and hostNo = #{hostNo}
 			and	checkin = #{checkin}
+			and b.status in('승인대기', '결제대기')
 		]]>
 	</select>
 	
@@ -178,16 +181,86 @@
 	</select>
 	
 	<!-- 예약상세갤러리 -->
-	<select id="photoList" parameterType="int" resultType="com.javaex.vo.PhotoVo">
+	<select id="photoList" parameterType="com.javaex.vo.PhotoVo" resultType="com.javaex.vo.PhotoVo">
 		<![CDATA[
 			select photono,
 			       bookingno,
 			       category,
 			       to_char(photodate, 'yyyy-mm-dd day') photodate,
 			       photopath,
-			       phototitle
+			       phototitle,
+			       saveName
 			from photo
 			where bookingno = #{bookingNo}
+			and day = #{day}
+		]]>
+	</select>
+	
+	<!-- 파일업로드 -->
+	<insert id="photoInsert" parameterType="com.javaex.vo.PhotoVo">
+		<![CDATA[
+			insert into photo
+			values(SEQ_PHOTO_NO.nextval, #{bookingNo}, TO_DATE(#{photoDate}, 'yyyymmdd'), #{category}, #{photoTitle}, #{photoPath}, #{saveName}, #{day})
+		]]>
+	</insert>
+	
+	<!-- 사진상세 -->
+	<select id="photoView" parameterType="int" resultType="com.javaex.vo.PhotoVo">
+		<![CDATA[
+			select photono,
+			       bookingno,
+			       phototitle,
+			       saveName
+			from photo
+			where photono = #{photoNo}
+		]]>
+	</select>
+	
+	<!-- 예약완료리스트(호스트) -->
+	<select id="bookingEndGuestList" parameterType="int" resultType="com.javaex.vo.BookingVo">
+		<![CDATA[
+			select b.bookingNo,
+			       b.hostNo,
+			       b.usersNo,
+			       to_char(checkin, 'yyyy-mm-dd') checkin,
+			       to_char(checkout, 'yyyy-mm-dd') checkout,
+			       b.ea,
+			       b.booking_date bookingDate,
+			       b.days,
+			       b.note,
+			       b.status,
+			       b.review,
+			       b.review_date reviewDate,
+			       b.clean,
+			       b.food,
+			       b.play,
+			       b.work,
+			       b.communication,
+			       u.name guestName,
+			       u.hp guestHp
+			from booking b, users u
+			where b.usersNo = u.usersNo
+			and hostNo = #{hostNo}
+			and b.status in('예약완료', '펫시팅중', '시팅완료')
+		]]>
+	</select>
+	
+	<!-- 가능날짜추가 -->
+	<insert id="ableInsert" parameterType="com.javaex.vo.AbleVo">
+		<![CDATA[
+			insert into able
+			values(seq_able_no.nextval, #{hostNo}, TO_DATE(#{ableDate}, 'yyyymmdd'))
+		]]>
+	</insert>
+	
+	<!-- 가능날짜 리스트 -->
+	<select id="ableSelect" parameterType="int" resultType="com.javaex.vo.AbleVo">
+		<![CDATA[
+			select ableNo,
+			       hostNo,
+			       to_char(ableDate, 'yyyymmdd') ableDate
+			from able
+			where hostNo = #{hostNo}
 		]]>
 	</select>
 	

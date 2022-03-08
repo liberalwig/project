@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.javaex.vo.AbleVo;
 import com.javaex.vo.BookingVo;
 import com.javaex.vo.PhotoVo;
 
@@ -72,12 +73,34 @@ public class BookingDao {
 	//사진업로드
 	public void photoInsert(PhotoVo pvo) {
 		
-		sqlsession.selectOne("booking.photoInsert", pvo);
+		sqlsession.insert("booking.photoInsert", pvo);
 	}
 	
 	//사진상세보기
 	public PhotoVo photoView(int photoNo) {
 		
 		return sqlsession.selectOne("booking.photoView", photoNo);
+	}
+	
+	//예약완료리스트(호스트)
+	public List<BookingVo> bookingEndHost(int hostNo) {
+		
+		List<BookingVo> bookingList = sqlsession.selectList("booking.bookingEndGuestList", hostNo);
+		
+		System.out.println(bookingList);
+		
+		return bookingList;
+	}
+	
+	//가능날짜추가
+	public void ableInsert(AbleVo avo) {
+		
+		sqlsession.insert("booking.ableInsert", avo);
+	}
+	
+	//가능날짜리스트
+	public List<AbleVo> ableList(int hostNo) {
+		
+		return sqlsession.selectList("booking.ableSelect", hostNo);
 	}
 }

@@ -29,6 +29,15 @@ input[type="text"] {
 
 input[type="text"]:hover {border: 1px solid #aaa;}
 
+.pDate {
+	margin-bottom: 17px;
+	margin-right: 14px;
+}
+
+.days {
+	margin-right: 25px;
+}
+
 .bo_w_select {
     width: 60px;
     margin-left: 5px;
