@@ -41,6 +41,7 @@ public class HostinfoController {
 			double puppypoint = hostinfoService.getPuppyPoint(hostNo);
 			ReviewVo point = hostinfoService.getPoint(hostNo);
 			List<PhotoVo> photoList = hostinfoService.getHostPhoto(hostNo);
+			List<BookingVo> calendurList = hostinfoService.getCalendur(hostNo);
 			
 			model.addAttribute("hostVo", hostVo);
 			model.addAttribute("keyList", keyList);
@@ -48,12 +49,25 @@ public class HostinfoController {
 			model.addAttribute("puppypoint", puppypoint);
 			model.addAttribute("point", point);
 			model.addAttribute("photoList", photoList);
+			model.addAttribute("calendurList", calendurList);
 			
 			return "/han/hostinfo";
 			
 		} else {//호스트가 없음
 			System.out.println("[실패: 없는 호스트 입니다.]");
 			return "/han/booking";
+		}
+	}
+	//사진 탭
+	@ResponseBody
+	@RequestMapping(value = "/getPhoto", method = { RequestMethod.GET, RequestMethod.POST })
+	public List<PhotoVo> getPhoto(@ModelAttribute PhotoVo photoVo, Model model) {
+		System.out.println("[hostinfoController.getPhoto()]");
+		
+		if("호스트사진".equals(photoVo.getCategory())) {
+			return hostinfoService.getHostPhoto(photoVo.getHostNo());
+		} else {
+			return hostinfoService.getPhoto(photoVo);
 		}
 	}
 	
