@@ -1,11 +1,14 @@
 @charset "UTF-8";
+/******************************************
+초기화 관련
+******************************************/
 
 /* 여백 초기화 */
 body, div, ul, li, dl, dt, ol, h1, h2, h3, h4, h5, h6, 
 input, fieldset, legend, p, select, table, th, td, tr,
-textarea, button, form {margin: 0; padding: 0;font-family: Helvetica, "Helvetica Neue", "NanumBarunGothic";}
+textarea, button, form {margin: 0; padding: 0;}
 
-body {font-size:18px; font-family: Helvetica, "Helvetica Neue", "NanumBarunGothic"; color: #333; background-color: #fff}
+body {font-size: 18px; font-family: "Helvetica Neue", "맑은 고딕", 돋움, 굴림; color: #333; background-color: #fff;}
 
 ul, ol {list-style-type: none;}
 a:link {text-decoration: none; color: #000}
@@ -13,32 +16,19 @@ a:visited {text-decoration: none; color: #000}
 a:active {text-decoration: none; color: #000}
 a:hover {text-decoration: none; color: #000}
 
-
-body{
-   margin-top:80px;
-}
-    
-
 /* clearfix */
 .clearfix{*zoom:1;}
 .clearfix:before, .clearfix:after {display: block; content: ""; line-height: 0;}
 .clearfix:after {clear: both;}
 
 /* 레이아웃 */
-#wrap {
-  margin: 0px auto; 
-  width: 1440px;
-}
+body{margin-top:80px;}
 
-#container {
-  width: 1440px;
-}
-
-#content {
-  float: left; 
-  width: 1080px; 
-  margin: 0px 0px 100px 0px;
-}
+#wrap {margin: 0px auto; 
+       width: 1440px;}		
+#container { width: 1440px;}
+#aside {float: left; width: 360px; padding: 0px 0px 0px 0px;}
+#content { float: left; width: 1080px; margin: 0px 0px 100px 0px;}
 
 .list {
   text-align: left;
@@ -48,97 +38,6 @@ body{
 
 /*질문01. 사진*/
 /* 드래그 앤 드롭 */
-#root {
-  width: 100%;
-  margin: 0 auto;
-  max-width: 800px;
-}
-
-.contents {
-display: flex;
-flex-direction: row;
-margin-top: 30px;
-margin-left: 30px;
-}
-
-.contents .upload-box {
-width: 50%;
-margin-right: 30px;
-display: flex;
-flex-direction: column;
-justify-content: center;
-align-items: center;
-}
-
-.contents .upload-box .drag-file {
-position: relative;
-width: 400px;
-height: 360px;
-display: flex;
-flex-direction: column;
-justify-content: center;
-align-items: center;
-border: 3px dashed #dbdbdb;
-}
-
-.contents .upload-box .drag-file.highlight {
-border: 3px dashed red;
-}
-
-.contents .upload-box .drag-file .image {
-width: 40px;
-}
-
-.contents .upload-box .drag-file .message {
-margin-bottom: 0;
-margin-top: 10px;
-color: #707070;
-}
-
-.contents .upload-box .drag-file .preview {
-display: none;
-position: absolute;
-left: 0;
-height: 0;
-width: 100%;
-height: 100%;
-}
-
-.contents .upload-box .file-label {
-border: 1px solid black;
-margin-top: 30px;
-background-color: white;
-color: black;
-text-align: center;
-padding: 10px 0;
-width: 100px;
-border-radius: 6px;
-cursor: pointer;
-}
-
-.contents .upload-box .file {
-display: none;
-}
-
-.contents {
-   display: flex;
-   flex-direction: column;
-   margin-top: 30px;
-}
-.contents .upload-box {
-   width: 100%;
-   box-sizing: border-box;
-   margin-right: 0;
-}
-.contents .upload-box .drag-file {
-   height: 150px;
-}
-.contents .files {
-   width: 100%;
-   box-sizing: border-box;
-   margin-right: 0;
-   overflow: initial;
-}
 
 
 /*질문02. 키워드선택*/
@@ -193,7 +92,10 @@ display: none;
 /*질문05번.주소*/
 #address {
   text-align: left;
-  margin: 0px 250px 0 350px;
+  padding: 0px 0px 0 150px;
+}
+#address #sample6_address{
+	width: 408px;
 }
 
 /*질문06.돌봄료책정*/

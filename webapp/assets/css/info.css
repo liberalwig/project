@@ -8,7 +8,7 @@ body, div, ul, li, dl, dt, ol, td, h2, h3, h4, h5, h6,
 input, fieldset, legend, p, select, table, th, td, tr,
 textarea, button, form {margin:0; padding:0;}
 
-body {font-size:18px; font-family: "Helvetica Neue", "맑은 고딕", 돋움, 굴림; color: #333; background-color: #fff;}
+body {font-family: "Helvetica Neue", "맑은 고딕", 돋움, 굴림; color: #333; background-color: #fff;}
 
 ul, ol {list-style-type: none;}
 a:link {text-decoration: none; color: #000}
@@ -21,11 +21,9 @@ a:hover {text-decoration: none; color: #000}
 .clearfix:before, .clearfix:after {display: block; content: ""; line-height: 0;}
 .clearfix:after {clear: both;}
 
-.color {
-    background-color:#3D9BE9;
-}
 /* 공통 레이아웃*/
 body{margin-top:80px;}
+
 #wrap {margin: 0px auto; 
        width: 1440px;}		
 #container { width: 1440px;}
@@ -90,11 +88,12 @@ body{margin-top:80px;}
 /** 2. 퍼피력 **/
 #container #puppypoint{
 	text-align:left;
-	margin: 0px 0px 0px 40px;
-	padding: 15px 0px 10px 40px;
+	margin: 0px 0px 0px 0px;
+	padding: 15px 0px 10px 60px;
 	border: 1px solid #DDD;
 	border-radius: 10px;
-	height: 452.35294103622437px;
+	width: 477px;
+	height: 460px;
 }
 #container #point{
 	margin: 30px 25px 0px 0px;
@@ -105,7 +104,7 @@ body{margin-top:80px;}
 	}
 	#container #point .normal{
 		font-weight: 1000;
-		margin : 0px;
+		margin : 0px 40px 0px 0px;
 	}
 	.pointname{
 		padding: 0px;
@@ -164,42 +163,52 @@ body{margin-top:80px;}
 #calendar{
 	padding: 0px 0px 0px 20px;
 }
+
 /**5. 리뷰**/
 #review{
 	padding:10px 0px 0px 30px;
 }
-	.reviewbox {
+	.reviewList {
 		text-align:left;
 		width: 850px;
 		margin:10px 0px 10px 0px;
-		padding: 10px 0px 0px 30px;
+		padding: 10px 0px 0px 0px;
 		
 		padding-bottom: 20px;
-		border-bottom:1px solid #BBB;
 	}
 	#review h3{
 		margin: 15px 0px 15px 0px;
 	}
-	.reviewbox .row h4{
+	.reviewList .row h4{
 		margin: 5px 0px 0px 0px;
 	}
-	.reviewbox .row .toph4{
+	.reviewList .row .toph4{
 		margin: 1px 0px 0px 0px;
 	}
-	.reviewbox .row p{
+	.reviewList .row p{
 		margin: 5px 0px 0px 0px;
 	}
-	.reviewbox img {
+	.reviewList img {
 		float: left;
 		margin: 0px 10px 0px 0px;
 	}
 	.reviewimg {
 		width:50px;
 	}
+	.reviewbox {
+		margin-bottom:5px;
+		border-bottom:1px solid #DDD;
+	}
+	.reviewbox div {
+		margin-top:10px;
+	}
 
+	.reviewbox{
+		padding: 0px 0px 10px 25px;
+	}
 /**6. 지도**/
 #maparea {
-	padding: 30px 0px 0px 60px;
+	padding: 30px 0px 0px 35px;
 }
 #maparea h2, h4 {
 	margin: 0px 0px 20px 0px;
