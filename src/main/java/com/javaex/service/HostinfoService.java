@@ -1,12 +1,18 @@
 package com.javaex.service;
 
+import java.io.BufferedOutputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.javaex.dao.HostinfoDao;
 import com.javaex.vo.BookingVo;
@@ -160,6 +166,44 @@ public class HostinfoService {
 		System.out.println("[HostinfoService.hostinsert()]");
 		
 		hostinfoDao.hostinsert(hostVo);
+	}
+	
+	//유저타입 변경(유저->호스트)
+	public void typeUpdate(int usersNo) {
+		System.out.println("[HostinfoService.typeUpdate()]");
+		
+		hostinfoDao.typeUpdate(usersNo);
+	}
+	
+	//사진 업로드
+	public void fileupload(MultipartFile file, int hostNo) {
+		System.out.println("[HostinfoService.fileupload()]");
+		//내 컴퓨터 저장경로
+		String saveDir = "/Users/hs/JavaStudy/workspace_project/project/webapp/assets/upload/";
+		// 원본파일이름
+		String orgName = file.getOriginalFilename();
+		// 확장자
+		String exName = orgName.substring(orgName.lastIndexOf("."));
+		// 저장파일이름
+		String saveName = System.currentTimeMillis() + UUID.randomUUID().toString() + exName;
+		// 파일패스 생성
+		String filePath = saveDir + saveName;
+		// 파일 저장
+		try {
+			byte[] fileData = file.getBytes();
+			OutputStream out = new FileOutputStream(filePath);// 어떤 경로에 파일을 저장할건지?
+			BufferedOutputStream bout = new BufferedOutputStream(out);
+
+			bout.write(fileData);
+			bout.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		//DB에 넣기
+		PhotoVo photoVo = new PhotoVo();
+		photoVo.setHostNo(hostNo);
+		photoVo.setPhotoPath(saveName);
+		hostinfoDao.setHostPhoto(photoVo);
 	}
 	
 }

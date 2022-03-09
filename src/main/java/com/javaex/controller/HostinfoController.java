@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.javaex.service.HostinfoService;
 import com.javaex.vo.BookingVo;
@@ -39,12 +40,45 @@ public class HostinfoController {
 		return "/han/hostJoinForm";
 	}
 	
-	//호스트 신청 폼
+	//호스트 신청 - 1. 호스트 insert / user타입 update
 	@ResponseBody
 	@RequestMapping(value = "/hostinsert", method = { RequestMethod.GET, RequestMethod.POST })
-	public void hostinsert() {
+	public int hostinsert(@ModelAttribute HostVo hostVo) {
 		System.out.println("[hostinfoController.hostinsert()]");
+		System.out.println(hostVo);
+		//호스트 insert하기
+		hostinfoService.hostinsert(hostVo);
+		//유저 유저타입 update하기
+		hostinfoService.typeUpdate(hostVo.getUsersNo());
+		int hostNo = hostVo.getHostNo();
+		return hostNo;
 		
+	}
+	//호스트 신청 - 2 호스트 사진 insert하기
+	@ResponseBody
+	@RequestMapping(value = "/hostphotoinsert", method = { RequestMethod.GET, RequestMethod.POST })
+	public int hostphotoinsert(@RequestParam("images") List<MultipartFile> files,
+							   @RequestParam("hostNo") int hostNo) {
+		System.out.println("[hostinfoController.hostphotoinsert()]");
+		System.out.println(files);
+		
+		//호스트사진 insert하기
+		for(MultipartFile file: files) {
+			hostinfoService.fileupload(file, hostNo);
+		}
+		return hostNo;
+	}	
+	//호스트 신청 - 3 호스트 키워드 insert하기
+	@ResponseBody
+	@RequestMapping(value = "/hostkeywordinsert", method = { RequestMethod.GET, RequestMethod.POST })
+	public int hostkeywordinsert(@RequestParam("keywordList") List<KeywordVo> keyList,
+								  @RequestParam("hostNo") int hostNo) {
+		System.out.println("[hostinfoController.hostkeywordinsert()]");
+		
+		System.out.println(keyList);
+		//호스트키워드 insert하기
+		
+		return hostNo;
 	}
 	
 	//호스트 정보

@@ -189,11 +189,26 @@
 		]]>
 	</insert>
 	
+	<insert id="setHostPhoto" parameterType="PhotoVo">
+		<![CDATA[
+			insert into hostprofile
+			values(seq_hostprofile_no.nextval,#{hostNo}, sysdate, #{photoPath})
+		]]>
+	</insert>
+	
 	<update id="setStatus" parameterType="BookingVo">
 		<![CDATA[
 			update booking
 			set    status = #{status}
 			where  bookingNo = #{bookingNo}
+		]]>
+	</update>
+	
+	<update id="typeUpdate" parameterType="int">
+		<![CDATA[
+			update users
+			set    userstype = 2
+			where  usersNo = #{usersNo}
 		]]>
 	</update>
 </mapper>

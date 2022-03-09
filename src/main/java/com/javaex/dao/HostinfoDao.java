@@ -162,5 +162,17 @@ public class HostinfoDao {
 		sqlSession.insert("hostinfo.hostinsert", hostVo);
 	}
 	
+	//유저타입 변경(유저->호스트)
+	public void typeUpdate(int usersNo) {
+		System.out.println("[HostinfoService.typeUpdate()]");
+		
+		sqlSession.update("hostinfo.typeUpdate", usersNo);
+	}
 	
+	//사진 넣기
+	public void setHostPhoto(PhotoVo photoVo) {
+		System.out.println("[HostinfoService.setHostPhoto()]");
+		
+		sqlSession.insert("hostinfo.setHostPhoto", photoVo);
+	}
 }
