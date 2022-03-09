@@ -5,46 +5,74 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	    <!-- CSS -->
-	 
-	    <!--menu 버튼 링크-->
+	   
+	    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/bootstrap/css/bootstrap.css">
 	    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/searchList.css" type="text/css">
-	    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/bootstrap/css/bootstrap.css" type="text/css">
-	    
+	 	<script src="${pageContext.request.contextPath}/assets/js/jquery-1.12.4.js"></script>
+	    <script src="${pageContext.request.contextPath}/assets/bootstrap/js/bootstrap.js"></script>
+
 	    <!--지도관련-->
 	    <script src="${pageContext.request.contextPath}/assets/js/map.js"></script>
 	    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
-	     <!--부트스트랩-->
-	    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-	   
-	    <!-- 부가적인 테마 -->
+	    
 	    <title>searchList</title>
 	</head>
 	<body>
 	
 	<c:import url="/WEB-INF/view/includes/header.jsp"></c:import>
 	
-    <div id="wrap" class="container">
+    <div id="wrap" class="container-fluid">
         <!-- main -->
-        <div id="search_list" class="container">
-            <div id="search_button" class="row">
+        <div id="search_list" class="container-fluid">
+            <div id="search_button">
                  <!-- 버튼 오른쪽 -->
                 <div class="search_button_left col-md-4">
-      				<div class="col-xs-2"><a href="" id="filter_button_width" class="button fast white">청결</a></div>
-                    <div class="col-xs-2"><a href="" id="filter_button_width" class="button fast white">산책</a></div>
-                    <div class="col-xs-2"><a href="" id="filter_button_width" class="button fast white">환경</a></div>
-                    <div class="col-xs-2"><a href="" id="filter_button_width" class="button fast white">소통</a></div>
-                    <div class="col-xs-2"><a href="" id="filter_button_width" class="button fast white">식사</a></div>
+      				<div class="col-xs-2">
+      					 <button type="button" class="btn btn-default">
+	                	 	<a href="#">청결 </a>
+	                	 </button>	
+      				</div>
+                    <div class="col-xs-2">
+                    	<button type="button" class="btn btn-default">
+	                		<a href="#">산책 </a>
+	                	</button>
+                    </div>
+                    <div class="col-xs-2">
+	                    <button type="button" class="btn btn-default">
+		                	<a href="#">식사</a>
+		               	</button>
+                    </div>
+                    <div class="col-xs-2">
+		                <button type="button" class="btn btn-default">
+		                	<a href="#">청결 </a>
+		                </button>
+                    </div>
+                    <div class="col-xs-2">
+	                    <button type="button" class="btn btn-default">
+		               		<a href="#">소통 </a>
+		                </button>
+                    </div>
                 </div>
 
-                <div class="search_button col-md-4 offset-md-4"></div>
+                <div class="search_button_center col-md-4"></div>
                 <!-- 버튼 왼쪽 -->    
                 <div class="search_button_right col-md-4 ">
-                    <div class="col-xs-2"><a href="" id="filter_button_width" class="button fast white">어디서</a></div>
-                    <div class="col-xs-2"><a href="" id="filter_button_width" class="button fast white">언제</a></div>
-                    <div class="col-xs-2"><a href="" id="filter_button_width" class="button fast white">필터</a></div>
+       				  <div class="col-xs-2">
+	                    <button type="button" class="btn btn-default button_right1">
+		               		<a href="#">어디서 </a>
+		                </button>
+                    </div>
+                      <div class="col-xs-2">
+	                    <button type="button" class="btn btn-default button_right2">
+		               		<a href="#">언제 </a>
+		                </button>
+                    </div>
+                      <div class="col-xs-2">
+	                    <button type="button" class="btn btn-default button_right3">
+		               		<a href="#">필터 </a>
+		                </button>
+                    </div>
                 </div>
             </div>
             <div class="row">
@@ -54,7 +82,7 @@
                     <div class="row">
                         <div>
                             <div class="col-md-6">
-                                <img class="result-img" src="./assets/image/강아지 주인7.jpg">
+                                <img class="result-img" src="${pageContext.request.contextPath}/assets/images/searchList_img1.jpg">
                             </div>
                             <div class="search_result_text col-md-6">
                                 <div class="result_text row">
@@ -77,7 +105,7 @@
                      <div class="row">
                         <div>
                             <div class="col-md-6">
-                                <img class="result-img" src="./assets/image/강아지 주인5.jpg">
+                                <img class="result-img" src="${pageContext.request.contextPath}/assets/images/searchList_img2.jpg">
                             </div>
                             <div class="search_result_text col-md-6">
                                 <div class="result_text row">
@@ -100,7 +128,7 @@
                     <div class="row">
                         <div>
                             <div class="col-md-6">
-                                <img class="result-img" src="./assets/image/강아지주인8.jpg">
+                                <img class="result-img" src="${pageContext.request.contextPath}/assets/images/searchList_img3.jpg">
                             </div>
                             <div class="search_result_text col-md-6">
                                 <div class="result_text row">
@@ -123,7 +151,7 @@
                      <div class="row">
                         <div>
                             <div class="col-md-6">
-                                <img class="result-img" src="./assets/image/강아지주인7.jpg">
+                                <img class="result-img" src="${pageContext.request.contextPath}/assets/images/searchList_img4.jpg">
                             </div>
                             <div class="search_result_text col-md-6">
                                 <div class="result_text row">
@@ -147,7 +175,7 @@
                      <div class="row">
                         <div>
                             <div class="col-md-6">
-                                <img class="result-img" src="./assets/image/강아지주인7.jpg">
+                                <img class="result-img" src="${pageContext.request.contextPath}/assets/images/searchList_img5.jpg">
                             </div>
                             <div class="search_result_text col-md-6">
                                 <div class="result_text row">
@@ -170,7 +198,7 @@
                         <div class="row">
                            <div>
                                <div class="col-md-6">
-                                   <img class="result-img" src="./assets/image/강아지 주인5.jpg">
+                                   <img class="result-img" src="${pageContext.request.contextPath}/assets/images/searchList_img6.jpg">
                                </div>
                                <div class="search_result_text col-md-6">
                                    <div class="result_text row">
@@ -193,7 +221,7 @@
                      <div class="row">
                         <div>
                             <div class="col-md-6">
-                                <img class="result-img" src="./assets/image/강아지 주인5.jpg">
+                                <img class="result-img" src="${pageContext.request.contextPath}/assets/images/searchList_img7.jpg">
                             </div>
                             <div class="search_result_text col-md-6">
                                 <div class="result_text row">
