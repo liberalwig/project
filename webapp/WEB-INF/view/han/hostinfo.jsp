@@ -234,7 +234,7 @@
 			//요청할때
 			url : "${pageContext.request.contextPath}/host2/getPhoto",    
 			type : "post",
-			data : photoVo,// 자바스크립트 객체를 제이슨으로 바꿔주는 함수
+			data : photoVo,
 			
 			success : function(photoList) {
 				console.log(photoList);

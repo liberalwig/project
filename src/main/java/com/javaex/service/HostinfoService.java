@@ -148,5 +148,18 @@ public class HostinfoService {
 		
 		return count;
 	}
+	//키워드 리스트 가져오기
+	public List<KeywordVo> getKeywordList() {
+		System.out.println("[HostinfoService.getKeywordList()]");
+		
+		return hostinfoDao.getKeywordList();
+	}
+	
+	//호스트 등록
+	public void hostinsert(HostVo hostVo) {
+		System.out.println("[HostinfoService.hostinsert()]");
+		
+		hostinfoDao.hostinsert(hostVo);
+	}
 	
 }

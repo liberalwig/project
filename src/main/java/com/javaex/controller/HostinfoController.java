@@ -28,10 +28,23 @@ public class HostinfoController {
 	
 	//호스트 신청 폼
 	@RequestMapping(value = "/hostjoin", method = { RequestMethod.GET, RequestMethod.POST })
-	public String hostJoinForm() {
+	public String hostJoinForm(Model model) {
 		System.out.println("[hostinfoController.hostJoinForm()]");
 		
+		//키워드 데이터 가져오기
+		List<KeywordVo> keywordList = hostinfoService.getKeywordList();
+		
+		model.addAttribute("keywordList", keywordList);
+		
 		return "/han/hostJoinForm";
+	}
+	
+	//호스트 신청 폼
+	@ResponseBody
+	@RequestMapping(value = "/hostinsert", method = { RequestMethod.GET, RequestMethod.POST })
+	public void hostinsert() {
+		System.out.println("[hostinfoController.hostinsert()]");
+		
 	}
 	
 	//호스트 정보

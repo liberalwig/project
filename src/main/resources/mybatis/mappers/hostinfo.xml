@@ -148,6 +148,15 @@
 		]]>
 	</select>
 	
+	<select id="getKeywordList2" resultType="keywordVo">
+		<![CDATA[
+			select   keywordNo,
+			         keywordName
+			from     keyword
+			order by keywordNo asc
+		]]>
+	</select>
+	
 	<select id="getPayment" parameterType="int" resultType="BookingVo">
 		<![CDATA[
 			select bookingNo,
@@ -162,6 +171,16 @@
 			where  bookingNo = #{bookingNo}
 		]]>
 	</select>
+	
+	<insert id="hostinsert" parameterType="hostVo">
+		<selectKey keyProperty="hostNo" resultType="int" order="BEFORE">
+			select seq_host_no.nextval from dual
+		</selectKey>
+		<![CDATA[
+			insert into host
+			values(#{hostNo}, #{usersNo}, #{zipcode}, #{adress1}, #{adress2}, #{adress3}, 0, 0, #{intro}, #{asking}, #{hostcost}, 1)
+		]]>
+	</insert>
 	
 	<insert id="bookinginsert" parameterType="BookingVo">
 		<![CDATA[

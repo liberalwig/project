@@ -146,4 +146,21 @@ public class HostinfoDao {
 		
 		return count;
 	}
+	
+	//키워드 리스트 가져오기
+	public List<KeywordVo> getKeywordList() {
+		System.out.println("[HostinfoDao.getKeywordList()]");
+		
+		return sqlSession.selectList("hostinfo.getKeywordList2");
+	}
+	
+	
+	//호스트 등록
+	public void hostinsert(HostVo hostVo) {
+		System.out.println("[HostinfoDao.hostinsert()]");
+		
+		sqlSession.insert("hostinfo.hostinsert", hostVo);
+	}
+	
+	
 }

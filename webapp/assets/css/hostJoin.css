@@ -22,14 +22,21 @@ a:hover {text-decoration: none; color: #000}
 .clearfix:after {clear: both;}
 
 /* 레이아웃 */
-body{margin-top:80px;}
-
 #wrap {margin: 0px auto; 
        width: 1440px;}		
 #container { width: 1440px;}
 #aside {float: left; width: 360px; padding: 0px 0px 0px 0px;}
 #content { float: left; width: 1080px; margin: 0px 0px 100px 0px;}
 
+#joinform {
+	margin: 50px 0px 0px 220px;
+}
+.exp{
+	font-size: 16px;
+	display: inline-block;
+	margin: 0px 0px 0px 10px;
+	color: #777;
+}
 .list {
   text-align: left;
   padding: 50px 300px 30px 300px; 
@@ -92,7 +99,7 @@ body{margin-top:80px;}
 /*질문05번.주소*/
 #address {
   text-align: left;
-  padding: 0px 0px 0 150px;
+  padding: 0px 0px 0 280px;
 }
 #address #sample6_address{
 	width: 408px;

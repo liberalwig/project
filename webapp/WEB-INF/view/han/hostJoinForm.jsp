@@ -17,17 +17,19 @@
 </head>
 
 <body>
+<c:import url="/WEB-INF/view/includes/header.jsp"></c:import>
     <div id="wrap">
-        <div id="container" class="clearfix">  
-            <div class="col-xs-8">
-            	<h2>펫시터 등록하기</h2>
-            	<p>게어비엔비에서 펫시팅을 시작하고 반려견을 돌봐주며 수입을 만들어보세요.</p>
+        <div id="container" class="clearfix">
+      		<div id="joinform" class="col-xs-8">
+            	<div style="text-align:center;">
+            		<h2>펫시터 등록하기</h2>
+            		<p class="exp">게어비엔비에서 펫시팅을 시작하고 반려견을 돌봐주며 수입을 만들어보세요.</p>	
+            	</div>
                 <div class="row">
                     <div id="joinQuestion" class="row Q">
                         <div class="photo">
-                            <h3>01. 펫시터 사진 업로드</h3>
-                            <p><span class="label label-info">!</span>강아지와 찍은 다정한 사진, 강아지를 능숙하게 훈련하는 사진이라면 더 좋겠죠?</p>
-                            <p>최대 8장까지 올릴 수 있습니다.</p>
+                            <h3>01. 펫시터 사진</h3>
+                            <p class="exp">강아지와 찍은 다정한 사진, 강아지를 능숙하게 훈련하는 사진을 올려서 어필하세요. 최대 8장까지 올릴 수 있습니다.</p>
 							<form name="fname"> 
 								<div class="dropzone" id="fileDropzone"></div> <button id="btn-upload-file">서버전송</button> 
 							</form>
@@ -36,7 +38,7 @@
                
                 <div id="joinQuestion" class="row Q">
                     <h3>02. 키워드 선택</h3>
-                    <p>회원님에게 해당되는 키워드를 선택해주세요! (중복체크 가능)</p>
+                    <p class="exp">회원님에게 해당되는 키워드를 선택해주세요. 중복체크가 가능합니다</p>
                     <table>
                         <colgroup>
                             <col width="140px">
@@ -48,96 +50,50 @@
                             <col width="140px">
                         </colgroup>
                         <tr height="50">
-                            <td>
-                                <input type="checkbox" class="btn-check" id="btn-check1" autocomplete="off">
-                                <label class="tag" for="btn-check1">집 근처 공원</label>
-                            </td>
-                            <td>
-                                <input type="checkbox" class="btn-check" id="btn-check2" autocomplete="off">
-                                <label class="tag" for="btn-check2">펫 용품 구비</label>
-                            </td>
-                            <td>
-                                <input type="checkbox" class="btn-check" id="btn-check3" autocomplete="off">
-                                <label class="tag" for="btn-check3">집 근처 동물병원</label>
-                            </td>
-                            <td>
-                                <input type="checkbox" class="btn-check" id="btn-check4" autocomplete="off">
-                                <label class="tag" for="btn-check4">응급처치 가능</label>
-                            </td>
-                            <td>
-                                <input type="checkbox" class="btn-check" id="btn-check5" autocomplete="off">
-                                <label class="tag" for="btn-check5">돌봄 경력 3년이상</label>
-                            </td>
-                            <td>
-                                <input type="checkbox" class="btn-check" id="btn-check6" autocomplete="off">
-                                <label class="tag" for="btn-check6">전문교육 수료</label>
-                            </td>
-                            <td>
-                                <input type="checkbox" class="btn-check" id="btn-check7" autocomplete="off">
-                                <label class="tag" for="btn-check7">보험 가입</label>
-                            </td>
+	                        <c:forEach items="${requestScope.keywordList}" var="vo" begin="0" end="6">
+	                        	<td>
+	                                <input type="checkbox" class="btn-check" id="btn-check${vo.keywordNo}" autocomplete="off">
+	                                <label class="tag" for="btn-check${vo.keywordNo}">${vo.keywordName}</label>
+	                            </td>
+	                        </c:forEach>
                         </tr>
                         <tr height="50">
-                            <td>
-                                <input type="checkbox" class="btn-check" id="btn-check8" autocomplete="off">
-                                <label class="tag"for="btn-check8">약물투여 가능</label>
-                            </td>
-                            <td>
-                                <input type="checkbox" class="btn-check" id="btn-check9" autocomplete="off">
-                                <label class="tag" for="btn-check9">매일 산책 가능</label>
-                            </td>
-                            <td>
-                                <input type="checkbox" class="btn-check" id="btn-check10" autocomplete="off">
-                                <label class="tag" for="btn-check10">비흡연</label>
-                            </td>
-                            <td>
-                                <input type="checkbox" class="btn-check" id="btn-check11" autocomplete="off">
-                                <label class="tag" for="btn-check11">개가 없음</label>
-                            </td>
-                            <td>
-                                <input type="checkbox" class="btn-check" id="btn-check12" autocomplete="off">
-                                <label class="tag" for="btn-check12">어린이 없음</label>
-                            </td>
-                            <td>
-                                <input type="checkbox" class="btn-check" id="btn-check13" autocomplete="off">
-                                <label class="tag" for="btn-check13">마당 있음</label>
-                            </td>
-                            <td>
-                                <input type="checkbox" class="btn-check" id="btn-check14" autocomplete="off">
-                                <label class="tag" for="btn-check14">응답 빠름</label>
-                            </td>
+	                        <c:forEach items="${requestScope.keywordList}" var="vo" begin="7" end="13">
+	                        	<td>
+	                                <input type="checkbox" class="btn-check" id="btn-check${vo.keywordNo}" autocomplete="off">
+	                                <label class="tag" for="btn-check${vo.keywordNo}">${vo.keywordName}</label>
+	                            </td>
+	                        </c:forEach>
                         </tr>
                     </table>
                 </div>
 
                 <div id="joinQuestion" class="row Q">
                     <h3>03. 자기소개</h3>
-                    <p>회원님을 소개해주세요!</p>
                     <textarea id="intro" name="contents" maxlength="200" onKeyUp="javascript:fnChkByte(this,'80')" placeholder="텍스트를 입력하세요."></textarea>
                 </div>
 
                 <div id="joinQuestion" class="row Q">
                     <h3>04. 펫에 대해 알고싶은 내용</h3>
-                    <p><span class="label label-info">참고</span> 질문을 적어보세요! 작성하신 내용은 회원들이 펫에 대한 설명 사항을 작성할 때 참고 할 수 있습니다!</p>
-                    <textarea id="intro" maxlength="200" placeholder="텍스트를 입력하세요."></textarea>
+                    <p class="exp">질문을 적어보세요! 작성하신 내용은 회원들이 펫에 대한 설명 사항을 작성할 때 참고 할 수 있습니다!</p><br>
+                    <textarea id="asking" maxlength="200" placeholder="텍스트를 입력하세요."></textarea>
                 </div>
 
                 <div id="joinQuestion" class="row Q">
-                    <h3>05. 펫시팅 주소</h3>
-                    <p>강아지를 돌볼 장소는 어디인가요? 주소를 입력해주세요!</p>
+                    <h3>05. 주소</h3>
                     <div id="address">
-						<input type="text" id="sample4_postcode" placeholder="우편번호">
+						<input type="text" id="sample4_postcode" class="zipcode" placeholder="우편번호">
 						<input type="button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기"><br>
-						<input type="text" id="sample6_address" placeholder="지번주소"><br>
+						<input type="text" id="sample6_address" class="adress1" placeholder="지번주소"><br>
 						<span id="guide" style="color:#999;display:none"></span>
-						<input type="text" id="sample4_detailAddress" placeholder="상세주소">
-						<input type="text" id="sample4_extraAddress" placeholder="참고항목">
+						<input type="text" id="sample4_detailAddress" class="adress2" placeholder="상세주소">
+						<input type="text" id="sample4_extraAddress" class="adress3" placeholder="참고항목">
                     </div>
                 </div>
 
                 <div id="joinQuestion" class="row Q"> 
-                    <h3>06. 돌봄료 책정</h3>
-                    <p><span class="label label-info">참고</span> 설정하신 금액은 1박, 1마리당 가격입니다..</p>
+                    <h3>06. 돌봄료</h3>
+                    <p class="exp">설정하신 금액은 1박, 1마리당 가격입니다.</p><br>
                         <input id="cost" type="number" name="cost" placeholder="1박의 돌봄료를 입력해주세요" required class="cost" value="10000"> 원(1박/1마리당)
                 </div>
 
@@ -155,14 +111,43 @@
                     </div>
                 </div>
                                     
-                <button type="submit" class="btn btn-default btn-lg btn-block">펫시터 등록 완료</button><br><br>
+                <button type="submit" id="hostinsertbtn" class="btn btn-default btn-lg btn-block">펫시터 등록 완료</button><br><br>
             </div>
         </div>
     </div>
-</div>
+    </div>
 </body>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
     <script>
+    //3. 등록 완료를 눌렀을때
+    $("#hostinsertbtn").on("click", function(){
+    	var hostVo = {
+    		//usersNo : , 로그인 만들어지면 세션에서 가져오기
+    		zipcode : $(".zipcode").val(),
+    		adress1 : $(".adress1").val(),
+    		adress2 : $(".adress2").val(),
+    		adress3 : $(".adress3").val(),
+    		intro : $("#intro").val(),
+    		asking : $("#asking").val(),
+    		cost : $("#cost").val()
+    	}
+    	
+		//호스트 등록 요청
+		$.ajax({
+			//요청할때
+			url : "${pageContext.request.contextPath}/host2/hostinsert",    
+			type : "post",
+			data : hostVo,
+			
+			success : function(hostVo) {
+				
+			},
+			error : function(XHR, status, error) {
+				console.error(status + " : " + error);
+			}
+		});
+    });
+    
     //1. 사진 업로드
     //fileDropzone dropzone 설정할 태그의 id로 지정 
     Dropzone.options.fileDropzone = { url: 'Fileupload', //업로드할 url (ex)컨트롤러) 
