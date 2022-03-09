@@ -78,9 +78,10 @@
 							<tbody>
 								<c:forEach items="${bList}" var="BookingVo">
 						
-									<tr onClick="location.href='${pageContext.request.contextPath}/bookingDetailHost?bookingNo=${BookingVo.bookingNo}'">
+									<tr>
 										<td><input type="radio" name="list-radio"></td>
-										<td id="no" data-bookingno="${BookingVo.bookingNo}">${BookingVo.bookingNo}</td>
+										<td id="no" onClick="location.href='${pageContext.request.contextPath}/bookingDetailHost?bookingNo=${BookingVo.bookingNo}'">
+											${BookingVo.bookingNo}</td>
 										<td><img src="/project/assets/images/reservation-dog.png"></td>
 										<td>${BookingVo.guestName}</td>
 										<td>${BookingVo.checkin} ~ ${BookingVo.checkout}</td>
@@ -88,7 +89,8 @@
 										<td>${BookingVo.guestHp}</td>
 										<c:choose>
 											<c:when test="${BookingVo.status == '승인대기'}">
-												<td><div class="btn-re-gradient blue mini">예약승인</div></td>
+												<td onClick="location.href='${pageContext.request.contextPath}/statusChange?bookingNo=${BookingVo.bookingNo}&hostNo=${param.hostNo}'">
+												<div class="btn-re-gradient blue mini">예약승인</div></td>
 											</c:when>
 											<c:when test="${BookingVo.status == '결제대기'}">
 												<td><div class="btn-re-gradient orange mini">결제대기</div></td>
@@ -113,7 +115,6 @@
 	document.addEventListener('DOMContentLoaded', function() {
 
 		var calendarEl = document.getElementById('l-calendar');
-		var bookingNo = document.getElementById('no').getAttribute('data-bookingno') ;
 		var calendar = new FullCalendar.Calendar(calendarEl, {
 
 			initialView : 'dayGridMonth', // 월 달력
@@ -130,8 +131,9 @@
 			
 			// 일정 클릭 이벤트
 			eventClick : function() {
-				
-				window.location.href = '${pageContext.request.contextPath}/bookingDetailHost?bookingNo='+bookingNo;
+				if(info.event.extendedProps.status == 'booking'){
+					window.location.href = '${pageContext.request.contextPath}/bookingDetailHost?bookingNo='+document.getElementById('no').getAttribute('data-bookingno');
+				}
 			},
 			
 			//날짜 클릭 이벤트
@@ -149,17 +151,47 @@
 					success: function (bList) {
 						for(var i=0; i<bList.length; i++) {
 							calendar.addEvent({
-								title: bList[i].guestName,
+								title: bList[i].guestName+'('+bList[i].status+')',
 								start: bList[i].checkin,
-								end: bList[i].checkout
+								end: bList[i].checkout,
+								status: 'booking',
+								color: '#ffafb0',
+								textColor: '#000000',
+								status: 'booking'
 							});
 						}
 						
 					}
-				})
-			]
+				}),
 
-		});
+			$.ajax({ 
+				type:"get", 
+				url:"${pageContext.request.contextPath}/calendarAble?hostNo=${param.hostNo}", 
+				dataType : "json",
+				success: function (aList) {
+					for(var i=0; i<aList.length; i++) {
+						calendar.addEvent({
+							start: aList[i].ableDate,
+							end: aList[i].ableDate,
+							allDay: true,
+							status: 'done',
+							display: 'background',
+							overlap: false,
+							backgroundColor: 'rgb(255, 255, 255)'
+						});
+					}
+					
+				}
+			})
+		],
+		
+		 eventDidMount: function(info) {
+			if(info.event.extendedProps.status == 'done') {
+				info.el.style.opacity = '1';
+			}
+		} 
+
+	});
 		
 		// 렌더링
 		calendar.render();
@@ -172,7 +204,6 @@
 	document.addEventListener('DOMContentLoaded', function() {
 
 		var calendarEl = document.getElementById('l-calendar2');
-		var bookingNo = document.getElementById('no').getAttribute('data-bookingno');
 		var calendar = new FullCalendar.Calendar(calendarEl, {
 
 			initialView : 'dayGridMonth', // 월 달력
@@ -189,8 +220,10 @@
 			locale : 'ko', // 한국어 설정(lib/locales/ko.js)
 
 			// 일정 클릭 이벤트
-			eventClick : function() {
-				window.location.href = '${pageContext.request.contextPath}/bookingDetailHost?bookingNo='+bookingNo;
+			eventClick : function(info) {
+				if(info.event.extendedProps.status == 'booking'){
+					window.location.href = '${pageContext.request.contextPath}/bookingDetailHost?bookingNo='+document.getElementById('no').getAttribute('data-bookingno');
+				}
 			},
 			
 			//날짜 클릭 이벤트
@@ -207,20 +240,51 @@
 					success: function (bList) {
 						for(var i=0; i<bList.length; i++) {
 							calendar.addEvent({
-								title: bList[i].guestName,
+								title: bList[i].guestName+'('+bList[i].status+')',
 								start: bList[i].checkin,
-								end: bList[i].checkout
+								end: bList[i].checkout,
+								status: 'booking',
+								color: '#ffafb0',
+								textColor: '#000000',
+								status: 'booking'
 							});
 						}
 						
 					}
-				})
-			]
+				}),
 
-		});
+			$.ajax({ 
+				type:"get", 
+				url:"${pageContext.request.contextPath}/calendarAble?hostNo=${param.hostNo}", 
+				dataType : "json",
+				success: function (aList) {
+					for(var i=0; i<aList.length; i++) {
+						calendar.addEvent({
+							start: aList[i].ableDate,
+							end: aList[i].ableDate,
+							allDay: true,
+							status: 'done',
+							display: 'background',
+							overlap: false,
+							backgroundColor: 'rgb(255, 255, 255)'
+						});
+					}
+					
+				}
+			})
+		],
+		
+		 eventDidMount: function(info) {
+			if(info.event.extendedProps.status == 'done') {
+				info.el.style.opacity = '1';
+			}
+		} 
 
+	});
+		
 		// 렌더링
 		calendar.render();
+
 	});
 	
 	

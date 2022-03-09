@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.javaex.service.BookingService;
 import com.javaex.vo.AbleVo;
 import com.javaex.vo.BookingVo;
+import com.javaex.vo.HostVo;
 import com.javaex.vo.PhotoVo;
 
 @Controller
@@ -45,7 +46,7 @@ public class BookingController {
 	}
 	
 	//달력
-	//예약리스트(호스트)에서 가능날짜추가
+	//예약리스트(호스트)에서 가능날짜추가 or 취소
 	@RequestMapping("/bookingEndHostDate")
 	public String bookingEndHostDate(@RequestParam int hostNo, @RequestParam String date) {
 		System.out.println("BookingController > bookingEndHost");
@@ -65,7 +66,19 @@ public class BookingController {
 		
 		if(result != "중복") {
 			bookingService.ableInsert(hostNo, date);
+		}else {
+			bookingService.ableDelete(hostNo, date);
 		}
+		
+		return "redirect:/bookingEndHost?hostNo="+hostNo;
+	}
+	
+	//가능날짜천제취소
+	@RequestMapping("/bookingEndHostDelete")
+	public String bookingEndHostDelete(@RequestParam int hostNo) {
+		System.out.println("BookingController > bookingEndHostDelete");
+		
+		bookingService.ableDeleteAll(hostNo);
 		
 		return "redirect:/bookingEndHost?hostNo="+hostNo;
 	}
@@ -178,8 +191,6 @@ public class BookingController {
 		String date = pvo.getPhotoDate();
 		date = date.replace(",", "");
 		pvo.setPhotoDate(date);
-
-		System.out.println(pvo);
 		bookingService.photoInsert(pvo);
 
 		return "redirect:/bookingDetailHost?bookingNo="+pvo.getBookingNo();
@@ -204,9 +215,32 @@ public class BookingController {
 		//예약 + 게스트 리스트 가져오기
 		List<BookingVo> BookingList = bookingService.bookingEndHost(hostNo);
 		
+		//호스트정보(노출여부) 가져오기
+		HostVo hvo = bookingService.selectHost(hostNo);
+		
 		model.addAttribute("bList", BookingList);
+		model.addAttribute("hvo", hvo);
 
 		return "yu/reservation-end-host";
+	}
+	
+	//검색노출 on
+	@RequestMapping("/viewAble")
+	public String viewAble(@RequestParam int hostNo, @RequestParam int view) {
+		System.out.println("BookingController > viewAble");
+		
+		bookingService.viewAble(hostNo, view);
+		String result = "s";
+		
+		return result;
+	}
+	
+	//예약승인버튼누름
+	@RequestMapping("/statusChange")
+	public String statusChange(BookingVo bvo) {
+		System.out.println("BookingController > statusChange");
+		
+		return "redirect:/bookingBeforeHost?hostNo="+bvo;
 	}
 	
 	

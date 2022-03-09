@@ -49,7 +49,7 @@
 						<div id="r-calendar0" class="box-shadow">
 							<div id="r-calendar1">
 								<h2>검색노출</h2>
-								<input type="checkbox" id="checkbox" checked> <label for="checkbox"><span></span></label>
+								<input type="checkbox" id="checkbox"> <label for="checkbox"><span></span></label>
 							</div>
 							<div id="r-calendar2">기본적으로 모든 날짜는 예약 불가능으로 설정되어 있습니다.</div>
 							<div id="r-calendar3">예약 가능 여부 설정 변경</div>
@@ -62,8 +62,7 @@
 								<div id="r-impossible2">차단됨</div>
 							</div>
 						</div>
-						<!-- <button class="allBtn">예약모두닫기</button>
-						<button class="allBtn">예약모두열기</button> -->
+						<button class="allBtn" onclick="location.href='${pageContext.request.contextPath}/bookingEndHostDelete?hostNo=${param.hostNo}';">날짜전체닫기</button>
 
 					</div>
 					<div id="r-list">
@@ -128,11 +127,45 @@
 </body>
 
 <script>
+
+	/* 체크박스 value값 설정 */
+	var check = "${hvo.hostview}";
+	if(check == 1){
+		$("#checkbox").prop("checked", true);
+	}else {
+		$("#checkbox").prop("checked", false);
+	};
+	
+	/* 검색노출 */
+	$(document).ready(function(){
+		$("#checkbox").change(function(){
+			if($("#checkbox").is(":checked")){
+				
+				$.ajax({ 
+					type:"post", 
+					url:"${pageContext.request.contextPath}/viewAble?hostNo=${param.hostNo}&view=1", 
+					dataType : "json",
+					success: function (result) {
+						}
+				})
+				
+			}else {
+				
+				$.ajax({ 
+					type:"post", 
+					url:"${pageContext.request.contextPath}/viewAble?hostNo=${param.hostNo}&view=0", 
+					dataType : "json",
+					success: function (result) {
+						}
+				})
+			}
+		})
+	});
+
 	/* 달력 */
 	document.addEventListener('DOMContentLoaded', function() {
 
 		var calendarEl = document.getElementById('l-calendar');
-		var bookingNo = document.getElementById('no').getAttribute('data-bookingno') ;
 		var calendar = new FullCalendar.Calendar(calendarEl, {
 
 			initialView : 'dayGridMonth', // 월 달력
@@ -154,7 +187,7 @@
 			// 일정 클릭 이벤트
 			eventClick : function(info) {
 				if(info.event.extendedProps.status == 'booking'){
-					window.location.href = '${pageContext.request.contextPath}/bookingDetailHost?bookingNo='+bookingNo;
+					window.location.href = '${pageContext.request.contextPath}/bookingDetailHost?bookingNo='+document.getElementById('no').getAttribute('data-bookingno');
 				}
 				
 			},
@@ -162,7 +195,7 @@
 			//날짜 클릭 이벤트
 		  	dateClick: function(info) {
 		  		if(info.event == null){
-		  			window.location.href = '/project/bookingEndHostDate?hostNo=${param.hostNo}&date='+info.dateStr;
+		  			window.location.href = '${pageContext.request.contextPath}/bookingEndHostDate?hostNo=${param.hostNo}&date='+info.dateStr;
 		  		}			
 		  	},
 
@@ -178,6 +211,9 @@
 								title: bList[i].guestName,
 								start: bList[i].checkin,
 								end: bList[i].checkout,
+								status: 'booking',
+								color: '#ffafb0',
+								textColor: '#000000',
 								status: 'booking'
 							});
 						}
@@ -195,7 +231,10 @@
 								start: aList[i].ableDate,
 								end: aList[i].ableDate,
 								allDay: true,
-								status: 'done'
+								status: 'done',
+								display: 'background',
+								overlap: false,
+								backgroundColor: 'rgb(255, 255, 255)'
 							});
 						}
 						
@@ -203,13 +242,11 @@
 				})
 			],
 			
-			eventDidMount: function(info) {
+			 eventDidMount: function(info) {
 				if(info.event.extendedProps.status == 'done') {
-					info.el.style.backgroundColor = 'white';
-					info.el.style.borderColor = 'white';
-					info.el.style.height = '30px';
+					info.el.style.opacity = '1';
 				}
-			}
+			} 
 
 		});
 

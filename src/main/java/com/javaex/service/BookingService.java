@@ -14,6 +14,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.javaex.dao.BookingDao;
 import com.javaex.vo.AbleVo;
 import com.javaex.vo.BookingVo;
+import com.javaex.vo.HostVo;
 import com.javaex.vo.PhotoVo;
 
 @Service
@@ -121,6 +122,34 @@ public class BookingService {
 	public List<AbleVo> ableList(int hostNo) {
 		
 		return bookingDao.ableList(hostNo);
+	}
+	
+	//가능날짜취소
+	public void ableDelete(int hostNo, String date) {
+		
+		AbleVo avo = new AbleVo();
+		avo.setHostNo(hostNo);
+		avo.setAbleDate(date);
+		
+		bookingDao.ableDelete(avo);
+	}
+	
+	//가능날짜천제취소
+	public void ableDeleteAll(int hostNo) {
+		
+		bookingDao.ableDeleteAll(hostNo);
+	}
+	
+	//노출여부업데이트
+	public void viewAble(int hostNo, int hostview) {
+		
+		bookingDao.viewAble(hostNo, hostview);
+	}
+	
+	//호스트 정보
+	public HostVo selectHost(int hostNo) {
+		
+		return bookingDao.selectHost(hostNo);
 	}
 }
 
