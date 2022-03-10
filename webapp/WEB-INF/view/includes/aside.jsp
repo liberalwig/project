@@ -1,4 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -6,18 +8,35 @@
 <link href="/project/assets/css/booking.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
-	<div id="aside">
-		<ul id="b-aside">
-			<li class="menu">예약관리<img src="/project/assets/images/aside_img.png" class="aside-img"></li>
-			<ul id="s-aside" class="hide">
-				<li>결제 대기내역</li>
-				<li onclick="location.href='${pageContext.request.contextPath}/bookingEndGuest?usersNo=${param.usersNo}'">예약관리</li>
+	<c:if test="${authUser.usersType == 1}">
+		<div id="aside">
+			<ul id="b-aside">
+				<li class="menu">예약관리<img src="/project/assets/images/aside_img.png" class="aside-img"></li>
+				<ul id="s-aside">
+					<li onclick="location.href='${pageContext.request.contextPath}/bookingBeforeGuest?usersNo=${authUser.usersNo}'">결제 대기내역</li>
+					<li onclick="location.href='${pageContext.request.contextPath}/bookingEndGuest?usersNo=${authUser.usersNo}'">예약관리</li>
+				</ul>
+				<li>메세지</li>
+				<li>찜목록</li>
+				<li>내 정보 수정</li>
 			</ul>
-			<li>메세지</li>
-			<li>찜목록</li>
-			<li>내 정보 수정</li>
-		</ul>
-	</div>
+		</div>
+	</c:if>
+	
+	<c:if test="${authUser.usersType == 2}">
+		<div id="aside">
+			<ul id="b-aside">
+				<li class="menu">예약관리<img src="/project/assets/images/aside_img.png" class="aside-img"></li>
+				<ul id="s-aside">
+					<li onclick="location.href='${pageContext.request.contextPath}/bookingBeforeHost?hostNo=${authUser.hostNo}'">대기내역</li>
+					<li onclick="location.href='${pageContext.request.contextPath}/bookingEndHost?hostNo=${authUser.hostNo}'">예약신청관리</li>
+				</ul>
+				<li>메세지</li>
+				<li>호스트 정보 수정</li>
+			</ul>
+		</div>
+	</c:if>
+	
 
 </body>
 
@@ -31,6 +50,6 @@
 			// a 옆의 태그중 ul 태그에 hide 클래스 태그를 넣던지 빼던지 한다.
 			$(this).next("ul").toggleClass("hide");
 		});
-	});
+	}); 
 </script>
 </html>
