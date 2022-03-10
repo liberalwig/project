@@ -10,6 +10,7 @@ import com.javaex.vo.AbleVo;
 import com.javaex.vo.BookingVo;
 import com.javaex.vo.HostVo;
 import com.javaex.vo.PhotoVo;
+import com.javaex.vo.UserVo;
 
 @Repository
 public class BookingDao {
@@ -91,6 +92,14 @@ public class BookingDao {
 		return bookingList;
 	}
 	
+	//예약완료리스트(게스트)
+	public List<BookingVo> bookingEndGuest(int usersNo) {
+		
+		List<BookingVo> bookingList = sqlsession.selectList("booking.bookingEndHostList", usersNo);
+		
+		return bookingList;
+	}
+	
 	//가능날짜추가
 	public void ableInsert(AbleVo avo) {
 		
@@ -126,5 +135,35 @@ public class BookingDao {
 	public HostVo selectHost(int hostNo) {
 		
 		return sqlsession.selectOne("booking.selectHost", hostNo);
+	}
+	
+	//예약승인 상태변경
+	public void updateStatus(int bookingNo) {
+		
+		sqlsession.update("booking.updateStatus", bookingNo);
+	}
+	
+	//펫시팅중 상태변경
+	public void updateStatus2(int bookingNo) {
+		
+		sqlsession.update("booking.updateStatus2", bookingNo);
+	}
+	
+	//회원가입
+	public void join(UserVo uvo) {
+		
+		sqlsession.insert("user.join", uvo);
+	}
+	
+	//로그인(게스트)
+	public UserVo loginGuest(UserVo uvo) {
+		
+		return sqlsession.selectOne("user.loginGuest", uvo);
+	}
+	
+	//로그인(호스트)
+	public UserVo loginHost(UserVo uvo) {
+		
+		return sqlsession.selectOne("user.loginHost", uvo);
 	}
 }

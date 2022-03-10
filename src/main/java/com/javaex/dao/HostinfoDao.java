@@ -63,7 +63,9 @@ public class HostinfoDao {
 	public double getSum(int hostNo){
 		System.out.println("[HostinfoDao.getSum()]");
 		
-		return sqlSession.selectOne("hostinfo.getSum", hostNo);
+		double sum = sqlSession.selectOne("hostinfo.getSum", hostNo);
+		
+		return sum;
 	}
 	
 	//각각 점수 가져오기
@@ -174,5 +176,12 @@ public class HostinfoDao {
 		System.out.println("[HostinfoService.setHostPhoto()]");
 		
 		sqlSession.insert("hostinfo.setHostPhoto", photoVo);
+	}
+	
+	//키워드 넣기
+	public void setKeyword(KeywordVo keywordVo) {
+		System.out.println("[HostinfoService.setKeyword()]");
+		
+		sqlSession.insert("hostinfo.setKeyword", keywordVo);
 	}
 }

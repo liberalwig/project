@@ -42,7 +42,10 @@ ul>li {
 	list-style: none;
 }
 
-#no {color: #0080c0;}
+#no {
+	color: #0080c0;
+	cursor: pointer;
+}
 
 #list-btn {
 	margin: 0px 0px 30px 970px;

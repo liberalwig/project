@@ -14,7 +14,7 @@
 	<select id="getHost" parameterType="int" resultType="HostVo">
 		<![CDATA[
 			select ho.hostNo,
-			       ho.userNo,
+			       ho.usersNo,
 			       us.name,
 			       us.hp,
 			       us.path,
@@ -30,9 +30,10 @@
 			       co.reviewcount,
 			       ho.hostview
 			from   users us, host ho, (select count(review) reviewcount
-                              		   from   booking) co
+                              		   from   booking
+                              		   where  hostNo = #{hostNo}) co
 			where  hostNo = #{hostNo}
-            and    us.usersNo = ho.userNo
+            and    us.usersNo = ho.usersNo
 		]]>
 	</select>
 	
@@ -63,7 +64,7 @@
 	
 	<select id="getSum" parameterType="int" resultType="double">
 		<![CDATA[
-			select SUM(clean) + SUM(food) + SUM(play) + SUM(walk) + SUM(communication)
+			select NVL(SUM(clean), 0) + NVL(SUM(food), 0) + NVL(SUM(play), 0) + NVL(SUM(walk), 0) + NVL(SUM(communication), 0)
 			from   booking
 			where  hostNo = #{hostNo}
 		]]>
@@ -79,7 +80,7 @@
 	
 	<select id="getClean" parameterType="int" resultType="double">
 		<![CDATA[
-			select avg(clean)
+			select NVL(avg(clean), 0)
 			from   booking
 			where  hostNo = #{hostNo}
 		]]>
@@ -87,7 +88,7 @@
 	
 	<select id="getFood" parameterType="int" resultType="double">
 		<![CDATA[
-			select avg(food)
+			select NVL(avg(food), 0)
 			from   booking
 			where  hostNo = #{hostNo}
 		]]>
@@ -95,7 +96,7 @@
 	
 	<select id="getPlay" parameterType="int" resultType="double">
 		<![CDATA[
-			select avg(play)
+			select NVL(avg(play), 0)
 			from   booking
 			where  hostNo = #{hostNo}
 		]]>
@@ -103,7 +104,7 @@
 	
 	<select id="getWalk" parameterType="int" resultType="double">
 		<![CDATA[
-			select avg(walk)
+			select NVL(avg(walk), 0)
 			from   booking
 			where  hostNo = #{hostNo}
 		]]>
@@ -111,7 +112,7 @@
 	
 	<select id="getCommunication" parameterType="int" resultType="double">
 		<![CDATA[
-			select avg(communication)
+			select NVL(avg(communication), 0)
 			from   booking
 			where  hostNo = #{hostNo}
 		]]>
@@ -193,6 +194,13 @@
 		<![CDATA[
 			insert into hostprofile
 			values(seq_hostprofile_no.nextval,#{hostNo}, sysdate, #{photoPath})
+		]]>
+	</insert>
+	
+	<insert id="setKeyword" parameterType="KeywordVo">
+		<![CDATA[
+			insert into hostkeyword
+			values(seq_hostkeyword_no.nextval, #{hostNo}, #{keywordNo})
 		]]>
 	</insert>
 	

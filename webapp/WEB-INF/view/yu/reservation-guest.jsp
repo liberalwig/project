@@ -65,9 +65,9 @@
 						
 						<tbody>
 							<c:forEach items="${bList}" var="BookingVo">
-								<tr onClick="location.href='${pageContext.request.contextPath}/bookingDetailGuest?bookingNo=${BookingVo.bookingNo}'">
+								<tr>
 									<td><input type="radio" name="list-radio"></td>
-									<td id="no">${BookingVo.bookingNo}</td>
+									<td id="no"  onClick="location.href='${pageContext.request.contextPath}/bookingDetailGuest?bookingNo=${BookingVo.bookingNo}'">${BookingVo.bookingNo}</td>
 									<td><img src="/project/assets/images/reservation-dog.png"></td>
 									<td>${BookingVo.hostName}</td>
 									<td>${BookingVo.checkin} ~ ${BookingVo.checkout}</td>
@@ -78,7 +78,7 @@
 											<td><div class="btn-re-gradient yellow mini">${BookingVo.status}</div></td>
 										</c:when>
 										<c:when test="${BookingVo.status == '결제대기'}">
-											<td><div class="btn-re-gradient orange mini">결제대기</div></td>
+											<td><div id="pay" class="btn-re-gradient orange mini">결제대기</div></td>
 										</c:when>
 									</c:choose>
 								</tr>
@@ -99,6 +99,12 @@
 
 <script>
 
+/* 결제대기 눌렀을때 */
+$("#pay").on("click", function(){
+	
+	
+	
+});
 	
 </script>
 </html>

@@ -2,6 +2,8 @@ package com.javaex.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,6 +21,7 @@ import com.javaex.vo.HostVo;
 import com.javaex.vo.KeywordVo;
 import com.javaex.vo.PhotoVo;
 import com.javaex.vo.ReviewVo;
+import com.javaex.vo.UserVo;
 
 @Controller
 @RequestMapping(value = "/host2", method = { RequestMethod.GET, RequestMethod.POST })
@@ -43,14 +46,19 @@ public class HostinfoController {
 	//호스트 신청 - 1. 호스트 insert / user타입 update
 	@ResponseBody
 	@RequestMapping(value = "/hostinsert", method = { RequestMethod.GET, RequestMethod.POST })
-	public int hostinsert(@ModelAttribute HostVo hostVo) {
+	public int hostinsert(@ModelAttribute HostVo hostVo, HttpSession session) {
 		System.out.println("[hostinfoController.hostinsert()]");
 		System.out.println(hostVo);
 		//호스트 insert하기
 		hostinfoService.hostinsert(hostVo);
+		
 		//유저 유저타입 update하기
 		hostinfoService.typeUpdate(hostVo.getUsersNo());
+		UserVo authUser = (UserVo)session.getAttribute("authUser");
+		authUser.setUsersType(2);
+		session.setAttribute("authUser", authUser);
 		int hostNo = hostVo.getHostNo();
+		
 		return hostNo;
 		
 	}
@@ -71,13 +79,13 @@ public class HostinfoController {
 	//호스트 신청 - 3 호스트 키워드 insert하기
 	@ResponseBody
 	@RequestMapping(value = "/hostkeywordinsert", method = { RequestMethod.GET, RequestMethod.POST })
-	public int hostkeywordinsert(@RequestParam("keywordList") List<KeywordVo> keyList,
-								  @RequestParam("hostNo") int hostNo) {
+	public int hostkeywordinsert(@RequestParam("keywordNo[]") List<Integer> keyList,
+								 @RequestParam("hostNo") int hostNo) {
 		System.out.println("[hostinfoController.hostkeywordinsert()]");
 		
-		System.out.println(keyList);
+		System.out.println("keywordList:" + keyList);
 		//호스트키워드 insert하기
-		
+		hostinfoService.setKeyword(keyList, hostNo);
 		return hostNo;
 	}
 	

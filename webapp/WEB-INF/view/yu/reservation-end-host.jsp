@@ -208,7 +208,7 @@
 					success: function (bList) {
 						for(var i=0; i<bList.length; i++) {
 							calendar.addEvent({
-								title: bList[i].guestName,
+								title: bList[i].guestName+'('+bList[i].status+')',
 								start: bList[i].checkin,
 								end: bList[i].checkout,
 								status: 'booking',

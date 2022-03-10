@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
@@ -61,8 +62,15 @@ public class HostinfoService {
 	//퍼피력 계산
 	public double getPuppyPoint(int hostNo) {
 		System.out.println("[HostinfoService.getPuppyPoint()]");
-		
-		return (hostinfoDao.getSum(hostNo)/5)/hostinfoDao.getReviewCount(hostNo);
+		double sum = (hostinfoDao.getSum(hostNo)/5.0);
+		double reviewcount = (double)hostinfoDao.getReviewCount(hostNo);
+		if(reviewcount == 0.0) {
+			return 0;
+		} else {
+			double puppypoint = sum / reviewcount;
+			
+			return puppypoint;
+		}
 	}
 	
 	//항목점수 계산
@@ -204,6 +212,23 @@ public class HostinfoService {
 		photoVo.setHostNo(hostNo);
 		photoVo.setPhotoPath(saveName);
 		hostinfoDao.setHostPhoto(photoVo);
+	}
+	
+	//키워드 등록
+	public void setKeyword(List<Integer> keyList, int hostNo) {
+		System.out.println("[HostinfoService.setKeyword()]");
+		
+		List<KeywordVo> keywordList = new ArrayList<KeywordVo>();
+		
+		for(int KeywordNo:keyList) {
+			KeywordVo keywordVo = new KeywordVo();
+			keywordVo.setHostNo(hostNo);
+			keywordVo.setKeywordNo(KeywordNo);
+			keywordList.add(keywordVo);
+		}
+		for (KeywordVo keywordVo:keywordList) {
+			hostinfoDao.setKeyword(keywordVo);
+		}
 	}
 	
 }

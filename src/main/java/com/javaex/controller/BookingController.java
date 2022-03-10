@@ -3,6 +3,8 @@ package com.javaex.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,6 +18,7 @@ import com.javaex.vo.AbleVo;
 import com.javaex.vo.BookingVo;
 import com.javaex.vo.HostVo;
 import com.javaex.vo.PhotoVo;
+import com.javaex.vo.UserVo;
 
 @Controller
 public class BookingController {
@@ -236,11 +239,63 @@ public class BookingController {
 	}
 	
 	//예약승인버튼누름
-	@RequestMapping("/statusChange")
-	public String statusChange(BookingVo bvo) {
+	@RequestMapping("/updateStatus")
+	public String updateStatus(@RequestParam int bookingNo, @RequestParam int hostNo) {
 		System.out.println("BookingController > statusChange");
 		
-		return "redirect:/bookingBeforeHost?hostNo="+bvo;
+		bookingService.updateStatus(bookingNo);
+		
+		return "redirect:/bookingBeforeHost?hostNo="+hostNo;
+	}
+	
+	//예약리스트(게스트)
+	@RequestMapping("/bookingEndGuest")
+	public String bookingEndGuest(@RequestParam int usersNo, Model model) {
+		System.out.println("BookingController > bookingEndGuest");
+		
+		//예약 + 호스트 리스트 가져오기
+		List<BookingVo> BookingList = bookingService.bookingEndGuest(usersNo);
+		
+		model.addAttribute("bList", BookingList);
+		
+		return "yu/reservation-end-guest";
+	}
+	
+	//회원가입
+	@RequestMapping("/join")
+	public String join(UserVo uvo) {
+		System.out.println("BookingController > join");
+		
+		bookingService.join(uvo);
+		
+		return "redirect:/main";
+	}
+	
+	//로그인
+	@RequestMapping("/login")
+	public String login(UserVo uvo, HttpSession session) {
+		System.out.println("BookingController > login");
+		
+		UserVo authUser = bookingService.login(uvo);
+		System.out.println(authUser);
+		
+		if(authUser != null) {
+			session.setAttribute("authUser", authUser);
+		}
+		
+		return "redirect:/main";
+	}
+	
+	// 로그아웃
+	@RequestMapping("/logout")
+	public String logout(HttpSession session) {
+		System.out.println("BookingController > logout");
+		
+		//세션의 정보 삭제
+		session.removeAttribute("authUser");
+		session.invalidate();
+
+		return "redirect:/main";
 	}
 	
 	
