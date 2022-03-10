@@ -16,7 +16,10 @@
         		b.checkin, 
         		b.checkout, 
         		b.ea, 
-        		b.note
+        		b.note,
+        		b.bookingDate,
+        		b.days,
+        		b.bookingNo
 		from users u, host h, booking b
 		where u.usersno = h.userno and h.hostno = b.hostno
 		and b.bookingNo = #{bookingNo}

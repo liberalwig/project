@@ -11,14 +11,15 @@ public class FinishPVo {
 	private String checkout;
 	private int ea;
 	private String note;
-
+	private int bookingDate;
+	private int days;
 	
-public FinishPVo() {
-}
+	public FinishPVo() {
+	}
 
-public FinishPVo(int bookingNo, String name, String hp, String adress1, String adress2, String adress3,
-		String checkin, String checkout, int ea, String note) {
-	this.bookingNo = bookingNo;
+	public FinishPVo(int bookingNo, String name, String hp, String adress1, String adress2, String adress3,
+			String checkin, String checkout, int ea, String note, int bookingDate, int days) {
+		this.bookingNo = bookingNo;
 		this.name = name;
 		this.hp = hp;
 		this.adress1 = adress1;
@@ -28,6 +29,8 @@ public FinishPVo(int bookingNo, String name, String hp, String adress1, String a
 		this.checkout = checkout;
 		this.ea = ea;
 		this.note = note;
+		this.bookingDate = bookingDate;
+		this.days = days;
 	}
 
 	public int getBookingNo() {
@@ -110,11 +113,28 @@ public FinishPVo(int bookingNo, String name, String hp, String adress1, String a
 		this.note = note;
 	}
 
+	public int getBookingDate() {
+		return bookingDate;
+	}
+
+	public void setBookingDate(int bookingDate) {
+		this.bookingDate = bookingDate;
+	}
+
+	public int getDays() {
+		return days;
+	}
+
+	public void setDays(int days) {
+		this.days = days;
+	}
+
 	@Override
 	public String toString() {
 		return "FinishPVo [bookingNo=" + bookingNo + ", name=" + name + ", hp=" + hp + ", adress1=" + adress1
 				+ ", adress2=" + adress2 + ", adress3=" + adress3 + ", checkin=" + checkin + ", checkout=" + checkout
-				+ ", ea=" + ea + ", note=" + note +  "]";
+				+ ", ea=" + ea + ", note=" + note + ", bookingDate=" + bookingDate + ", days=" + days + "]";
 	}
-}
+
 	
+}
