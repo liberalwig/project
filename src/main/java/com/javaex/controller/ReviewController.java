@@ -29,7 +29,7 @@ public class ReviewController {
 		System.out.println("[리뷰 보냄]");
 		reviewService.review(reviewVo);
 		
-		System.out.println(reviewVo +"컨트롤러");
+		System.out.println(reviewVo +"컨트롤러 ");
 		return "kang/review";
 	}
 

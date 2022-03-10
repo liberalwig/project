@@ -11,14 +11,13 @@ public class FinishPVo {
 	private String checkout;
 	private int ea;
 	private String note;
-	private int totalprice;
 
 	
 public FinishPVo() {
 }
 
 public FinishPVo(int bookingNo, String name, String hp, String adress1, String adress2, String adress3,
-		String checkin, String checkout, int ea, String note, int totalprice) {
+		String checkin, String checkout, int ea, String note) {
 	this.bookingNo = bookingNo;
 		this.name = name;
 		this.hp = hp;
@@ -29,7 +28,6 @@ public FinishPVo(int bookingNo, String name, String hp, String adress1, String a
 		this.checkout = checkout;
 		this.ea = ea;
 		this.note = note;
-		this.totalprice = totalprice;
 	}
 
 	public int getBookingNo() {
@@ -112,19 +110,11 @@ public FinishPVo(int bookingNo, String name, String hp, String adress1, String a
 		this.note = note;
 	}
 
-	public int getTotalprice() {
-		return totalprice;
-	}
-
-	public void setTotalprice(int totalprice) {
-		this.totalprice = totalprice;
-	}
-
 	@Override
 	public String toString() {
 		return "FinishPVo [bookingNo=" + bookingNo + ", name=" + name + ", hp=" + hp + ", adress1=" + adress1
 				+ ", adress2=" + adress2 + ", adress3=" + adress3 + ", checkin=" + checkin + ", checkout=" + checkout
-				+ ", ea=" + ea + ", note=" + note + ", totalprice=" + totalprice + "]";
+				+ ", ea=" + ea + ", note=" + note +  "]";
 	}
 }
 	

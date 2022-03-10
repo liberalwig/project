@@ -1,7 +1,5 @@
 package com.javaex.dao;
 
-import java.util.List;
-
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -14,22 +12,19 @@ public class FinishPDao {
 	
 	@Autowired
 	private SqlSession sqlSession;
-	
-	public List<FinishPVo> selectP(FinishPVo finishPVo) {
-		System.out.println("여기는 다오");
-		
-		List<FinishPVo> authP = sqlSession.selectList("finishP.getinfoP", finishPVo);
-		System.out.println(authP);
-		
-		return  authP;
-	}
+
 	
 	public FinishPVo selectPay (FinishPVo finishPVo) {
 		System.out.println("여기는 다오");
 		
-		FinishPVo authPay = sqlSession.selectOne("finishP.getPay", finishPVo);
-		return authPay;
+		finishPVo = sqlSession.selectOne("finishP.selectPay", finishPVo);
+		System.out.println(finishPVo +"다오");
+		return finishPVo;
 	}
 	
+	public FinishPVo selectP(int bookingNo) {
+		FinishPVo finishPVo = sqlSession.selectOne("finishP.selectPay",bookingNo);
+		return finishPVo; 
+	}
 	
 }

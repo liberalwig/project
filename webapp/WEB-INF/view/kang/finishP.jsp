@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%> 
 
 <!DOCTYPE html>
 <html>
@@ -43,12 +42,12 @@
 					<div class="inform">
 						<div class="row">
 							<p class="col-md-6">이름</p>
-							<p class="col-md-6">유다운</p>
+							<p class="col-md-6">${finishPVo.name}</p>
 						</div>
 
 						<div class="line row">
 							<p class="col-md-6">전화번호</p>
-							<p class="col-md-6">${authPay.hp }</p>
+							<p class="col-md-6">${finishPVo.hp}</p>
 						</div>
 					</div>
 					<p class="mar">예약 정보</p>
