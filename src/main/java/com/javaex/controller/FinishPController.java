@@ -32,7 +32,7 @@ public class FinishPController {
 		System.out.println("여기는 컨트롤러");	
 		FinishPVo pay = finishPService.getpay(finishPVo);
 		
-		System.out.println(pay + "컨트롤러");
+		System.out.println(pay + "컨트롤러 ");
 		return "kang/finishP";
 	}
 
