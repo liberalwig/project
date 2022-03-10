@@ -17,19 +17,19 @@
 		<!--search-->
 		<div class="searchbox col-md-4">
 		    <!-- Topbar Search -->
-		    <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-		        <div class="input-group input-group-joined border-0">
-		            <div class="searchboxin_1 input-group input-group-joined"> 
-		                <input type="text" class="search_text1 small form-control ps-0 pointer" placeholder="어디를 찾으세요?" aria-label="Search" aria-describedby="basic-addon2">
-		            </div> 
-		            <div class="searchboxin_2 input-group input-group-joined">
-		                <input class="search_text2 form-control small ps-0 pointer" id="litepickerRangePlugin" value="" placeholder="체크인 / 체크아웃" />
-		            </div> 
-		            <button class="search_text3 btn btn-primary" type="button">
-		            	<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-		            </button>
-		        </div>
-		    </form>
+             <form action="./searchList" method="get" class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                 <div class="input-group input-group-joined border-0">
+                     <div class="searchboxin_1 input-group input-group-joined"> 
+                         <input type="text" name="searchKeyword" value="${searchKeyword}" class="search_text1 small form-control ps-0 pointer" placeholder="어디를 찾으세요?" aria-label="Search" aria-describedby="basic-addon2">
+                     </div> 
+                     <div class="searchboxin_2 input-group input-group-joined">
+                         <input type="text" name="searchData" class="search_text2 form-control small ps-0 pointer" id="litepickerRangePlugin" value="" placeholder="체크인 / 체크아웃" />
+                     </div> 
+                     <button class="search_text3 btn btn-primary" type="submit">
+                     	   <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                     </button>
+                 </div>
+             </form>
 		</div>
             <!--menu  로그인 로그아웃 영역 나누기-->
             <!--menu  로그인-->
