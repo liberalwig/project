@@ -25,12 +25,12 @@ public class ReviewController {
 	
 	@RequestMapping(value="/reviewF", method = {RequestMethod.GET, RequestMethod.POST})
 	public String reviewF(@ModelAttribute ReviewVo reviewVo,
-						  @RequestParam("bookingNo")int bookingNo) {
+						  @RequestParam("usersNo")int usersNo) {
 		System.out.println("[리뷰 보냄]");
 		reviewService.review(reviewVo);
 		
 		System.out.println(reviewVo +"컨트롤러 ");
-		return "kang/review";
+		return "redirect:/bookingEndGuest?usersNo="+usersNo;
 	}
 
 }

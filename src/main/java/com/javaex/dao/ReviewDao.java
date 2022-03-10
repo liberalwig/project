@@ -19,5 +19,10 @@ public class ReviewDao {
 		return sqlSession.update("review.updateReview", reviewVo);
 		
 	}
+	
+	public int updateStatus3(int bookingNo) {
+		
+		return sqlSession.update("review.updateStatus3", bookingNo);
+	}
 
 }
