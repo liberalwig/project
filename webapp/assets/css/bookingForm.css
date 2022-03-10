@@ -11,6 +11,7 @@ textarea, button, form {margin:0; padding:0;}
 body {font-size:18px; font-family: "Helvetica Neue", "맑은 고딕", 돋움, 굴림; color: #333; background-color: #fff;}
 
 ul, ol {list-style-type: none;}
+a{color: #000;}
 a:link {text-decoration: none; color: #000}
 a:visited {text-decoration: none; color: #000}
 a:active {text-decoration: none; color: #000}
@@ -25,7 +26,6 @@ a:hover {text-decoration: none; color: #000}
     background-color:#3D9BE9;
 }
 /* 공통 레이아웃*/
-body{margin-top:80px;}
 #wrap {margin: 0px auto; 
        width: 1440px;}
 #container { width: 1440px;}
@@ -60,7 +60,7 @@ body{margin-top:80px;}
 }
     #profile{
         border-bottom: 1px solid #DDD;
-        padding : 20px 40px 30px 40px;
+        padding : 20px 25px 30px 25px;
     }
         #hostimg{
             float:right;

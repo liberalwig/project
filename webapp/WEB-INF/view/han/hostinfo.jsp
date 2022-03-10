@@ -209,6 +209,7 @@
 									</nav>
 								</c:when>
 								<c:otherwise>
+									<h4 style="padding:150px 0px 0px 70px">아직 작성된 리뷰가 없어요.</h4>
 								</c:otherwise>
 							</c:choose>
 						</div>

@@ -204,6 +204,7 @@
 							success : function(hostNo) {
 								console.log(hostNo);
 								alert("펫시터 신청이 완료되었습니다.");
+								window.location.replace("${pageContext.request.contextPath}/main");
 							},
 							error : function(XHR, status, error) {
 								console.error(status + " : " + error);
