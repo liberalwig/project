@@ -9,7 +9,6 @@
 
 <!--CSS-->
 <link href="/project/assets/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css">
-<link href="/project/assets/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css">
 <link href="/project/assets/css/finishP.css" rel="stylesheet" type="text/css">
 <!-- 자바스크립트 -->
 <script type="text/javascript" src="/project/assets/js/jquery-1.12.4.js"></script>
@@ -54,28 +53,28 @@
 					<div class="inform">
 						<div class="row">
 							<p class="col-md-6">위치</p>
-							<p class="col-md-6">서울시 관악구 남부순환로 1820 에그옐로우빌딩 14층</p>
+							<p class="col-md-6">${finishPVo.adress1} ${finishPVo.adress2} ${finishPVo.adress3}</p>
 						</div>
 						<div class="line row">
 							<p class="col-md-6">펫 설명 및 요청사항</p>
-							<p class="col-md-6 scroll scroll1" id="re">저희 강아지 이름은 뿡빵이에요. 뿡빵이는 물을 좋아해서 물 그릇을 항상 채워주세요. 그리고 식탐이 많아서 다른 아이 밥을 뺏어먹을 수가 있으니까 지켜봐주세요.</p>
+							<p class="col-md-6 scroll scroll1" id="re">${finishPVo.note}</p>
 						</div>
 					</div>
 					<p class="mar">결제 정보</p>
 					<div class="inform">
 						<div class="row">
 							<p class="col-md-6">날짜</p>
-							<p class="col-md-6">09.02.21 ~ 11.02.21</p>
+							<p class="col-md-6">${finishPVo.checkin} ~ ${finishPVo.checkout}</p>
 						</div>
 
 						<div class="row">
 							<p class="col-md-6">반려견 마릿수</p>
-							<p class="col-md-6">2 마리</p>
+							<p class="col-md-6">${finishPVo.ea} 마리</p>
 						</div>
 
 						<div class="row">
 							<p class="col-md-6">총 결제 금액</p>
-							<p class="col-md-6">60,000 원</p>
+							<p class="col-md-6">${finishPVo.bookingDate*finishPVo.days*finishPVo.ea} 원</p>
 						</div>
 					</div>
 				</div>

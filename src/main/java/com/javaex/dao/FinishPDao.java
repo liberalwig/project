@@ -14,14 +14,6 @@ public class FinishPDao {
 	private SqlSession sqlSession;
 
 	
-	public FinishPVo selectPay (FinishPVo finishPVo) {
-		System.out.println("여기는 다오");
-		
-		finishPVo = sqlSession.selectOne("finishP.selectPay", finishPVo);
-		System.out.println(finishPVo +"다오");
-		return finishPVo;
-	}
-	
 	public FinishPVo selectP(int bookingNo) {
 		FinishPVo pay = sqlSession.selectOne("finishP.selectPay",bookingNo);
 		System.out.println("여기는 다오");
