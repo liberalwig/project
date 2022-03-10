@@ -3,6 +3,8 @@ package com.javaex.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -266,6 +268,33 @@ public class BookingController {
 		
 		bookingService.join(uvo);
 		
+		return "redirect:/main";
+	}
+	
+	//로그인
+	@RequestMapping("/login")
+	public String login(UserVo uvo, HttpSession session) {
+		System.out.println("BookingController > login");
+		
+		UserVo authUser = bookingService.login(uvo);
+		System.out.println(authUser);
+		
+		if(authUser != null) {
+			session.setAttribute("authUser", authUser);
+		}
+		
+		return "redirect:/main";
+	}
+	
+	// 로그아웃
+	@RequestMapping("/logout")
+	public String logout(HttpSession session) {
+		System.out.println("BookingController > logout");
+		
+		//세션의 정보 삭제
+		session.removeAttribute("authUser");
+		session.invalidate();
+
 		return "redirect:/main";
 	}
 	

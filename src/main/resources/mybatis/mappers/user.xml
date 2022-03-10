@@ -10,4 +10,31 @@
 			values(seq_users_no.nextval, #{id}, #{password}, #{name}, #{hp}, null, 1)
 		]]>
 	</insert>
+	
+	<!-- 로그인(게스트) -->
+	<select id="loginGuest" parameterType="com.javaex.vo.UserVo" resultType="com.javaex.vo.UserVo">
+		<![CDATA[
+			select  usersNo,
+					name,
+					usersType
+			from 	users
+			where   id = #{id}
+			and     password = #{password}
+		]]>
+	</select>
+	
+	<!-- 로그인(호스트) -->
+	<select id="loginHost" parameterType="com.javaex.vo.UserVo" resultType="com.javaex.vo.UserVo">
+		<![CDATA[
+			select  u.usersNo,
+					u.name,
+					u.usersType,
+					h.hostNo
+			from 	users u, host h
+			where   u.usersNo = h.usersNo
+			and	    id = #{id}
+			and     password = #{password}
+		]]>
+	</select>
+	
 </mapper>

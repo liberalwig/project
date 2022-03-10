@@ -11,7 +11,7 @@
         
            <!--logo-->
            <div class="logo col-md-4">
-               <a href="">
+               <a href="${pageContext.request.contextPath}/main">
                    <img class="logo-img" src="${pageContext.request.contextPath}/assets/images/header_logo.jpg">
                </a>
            </div>
@@ -50,13 +50,24 @@
                     <button type="button" class="menu_text3 btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                     <span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span>
                     </button>
-                    <ul class="dropdown-menu" role="menu">
-                        <li id="login"><a href="#">로그인</a></li>
-                        <li id="join"><a href="#">회원가입</a></li>
-                        <li><a href="#">Something else here</a></li>
-                      <!--  <li class="divider"></li> 줄넣는 방법-->
-                        <li><a href="#">Separated link</a></li>
-                    </ul>
+                    <c:if test="${authUser.usersNo == null}">
+                    	<ul class="dropdown-menu" role="menu">
+	                        <li id="login"><a href="#">로그인</a></li>
+	                        <li id="join"><a href="#">회원가입</a></li>
+	                      	<!--  <li class="divider"></li> 줄넣는 방법-->
+                    	</ul>
+                    </c:if>
+                    <c:if test="${authUser.usersNo != null}">
+                    	<ul class="dropdown-menu" role="menu">
+	                        <li id="login"><a href="${pageContext.request.contextPath}/logout">로그아웃</a></li>
+	                        <c:if test="${authUser.usersType == 1}">
+	                        	<li><a href="${pageContext.request.contextPath}/bookingBeforeGuest?usersNo=${authUser.usersNo}">마이페이지</a></li>
+	                        </c:if>
+	                        <c:if test="${authUser.usersType == 2}">
+	                        	<li><a href="${pageContext.request.contextPath}/bookingEndHost?hostNo=${authUser.hostNo}">마이페이지</a></li>
+	                        </c:if>
+                    	</ul>
+                    </c:if>
                 </div>
            	</div>
            	
@@ -93,7 +104,7 @@
     </header>
 
 <body>
-	<form action="${pageContext.request.contextPath}/join">
+	<form action="${pageContext.request.contextPath}/join" method="post">
 	  <div class="modal fade joinForm" id="joinForm">
 	    <div class="modal-dialog">
 	      <div class="modal-content">
@@ -144,14 +155,12 @@
 	          <h4 class="modal-title">로그인 또는 회원가입</h4>
 	        </div>
 	        <div class="modal-body" class="container-fluid">
-	            <div class="row">
-	                <div class="col-xs-1">
-	                </div>
-	                <div class="col-xs-10">
+	            <div class="row paddingLogin wellcome">
+	                <div>
 	                    <h1 id="wellcome">GairBnB에 오신것을 환영합니다.</h1>
 	                </div>
 	            </div>
-				<form action="">
+				<form action="${pageContext.request.contextPath}/login" method="post">
 		            <div id="u-idPass" class="row">
 		                <div>
 		                	<input id="u-id" name="id" type="text" placeholder="아이디">
@@ -160,15 +169,13 @@
 		                	<input id="u-pass" name="password" type="password" placeholder="비밀번호">
 		                </div>
 		            </div>
-		            <div class="row">
-		                <div class="col-xs-1">
-		                </div>
-		                <div class="col-xs-10">
+		            <div class="row paddingLogin">
+		                <div>
 		                    <input id="submit" type="submit" value="계속">
 		                </div>
 		            </div>
 				</form>
-	            <div id="or-border" class="row">
+	            <div id="or-border" class="row paddingLogin">
 	                <div class="col-xs-5">
 	                    <hr>
 	                </div>
@@ -180,37 +187,29 @@
 	                </div>
 	            </div>
 	
-	            <div class="row">
-	                <div class="col-xs-1">
-	                </div>
-	                <div class="col-xs-10 connect">
+	            <div class="row paddingLogin">
+	                <div class="connect">
 	                    <img src="/project/assets/images/login_facebook.png">
 	                    <h2 id="facebook">페이스북으로 로그인하기</h2> 
 	                </div>
 	            </div>
 	
-	            <div class="row">
-	                <div class="col-xs-1">
-	                </div>
-	                <div class="col-xs-10 connect">
+	            <div class="row paddingLogin">
+	                <div class="connect">
 	                    <img src="/project/assets/images/login_google.png">
 	                    <h2 id="google">구글로 로그인하기</h2> 
 	                </div>
 	            </div>
 	
-	            <div class="row">
-	                <div class="col-xs-1">
-	                </div>
-	                <div class="col-xs-10 connect">
+	            <div class="row paddingLogin">
+	                <div class="connect">
 	                    <img id="naver-img" src="/project/assets/images/login_naver.png">
 	                    <h2 id="naver">네이버로 로그인하기</h2> 
 	                </div>
 	            </div>
 	
-	            <div class="row">
-	                <div class="col-xs-1">
-	                </div>
-	                <div id="joinH" class="col-xs-10 connect">
+	            <div class="row paddingLogin">
+	                <div id="joinH" class="connect">
 	                    <img id="join-img" src="/project/assets/images/login_message.png">
 	                    <h2 id="join-text">개어비앤비로 회원가입하기</h2> 
 	                </div>

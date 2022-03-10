@@ -9,8 +9,11 @@ public class UserVo {
 	private String path;
 	private int usersType;
 
-	public UserVo() {}
-	
+	private int hostNo;
+
+	public UserVo() {
+	}
+
 	public UserVo(int userNo, String id, String password, String name, String hp, String path, int usersType) {
 		this.usersNo = userNo;
 		this.id = id;
@@ -77,6 +80,14 @@ public class UserVo {
 		this.usersType = usersType;
 	}
 
+	public int getHostNo() {
+		return hostNo;
+	}
+
+	public void setHostNo(int hostNo) {
+		this.hostNo = hostNo;
+	}
+
 	@Override
 	public String toString() {
 		return "UserVo [usersNo=" + usersNo + ", id=" + id + ", password=" + password + ", name=" + name + ", hp=" + hp
@@ -84,4 +95,3 @@ public class UserVo {
 	}
 
 }
-

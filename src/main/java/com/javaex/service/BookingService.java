@@ -178,6 +178,20 @@ public class BookingService {
 		
 		bookingDao.join(uvo);
 	}
+	
+	//로그인
+	public UserVo login(UserVo uvo) {
+		
+		UserVo authUser = bookingDao.loginGuest(uvo);
+		
+		if((authUser.getUsersType()) != 1) {
+			return bookingDao.loginHost(uvo);
+		}else {
+			return authUser;
+		}
+		
+		
+	}
 }
 
 

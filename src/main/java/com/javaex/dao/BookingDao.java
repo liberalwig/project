@@ -154,4 +154,16 @@ public class BookingDao {
 		
 		sqlsession.insert("user.join", uvo);
 	}
+	
+	//로그인(게스트)
+	public UserVo loginGuest(UserVo uvo) {
+		
+		return sqlsession.selectOne("user.loginGuest", uvo);
+	}
+	
+	//로그인(호스트)
+	public UserVo loginHost(UserVo uvo) {
+		
+		return sqlsession.selectOne("user.loginHost", uvo);
+	}
 }
