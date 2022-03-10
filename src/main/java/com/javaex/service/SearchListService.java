@@ -16,11 +16,11 @@ public class SearchListService {
 	@Autowired
 	private SearchListDao searchListDao;
 	//리스트
-	public List<SearchListVo> searchList() {
+	public List<SearchListVo> searchList(SearchListVo searchListVo) {
 			
 			System.out.println("searchListService.getSearchList()");
 			
-			return searchListDao.getSearchList();
+			return searchListDao.getSearchList(searchListVo);
 		}
 	
 	//검색후 리스트

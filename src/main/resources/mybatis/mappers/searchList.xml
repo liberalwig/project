@@ -4,7 +4,7 @@
 <mapper namespace="searchList">
 		
 		<select id="selectSearchList" parameterType="SearchListVo" resultType="SearchListVo">
-			<![CDATA[
+				<![CDATA[
 				select    b.bookingNo bookingNo,
 				          b.hostNo hostNo,
 				          b.usersNo userNo,
@@ -30,13 +30,14 @@
 				                                                         avg(play) play,
 				                                                         avg(food) food,
 				                                                         avg(communication) communication        
-				                                                  from   booking ) c
+				                                                  from   booking ) c                 
 				  where b.usersNo = u.usersNo
 				  and b.hostNo = h.hostNo
-			]]>	
-			  	  <include refid="search"></include>
+				  ]]>	
+				  <include refid="search"></include>
+				  
 		</select>
-		  
+	  	
 		<sql id="search">
 				<if test="searchKeyword != null and searchKeyword != ''.toString()">
 						and
@@ -45,12 +46,5 @@
 					</if>
 				</if>
 		</sql>
-
-
-
-
-
-
-
 
 </mapper>
