@@ -24,14 +24,7 @@ public class So {
 		return "kang/message";
 	}
 	
-	@RequestMapping(value="/finishP", method = {RequestMethod.GET, RequestMethod.POST})
-	public String finishP(@ModelAttribute FinishPVo finishPVo,
-						  @RequestParam("bookingNo")int bookingNo) {
-		System.out.println("여기는 컨트롤러");	
-		finishPVo = finishPService.getBills(finishPVo);
-		
-		return "kang/finishP";
-	}
+	
 	
 	@RequestMapping(value="/so2", method = {RequestMethod.GET, RequestMethod.POST})
 	public String finishR() {
