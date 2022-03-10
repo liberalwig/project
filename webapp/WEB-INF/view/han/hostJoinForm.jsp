@@ -162,7 +162,7 @@
 
     	//호스트 관련
     	var hostVo = {
-    		usersNo : ${session.authUser.usersNo},
+    		usersNo : ${sessionScope.authUser.usersNo},
     		zipcode : $(".zipcode").val(),
     		adress1 : $(".adress1").val(),
     		adress2 : $(".adress2").val(),
@@ -203,6 +203,7 @@
 							
 							success : function(hostNo) {
 								console.log(hostNo);
+								alert("펫시터 신청이 완료되었습니다.");
 							},
 							error : function(XHR, status, error) {
 								console.error(status + " : " + error);

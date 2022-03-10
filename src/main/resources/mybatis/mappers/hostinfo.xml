@@ -14,7 +14,7 @@
 	<select id="getHost" parameterType="int" resultType="HostVo">
 		<![CDATA[
 			select ho.hostNo,
-			       ho.userNo,
+			       ho.usersNo,
 			       us.name,
 			       us.hp,
 			       us.path,
@@ -33,7 +33,7 @@
                               		   from   booking
                               		   where  hostNo = #{hostNo}) co
 			where  hostNo = #{hostNo}
-            and    us.usersNo = ho.userNo
+            and    us.usersNo = ho.usersNo
 		]]>
 	</select>
 	
