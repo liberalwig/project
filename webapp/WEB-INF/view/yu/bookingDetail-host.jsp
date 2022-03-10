@@ -82,12 +82,12 @@
 		                                    </div>
 	                                    </c:if>
 	                                	<c:if test="${pListDate[2].photoPath != null}">
-	                                    <div class="item">
-	                                        <div class="polaroid">
-	                                        		<img data-no="${pListDate[2].photoNo}" src="${pageContext.request.contextPath }/photo/${pListDate[2].saveName}" class="wrapper-img viewImg">
-	                                            <div class="caption">${pListDate[2].category}</div>
-	                                        </div>
-	                                    </div>
+		                                    <div class="item">
+		                                        <div class="polaroid">
+		                                        		<img data-no="${pListDate[2].photoNo}" src="${pageContext.request.contextPath }/photo/${pListDate[2].saveName}" class="wrapper-img viewImg">
+		                                            <div class="caption">${pListDate[2].category}</div>
+		                                        </div>
+		                                    </div>
 	                                    </c:if>
 	                                    <c:if test="${pListDate[3].photoPath != null}">
 		                                    <div class="item">
@@ -501,28 +501,30 @@
  </div><!--/.modal-->
 	  
 <!-- 이미지보기 팝업(모달)창 -->
-<div class="modal fade" id="viewModal">
-	<div class="modal-dialog">
-		<div class="modal-content">
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-					<span aria-hidden="true">&times;</span>
-				</button>
-				<h4 class="modal-title">이미지보기</h4>
-			</div>
-			<div class="modal-body">
-				<div class="formgroup">
-					<img id="viewModelImg" src="">
-					<!-- ajax로 처리 : 이미지출력 위치-->
+<form action="">
+	<div class="modal fade" id="viewModal">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title">이미지보기</h4>
 				</div>
-				<div class="formgroup">
-					<p id="viewModelContent"></p>
+				<div class="modal-body">
+					<div class="formgroup">
+						<img id="viewModelImg" src="">
+						<!-- ajax로 처리 : 이미지출력 위치-->
+					</div>
+					<div class="formgroup">
+						<p id="viewModelContent"></p>
+					</div>
+					<input type="hidden" id="listNo" val="">
 				</div>
-				<input type="hidden" id="listNo" val="">
-			</div>
-		</div> <!-- /.modal-content -->
-	</div> <!-- /.modal-dialog -->
-</div> <!-- /.modal -->
+			</div> <!-- /.modal-content -->
+		</div> <!-- /.modal-dialog -->
+	</div> <!-- /.modal -->
+</form>
 
   	
 </body>

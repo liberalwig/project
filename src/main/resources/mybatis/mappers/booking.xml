@@ -2,30 +2,6 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="booking">
-
-	<select id="bookingList" parameterType="int" resultType="com.javaex.vo.BookingVo">
-		<![CDATA[
-			select bookingNo,
-			       hostNo,
-			       usersno,
-			       checkin,
-			       checkout,
-			       ea,
-			       booking_date,
-			       days,
-			       note,
-			       status,
-			       review,
-			       review_date,
-			       clean,
-			       food,
-			       play,
-			       work,
-			       communication
-			from booking
-			where usersno = #{usersNo}
-		]]>
-	</select>
 	
 	<!-- 결제대기리스트(게스트) -->
 	<select id="bookingHostList" parameterType="int" resultType="com.javaex.vo.BookingVo">
@@ -36,22 +12,22 @@
 			       to_char(checkin, 'yyyy-mm-dd') checkin,
        			   to_char(checkout, 'yyyy-mm-dd') checkout,
 			       ea,
-			       booking_date bookingDate,
+			       bookingDate,
 			       days,
 			       note,
 			       status,
 			       review,
-			       review_date reviewDate,
+			       reviewDate,
 			       clean,
 			       food,
 			       play,
-			       work,
+			       walk,
 			       communication,
 			       u.name hostName,
 			       u.hp hostHp
 			from booking b, host h, users u
 			where b.hostno = h.hostno
-			and h.userno = u.usersno
+			and h.usersno = u.usersno
 			and b.usersno = #{usersNo}
 			and b.status in('승인대기', '결제대기')
 		]]>
@@ -66,16 +42,16 @@
 			       to_char(checkin, 'yyyy-mm-dd') checkin,
 			       to_char(checkout, 'yyyy-mm-dd') checkout,
 			       b.ea,
-			       b.booking_date bookingDate,
+			       b.bookingDate,
 			       b.days,
 			       b.note,
 			       b.status,
 			       b.review,
-			       b.review_date reviewDate,
+			       b.reviewDate,
 			       b.clean,
 			       b.food,
 			       b.play,
-			       b.work,
+			       b.walk,
 			       b.communication,
 			       u.name guestName,
 			       u.hp guestHp
@@ -95,16 +71,16 @@
 			       to_char(checkin, 'yyyy-mm-dd') checkin,
 			       to_char(checkout, 'yyyy-mm-dd') checkout,
 			       b.ea,
-			       b.booking_date bookingDate,
+			       b.bookingDate,
 			       b.days,
 			       b.note,
 			       b.status,
 			       b.review,
-			       b.review_date reviewDate,
+			       b.reviewDate,
 			       b.clean,
 			       b.food,
 			       b.play,
-			       b.work,
+			       b.walk,
 			       b.communication,
 			       u.name guestName,
 			       u.hp guestHp
@@ -125,16 +101,16 @@
 			       to_char(checkin, 'yyyy-mm-dd') checkin,
        			   to_char(checkout, 'yyyy-mm-dd') checkout,
 			       ea,
-			       booking_date bookingDate,
+			       bookingDate,
 			       days,
 			       note,
 			       status,
 			       review,
-			       review_date reviewDate,
+			       reviewDate,
 			       clean,
 			       food,
 			       play,
-			       work,
+			       walk,
 			       communication,
 			       u.name hostName,
 			       u.hp hostHp,
@@ -143,7 +119,7 @@
 			       h.adress3 adress3
 			from booking b, host h, users u
 			where b.hostno = h.hostno
-			and h.userno = u.usersno
+			and h.usersno = u.usersno
 			and bookingNo = #{bookingNo}
 		]]>
 	</select>
@@ -157,16 +133,16 @@
 			       to_char(checkin, 'yyyy-mm-dd') checkin,
        			   to_char(checkout, 'yyyy-mm-dd') checkout,
 			       ea,
-			       booking_date bookingDate,
+			       bookingDate,
 			       days,
 			       note,
 			       status,
 			       review,
-			       review_date reviewDate,
+			       reviewDate,
 			       clean,
 			       food,
 			       play,
-			       work,
+			       walk,
 			       communication,
 			       u.name guestName,
        			   u.hp guestHp,
@@ -225,33 +201,25 @@
 			       to_char(checkin, 'yyyy-mm-dd') checkin,
 			       to_char(checkout, 'yyyy-mm-dd') checkout,
 			       b.ea,
-			       b.booking_date bookingDate,
+			       b.bookingDate,
 			       b.days,
 			       b.note,
 			       b.status,
 			       b.review,
-			       b.review_date reviewDate,
+			       b.reviewDate,
 			       b.clean,
 			       b.food,
 			       b.play,
-			       b.work,
+			       b.walk,
 			       b.communication,
 			       u.name guestName,
 			       u.hp guestHp
 			from booking b, users u
 			where b.usersNo = u.usersNo
-			and hostNo = #{hostNo}
+			and b.hostNo = #{hostNo}
 			and b.status in('예약완료', '펫시팅중', '시팅완료')
 		]]>
 	</select>
-	
-	<!-- 가능날짜추가 -->
-	<insert id="ableInsert" parameterType="com.javaex.vo.AbleVo">
-		<![CDATA[
-			insert into able
-			values(seq_able_no.nextval, #{hostNo}, TO_DATE(#{ableDate}, 'yyyymmdd'))
-		]]>
-	</insert>
 	
 	<!-- 가능날짜 리스트 -->
 	<select id="ableSelect" parameterType="int" resultType="com.javaex.vo.AbleVo">
@@ -261,6 +229,97 @@
 			       to_char(ableDate, 'yyyymmdd') ableDate
 			from able
 			where hostNo = #{hostNo}
+		]]>
+	</select>
+		
+	<!-- 가능날짜추가 -->
+	<insert id="ableInsert" parameterType="com.javaex.vo.AbleVo">
+		<![CDATA[
+			insert into able
+			values(seq_able_no.nextval, #{hostNo}, TO_DATE(#{ableDate}, 'yyyymmdd'))
+		]]>
+	</insert>
+	
+	<!-- 가능날짜 삭제 -->
+	<delete id="ableDelete" parameterType="com.javaex.vo.AbleVo">
+		<![CDATA[
+			delete able
+			where abledate = #{ableDate}
+			and hostno = #{hostNo}
+		]]>
+	</delete>
+	
+	<!-- 가능날짜 전체삭제 -->
+	<delete id="ableDeleteAll" parameterType="int">
+		<![CDATA[
+			delete able
+			where hostno = #{hostNo}
+		]]>
+	</delete>
+	
+	<!-- 노출여부 on/off -->
+	<update id="viewAble" parameterType="com.javaex.vo.HostVo">
+		<![CDATA[
+			update host
+			set hostview = #{hostview}
+			where hostno = #{hostNo}
+		]]>
+	</update>
+	
+	<!-- 호스트 정보 -->
+	<select id="selectHost" parameterType="int" resultType="com.javaex.vo.HostVo">
+		<![CDATA[
+			select hostview
+			from host
+			where hostNo = #{hostNo}
+		]]>
+	</select>
+	
+	<!-- 예약승인 상태변경 -->
+	<update id="updateStatus1" parameterType="int">
+		<![CDATA[
+			update booking
+			set status = '결제대기'
+			where bookingNo = #{bookingNo}
+		]]>
+	</update>
+	
+	<!-- 펫시팅중 상태변경 -->
+	<update id="updateStatus2" parameterType="int">
+		<![CDATA[
+			update booking
+			set status = '펫시팅중'
+			where bookingNo = #{bookingNo}
+		]]>
+	</update>
+	
+	<!-- 예약완료 리스트(게스트) -->
+	<select id="bookingEndHostList" parameterType="int" resultType="com.javaex.vo.BookingVo">
+		<![CDATA[
+			select bookingNo,
+			       b.hostNo,
+			       b.usersno,
+			       to_char(checkin, 'yyyy-mm-dd') checkin,
+       			   to_char(checkout, 'yyyy-mm-dd') checkout,
+			       ea,
+			       bookingDate,
+			       days,
+			       note,
+			       status,
+			       review,
+			       reviewDate,
+			       clean,
+			       food,
+			       play,
+			       walk,
+			       communication,
+			       u.name hostName,
+			       u.hp hostHp
+			from booking b, host h, users u
+			where b.hostno = h.hostno
+			and h.usersno = u.usersno
+			and b.usersno = #{usersNo}
+			and b.status in('예약완료', '펫시팅중', '시팅완료')
 		]]>
 	</select>
 	

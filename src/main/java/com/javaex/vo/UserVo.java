@@ -7,11 +7,11 @@ public class UserVo {
 	private String name;
 	private String hp;
 	private String path;
-	private String usersType;
+	private int usersType;
 
 	public UserVo() {}
 	
-	public UserVo(int userNo, String id, String password, String name, String hp, String path, String usersType) {
+	public UserVo(int userNo, String id, String password, String name, String hp, String path, int usersType) {
 		this.usersNo = userNo;
 		this.id = id;
 		this.password = password;
@@ -69,11 +69,11 @@ public class UserVo {
 		this.path = path;
 	}
 
-	public String getUsersType() {
+	public int getUsersType() {
 		return usersType;
 	}
 
-	public void setUsersType(String usersType) {
+	public void setUsersType(int usersType) {
 		this.usersType = usersType;
 	}
 

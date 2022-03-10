@@ -89,7 +89,7 @@
 										<td>${BookingVo.guestHp}</td>
 										<c:choose>
 											<c:when test="${BookingVo.status == '승인대기'}">
-												<td onClick="location.href='${pageContext.request.contextPath}/statusChange?bookingNo=${BookingVo.bookingNo}&hostNo=${param.hostNo}'">
+												<td onClick="location.href='${pageContext.request.contextPath}/updateStatus?bookingNo=${BookingVo.bookingNo}&hostNo=${param.hostNo}'">
 												<div class="btn-re-gradient blue mini">예약승인</div></td>
 											</c:when>
 											<c:when test="${BookingVo.status == '결제대기'}">

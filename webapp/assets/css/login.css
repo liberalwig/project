@@ -1,43 +1,47 @@
 @charset "UTF-8";
 
-p{
-    margin: 10px 0px 0px 80px;
+.joinForm .modal-body {
+	margin-top: 35px;
+}
+
+.joinForm p{
+    margin: 10px 0px 0px 0px;
     font-size: 12px;
     color: #5c5b5b;;
 }
 
-img {
+.joinForm img {
     float: left;
     width: 30px;
 }
-h2 {
+.joinForm h2 {
     margin: 10px 0px 0px 0px;
     float: left;
     font-size: 15px;
     font-weight: bold;
 }
 
-hr {
+.joinForm hr {
     border: 1px solid #ebebeb;
 }
 
-input[type="text"] {
-    margin: 0px 0px 0px 80px;
+.joinForm input[type="text"] {
+    margin: 0px 0px 0px 0px;
     padding: 0px 0px 0px 15px;
     width: 435px;
     height: 50px;
     font-size: 17px;
 }
 
-input[type="password"] {
-    margin: 0px 0px 0px 80px;
+.joinForm input[type="password"] {
+    margin: 0px 0px 0px 0px;
     padding: 0px 0px 0px 15px;
     width: 435px;
     height: 50px;
     font-size: 17px;
 }
 
-.connect {
+.joinForm .connect {
     background-color: #ffffff;
     margin: 15px 0px 0px 30px;
     padding: 7px 0px 7px 15px;
@@ -46,51 +50,51 @@ input[type="password"] {
     border-radius: 5px 5px 5px 5px;
 }
 
-.modal-title {
+.joinForm .modal-title {
     text-align: center;
     font-weight: bold;
     font-size: 18px;
     color: #5c5b5b;
 }
 
-#wellcome {
-    margin: 50px 0px 0px 50px;
+.joinForm #wellcome {
+    margin: 0px 0px 0px 0px;
     font-size: 25px;
     font-weight: bold;
 }
 
-#u-id {
+.joinForm #u-id {
     border: 1px solid #afafaf;
     margin-top: 50px;
     border-radius: 5px 5px 0px 0px;
 }
 
-#u-pass {
+.joinForm #u-pass {
     border: 1px solid #afafaf;
     border-top: none;
     border-radius: 0px 0px 5px 5px;
 }
 
-#join-u-pass {
-    margin: 20PX 0PX 0PX 80PX;
+.joinForm #join-u-pass {
+    margin: 20PX 0PX 0PX 0PX;
     border: 1px solid #afafaf;
     border-radius: 5px 5px 0px 0px;
 }
 
-#u-name {
+.joinForm #u-name {
     border: 1px solid #afafaf;
     border-top: none;
     border-radius: 0px 0px 5px 5px;
 }
 
-#birth {
-    margin: 20px 0px 0px 80px;
+.joinForm #birth {
+    margin: 20px 0px 0px 0px;
     border: 1px solid #afafaf;
     border-radius: 5px;
 }
 
-#submit {
-    margin: 20px 0px 0px 15px;
+.joinForm #submit {
+    margin: 20px 0px 0px 0px;
     width: 435px;
     height: 45px;
     background-color: #3D9BE9;
@@ -101,8 +105,8 @@ input[type="password"] {
     border-radius: 5px;
 }
 
-#join-submit {
-    margin: 20px 0px 50px 15px;
+.joinForm #join-submit {
+    margin: 20px 0px 50px 0px;
     width: 435px;
     height: 45px;
     background-color: #3D9BE9;
@@ -113,8 +117,8 @@ input[type="password"] {
     border-radius: 5px;
 }
 
-#overlap {
-    margin: 0px 0px 0px 80px;
+.joinForm #overlap {
+    margin: 0px 0px 0px 0px;
     width: 435px;
     height: 45px;
     background-color: #afafaf;
@@ -125,51 +129,51 @@ input[type="password"] {
     border-radius: 0px 0px 5px 5px;
 }
 
-#or {
+.joinForm #or {
     margin: 10px 0px 0px 0px;
     text-align: center;
 }
 
-#or-border {
+.joinForm #or-border {
     margin: 20px 0px 0px 0px;
 }
 
-#facebook {
+.joinForm #facebook {
     margin: 10px 0px 0px 92px;
     color: #5c5b5b;
     font-size: 14px;
 }
 
-#google {
+.joinForm #google {
     margin: 10px 0px 0px 117px;
     color: #5c5b5b;
     font-size: 14px;
 }
 
-#naver-img {
+.joinForm #naver-img {
     margin: 4px 0px 4px 4px;
     width: 23px;
     height: 23px;
 } 
 
-#naver {
+.joinForm #naver {
     margin: 10px 0px 0px 113px;
     color: #5c5b5b;
     font-size: 14px;
 }
 
-#join-img {
+.joinForm #join-img {
     margin: 3px 0px 4px 4px;
     width: 23px;
     height: 33px;
 }
 
-#joinH {
+.joinForm #joinH {
     margin-bottom: 30px;
     height: 48px;
 }
 
-#join-text {
+.joinForm #join-text {
     margin: 10px 0px 0px 88px;
     color: #5c5b5b;
     font-size: 14px;

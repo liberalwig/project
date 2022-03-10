@@ -56,60 +56,65 @@
                             
                             <c:forEach items="${pList}" var="pListDate">
                             	<div class="wrapper">
+                            	<c:if test="${pListDate[0].photoDate != null}">
 	                                <div class="clearfix">
 	                                    <div class="img-date"><h3>${pListDate[0].photoDate}</h3></div>
 	                                </div>
 	                                <div>
-	                                    <div class="item">
-	                                        <div class="polaroid">
-		                                        <c:if test="${pListDate[0].photoPath == null}">
-		                                        	<img src="/project/assets/images/bookingDetail_gray.png" class="wrapper-img">
-		                                		</c:if>
-		                                		<c:if test="${pListDate[0].photoPath != null}">
-	                                        		<img data-no="${pListDate[0].photoNo}" src="${pageContext.request.contextPath }/photo/${pListDate[0].saveName}" class="wrapper-img viewImg">
-	                                        	</c:if>
-	                                            <div class="caption">${pListDate[0].category}</div>
-	                                        </div>
-	                                    </div> 
-	                                    
-	                                
-	                                    <div class="item">
-	                                        <div class="polaroid">
-	                                        	<c:if test="${pListDate[1].photoPath == null}">
-		                                        	<img src="/project/assets/images/bookingDetail_gray.png" class="wrapper-img">
-		                                		</c:if>
-		                                		<c:if test="${pListDate[1].photoPath != null}">
-	                                        		<img data-no="${pListDate[1].photoNo}" src="${pageContext.request.contextPath }/photo/${pListDate[1].saveName}" class="wrapper-img viewImg">
-	                                        	</c:if>
-	                                            <div class="caption">${pListDate[1].category}</div>
-	                                        </div>
-	                                    </div>
-	                                
-	                                    <div class="item">
-	                                        <div class="polaroid">
-	                                        	<c:if test="${pListDate[2].photoPath == null}">
-		                                        	<img src="/project/assets/images/bookingDetail_gray.png" class="wrapper-img">
-		                                		</c:if>
-		                                		<c:if test="${pListDate[2].photoPath != null}">
-	                                        		<img data-no="${pListDate[2].photoNo}" src="${pageContext.request.contextPath }/photo/${pListDate[2].saveName}" class="wrapper-img viewImg">
-	                                        	</c:if>
-	                                            <div class="caption">${pListDate[2].category}</div>
-	                                        </div>
-	                                    </div>
-	                                    
-	                                    <div class="item">
-	                                        <div class="polaroid">
-	                                        	<c:if test="${pListDate[3].photoPath == null}">
-		                                        	<img src="/project/assets/images/bookingDetail_gray.png" class="wrapper-img">
-		                                		</c:if>
-		                                		<c:if test="${pListDate[3].photoPath != null}">
-	                                        		<img data-no="${pListDate[3].photoNo}" src="${pageContext.request.contextPath }/photo/${pListDate[3].saveName}" class="wrapper-img viewImg">
-	                                        	</c:if>
-	                                            <div class="caption">${pListDate[3].category}</div>
-	                                        </div>
-	                                    </div>
-	                                   
+	                                	<c:if test="${pListDate[0].photoPath != null}">
+		                                    <div class="item">
+		                                        <div class="polaroid">
+			                                        <c:if test="${pListDate[0].photoPath == null}">
+			                                        	<img src="/project/assets/images/bookingDetail_gray.png" class="wrapper-img">
+			                                		</c:if>
+			                                		<c:if test="${pListDate[0].photoPath != null}">
+		                                        		<img data-no="${pListDate[0].photoNo}" src="${pageContext.request.contextPath }/photo/${pListDate[0].saveName}" class="wrapper-img viewImg">
+		                                        	</c:if>
+		                                            <div class="caption">${pListDate[0].category}</div>
+		                                        </div>
+		                                    </div> 
+	                                    </c:if>
+	                                	<c:if test="${pListDate[1].photoPath != null}">
+		                                    <div class="item">
+		                                        <div class="polaroid">
+		                                        	<c:if test="${pListDate[1].photoPath == null}">
+			                                        	<img src="/project/assets/images/bookingDetail_gray.png" class="wrapper-img">
+			                                		</c:if>
+			                                		<c:if test="${pListDate[1].photoPath != null}">
+		                                        		<img data-no="${pListDate[1].photoNo}" src="${pageContext.request.contextPath }/photo/${pListDate[1].saveName}" class="wrapper-img viewImg">
+		                                        	</c:if>
+		                                            <div class="caption">${pListDate[1].category}</div>
+		                                        </div>
+		                                    </div>
+	                                	</c:if>
+	                                	<c:if test="${pListDate[2].photoPath != null}">
+		                                    <div class="item">
+		                                        <div class="polaroid">
+		                                        	<c:if test="${pListDate[2].photoPath == null}">
+			                                        	<img src="/project/assets/images/bookingDetail_gray.png" class="wrapper-img">
+			                                		</c:if>
+			                                		<c:if test="${pListDate[2].photoPath != null}">
+		                                        		<img data-no="${pListDate[2].photoNo}" src="${pageContext.request.contextPath }/photo/${pListDate[2].saveName}" class="wrapper-img viewImg">
+		                                        	</c:if>
+		                                            <div class="caption">${pListDate[2].category}</div>
+		                                        </div>
+		                                    </div>
+	                                    </c:if>
+	                                    <c:if test="${pListDate[3].photoPath != null}">
+		                                    <div class="item">
+		                                        <div class="polaroid">
+		                                        	<c:if test="${pListDate[3].photoPath == null}">
+			                                        	<img src="/project/assets/images/bookingDetail_gray.png" class="wrapper-img">
+			                                		</c:if>
+			                                		<c:if test="${pListDate[3].photoPath != null}">
+		                                        		<img data-no="${pListDate[3].photoNo}" src="${pageContext.request.contextPath }/photo/${pListDate[3].saveName}" class="wrapper-img viewImg">
+		                                        	</c:if>
+		                                            <div class="caption">${pListDate[3].category}</div>
+		                                        </div>
+		                                    </div>
+	                                   </c:if>
 	                                </div> 
+	                            </c:if>
 	                            </div>
                             </c:forEach>
                             

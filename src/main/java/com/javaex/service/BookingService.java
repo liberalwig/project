@@ -16,6 +16,7 @@ import com.javaex.vo.AbleVo;
 import com.javaex.vo.BookingVo;
 import com.javaex.vo.HostVo;
 import com.javaex.vo.PhotoVo;
+import com.javaex.vo.UserVo;
 
 @Service
 public class BookingService {
@@ -93,6 +94,14 @@ public class BookingService {
 		//DB에 저장
 		pvo.setPhotoPath(filePath);
 		pvo.setSaveName(saveName);
+		
+		//첫업로드인지 확인(status 변경위해)
+		List<PhotoVo> PList = bookingGallery(pvo.getBookingNo(), 1);
+		
+		if(PList.isEmpty()) {
+			bookingDao.updateStatus2(pvo.getBookingNo());
+		}
+		
 		bookingDao.photoInsert(pvo);
 	}
 	
@@ -106,6 +115,12 @@ public class BookingService {
 	public List<BookingVo> bookingEndHost(int hostNo) {
 		
 		return bookingDao.bookingEndHost(hostNo);
+	}
+	
+	//예약완료리스트(게스트)
+	public List<BookingVo> bookingEndGuest(int usersNo) {
+		
+		return bookingDao.bookingEndGuest(usersNo);
 	}
 	
 	//가능날짜추가
@@ -150,6 +165,18 @@ public class BookingService {
 	public HostVo selectHost(int hostNo) {
 		
 		return bookingDao.selectHost(hostNo);
+	}
+	
+	//예약승인 상태변경
+	public void updateStatus(int bookingNo) {
+		
+		bookingDao.updateStatus(bookingNo);
+	}
+	
+	//회원가입
+	public void join(UserVo uvo) {
+		
+		bookingDao.join(uvo);
 	}
 }
 

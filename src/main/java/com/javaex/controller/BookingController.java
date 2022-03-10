@@ -16,6 +16,7 @@ import com.javaex.vo.AbleVo;
 import com.javaex.vo.BookingVo;
 import com.javaex.vo.HostVo;
 import com.javaex.vo.PhotoVo;
+import com.javaex.vo.UserVo;
 
 @Controller
 public class BookingController {
@@ -236,11 +237,36 @@ public class BookingController {
 	}
 	
 	//예약승인버튼누름
-	@RequestMapping("/statusChange")
-	public String statusChange(BookingVo bvo) {
+	@RequestMapping("/updateStatus")
+	public String updateStatus(@RequestParam int bookingNo, @RequestParam int hostNo) {
 		System.out.println("BookingController > statusChange");
 		
-		return "redirect:/bookingBeforeHost?hostNo="+bvo;
+		bookingService.updateStatus(bookingNo);
+		
+		return "redirect:/bookingBeforeHost?hostNo="+hostNo;
+	}
+	
+	//예약리스트(게스트)
+	@RequestMapping("/bookingEndGuest")
+	public String bookingEndGuest(@RequestParam int usersNo, Model model) {
+		System.out.println("BookingController > bookingEndGuest");
+		
+		//예약 + 호스트 리스트 가져오기
+		List<BookingVo> BookingList = bookingService.bookingEndGuest(usersNo);
+		
+		model.addAttribute("bList", BookingList);
+		
+		return "yu/reservation-end-guest";
+	}
+	
+	//회원가입
+	@RequestMapping("/join")
+	public String join(UserVo uvo) {
+		System.out.println("BookingController > join");
+		
+		bookingService.join(uvo);
+		
+		return "redirect:/main";
 	}
 	
 	

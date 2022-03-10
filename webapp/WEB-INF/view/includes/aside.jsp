@@ -11,7 +11,7 @@
 			<li class="menu">예약관리<img src="/project/assets/images/aside_img.png" class="aside-img"></li>
 			<ul id="s-aside" class="hide">
 				<li>결제 대기내역</li>
-				<li>예약관리</li>
+				<li onclick="location.href='${pageContext.request.contextPath}/bookingEndGuest?usersNo=${param.usersNo}'">예약관리</li>
 			</ul>
 			<li>메세지</li>
 			<li>찜목록</li>
