@@ -1,6 +1,15 @@
 @charset "UTF-8";
-/*BODY*/
-/*base*/
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  height: 80px;
+  background-color: rgb(255, 255, 255);
+  border-bottom: 1px solid #bbb;
+}
+
 .header .flexBox {
   display: flex;
   color: #fff;
@@ -181,16 +190,7 @@
   order: 3;
 }
 
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin: 0;
-  padding: 0;
-  height: 80px;
-  background-color: rgb(255, 255, 255);
-  border: 1px solid #bbb;
-}
+
 
 .header .width100 {
   width: 100%;

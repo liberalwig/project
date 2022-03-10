@@ -2,73 +2,79 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 
-	    <!-- CSS -->
-	   	<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/header.css">
-	 	<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/login.css">
-	 
-	    <header>
-        <div class="header container-fluid">
-        
-           <!--logo-->
-           <div class="logo col-md-4">
-               <a href="${pageContext.request.contextPath}/main">
-                   <img class="logo-img" src="${pageContext.request.contextPath}/assets/images/header_logo.jpg">
-               </a>
-           </div>
-                <!--search-->
-           <div class="searchbox col-md-4">
-               <!-- Topbar Search -->
-               <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-                   <div class="input-group input-group-joined border-0">
-                       <div class="searchboxin_1 input-group input-group-joined"> 
-                           <input type="text" class="search_text1 small form-control ps-0 pointer" placeholder="어디를 찾으세요?" aria-label="Search" aria-describedby="basic-addon2">
-                       </div> 
-                       <div class="searchboxin_2 input-group input-group-joined">
-                           <input class="search_text2 form-control small ps-0 pointer" id="litepickerRangePlugin" value="" placeholder="체크인 / 체크아웃" />
-                       </div> 
-                       <button class="search_text3 btn btn-primary" type="button">
-                       <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-                       </button>
-                   </div>
-               </form>
-           </div>
+<!-- CSS -->
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/header.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/login.css">
 
+<header>
+	<div class="header container-fluid">
+		<!--logo-->
+		<div class="logo col-md-4">
+		    <a href="${pageContext.request.contextPath}/main">
+	        	<img class="logo-img" src="${pageContext.request.contextPath}/assets/images/header_logo.jpg">
+		    </a>
+		</div>
+		<!--search-->
+		<div class="searchbox col-md-4">
+		    <!-- Topbar Search -->
+		    <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+		        <div class="input-group input-group-joined border-0">
+		            <div class="searchboxin_1 input-group input-group-joined"> 
+		                <input type="text" class="search_text1 small form-control ps-0 pointer" placeholder="어디를 찾으세요?" aria-label="Search" aria-describedby="basic-addon2">
+		            </div> 
+		            <div class="searchboxin_2 input-group input-group-joined">
+		                <input class="search_text2 form-control small ps-0 pointer" id="litepickerRangePlugin" value="" placeholder="체크인 / 체크아웃" />
+		            </div> 
+		            <button class="search_text3 btn btn-primary" type="button">
+		            	<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+		            </button>
+		        </div>
+		    </form>
+		</div>
             <!--menu  로그인 로그아웃 영역 나누기-->
             <!--menu  로그인-->
            <div class="menu col-md-2">
-                <div class="menu_btn1">
-                    <button type="button" class="btn btn-default">펫시터되기</button>
-                </div>
-                
-                <div class="menu_btn2">
-                    <button type="button" class="btn btn-default">
-                        <a href="#">Messages <span class="badge"><!--메세지 갯수 입력-->3</span></a>
-                    </button>
-                </div>
-                
-                <div class="btn-group pull-right menu_btn3">
-                    <button type="button" class="menu_text3 btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                    <span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span>
-                    </button>
-                    <c:if test="${authUser.usersNo == null}">
-                    	<ul class="dropdown-menu" role="menu">
+                <c:if test="${authUser.usersNo == null}">
+	                <div class="btn-group pull-right menu_btn3">
+	                    <button type="button" class="menu_text3 btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+	                    <span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span>
+	                    </button>
+	                   	<ul class="dropdown-menu" role="menu">
 	                        <li id="login"><a href="#">로그인</a></li>
 	                        <li id="join"><a href="#">회원가입</a></li>
 	                      	<!--  <li class="divider"></li> 줄넣는 방법-->
-                    	</ul>
-                    </c:if>
+	                   	</ul>
+                   	</div>
+                </c:if>
                     <c:if test="${authUser.usersNo != null}">
-                    	<ul class="dropdown-menu" role="menu">
-	                        <li id="login"><a href="${pageContext.request.contextPath}/logout">로그아웃</a></li>
-	                        <c:if test="${authUser.usersType == 1}">
-	                        	<li><a href="${pageContext.request.contextPath}/bookingBeforeGuest?usersNo=${authUser.usersNo}">마이페이지</a></li>
-	                        </c:if>
-	                        <c:if test="${authUser.usersType == 2}">
-	                        	<li><a href="${pageContext.request.contextPath}/bookingEndHost?hostNo=${authUser.hostNo}">마이페이지</a></li>
-	                        </c:if>
-                    	</ul>
+                    	<c:if test="${authUser.usersType == 1}">
+			                <div class="menu_btn1">
+			                    <button type="button" class="btn btn-default">
+			                    	<a href="${pageContext.request.contextPath}/host2/hostjoin" style="color:#000">펫시터되기</a>
+			                    </button>
+			                </div>
+		                </c:if>
+		                <div class="menu_btn2">
+		                    <button type="button" class="btn btn-default">
+		                        <a href="#">Messages <span class="badge"><!--메세지 갯수 입력-->3</span></a>
+		                    </button>
+		                </div>
+                    	<div class="btn-group pull-right menu_btn3">
+		                    <button type="button" class="menu_text3 btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+		                    <span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span>
+		                    </button>
+		                   	<ul class="dropdown-menu" role="menu">
+		                        <li id="login"><a href="${pageContext.request.contextPath}/logout">로그아웃</a></li>
+		                        <c:if test="${authUser.usersType == 1}">
+		                        	<li><a href="${pageContext.request.contextPath}/bookingBeforeGuest?usersNo=${authUser.usersNo}">마이페이지</a></li>
+		                        </c:if>
+		                        <c:if test="${authUser.usersType == 2}">
+		                        	<li><a href="${pageContext.request.contextPath}/bookingEndHost?hostNo=${authUser.hostNo}">마이페이지</a></li>
+		                        </c:if>
+		                   	</ul>
+                    	</div>
                     </c:if>
-                </div>
+               
            	</div>
            	
            	

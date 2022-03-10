@@ -22,8 +22,6 @@ a:hover {text-decoration: none; color: #000}
 .clearfix:after {clear: both;}
 
 /* 공통 레이아웃*/
-body{margin-top:80px;}
-
 #wrap {margin: 0px auto; 
        width: 1440px;}		
 #container { width: 1440px;}
@@ -84,7 +82,12 @@ body{margin-top:80px;}
 		width: 200px;
 		height: 50px;
 	}
-	
+	.color {
+		background-color: #3D9BE9;
+	}
+	a {
+		color: #333;
+	}
 /** 2. 퍼피력 **/
 #container #puppypoint{
 	text-align:left;
@@ -166,7 +169,12 @@ body{margin-top:80px;}
 
 /**5. 리뷰**/
 #review{
-	padding:10px 0px 0px 30px;
+    padding: 10px 55px 0px 35px;
+    margin: 0px 40px 0px 30px;
+    height: 811.996528px;
+    border: 1px solid #EEE;
+    border-radius : 5px;
+	
 }
 	.reviewList {
 		text-align:left;
