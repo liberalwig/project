@@ -2,6 +2,8 @@
 
 .joinForm .modal-body {
 	margin-top: 35px;
+	padding-left: 98px;
+	padding-right: 98px;
 }
 
 .joinForm p{
@@ -27,6 +29,7 @@
 
 .joinForm input[type="text"] {
     margin: 0px 0px 0px 0px;
+   align-content: center;
     padding: 0px 0px 0px 15px;
     width: 435px;
     height: 50px;
@@ -43,14 +46,19 @@
 
 .joinForm .connect {
     background-color: #ffffff;
-    margin: 15px 0px 0px 30px;
-    padding: 7px 0px 7px 15px;
+    margin: 15px 0px 0px 0px;
+    padding: 25px 0px 25px 15px;
     width: 435px;
     border: 1px solid #afafaf;
     border-radius: 5px 5px 5px 5px;
 }
 
+.joinForm .connect img {
+	margin-top: -15px;
+}
+
 .joinForm .modal-title {
+	margin-left: 20px;
     text-align: center;
     font-weight: bold;
     font-size: 18px;
@@ -58,7 +66,7 @@
 }
 
 .joinForm #wellcome {
-    margin: 0px 0px 0px 0px;
+    margin: 0px 0px 0px 20px;
     font-size: 25px;
     font-weight: bold;
 }
@@ -106,7 +114,7 @@
 }
 
 .joinForm #join-submit {
-    margin: 20px 0px 50px 0px;
+    margin: 20px 0px 50px -55px;
     width: 435px;
     height: 45px;
     background-color: #3D9BE9;
@@ -139,31 +147,31 @@
 }
 
 .joinForm #facebook {
-    margin: 10px 0px 0px 92px;
+    margin: -8px 0px 0px 92px;
     color: #5c5b5b;
     font-size: 14px;
 }
 
 .joinForm #google {
-    margin: 10px 0px 0px 117px;
+    margin: -8px 0px 0px 117px;
     color: #5c5b5b;
     font-size: 14px;
 }
 
 .joinForm #naver-img {
-    margin: 4px 0px 4px 4px;
+    margin: -10px 0px 4px 4px;
     width: 23px;
     height: 23px;
 } 
 
 .joinForm #naver {
-    margin: 10px 0px 0px 113px;
+    margin: -8px 0px 0px 113px;
     color: #5c5b5b;
     font-size: 14px;
 }
 
 .joinForm #join-img {
-    margin: 3px 0px 4px 4px;
+    margin: -15px 0px 4px 4px;
     width: 23px;
     height: 33px;
 }
@@ -174,7 +182,7 @@
 }
 
 .joinForm #join-text {
-    margin: 10px 0px 0px 88px;
+    margin: -8px 0px 0px 88px;
     color: #5c5b5b;
     font-size: 14px;
 }
