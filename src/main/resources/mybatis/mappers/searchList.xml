@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="searchList">
+		
+		<select id="selectSearchList" parameterType="SearchListVo" resultType="SearchListVo">
+			<![CDATA[
+				select    b.bookingNo bookingNo,
+				          b.hostNo hostNo,
+				          b.usersNo userNo,
+				          b.bookingDate bookingDate,
+				          b.review review,
+				          u.name hostName,
+				          u.path path,
+						  h.adress1 adress1,
+						  h.adress3 adress3,
+						  h.x x,
+						  h.y x,
+						  c.rp reviewPoint,
+						  c.pp puppyPoint,
+				          c.clean clean,
+				          c.walk walk,
+				          c.play play,
+				          c.food food,
+				          c.communication communication
+				  from    booking b, users u, host h, (select  count(review) rp,
+				                                                         ((avg(clean) + avg(walk) + avg(play) + avg(food) + avg(communication))/5) pp,
+				                                                         avg(clean) clean,
+				                                                         avg(walk) walk,
+				                                                         avg(play) play,
+				                                                         avg(food) food,
+				                                                         avg(communication) communication        
+				                                                  from   booking ) c
+				  where b.usersNo = u.usersNo
+				  and b.hostNo = h.hostNo
+			]]>	
+			  	  <include refid="search"></include>
+		</select>
+		  
+		<sql id="search">
+				<if test="searchKeyword != null and searchKeyword != ''.toString()">
+						and
+					<if test="searchKeyword.toString()">
+						adress1 like '%' || #{searchKeyword} || '%'
+					</if>
+				</if>
+		</sql>
+
+
+
+
+
+
+
+
+</mapper>
