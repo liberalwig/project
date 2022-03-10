@@ -21,13 +21,5 @@ public class FinishPService {
 		return finishPVo;
 	}
 	
-	public FinishPVo getpay (FinishPVo finishPVo) {
-		System.out.println("여기는 서비스");
-		
-		FinishPVo pay = finishPDao.selectPay(finishPVo);
-		
-		System.out.println(pay+"서비스");
-		return pay;
-	}
 	
 }

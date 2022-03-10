@@ -2,6 +2,7 @@ package com.javaex.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,23 +18,15 @@ public class FinishPController {
 	public FinishPService finishPService;
 	
 	@RequestMapping(value="/finishP/{bookingNo}", method = {RequestMethod.GET, RequestMethod.POST})
-	public String finishP(@PathVariable("bookingNo") int bookingNo,
-			   			  @ModelAttribute FinishPVo finishPVo) {
+	public String finishP(@PathVariable("bookingNo") int bookingNo, 
+			   			  @ModelAttribute FinishPVo finishPVo,
+			   			  Model model) { 
 		System.out.println("여기는 컨트롤러");	
 		finishPVo = finishPService.getBills(bookingNo);
-		
+		model.addAttribute("finishPVo", finishPVo);
 		System.out.println(finishPVo + "컨트롤러");
 		return "kang/finishP";
 	}
 	
-	@RequestMapping(value="/finishPay/{bookingNo}", method = {RequestMethod.GET, RequestMethod.POST})
-	public String finishPay(@PathVariable("bookingNo") int bookingNo,
-			   			  @ModelAttribute FinishPVo finishPVo) {
-		System.out.println("여기는 컨트롤러");	
-		FinishPVo pay = finishPService.getpay(finishPVo);
-		
-		System.out.println(pay + "컨트롤러 ");
-		return "kang/finishP";
-	}
 
 }
