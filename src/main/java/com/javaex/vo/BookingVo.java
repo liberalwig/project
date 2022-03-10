@@ -19,7 +19,7 @@ public class BookingVo {
 	private int clean;
 	private int food;
 	private int play;
-	private int work;
+	private int walk;
 	private int communication;
 
 	// 호스트테이블(조인)
@@ -28,6 +28,7 @@ public class BookingVo {
 	private String adress1;
 	private String adress2;
 	private String adress3;
+	private int hostView;
 
 	// 유저테이블(조인)
 	private String guestName;
@@ -38,7 +39,7 @@ public class BookingVo {
 
 	public BookingVo(int bookingNo, int hostNo, int usersNo, String checkin, String checkout, int ea, int bookingDate,
 			int days, String note, String status, String review, String reviewDate, int clean, int food, int play,
-			int work, int communication) {
+			int walk, int communication) {
 		this.bookingNo = bookingNo;
 		this.hostNo = hostNo;
 		this.usersNo = usersNo;
@@ -54,13 +55,13 @@ public class BookingVo {
 		this.clean = clean;
 		this.food = food;
 		this.play = play;
-		this.work = work;
+		this.walk = walk;
 		this.communication = communication;
 	}
 
 	public BookingVo(int bookingNo, int hostNo, int usersNo, String checkin, String checkout, int ea, int bookingDate,
 			int days, String note, String status, String review, String reviewDate, int clean, int food, int play,
-			int work, int communication, String guestName, String guestHp) {
+			int walk, int communication, String guestName, String guestHp) {
 		this.bookingNo = bookingNo;
 		this.hostNo = hostNo;
 		this.usersNo = usersNo;
@@ -76,7 +77,7 @@ public class BookingVo {
 		this.clean = clean;
 		this.food = food;
 		this.play = play;
-		this.work = work;
+		this.walk = walk;
 		this.communication = communication;
 		this.guestName = guestName;
 		this.guestHp = guestHp;
@@ -84,7 +85,7 @@ public class BookingVo {
 
 	public BookingVo(int bookingNo, int hostNo, int usersNo, String checkin, String checkout, int ea, int bookingDate,
 			int days, String note, String status, String review, String reviewDate, int clean, int food, int play,
-			int work, int communication, String hostName, String hostHp, String adress1, String adress2,
+			int walk, int communication, String hostName, String hostHp, String adress1, String adress2,
 			String adress3) {
 		this.bookingNo = bookingNo;
 		this.hostNo = hostNo;
@@ -101,7 +102,7 @@ public class BookingVo {
 		this.clean = clean;
 		this.food = food;
 		this.play = play;
-		this.work = work;
+		this.walk = walk;
 		this.communication = communication;
 		this.hostName = hostName;
 		this.hostHp = hostHp;
@@ -110,7 +111,7 @@ public class BookingVo {
 		this.adress3 = adress3;
 	}
 
-	//메소드 g/s
+	// 메소드 g/s
 	public int getBookingNo() {
 		return bookingNo;
 	}
@@ -239,12 +240,12 @@ public class BookingVo {
 		this.play = play;
 	}
 
-	public int getWork() {
-		return work;
+	public int getWalk() {
+		return walk;
 	}
 
-	public void setWork(int work) {
-		this.work = work;
+	public void setWalk(int walk) {
+		this.walk = walk;
 	}
 
 	public int getCommunication() {
@@ -311,14 +312,22 @@ public class BookingVo {
 		this.guestHp = guestHp;
 	}
 
-	//메소드 일반
+	public int getHostView() {
+		return hostView;
+	}
+
+	public void setHostView(int hostView) {
+		this.hostView = hostView;
+	}
+
+	// 메소드 일반
 	@Override
 	public String toString() {
 		return "BookingVo [bookingNo=" + bookingNo + ", hostNo=" + hostNo + ", usersNo=" + usersNo + ", checkin="
 				+ checkin + ", checkout=" + checkout + ", ea=" + ea + ", bookingDate=" + bookingDate + ", totalCost="
 				+ totalCost + ", days=" + days + ", note=" + note + ", status=" + status + ", review=" + review
 				+ ", reviewDate=" + reviewDate + ", clean=" + clean + ", food=" + food + ", play=" + play + ", work="
-				+ work + ", communication=" + communication + ", hostName=" + hostName + ", hostHp=" + hostHp
+				+ walk + ", communication=" + communication + ", hostName=" + hostName + ", hostHp=" + hostHp
 				+ ", adress1=" + adress1 + ", adress2=" + adress2 + ", adress3=" + adress3 + ", guestName=" + guestName
 				+ ", guestHp=" + guestHp + "]";
 	}

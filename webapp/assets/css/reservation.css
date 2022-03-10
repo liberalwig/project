@@ -67,10 +67,13 @@ ul>li {
 	display: inline-block;
 	text-align: center;
 	color: white;
+	
 }
 .btn-re:active {
 	top: 4px;	
 }
+
+
 
 .btn-re.mini, 
 .btn-re-two.mini, 
@@ -90,6 +93,7 @@ ul>li {
 	border-bottom: 4px solid rgba(0,0,0,0.21);
 	border-radius: 4px;
 	text-shadow: 0 1px 0 rgba(0,0,0,0.15);
+	cursor: pointer;
 }
 
 .btn-re-gradient.orange {
@@ -218,7 +222,7 @@ a:hover {color: #000000; text-decoration-line: none;}
 
 #r-calendar0 {
 	margin: 13px 22px 22px 22px;
-	padding: 40px 20px;
+	padding: 65px 20px;
 	background-color: #ffffff;
 	/* box-shadow: 5px 5px #c4c4c4; */
 }
@@ -253,6 +257,7 @@ a:hover {color: #000000; text-decoration-line: none;}
 	width: 30px;
 	height: 30px;
 	border: 1px solid #c0c0c0;
+	background-color: #ffffff;
 }
 
 #r-possible2 {
@@ -297,12 +302,12 @@ a:hover {color: #000000; text-decoration-line: none;}
 
 .fc-daygrid-day {
 	background-color: #eeeeee;
+	/* opacity: 0.8; */
+	
 }
-
-.eventDate {
-	background-color: #ffff00;
-	height: 100px;
-	width: 50px;
+/* <div class="fc-daygrid-event-harness fc-daygrid-event-harness-abs" style="top: 0px; left: 0px; right: -161.979px;"><a class="fc-daygrid-event fc-daygrid-block-event fc-h-event fc-event fc-event-start fc-event-end fc-event-future" tabindex="0" style="border-color: rgb(255, 175, 176); background-color: rgb(255, 175, 176); z-index: 10;"><div class="fc-event-main" style="color: rgb(0, 0, 0);"><div class="fc-event-main-frame"><div class="fc-event-title-container"><div class="fc-event-title fc-sticky">박성훈</div></div></div></div></a></div>*/
+.fc-daygrid-event-harness-abs {
+	z-index: 10; 
 }
 
 /* 폰트 사이즈 */

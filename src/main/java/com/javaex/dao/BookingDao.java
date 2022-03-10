@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import com.javaex.vo.AbleVo;
 import com.javaex.vo.BookingVo;
+import com.javaex.vo.HostVo;
 import com.javaex.vo.PhotoVo;
 
 @Repository
@@ -87,8 +88,6 @@ public class BookingDao {
 		
 		List<BookingVo> bookingList = sqlsession.selectList("booking.bookingEndGuestList", hostNo);
 		
-		System.out.println(bookingList);
-		
 		return bookingList;
 	}
 	
@@ -102,5 +101,30 @@ public class BookingDao {
 	public List<AbleVo> ableList(int hostNo) {
 		
 		return sqlsession.selectList("booking.ableSelect", hostNo);
+	}
+	
+	//가능날짜취소
+	public void ableDelete(AbleVo avo) {
+		sqlsession.delete("booking.ableDelete", avo);
+	}
+	
+	//가능날짜 전체취소
+	public void ableDeleteAll(int hostNo) {
+		sqlsession.delete("booking.ableDeleteAll", hostNo);
+	}
+	
+	//노출여부업데이트
+	public void viewAble(int hostNo, int hostview) {
+		HostVo hvo = new HostVo();
+		hvo.setHostview(hostview);
+		hvo.setHostNo(hostNo);
+		
+		sqlsession.update("booking.viewAble", hvo);
+	}
+	
+	//호스트 정보
+	public HostVo selectHost(int hostNo) {
+		
+		return sqlsession.selectOne("booking.selectHost", hostNo);
 	}
 }

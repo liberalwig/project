@@ -7,12 +7,12 @@
 		<typeAlias alias="ReviewVo" type="com.javaex.vo.ReviewVo" />
 		<typeAlias alias="PhotoVo" type="com.javaex.vo.PhotoVo" />
 		<typeAlias alias="FinishPVo" type="com.javaex.vo.FinishPVo" />
+		<typeAlias alias="BookingVo" type="com.javaex.vo.BookingVo" />
 	</typeAliases>
 	<mappers>
 		<mapper resource="mybatis/mappers/hostinfo.xml" />
 		<mapper resource="mybatis/mappers/host.xml" />
 		<mapper resource="mybatis/mappers/finishP.xml" />
 		<mapper resource="mybatis/mappers/booking.xml" />
-		<mapper resource="mybatis/mappers/serchList.xml" />
 	</mappers>
-</configuration>
+</configuration>	

@@ -54,7 +54,7 @@
 			       us.name,
 			       us.path,
 			       bo.review,
-			       bo.reviewDate
+			       to_char(bo.reviewDate, 'YYYY-MM-DD') reviewDate
 			from   booking bo, users us
 			where  bo.usersNo = us.usersNo
 			and    bo.hostNo = #{hostNo}
@@ -126,6 +126,37 @@
 		]]>
 	</select>
 	
+	<select id="getCalendur" parameterType="int" resultType="BookingVo">
+		<![CDATA[
+			select  bo.checkin,
+			        bo.checkout,
+			        us.name guestName
+			from    booking bo, users us
+			where   hostNo = #{hostNo}
+			and     bo.usersNo = us.usersNo
+		]]>
+	</select>
+	
+	<select id="getPhoto" parameterType="PhotoVo" resultType="PhotoVo">
+		<![CDATA[
+			select ph.photoPath,
+			       bo.hostNo
+			from   photo ph, booking bo
+			where  ph.bookingNo = bo.bookingNo
+			and    bo.hostNo = #{hostNo}
+			and    ph.category = #{category}
+		]]>
+	</select>
+	
+	<select id="getKeywordList2" resultType="keywordVo">
+		<![CDATA[
+			select   keywordNo,
+			         keywordName
+			from     keyword
+			order by keywordNo asc
+		]]>
+	</select>
+	
 	<select id="getPayment" parameterType="int" resultType="BookingVo">
 		<![CDATA[
 			select bookingNo,
@@ -141,10 +172,27 @@
 		]]>
 	</select>
 	
+	<insert id="hostinsert" parameterType="hostVo">
+		<selectKey keyProperty="hostNo" resultType="int" order="BEFORE">
+			select seq_host_no.nextval from dual
+		</selectKey>
+		<![CDATA[
+			insert into host
+			values(#{hostNo}, #{usersNo}, #{zipcode}, #{adress1}, #{adress2}, #{adress3}, 0, 0, #{intro}, #{asking}, #{hostcost}, 1)
+		]]>
+	</insert>
+	
 	<insert id="bookinginsert" parameterType="BookingVo">
 		<![CDATA[
 			insert into booking
 			values(seq_booking_no.nextval, #{hostNo}, #{usersNo}, #{checkin}, #{checkout}, #{ea}, #{bookingDate}, #{days}, #{note}, '승인대기', null, null, null, null, null, null, null)
+		]]>
+	</insert>
+	
+	<insert id="setHostPhoto" parameterType="PhotoVo">
+		<![CDATA[
+			insert into hostprofile
+			values(seq_hostprofile_no.nextval,#{hostNo}, sysdate, #{photoPath})
 		]]>
 	</insert>
 	
@@ -153,6 +201,14 @@
 			update booking
 			set    status = #{status}
 			where  bookingNo = #{bookingNo}
+		]]>
+	</update>
+	
+	<update id="typeUpdate" parameterType="int">
+		<![CDATA[
+			update users
+			set    userstype = 2
+			where  usersNo = #{usersNo}
 		]]>
 	</update>
 </mapper>

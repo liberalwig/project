@@ -103,6 +103,24 @@ public class HostinfoDao {
 	}
 	
 	//결제내역
+	public List<BookingVo> getCalendur(int bookingNo) {
+		System.out.println("[HostinfoDao.getCalendur()]");
+		
+		List<BookingVo> CalendurList = sqlSession.selectList("hostinfo.getCalendur", bookingNo);
+		
+		return CalendurList;
+	}
+	
+	//사진
+	public List<PhotoVo> getPhoto(PhotoVo photoVo) {
+		System.out.println("[HostinfoDao.getPhoto()]");
+		
+		List<PhotoVo> photoList = sqlSession.selectList("hostinfo.getPhoto", photoVo);
+		
+		return photoList;
+	}
+	
+	//결제내역
 	public BookingVo getPayment(int bookingNo) {
 		System.out.println("[HostinfoDao.getBooking()]");
 		
@@ -127,5 +145,34 @@ public class HostinfoDao {
 		System.out.println("["+count+"건이 업데이트 되었습니다.(hostinfoDao)]");
 		
 		return count;
+	}
+	
+	//키워드 리스트 가져오기
+	public List<KeywordVo> getKeywordList() {
+		System.out.println("[HostinfoDao.getKeywordList()]");
+		
+		return sqlSession.selectList("hostinfo.getKeywordList2");
+	}
+	
+	
+	//호스트 등록
+	public void hostinsert(HostVo hostVo) {
+		System.out.println("[HostinfoDao.hostinsert()]");
+		
+		sqlSession.insert("hostinfo.hostinsert", hostVo);
+	}
+	
+	//유저타입 변경(유저->호스트)
+	public void typeUpdate(int usersNo) {
+		System.out.println("[HostinfoService.typeUpdate()]");
+		
+		sqlSession.update("hostinfo.typeUpdate", usersNo);
+	}
+	
+	//사진 넣기
+	public void setHostPhoto(PhotoVo photoVo) {
+		System.out.println("[HostinfoService.setHostPhoto()]");
+		
+		sqlSession.insert("hostinfo.setHostPhoto", photoVo);
 	}
 }

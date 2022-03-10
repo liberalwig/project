@@ -23,7 +23,7 @@
 		<div id="container" class="clearfix">
 			<div id="aside">
 				<ul id="b-aside">
-					<li class="menu">예약관리<img src="${pageContext.request.contextPath}/assets/images/userModifyForm_01dropdow.png" class="aside-img"></li>
+					<li class="menu">예약관리<img src="${pageContext.request.contextPath}/assets/images/images/aside_img.png" class="aside-img"></li>
 					<ul id="s-aside" class="hide">
 						<li>대기내역</li>
 						<li>예약신청관리</li>
