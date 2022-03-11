@@ -23,7 +23,7 @@
                          <input type="text" name="searchKeyword" id="searchKeyword" value="" class="search_text1 small form-control ps-0 pointer" placeholder="어디를 찾으세요?" aria-label="Search" aria-describedby="basic-addon2">
                      </div> 
                      <div class="searchboxin_2 input-group input-group-joined">
-                         <input type="text" name="searchData" id="searchData" value="" class="search_text2 form-control small ps-0 pointer" id="litepickerRangePlugin" value="" placeholder="체크인 / 체크아웃" />
+                         <input type="text" name="searchData" value="" class="search_text2 form-control small ps-0 pointer" id="litepickerRangePlugin" value="" placeholder="체크인 / 체크아웃" />
                      </div> 
                      <button class="search_text3 btn btn-primary" type="submit">
                      	   <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
