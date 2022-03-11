@@ -154,7 +154,7 @@
 						<div class="row">
 							<div id="imgbox2">
 								<c:forEach items="${requestScope.photoList}" var="vo">
-									<img src="${pageContext.request.contextPath}/photo/${vo.photoPath}">
+									<img src="${pageContext.request.contextPath}/photo/${vo.saveName}">
 								</c:forEach>
 							</div>
 						</div>
@@ -187,11 +187,11 @@
 										<div class="reviewbox">
 											<div class="row reviewinfo">
 												<c:choose>
-													<c:when test="${empty vo.path}">
+													<c:when test="${empty vo.saveName}">
 														<img class="img-circle reviewimg" src="${pageContext.request.contextPath}/assets/images/hostinfo_sample.jpg">
 													</c:when>
 													<c:otherwise>
-														<img class="img-circle reviewimg" src="${pageContext.request.contextPath}/photo/${vo.path}">
+														<img class="img-circle reviewimg" src="${pageContext.request.contextPath}/photo/${vo.saveName}">
 													</c:otherwise>
 												</c:choose>
 												<h4 class="toph4">${vo.name}</h4>
@@ -287,7 +287,7 @@
 	//사진뿌리기 렌더
 	function render(photoVo){
 		var str = "";
-		str +='<img src="${pageContext.request.contextPath}/photo/'+ photoVo.photoPath +'">'
+		str +='<img src="${pageContext.request.contextPath}/photo/'+ photoVo.saveName +'">'
 		$("#imgbox2").append(str);
 	};
 	

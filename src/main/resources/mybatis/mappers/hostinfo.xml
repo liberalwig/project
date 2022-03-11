@@ -22,8 +22,6 @@
 			       ho.adress1,
 			       ho.adress2,
 			       ho.adress3,
-			       ho.x,
-			       ho.y,
 			       ho.intro,
 			       ho.asking,
 			       ho.hostcost,
@@ -122,7 +120,7 @@
 	<select id="getHostPhotoList" parameterType="int" resultType="PhotoVo">
 		<![CDATA[
 			select hostNo,
-			       hostprofilepath as photoPath
+			       hostprofilepath saveName
 			from   hostprofile
 			where  hostNo = #{hostNo}
 		]]>
@@ -141,7 +139,7 @@
 	
 	<select id="getPhoto" parameterType="PhotoVo" resultType="PhotoVo">
 		<![CDATA[
-			select ph.photoPath,
+			select ph.saveName saveName,
 			       bo.hostNo
 			from   photo ph, booking bo
 			where  ph.bookingNo = bo.bookingNo

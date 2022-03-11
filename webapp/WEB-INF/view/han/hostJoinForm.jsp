@@ -200,7 +200,6 @@
 							data : {
 								keywordNo : keywordList,
 							},
-							
 							success : function(hostNo) {
 								console.log(hostNo);
 								alert("펫시터 신청이 완료되었습니다.");

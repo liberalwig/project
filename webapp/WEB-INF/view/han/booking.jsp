@@ -77,11 +77,11 @@
             <div id="hostprofile" class="col-xs-4">
                 <div id="profile" class="row">
                 	<c:choose>
-                		<c:when test="${empty requestScope.hostVo.path}">
+                		<c:when test="${empty requestScope.hostVo.saveName}">
                     		<img id="hostimg" src="${pageContext.request.contextPath}/assets/images/hostinfo_sample.jpg" class="img-circle">
                     	</c:when>
                     	<c:otherwise>
-                    		<img id="hostimg" src="${pageContext.request.contextPath}/photo/${requestScope.hostVo.path}" class="img-circle">
+                    		<img id="hostimg" src="${pageContext.request.contextPath}/photo/${requestScope.hostVo.saveName}" class="img-circle">
                     	</c:otherwise>
                     </c:choose>
                     <h3>${requestScope.hostVo.name}님</h3>
