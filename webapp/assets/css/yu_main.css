@@ -91,6 +91,10 @@ padding: 10px 0px 0px 0px;
 } */
 
 /* 왼쪽메뉴(aside) */
+#aside:hover {
+	cursor: pointer;
+}
+
 #aside #b-aside {
 	padding: 45px 0px 0px 0px;
 	width: 240px;

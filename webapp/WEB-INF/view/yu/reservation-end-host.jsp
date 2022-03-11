@@ -10,6 +10,8 @@
 <link href="/project/assets/css/yu_main.css" rel="stylesheet" type="text/css">
 <link href="/project/assets/css/reservation.css" rel="stylesheet" type="text/css">
 <link href="/project/assets/css/fullcalendar.css" rel="stylesheet" type="text/css">
+<link href="/project/assets/css/viewBtn.css" rel="stylesheet" type="text/css">
+
 </head>
 
 <script type="text/javascript" src="/project/assets/js/jquery-1.12.4.js"></script>

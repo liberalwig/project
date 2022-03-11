@@ -9,7 +9,7 @@
 <link href="/project/assets/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css">
 <link href="/project/assets/css/yu_main.css" rel="stylesheet" type="text/css">
 <link href="/project/assets/css/reservation.css" rel="stylesheet" type="text/css">
-<link href="/project/assets/css/review.css?after" rel="stylesheet" type="text/css">
+<link href="/project/assets/css/review.css" rel="stylesheet" type="text/css">
 </head>
 
 <script type="text/javascript" src="/project/assets/js/jquery-1.12.4.js"></script>
@@ -64,7 +64,7 @@
 							<c:forEach items="${bList}" var="BookingVo">
 									<tr>
 	                                    <td><input type="radio" name="list-radio"></td>
-										<td id="no"  onClick="location.href='${pageContext.request.contextPath}/bookingDetailHost?bookingNo=${BookingVo.bookingNo}'">
+										<td id="no" onClick="location.href='${pageContext.request.contextPath}/bookingDetailHost?bookingNo=${BookingVo.bookingNo}'">
 										${BookingVo.bookingNo}</td>
 										<td><img src="/project/assets/images/reservation-dog.png"></td>
 										<td>${BookingVo.hostName}</td>
@@ -76,7 +76,7 @@
 												<td><div class="btn-re-gradient yellow mini">예약완료</div></td>
 											</c:when>
 											<c:when test="${BookingVo.status == '펫시팅중'}">
-												<td id="reviewForm"><div class="btn-re-gradient orange mini">펫시팅중</div></td>
+												<td id="reviewForm" data-no="${BookingVo.bookingNo}"><div class="btn-re-gradient orange mini">펫시팅중</div></td>
 											</c:when>
 											<c:when test="${BookingVo.status == '시팅완료'}">
 												<td><div class="btn-re-gradient blue mini">시팅완료</div></td>
@@ -102,9 +102,9 @@
 					<span aria-hidden="true">&times;</span>
 				</button>
 				
-				<form id="reviewForm" method="get" action="${pageContext.request.contextPath}/reviewF?usersNo=${authUser.usersNo}">
+				<form id="reviewForm" method="get" action="${pageContext.request.contextPath}/reviewF">
 					<div class="modal-body">
-		
+						<input type="hidden" name="usersNo" value="${authUser.usersNo}">
 						<div id="header">
 							<h4 class="modal-title">리뷰하기</h4>
 							<p class="small">개장수 님의 펫시팅에 대한 평과와 후기를 남겨주세요.</p>
@@ -350,7 +350,7 @@
 						</div>
 					</div>
 					<div class="modal-footer">
-						<input type="hidden" name= "bookingNo" value=1> <!-- value="${bookingno}" --> 
+						<input type="hidden" id="bookingNo" name= "bookingNo" value=""> <!-- value="${bookingno}" --> 
 						<input type="hidden" name= "reviewDate" value= sysdate>
 						<button id="btnsub" type="submit">올리기</button>
 					</div>
@@ -372,7 +372,9 @@
 
 /* 펫시팅중 버튼누르면 */
 $("#reviewForm").on("click", function(){
+	$("#bookingNo").val($("#reviewForm").data("no"));
 	$('#review').modal('show');
+	
 })
 
 	
