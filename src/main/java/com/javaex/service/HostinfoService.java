@@ -186,8 +186,12 @@ public class HostinfoService {
 	//사진 업로드
 	public void fileupload(MultipartFile file, int hostNo) {
 		System.out.println("[HostinfoService.fileupload()]");
-		//내 컴퓨터 저장경로
+		
+		//맥 저장경로
 		String saveDir = "/Users/hs/JavaStudy/workspace_project/project/webapp/assets/upload/";
+		//윈도우 저장경로
+		//String saveDir = "C:\\javaStudy\\photo\\";
+		
 		// 원본파일이름
 		String orgName = file.getOriginalFilename();
 		// 확장자

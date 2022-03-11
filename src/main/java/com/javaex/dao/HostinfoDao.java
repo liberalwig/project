@@ -135,7 +135,7 @@ public class HostinfoDao {
 	public void bookinginsert(BookingVo bookingVo) {
 		System.out.println("[HostinfoDao.bookinginsert()]");
 		
-		sqlSession.insert("hostinfo.bookingisert", bookingVo);
+		sqlSession.insert("hostinfo.bookinginsert", bookingVo);
 	}
 	
 	//상태값 변경

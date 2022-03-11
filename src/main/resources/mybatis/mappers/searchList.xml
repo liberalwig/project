@@ -6,32 +6,34 @@
 		<select id="selectSearchList" parameterType="SearchListVo" resultType="SearchListVo">
 				<![CDATA[
 				  select  h.hostNo hostNo,
-				          u.name name,
+				          u.name hostName,
 				          u.path path,
 				          h.adress1 adress1,
 				          h.adress3 adress3,
 				          c.rp reviewPoint,
 				          h.hostCost hostCost,
-				          trunc( c.pp,1) puppyPoint,
+				          trunc(c.pp,1) puppyPoint,
 				          trunc(c.clean,1) clean,
 				          trunc(c.walk,1) walk,
 				          trunc(c.play,1) play,
 				          trunc(c.food,1) food,
 				          trunc(c.communication,1) communication,
 				          c.rp review
-				  from    users u, host h, (select   hostNo, 
-				                                     count(review) rp,
-				                                     ((avg(clean) + avg(walk) + avg(play) + avg(food) + avg(communication))/5) pp,
-				                                     avg(clean) clean,
-				                                     avg(walk) walk,
-				                                     avg(play) play,
-				                                     avg(food) food,
-				                                     avg(communication) communication        
-				                              from   booking b, users u
-				                              group by hostNo ) c
+				  from    users u, host h, (select     h.hostNo, 
+												       count(review) rp,
+												       ((avg(clean) + avg(walk) + avg(play) + avg(food) + avg(communication))/5) pp,
+												       avg(clean) clean,
+												       avg(walk) walk,
+												       avg(play) play,
+												       avg(food) food,
+												       avg(communication) communication        
+											  from     booking b, users u, host h
+											  where    b.hostNo(+) = h.hostNo
+											  and      h.usersNo = u.usersNo
+											  group by h.hostNo ) c
 				  where u.usersNo = h.usersNo
 				  and   c.hostNo = h.hostNo
-				  order by h.hostNo desc
+				  
 				  ]]>	
 				  <include refid="search"></include>
 				  
@@ -44,6 +46,7 @@
 						adress1 like '%' || #{searchKeyword} || '%'
 					</if>
 				</if>
+				order by h.hostNo desc
 		</sql>
 
 </mapper>
