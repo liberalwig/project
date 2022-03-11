@@ -20,14 +20,14 @@ p {
 }
 
 /* 셀렉트박스 & 텍스트박스*/
-input[type="text"] {
+#imgupdateModal input[type="text"] {
     margin-left: 18px;
     width: 265px;
     border: 1px solid #ddd;
     border-radius: 4px;
 }
 
-input[type="text"]:hover {border: 1px solid #aaa;}
+#imgupdateModal input[type="text"]:hover {border: 1px solid #aaa;}
 
 .pDate {
 	margin-bottom: 17px;
