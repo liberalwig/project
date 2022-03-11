@@ -82,7 +82,7 @@
                     <h3>05. 주소</h3>
                     <p class="exp lead">당신의 주소를 입력해주세요.</p><br>
                     <div id="address">
-						<input type="text" id="sample4_postcode" class="zipcode" laceholder="우편번호">
+						<input type="text" id="sample4_postcode" class="zipcode" placeholder="우편번호">
 						<input type="button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기"><br>
 						<input type="text" id="sample4_jibunAddress" class="adress1" placeholder="지번주소"><br>
 						<input type="text" id="sample4_detailAddress" class="adress2" placeholder="상세주소">
