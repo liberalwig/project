@@ -23,7 +23,14 @@
 		<div id="container">
 			<div class="row row1">
 				<div id="profile" class="col-xs-12 left">
-					<img id="hostimg" src="${pageContext.request.contextPath}/assets/images/hostinfo_sample.jpg" alt="PetSitter Image" class="img-circle">
+					<c:choose>
+						<c:when test="${empty requestScope.hostVo.path}">
+							<img id="hostimg" src="${pageContext.request.contextPath}/assets/images/hostinfo_sample.jpg" alt="PetSitter Image" class="img-circle">
+						</c:when>
+						<c:otherwise>
+							<img id="hostimg" src="${pageContext.request.contextPath}/photo/${requestScope.hostVo.path}" alt="PetSitter Image" class="img-circle">
+						</c:otherwise>
+					</c:choose>
 					<div id="hostinfo">
 						<h3 class="info">${requestScope.hostVo.name}님</h3>
 						<h4 class="info">${requestScope.hostVo.adress1}</h4>
@@ -147,7 +154,7 @@
 						<div class="row">
 							<div id="imgbox2">
 								<c:forEach items="${requestScope.photoList}" var="vo">
-									<img src="${pageContext.request.contextPath}/assets/upload/${vo.photoPath}">
+									<img src="${pageContext.request.contextPath}/photo/${vo.photoPath}">
 								</c:forEach>
 							</div>
 						</div>
@@ -179,7 +186,14 @@
 									<c:forEach items="${requestScope.reviewList}" var="vo">
 										<div class="reviewbox">
 											<div class="row reviewinfo">
-												<img class="img-circle reviewimg" src="${pageContext.request.contextPath}/assets/images/hostinfo_sample.jpg">
+												<c:choose>
+													<c:when test="${empty vo.path}">
+														<img class="img-circle reviewimg" src="${pageContext.request.contextPath}/assets/images/hostinfo_sample.jpg">
+													</c:when>
+													<c:otherwise>
+														<img class="img-circle reviewimg" src="${pageContext.request.contextPath}/photo/${vo.path}">
+													</c:otherwise>
+												</c:choose>
 												<h4 class="toph4">${vo.name}</h4>
 												<h4>${vo.reviewDate}</h4>
 											</div>
@@ -209,7 +223,7 @@
 									</nav>
 								</c:when>
 								<c:otherwise>
-									<h4 style="padding:150px 0px 0px 70px">아직 작성된 리뷰가 없어요.</h4>
+									<h4 style="padding:150px 0px 0px 300px">아직 작성된 리뷰가 없어요.</h4>
 								</c:otherwise>
 							</c:choose>
 						</div>
@@ -273,7 +287,7 @@
 	//사진뿌리기 렌더
 	function render(photoVo){
 		var str = "";
-		str +='<img src="${pageContext.request.contextPath}/assets/upload/'+ photoVo.photoPath +'">'
+		str +='<img src="${pageContext.request.contextPath}/photo/'+ photoVo.photoPath +'">'
 		$("#imgbox2").append(str);
 	};
 	

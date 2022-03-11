@@ -59,6 +59,7 @@
 			from   booking bo, users us
 			where  bo.usersNo = us.usersNo
 			and    bo.hostNo = #{hostNo}
+		    and    bo.status = '시팅완료'
 		]]>
 	</select>
 	
@@ -179,7 +180,7 @@
 		</selectKey>
 		<![CDATA[
 			insert into host
-			values(#{hostNo}, #{usersNo}, #{zipcode}, #{adress1}, #{adress2}, #{adress3}, 0, 0, #{intro}, #{asking}, #{hostcost}, 1)
+			values(#{hostNo}, #{usersNo}, #{zipcode}, #{adress1}, #{adress2}, #{adress3}, 0, 0, #{intro}, #{asking}, #{hostcost}, 0)
 		]]>
 	</insert>
 	

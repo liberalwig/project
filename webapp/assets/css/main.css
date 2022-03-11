@@ -277,7 +277,7 @@ margin: -2px 0px -2px 0px;
 
 /*footer*/
 
-#footer .row{
+#main-footer .row{
     display: block;
     margin: -10px 0px 0px 0px;
     width:1440px;
@@ -304,7 +304,7 @@ margin: -2px 0px -2px 0px;
 }
 
 .footer-text2.col-md-1{
-    top: 80px;
+    top: 150px;
     width:1440px;
     height:20px;
 }
@@ -342,3 +342,15 @@ margin: -2px 0px -2px 0px;
     top: 20px;
     left: 150px;
 }
+
+#footer{
+	   background: #fff !important;
+}
+
+.litepicker{
+	top: 80px !important;
+	left: 550px !important;
+}
+
+
+

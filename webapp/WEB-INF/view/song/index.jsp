@@ -37,7 +37,7 @@
          <!-- main -->
 
          <!-- footer -->
-        <div id="footer" class="container-fluid">
+        <div id="main-footer" class="container-fluid">
             <div class="row">
                 <div class="footer col-xs-4">
                     <div class="col-xs-2">
@@ -76,15 +76,12 @@
                     </div>  
                 </div>
             </div>
-            <div class="row">
-                <div class="footer-text2 col-md-1">
-                    © 2022 최승은 한상선 강소이 송성빈 유다운GariBnB.com
-                </div>
-            </div>
         </div>
-
-
+        <div id="footer-text" class="container-fluid">
+        <!-- footer-text -->
+			
+ 		</div>
     </div>
-
+		<c:import url="/WEB-INF/view/includes/footer.jsp"></c:import>
 	</body>
 </html>

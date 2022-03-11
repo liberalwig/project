@@ -15,6 +15,7 @@ public class SearchListVo {
 	private double puppyPoint;  	//퍼피포인트
 	private double reviewPoint;     //리뷰포인트
 	private String hostName;        //이름
+	private String hostCost;        //가
 	private String adress1;         //주소
 	private String adress2;         //주소
 	private String adress3;         //주소 세부사항
@@ -33,13 +34,14 @@ public class SearchListVo {
 	private String searchData;
 	
 	public SearchListVo() {
-
-	}
 	
+	}
+
 	public SearchListVo(int bookingNo, int hostNo, String checkin, String checkout, int ea, int bookingDate, int days,
 			String note, String status, String review, double puppyPoint, double reviewPoint, String hostName,
-			String adress1, String adress2, String adress3, double x, double y, String intro, String path, int clean,
-			int food, int play, int walk, int communication, String searchKeyword, String searchData) {
+			String hostCost, String adress1, String adress2, String adress3, double x, double y, String intro,
+			String path, int clean, int food, int play, int walk, int communication, String searchKeyword,
+			String searchData) {
 		super();
 		this.bookingNo = bookingNo;
 		this.hostNo = hostNo;
@@ -54,6 +56,7 @@ public class SearchListVo {
 		this.puppyPoint = puppyPoint;
 		this.reviewPoint = reviewPoint;
 		this.hostName = hostName;
+		this.hostCost = hostCost;
 		this.adress1 = adress1;
 		this.adress2 = adress2;
 		this.adress3 = adress3;
@@ -174,6 +177,14 @@ public class SearchListVo {
 		this.hostName = hostName;
 	}
 
+	public String getHostCost() {
+		return hostCost;
+	}
+
+	public void setHostCost(String hostCost) {
+		this.hostCost = hostCost;
+	}
+
 	public String getAdress1() {
 		return adress1;
 	}
@@ -291,11 +302,14 @@ public class SearchListVo {
 		return "SearchListVo [bookingNo=" + bookingNo + ", hostNo=" + hostNo + ", checkin=" + checkin + ", checkout="
 				+ checkout + ", ea=" + ea + ", bookingDate=" + bookingDate + ", days=" + days + ", note=" + note
 				+ ", status=" + status + ", review=" + review + ", puppyPoint=" + puppyPoint + ", reviewPoint="
-				+ reviewPoint + ", hostName=" + hostName + ", adress1=" + adress1 + ", adress2=" + adress2
-				+ ", adress3=" + adress3 + ", x=" + x + ", y=" + y + ", intro=" + intro + ", path=" + path + ", clean="
-				+ clean + ", food=" + food + ", play=" + play + ", walk=" + walk + ", communication=" + communication
-				+ ", searchKeyword=" + searchKeyword + ", searchData=" + searchData + "]";
+				+ reviewPoint + ", hostName=" + hostName + ", hostCost=" + hostCost + ", adress1=" + adress1
+				+ ", adress2=" + adress2 + ", adress3=" + adress3 + ", x=" + x + ", y=" + y + ", intro=" + intro
+				+ ", path=" + path + ", clean=" + clean + ", food=" + food + ", play=" + play + ", walk=" + walk
+				+ ", communication=" + communication + ", searchKeyword=" + searchKeyword + ", searchData=" + searchData
+				+ "]";
 	}
+	
+	
 	
 	
 	

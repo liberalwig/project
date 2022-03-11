@@ -76,7 +76,14 @@
                 </div>
             <div id="hostprofile" class="col-xs-4">
                 <div id="profile" class="row">
-                    <img id="hostimg" src="${pageContext.request.contextPath}/assets/images/hostinfo_sample.jpg" class="img-circle">
+                	<c:choose>
+                		<c:when test="${empty requestScope.hostVo.path}">
+                    		<img id="hostimg" src="${pageContext.request.contextPath}/assets/images/hostinfo_sample.jpg" class="img-circle">
+                    	</c:when>
+                    	<c:otherwise>
+                    		<img id="hostimg" src="${pageContext.request.contextPath}/photo/${requestScope.hostVo.path}" class="img-circle">
+                    	</c:otherwise>
+                    </c:choose>
                     <h3>${requestScope.hostVo.name}님</h3>
                     <h4>${requestScope.hostVo.adress1}</h4>
                     <h4>${requestScope.hostVo.hp}</h4>
@@ -103,7 +110,7 @@
                         <p><span class="label label-danger">!</span>&nbsp;펫시터가 요청을 수락하면 결제가 이루어집니다.</p>
                         <button id="btn2" type="button" class="btn btn-primary">예약 요청</button>
                         <input type="hidden" id="hostNo" value="${requestScope.hostVo.hostNo}">
-                        <input type="hidden" id="usersNo" value="2">
+                        <input type="hidden" id="usersNo" value="${sessionScope.authUser.usersNo}">
                     </div>
                 </div>       
             </div>   
