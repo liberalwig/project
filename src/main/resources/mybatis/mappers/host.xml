@@ -3,62 +3,11 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="host">
 
-	<!-- 키워드 불러오기 -->
-	<select id="keywordSelect" resultType="KeywordVo">
-	<![CDATA[
-		select kw.keywordname
-		from keyword kw;
-	]]>
-	</select>
-
-
-
-
-
-
-
-
-
-
-	<!-- 호스트 등록 -->
-	<insert id="HostInsert" parameterType="HostVo">
-	<![CDATA[
-		insert INTO host
-		values (SEQ_GUESTBOOK_NO.nextval,
-						#{path},
-						#{zipcode},
-						#{adress1},
-						#{adress2},
-						#{adress3},
-						#{x},
-						#{y},
-						#{intro},
-						#{asking},
-						#{cost},
-						)
-    ]]>
-	</insert>
-
-
-	<!-- 키워드 등록 -->
-	<insert id="keywordInsert" parameterType="KeywordVo">
-	<![CDATA[
-	
-	key(hostNo
-	
-		insert INTO keyword
-		values (SEQ_GUESTBOOK_NO.nextval,
-					
-						)
-    ]]>
-	</insert>
-
-
 	<!-- 호스트정보 가져와서 수정 폼 -->
 	<select id="getHostByHostNo" parameterType="int" resultType="HostVo">
 			<![CDATA[
 				select ho.hostNo,
-				       ho.userNo,
+				       ho.usersNo,
 				       ho.keywordNo,
 				       us.path,
 				       ho.zipcode,

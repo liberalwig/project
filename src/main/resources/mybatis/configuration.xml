@@ -9,6 +9,7 @@
 		<typeAlias alias="FinishPVo" type="com.javaex.vo.FinishPVo" />
 		<typeAlias alias="BookingVo" type="com.javaex.vo.BookingVo" /> 
 		<typeAlias alias="SearchListVo" type="com.javaex.vo.SearchListVo" />
+		<typeAlias alias="UserVo" type="com.javaex.vo.UserVo" />
 	</typeAliases>
 	<mappers>
 		<mapper resource="mybatis/mappers/booking.xml" />
