@@ -21,5 +21,13 @@ public class FinishPService {
 		return finishPVo;
 	}
 	
+	//확인버튼 누름
+	public void updateStatusP(int bookingNo) {
+		
+		finishPDao.updateStatusP(bookingNo);
+	}
+
+	
+	
 	
 }

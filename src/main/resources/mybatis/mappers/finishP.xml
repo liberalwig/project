@@ -25,5 +25,15 @@
 		and b.bookingNo = #{bookingNo}
 	        ]]>
 	</select>
+	
+	<!-- 시팅완료로 상태바꾸기 -->
+	<update id="updateStatusP" parameterType="int">
+		<![CDATA[
+			update booking
+			set	   status = '예약완료'
+			where  bookingNo = #{bookingNo}
+		]]>
+	</update>
+
 
 </mapper>

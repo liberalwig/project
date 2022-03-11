@@ -130,31 +130,31 @@
 										<svg class="rating__star">
 			                				<use xlink:href="#star"></use>
 			                			</svg> 
-			                  			<span class="screen-reader">1</span>
+			                  			<span class="screen-reader">2</span>
 									</label> 
 									<label for="food2" class="rating__item"> 
 										<svg class="rating__star">
 		                    				<use xlink:href="#star"></use>
 			                  			</svg> 
-			                  			<span class="screen-reader">2</span>
+			                  			<span class="screen-reader">4</span>
 									</label> 
 									<label for="food3" class="rating__item"> 
 										<svg class="rating__star">
 			                    			<use xlink:href="#star"></use>
 			                  			</svg> 
-		                  				<span class="screen-reader">3</span>
+		                  				<span class="screen-reader">6</span>
 									</label> 
 									<label for="food4" class="rating__item"> 
 										<svg class="rating__star">
 			                    				<use xlink:href="#star"></use>
 			                  			</svg> 
-			                  			<span class="screen-reader">4</span>
+			                  			<span class="screen-reader">8</span>
 									</label> 
 									<label for="food5" class="rating__item"> 
 										<svg class="rating__star">
 		                    				<use xlink:href="#star"></use>
 			              				</svg> 
-			              				<span class="screen-reader">5</span>
+			              				<span class="screen-reader">10</span>
 									</label>
 								</div>
 							</div>
@@ -173,31 +173,31 @@
 										<svg class="rating__star">
 		                    				<use xlink:href="#star"></use>
 		                    			</svg> 
-			                    		<span class="screen-reader">1</span>
+			                    		<span class="screen-reader">2</span>
 									</label> 
 									<label for="walk2" class="rating__item"> 
 										<svg class="rating__star">
 			                    			<use xlink:href="#star"></use>
 			                  			</svg> 
-			                  			<span class="screen-reader">2</span>
+			                  			<span class="screen-reader">4</span>
 									</label> 
 									<label for="walk3" class="rating__item"> 
 										<svg class="rating__star">
 			                    			<use xlink:href="#star"></use>
 			                      		</svg> 
-			                      		<span class="screen-reader">3</span>
+			                      		<span class="screen-reader">6</span>
 									</label> 
 									<label for="walk4" class="rating__item"> 
 										<svg class="rating__star">
 			                				<use xlink:href="#star"></use>
 			                			</svg> 
-			                  			<span class="screen-reader">4</span>
+			                  			<span class="screen-reader">8</span>
 									</label> 
 									<label for="walk5" class="rating__item"> 
 										<svg class="rating__star">
 			                    			<use xlink:href="#star"></use>
 			                  			</svg> 
-			                    		<span class="screen-reader">5</span>
+			                    		<span class="screen-reader">10</span>
 									</label>
 	
 								</div>
@@ -223,31 +223,31 @@
 										<svg class="rating__star">
 			                    			<use xlink:href="#star"></use>
 			                  			</svg> 
-			                    		<span class="screen-reader">1</span>
+			                    		<span class="screen-reader">2</span>
 									</label> 
 									<label for="clean2" class="rating__item"> 
 										<svg class="rating__star">
 			                				<use xlink:href="#star"></use>
 			              				</svg> 
-			              				<span class="screen-reader">2</span>
+			              				<span class="screen-reader">4</span>
 									</label> 
 									<label for="clean3" class="rating__item"> 
 										<svg class="rating__star">
 			                        		<use xlink:href="#star"></use>
 			                      		</svg> 
-		                      			<span class="screen-reader">3</span>
+		                      			<span class="screen-reader">6</span>
 									</label> 
 									<label for="clean4" class="rating__item"> 
 										<svg class="rating__star">
 			                				<use xlink:href="#star"></use>
 			              				</svg> 
-			                			<span class="screen-reader">4</span>
+			                			<span class="screen-reader">8</span>
 									</label> 
 									<label for="clean5" class="rating__item"> 
 										<svg class="rating__star">
 		                        			<use xlink:href="#star"></use>
 			                 	 		</svg> 
-			                 	 		<span class="screen-reader">5</span>
+			                 	 		<span class="screen-reader">10</span>
 									</label>
 								</div>
 							</div>
@@ -265,31 +265,31 @@
 										<svg class="rating__star">
 			                    			<use xlink:href="#star"></use>
 			                  			</svg> 
-			                    		<span class="screen-reader">1</span>
+			                    		<span class="screen-reader">2</span>
 									</label> 
 									<label for="play2" class="rating__item"> 
 										<svg class="rating__star">
 			                				<use xlink:href="#star"></use>
 			                			</svg> 
-			                  			<span class="screen-reader">2</span>
+			                  			<span class="screen-reader">4</span>
 									</label> 
 									<label for="play3" class="rating__item"> 
 										<svg class="rating__star">
 			                				<use xlink:href="#star"></use>
 										</svg> 
-			                  			<span class="screen-reader">3</span>
+			                  			<span class="screen-reader">6</span>
 									</label> 
 									<label for="play4" class="rating__item"> 
 										<svg class="rating__star">
 		                					<use xlink:href="#star"></use>
 			                			</svg> 
-			                 		 	<span class="screen-reader">4</span>
+			                 		 	<span class="screen-reader">8</span>
 									</label> 
 									<label for="play5" class="rating__item"> 
 											<svg class="rating__star">
 			                    				<use xlink:href="#star"></use>
 			                      			</svg> 
-			                      		<span class="screen-reader">5</span>
+			                      		<span class="screen-reader">10</span>
 									</label>
 	
 								</div>
@@ -313,31 +313,31 @@
 										<svg class="rating__star">
 											<use xlink:href="#star"></use>
 										</svg> 
-										<span class="screen-reader">1</span>
+										<span class="screen-reader">2</span>
 									</label> 
 									<label for="communication2" class="rating__item"> 
 										<svg class="rating__star">
 											<use xlink:href="#star"></use>
 										</svg> 
-										<span class="screen-reader">2</span>
+										<span class="screen-reader">4</span>
 									</label> 
 									<label for="communication3" class="rating__item"> 
 										<svg class="rating__star">
 											<use xlink:href="#star"></use>
 										</svg> 
-										<span class="screen-reader">3</span>
+										<span class="screen-reader">6</span>
 									</label> 
 									<label for="communication4" class="rating__item"> 
 										<svg class="rating__star">
 											<use xlink:href="#star"></use>
 										</svg> 
-										<span class="screen-reader">4</span>
+										<span class="screen-reader">8</span>
 									</label> 
 									<label for="communication5" class="rating__item"> 
 										<svg class="rating__star">
 											<use xlink:href="#star"></use>
 										</svg> 
-										<span class="screen-reader">5</span>
+										<span class="screen-reader">10</span>
 									</label>
 								</div>
 		

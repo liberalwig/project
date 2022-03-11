@@ -21,4 +21,10 @@ public class FinishPDao {
 		return pay; 
 	}
 	
+	//예약승인 상태변경
+	public void updateStatusP(int bookingNo) {
+			
+		sqlSession.update("finishP.updateStatusP", bookingNo);
+	}
+	
 }

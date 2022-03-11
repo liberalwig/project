@@ -81,7 +81,10 @@
 
 				<div class="modal-footer">
 					<p>마이페이지에서 예약 상세을 볼수 있습니다.</p>
-					<button class="w-btn-outline w-btn-blue-outline" type="button">확인</button>
+					<button type="button" id="btnsub"
+					onClick="location.href='${pageContext.request.contextPath}/updateStatusP?bookingNo=${finishPVo.bookingNo}">
+						확인
+					</button>
 				</div>
 
 			</div>
