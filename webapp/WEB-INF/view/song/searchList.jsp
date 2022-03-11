@@ -85,10 +85,17 @@
                 <div class="search_result" class="col-md-6">
 	                <c:forEach items="${SearchList}" var="SearchListVo">
 		                <div class="search_result_list"></div>
-		                <div class="row">
+		                <div class="row search_cursor_pointer" onclick="location.href='/project/host2/info/${SearchListVo.hostNo}';">
 		                	<div>
 		                        <div class="col-md-6">
-		                            <img class="result-img" src="${pageContext.request.contextPath}/assets/images/searchList_img1.jpg">
+		                        <c:choose>
+									<c:when test="${empty SearchListVo.path}">
+										<img class="result-img" src="${pageContext.request.contextPath}/assets/images/hostinfo_sample.jpg">
+									</c:when>
+									<c:otherwise>
+										<img class="result-img" src="${pageContext.request.contextPath}/photo/${SearchListVo.path}">
+									</c:otherwise>
+								</c:choose>
 		                        </div>
 		                        <div class="search_result_text col-md-6">
 		                            <div class="result_text row">
@@ -111,40 +118,12 @@
 		                        </div>
 		                	</div>
 		                </div>
-		                
-		                <div class="search_result_list"></div>
-		                <div class="row">
-		                	<div>
-		                        <div class="col-md-6">
-		                            <img class="result-img" src="${pageContext.request.contextPath}/assets/images/searchList_img1.jpg">
-		                        </div>
-		                        <div class="search_result_text col-md-6">
-		                            <div class="result_text row">
-		                                <div class="puppy col-xs-6">
-		  								    퍼피력 &nbsp;${SearchListVo.puppyPoint}
-		                                </div>
-		                        		<div class="heart col-xs-6 bi-heart"></div>
-		                        	</div>
-		                            <div class="host_name result_text row">
-		                            	${SearchListVo.hostName}
-		                            </div>
-		                            <div class="address result_text row">
-		                           		${SearchListVo.adress1}
-		                            </div>
-	                           		<div class="result_text row"></div>
-		                            <div class="result_text row">
-			                            <div class="review col-xs-6">후기(${SearchListVo.reviewPoint})</div>
-			                            <div class="price col-xs-6">₩${SearchListVo.bookingDate}/ 박 </div>
-			                        </div>
-		                        </div>
-		                	</div>
-		                </div>
 					</c:forEach>
             	</div>
 			<!-- 반복영역 -->
             </div>
-             <!-- 지도자리 -->
-  			   <div id="map" class="scroll"></div>
+            <!-- 지도자리 -->
+  		    <div id="map" class="scroll"></div>
     	</div>
         </div>
      

@@ -223,6 +223,11 @@
 	   text-decoration: none;
 }
 
+.search_cursor_pointer{
+	cursor:pointer;
+	z-index:1;
+}
+
 
 
 
