@@ -122,6 +122,28 @@
 			$(this).next("ul").toggleClass("hide");
 		});
 	});
+	
+	
+    //이미지 담아놓을 배열
+    var inputFileList = new Array();
+   
+	 // 파일 업로드 했을때 이벤트
+	 $('input[name=images]').on('change', function(e) {
+	    var files = e.target.files;
+	    var filesArr = Array.prototype.slice.call(files);
+	
+	 	// 업로드 된 파일 유효성 체크
+	 	if (filesArr.length > 8) {
+	 		alert("이미지는 최대 8개까지 업로드 가능합니다.");
+	 		$('input[name=images]').val();
+	 		return;
+	 	}
+	
+	     filesArr.forEach(function(f) { 
+	 		inputFileList.push(f);    // 이미지 파일을 배열에 담는다.
+	 	 });
+	 });
+	
 </script>
 
 </html>

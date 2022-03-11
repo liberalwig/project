@@ -15,7 +15,11 @@ public class ReviewService {
 	public void review(ReviewVo reviewVo) {
 		System.out.println("여기는 서비스");
 		
-		reviewDao.updateReview(reviewVo);
+		int result = reviewDao.updateReview(reviewVo);
+		
+		if(result != 0) {
+			reviewDao.updateStatus3(reviewVo.getBookingNo());
+		}
 		
 		System.out.println(reviewVo+" 서비스");
 	}

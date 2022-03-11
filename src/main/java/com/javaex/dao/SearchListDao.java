@@ -14,11 +14,11 @@ public class SearchListDao {
 	@Autowired
 	private SqlSession sqlSession;
 	
-	public List<SearchListVo> getSearchList() {
+	public List<SearchListVo> getSearchList(SearchListVo searchListVo) {
 		
 		System.out.println("SearchListDao");
 		
-		List<SearchListVo> searchList = sqlSession.selectList("searchList.selectSearchList");
+		List<SearchListVo> searchList = sqlSession.selectList("searchList.selectSearchList", searchListVo);
 
 		return searchList;
 	}

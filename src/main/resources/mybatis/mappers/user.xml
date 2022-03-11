@@ -37,4 +37,13 @@
 		]]>
 	</select>
 	
+	<!-- 유저 정보수정 시 프로필사진 업데이트 -->
+	<update id="profileUpdate" parameterType="UserVo">
+		<![CDATA[
+			update users
+			set path = #{path}
+			where usersNo = #{usersNo}
+		]]>
+	</update>
+	
 </mapper>

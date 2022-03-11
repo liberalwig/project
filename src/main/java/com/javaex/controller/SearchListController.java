@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.javaex.service.SearchListService;
@@ -16,11 +16,11 @@ public class SearchListController {
 	private SearchListService searchListService;
 	
 	@RequestMapping("/searchList")
-	public String searchList(Model model) {
+	public String searchList(ModelMap model, SearchListVo searchListVo) {
 		
 		System.out.println("searchList.dao");
 		
-		List<SearchListVo> SearchListService = searchListService.searchList();
+		List<SearchListVo> SearchListService = searchListService.searchList(searchListVo);
 		
 		model.addAttribute("SearchList", SearchListService);
 		
