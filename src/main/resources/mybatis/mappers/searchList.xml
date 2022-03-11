@@ -5,30 +5,33 @@
 		
 		<select id="selectSearchList" parameterType="SearchListVo" resultType="SearchListVo">
 				<![CDATA[
-				  select  h.hostNo,
-				          u.name hostName,
+				  select  h.hostNo hostNo,
+				          u.name name,
 				          u.path path,
-						  h.adress1 adress1,
-						  h.adress3 adress3,
-						  h.x x,
-						  h.y x,
-						  trunc(c.rp,1) reviewPoint,
-						  trunc(c.pp,1) puppyPoint,
+				          h.adress1 adress1,
+				          h.adress3 adress3,
+				          c.rp reviewPoint,
+				          h.hostCost hostCost,
+				          trunc( c.pp,1) puppyPoint,
 				          trunc(c.clean,1) clean,
 				          trunc(c.walk,1) walk,
 				          trunc(c.play,1) play,
 				          trunc(c.food,1) food,
 				          trunc(c.communication,1) communication,
-                          c.review review
-				  from    users u, host h, (select  count(review) rp,   count(review) review,
-                                                                        ((avg(clean) + avg(walk) + avg(play) + avg(food) + avg(communication))/5) pp,
-				                                                        avg(clean) clean,
-				                                                        avg(walk) walk,
-				                                                        avg(play) play,
-				                                                        avg(food) food,
-				                                                        avg(communication) communication        
-				                                                 from   booking ) c                 
+				          c.rp review
+				  from    users u, host h, (select   hostNo, 
+				                                     count(review) rp,
+				                                     ((avg(clean) + avg(walk) + avg(play) + avg(food) + avg(communication))/5) pp,
+				                                     avg(clean) clean,
+				                                     avg(walk) walk,
+				                                     avg(play) play,
+				                                     avg(food) food,
+				                                     avg(communication) communication        
+				                              from   booking b, users u
+				                              group by hostNo ) c
 				  where u.usersNo = h.usersNo
+				  and   c.hostNo = h.hostNo
+				  order by h.hostNo desc
 				  ]]>	
 				  <include refid="search"></include>
 				  

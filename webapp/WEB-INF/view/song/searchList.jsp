@@ -113,7 +113,7 @@
 	                           		<div class="result_text row"></div>
 		                            <div class="result_text row">
 			                            <div class="review col-xs-6">후기(${SearchListVo.reviewPoint})</div>
-			                            <div class="price col-xs-6">₩${SearchListVo.bookingDate}/ 박 </div>
+			                            <div class="price col-xs-6">₩${SearchListVo.hostCost}/ 박 </div>
 			                        </div>
 		                        </div>
 		                	</div>
