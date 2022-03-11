@@ -11,10 +11,12 @@
 		<typeAlias alias="SearchListVo" type="com.javaex.vo.SearchListVo" />
 	</typeAliases>
 	<mappers>
-		<mapper resource="mybatis/mappers/hostinfo.xml" />
-		<mapper resource="mybatis/mappers/host.xml" />
-		<mapper resource="mybatis/mappers/finishP.xml" />
 		<mapper resource="mybatis/mappers/booking.xml" />
+		<mapper resource="mybatis/mappers/finishP.xml" />
+		<mapper resource="mybatis/mappers/host.xml" />
+		<mapper resource="mybatis/mappers/hostinfo.xml" />
+		<mapper resource="mybatis/mappers/review.xml" />
 		<mapper resource="mybatis/mappers/searchList.xml" />
+		<mapper resource="mybatis/mappers/user.xml" />
 	</mappers>
-</configuration>	
+</configuration>
