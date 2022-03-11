@@ -17,11 +17,11 @@ public class ReviewService {
 		
 		int result = reviewDao.updateReview(reviewVo);
 		
+		System.out.println(result);
+		
 		if(result != 0) {
 			reviewDao.updateStatus3(reviewVo.getBookingNo());
 		}
-		
-		System.out.println(reviewVo+" 서비스");
 	}
 	
 }

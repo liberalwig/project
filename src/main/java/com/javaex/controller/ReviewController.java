@@ -27,9 +27,9 @@ public class ReviewController {
 	public String reviewF(@ModelAttribute ReviewVo reviewVo,
 						  @RequestParam("usersNo")int usersNo) {
 		System.out.println("[리뷰 보냄]");
+		reviewVo.setUsersNo(usersNo);
 		reviewService.review(reviewVo);
 		
-		System.out.println(reviewVo +"컨트롤러 ");
 		return "redirect:/bookingEndGuest?usersNo="+usersNo;
 	}
 

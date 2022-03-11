@@ -80,7 +80,7 @@
 						
 									<tr>
 										<td><input type="radio" name="list-radio"></td>
-										<td id="no" onClick="location.href='${pageContext.request.contextPath}/bookingDetailHost?bookingNo=${BookingVo.bookingNo}'">
+										<td id="no" onClick="location.href='${pageContext.request.contextPath}/bookingDetailHost?bookingNo=${BookingVo.bookingNo}'" data-bookingno="${BookingVo.bookingNo}">
 											${BookingVo.bookingNo}</td>
 										<td><img src="/project/assets/images/reservation-dog.png"></td>
 										<td>${BookingVo.guestName}</td>
@@ -130,7 +130,7 @@
 			locale : 'ko', // 한국어 설정(lib/locales/ko.js)
 			
 			// 일정 클릭 이벤트
-			eventClick : function() {
+			eventClick : function(info) {
 				if(info.event.extendedProps.status == 'booking'){
 					window.location.href = '${pageContext.request.contextPath}/bookingDetailHost?bookingNo='+document.getElementById('no').getAttribute('data-bookingno');
 				}

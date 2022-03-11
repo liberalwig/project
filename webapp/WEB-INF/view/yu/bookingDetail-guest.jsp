@@ -145,7 +145,7 @@
                             <div class="container-fluid">
                                 <div class="row">
                                     <div class="col-xs-6">위치</div>
-                                    <div class="col-xs-6">${bvo.adress1} ${bvo.adress2} (${bvo.adress3})</div>
+                                    <div class="col-xs-6">${bvo.adress1} ${bvo.adress2} ${bvo.adress3}</div>
                                 </div>
                                 <div class="row">
                                     <div class="col-xs-6">펫설명/요청사항</div>
