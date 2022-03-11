@@ -21,7 +21,7 @@
         		b.days,
         		b.bookingNo
 		from users u, host h, booking b
-		where u.usersno = h.userno and h.hostno = b.hostno
+		where u.usersno = h.usersno and h.hostno = b.hostno
 		and b.bookingNo = #{bookingNo}
 	        ]]>
 	</select>
