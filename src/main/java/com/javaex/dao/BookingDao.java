@@ -140,7 +140,7 @@ public class BookingDao {
 	//예약승인 상태변경
 	public void updateStatus(int bookingNo) {
 		
-		sqlsession.update("booking.updateStatus", bookingNo);
+		sqlsession.update("booking.updateStatus1", bookingNo);
 	}
 	
 	//펫시팅중 상태변경
