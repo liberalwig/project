@@ -8,6 +8,7 @@
 				  select  h.hostNo hostNo,
 				          u.name hostName,
 				          u.path path,
+				          h.hostView hostView,
 				          h.adress1 adress1,
 				          h.adress3 adress3,
 				          c.rp reviewPoint,
@@ -33,10 +34,9 @@
 											  group by h.hostNo ) c
 				  where u.usersNo = h.usersNo
 				  and   c.hostNo = h.hostNo
-				  
-				  ]]>	
+				  and hostView = 1 ]]> 
 				  <include refid="search"></include>
-				  
+				  <![CDATA[ order by h.hostNo desc]]> 
 		</select>
 	  	
 		<sql id="search">
@@ -46,7 +46,6 @@
 						adress1 like '%' || #{searchKeyword} || '%'
 					</if>
 				</if>
-				order by h.hostNo desc
 		</sql>
 
 </mapper>

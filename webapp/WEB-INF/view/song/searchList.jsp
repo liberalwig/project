@@ -83,43 +83,49 @@
             <div class="search_web">
             	<!-- 반복영역 -->
                 <div class="search_result" class="col-md-6">
-	                <c:forEach items="${SearchList}" var="SearchListVo">
-		                <div class="search_result_list"></div>
-		                <div class="row search_cursor_pointer" onclick="location.href='/project/host2/info/${SearchListVo.hostNo}';">
-		                	<div>
-		                        <div class="col-md-6">
-		                        <c:choose>
-									<c:when test="${empty SearchListVo.path}">
-										<img class="result-img" src="${pageContext.request.contextPath}/assets/images/hostinfo_sample.jpg">
-									</c:when>
-									<c:otherwise>
-										<img class="result-img" src="${pageContext.request.contextPath}/photo/${SearchListVo.path}">
-									</c:otherwise>
-								</c:choose>
-		                        </div>
-		                        <div class="search_result_text col-md-6">
-		                            <div class="result_text row">
-		                                <div class="puppy col-xs-6">
-		  								    퍼피력 &nbsp;${SearchListVo.puppyPoint} 
-		                                </div>
-		                        		<div class="heart col-xs-6 bi-heart"></div>
-		                        	</div>
-		                            <div class="host_name result_text row">
-		                            	${SearchListVo.hostName} ${hostNo}
-		                            </div>
-		                            <div class="address result_text row">
-		                           		${SearchListVo.adress1}
-		                            </div>
-	                           		<div class="result_text row"></div>
-		                            <div class="result_text row">
-			                            <div class="review col-xs-6">후기(${SearchListVo.review}개)</div>
-			                            <div class="price col-xs-6">₩${SearchListVo.hostCost}/ 박 </div>
-			                        </div>
-		                        </div>
-		                	</div>
-		                </div>
-					</c:forEach>
+	                <c:if test="${not empty SearchList}">
+			                <c:forEach items="${SearchList}" var="SearchListVo">
+				                <div class="search_result_list"></div>
+				                <div class="row search_cursor_pointer" onclick="location.href='/project/host2/info/${SearchListVo.hostNo}';">
+				                	<div>
+				                        <div class="col-md-6">
+				                        <c:choose>
+											<c:when test="${empty SearchListVo.path}">
+												<img class="result-img" src="${pageContext.request.contextPath}/assets/images/hostinfo_sample.jpg">
+											</c:when>
+											<c:otherwise>
+												<img class="result-img" src="${pageContext.request.contextPath}/photo/${SearchListVo.path}">
+											</c:otherwise>
+										</c:choose>
+				                        </div>
+				                        <div class="search_result_text col-md-6">
+				                            <div class="result_text row">
+				                                <div class="puppy col-xs-6">
+				  								    퍼피력 &nbsp;${SearchListVo.puppyPoint} 
+				                                </div>
+				                        		<div class="heart col-xs-6 bi-heart"></div>
+				                        	</div>
+				                            <div class="host_name result_text row">
+				                            	${SearchListVo.hostName}
+				                            </div>
+				                            <div class="address result_text row">
+				                           		${SearchListVo.adress1}
+				                            </div>
+			                           		<div class="result_text row"></div>
+				                            <div class="result_text row">
+					                            <div class="review col-xs-6">후기(${SearchListVo.review}개)</div>
+					                            <div class="price col-xs-6">₩${SearchListVo.hostCost}/ 박 </div>
+					                        </div>
+				                        </div>
+				                	</div>
+				                </div>
+							</c:forEach>
+						</c:if>
+						<c:if test="${ empty SearchList}">
+						<h3>검색결과가 없습니다.</h3>
+						</c:if>
             	</div>
+            
 			<!-- 반복영역 -->
             </div>
             <!-- 지도자리 -->
@@ -129,15 +135,68 @@
      
     </div>
     <!--지도-->
-	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=b041f9ad62c37064e496f0bc81216407"></script>
+	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=b041f9ad62c37064e496f0bc81216407&&libraries=services,clusterer"></script>
 		<script>
 			var container = document.getElementById('map');
 			var options = {
-				center: new kakao.maps.LatLng(33.450701, 126.570667),
-				level: 3
+				center: new kakao.maps.LatLng(37.48128882577437, 126.95302167673873),
+				level: 4
 			};
+			
+			 <!--지도생성-->
+			 var map = new kakao.maps.Map(container, options);   
+			 
+			 var positions = [
+				    {
+				        title: '한상선', 
+				        latlng: new kakao.maps.LatLng(37.48128882577437, 126.95302167673873)
+				    },
+				    {
+				        title: '개장수', 
+				        latlng: new kakao.maps.LatLng(37.48128882577437, 126.95302167673875)
+				    },
+				    {
+				        title: '조인성', 
+				        latlng: new kakao.maps.LatLng(37.48128882577437, 126.95302167673878)
+				    },
+				    {
+				        title: '윤개상',
+				        latlng: new kakao.maps.LatLng(37.48128882577437, 126.95302167673872)
+				    }
+				];
+
+				// 마커 이미지의 이미지 주소입니다
+				var imageSrc = "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png"; 
+				    
+				for (var i = 0; i < positions.length; i ++) {
+				    
+				    // 마커 이미지의 이미지 크기 입니다
+				    var imageSize = new kakao.maps.Size(24, 35); 
+				    
+				    // 마커 이미지를 생성합니다    
+				    var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize); 
+				    
+				    // 마커를 생성합니다
+				    var marker = new kakao.maps.Marker({
+				        map: map, // 마커를 표시할 지도
+				        position: positions[i].latlng, // 마커를 표시할 위치
+				        title : positions[i].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
+				        image : markerImage // 마커 이미지 
+				    });
+				}
 	
-			var map = new kakao.maps.Map(container, options);    
+			 <!--지도 타입변경 컨트롤을 생성한다 -->
+			 var mapTypeControl = new kakao.maps.MapTypeControl();
+			 
+			 <!-- 지도의 상단 우측에 지도 타입 변경 컨트롤을 추가한다 -->
+			 map.addControl(mapTypeControl, kakao.maps.ControlPosition.TOPRIGHT);	
+
+			 <!-- 지도에 확대 축소 컨트롤을 생성한다 -->
+			 var zoomControl = new kakao.maps.ZoomControl();
+
+			 <!-- 지도의 우측에 확대 축소 컨트롤을 추가한다 -->
+			 map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
+			 
 	</script>
 	
 	<!--하트 클릭-->
