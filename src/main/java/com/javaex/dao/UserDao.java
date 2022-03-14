@@ -13,7 +13,7 @@ public class UserDao {
 	SqlSession sqlSession;
 	
 	
-	//유저 정보수정 시 프로필사진 업데이트
+	// 유저_2> 유저 정보수정 시 프로필사진 업데이트
 		public void profileUpdate(UserVo userVo) {
 			System.out.println("UserDao > profileUpdate()");
 			

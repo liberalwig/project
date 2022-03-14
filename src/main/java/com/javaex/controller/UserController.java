@@ -28,34 +28,24 @@ public class UserController {
       return "choe/userModifyForm";
    }
    
-   
-   
+      
 	// 유저_2> 유저 정보수정 시 프로필사진 업데이트
 	@ResponseBody
 	@RequestMapping("/profileUpdate")
 	public String profileUpdate(@PathVariable("usersNo") int usersNo,
-							   @RequestParam("file") MultipartFile file,
+			 					@RequestParam("file") MultipartFile file,
 							   @ModelAttribute UserVo userVo) {
 		System.out.println("UserController > profilieUpdate()");
 				
 		//유저 사진 update하기
-		
 		userVo.setUsersNo(usersNo);
-		
 		userService.profileUpdate(file, userVo);
 		
-		return "redirect:/";
+		return "song/index";
 	}	
    
-   
-   
-   
-   
-   
-   
-   
-   
-   // 유저_2> 찜
+      
+   // 유저_3> 찜
    @RequestMapping(value="/heart")
    public String heart() {
       System.out.println("[ UserController > heart() ]");

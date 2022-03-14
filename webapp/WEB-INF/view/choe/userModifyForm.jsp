@@ -36,7 +36,7 @@
 			</div>
 
 			<div id="content">
-				<div class="content-head" style="margin-top: 50px;">
+				<div class="content-head" >
 					<p id="nav">마이 사이트 > 내 정보 수정</p>
 					<p id="now">회원 정보 수정</p>
 				</div>
@@ -144,6 +144,20 @@
 	 	 });
 	 });
 	
-</script>
+	//등록 완료를 눌렀을때
+	$("#hostinsertbtn").on("click", function(){
+			
+			//사진 관련
+			console.log("inputFileList: " + inputFileList);
+			let formData = new FormData($('#uploadForm')[0]);  // 폼 객체
+
+			for (let i = 0; i < inputFileList.length; i++) {
+				formData.append("images", inputFileList[i]);  // 배열에서 이미지들을 꺼내 폼 객체에 담는다.
+			}
+
+
+
+
+		</script>
 
 </html>
