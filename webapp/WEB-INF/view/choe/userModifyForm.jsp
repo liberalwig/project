@@ -16,102 +16,93 @@
 </head>
 
 
-<body>
-	<c:import url="/WEB-INF/view/includes/header.jsp"></c:import>
+	<body>
+		<c:import url="/WEB-INF/view/includes/header.jsp"></c:import>
 
-	<div id="wrap">
-		<div id="container" class="clearfix">
-			<div id="aside">
-				<ul id="b-aside">
-					<li class="menu">예약관리<img src="${pageContext.request.contextPath}/assets/images/images/aside_img.png" class="aside-img"></li>
-					<ul id="s-aside" class="hide">
-						<li>대기내역</li>
-						<li>예약신청관리</li>
+		<div id="wrap">
+			<div id="container" class="clearfix">
+				<div id="aside">
+					<ul id="b-aside">
+						<li class="menu">예약관리<img src="${pageContext.request.contextPath}/assets/images/aside_img.png" class="aside-img"></li>
+						<ul id="s-aside" class="hide">
+							<li>대기내역</li>
+							<li>예약신청관리</li>
+						</ul>
+						<li>나의 강아지</li>
+						<li>메세지</li>
+						<li>찜목록</li>
+						<li>내 정보 수정</li>
 					</ul>
-					<li>나의 강아지</li>
-					<li>메세지</li>
-					<li>찜목록</li>
-					<li>내 정보 수정</li>
-				</ul>
-			</div>
-
-			<div id="content">
-				<div class="content-head" >
-					<p id="nav">마이 사이트 > 내 정보 수정</p>
-					<p id="now">회원 정보 수정</p>
 				</div>
 
-				<div id="content-main">
+				<div id="content">
+					<div class="content-head" >
+						<p id="nav">마이 사이트 > 내 정보 수정</p>
+						<p id="now">회원 정보 수정</p>
+					</div>
 
-					<div class="col-xs-11">
-						<div class="row">
-							<div id="joinQuestion" class="row Q">
-								<div class="photo">
-									<h4>01. 사진 업로드</h4>
-									<p>
-										<span class="label label-info">참고</span> 최대 8장입니다. 강아지와 찍은 다정한 사진, 강아지를 능숙하게 훈련하는 사진이라면 더 좋겠죠?
-									</p>
-									<div class="contents">
-										<div class="upload-box">
-											<div id="drop-file" class="drag-file">
-												<img src="https://img.icons8.com/pastel-glyph/2x/image-file.png" alt="파일 아이콘" class="image">
-												<p class="message">마우스로 드래그해서 이미지를 추가해주세요</p>
-												<img src="" alt="미리보기 이미지" class="preview">
+					<div id="content-main">
+
+						<div class="col-xs-11">
+							<div class="row">
+								<div id="joinQuestion" class="row Q">
+									<div class="photo">
+										<h4>01. 사진 업로드</h4>
+										<p>
+											<span class="label label-info">참고</span> 프로필 사진 1장을 올려주세요.
+										</p>
+										<div class="contents">
+											<div class="upload-box">
+												<form method="post" enctype="multipart/form-data"> 
+													<input type="file" name="images" accept=".png, .jpg, .jpeg">
+												</form>
 											</div>
-											<div id="drop-file" class="drag-file">
-												<img src="https://img.icons8.com/pastel-glyph/2x/image-file.png" alt="파일 아이콘" class="image">
-												<p class="message">마우스로 드래그해서 이미지를 추가해주세요</p>
-												<img src="" alt="미리보기 이미지" class="preview">
-											</div>
-											<input id="fileInput" type="file" multiple="false" accept="image/*" onchange="uploadPicture()"> <input class="file" id="chooseFile" type="file" onchange="dropFile.handleFiles(this.files)" accept="image/png, image/jpeg, image/gif">
 										</div>
 									</div>
 								</div>
-							</div>
 
-							<div id="joinQuestion" class="row Q">
-								<h4>이름</h4>
-								<input type="text" class="form-control" placeholder="existingNickname" style="width: 200px"><br>
-							</div>
+								<div id="joinQuestion" class="row Q">
+									<h4>02. 이름</h4><br>
+									<input id="nameArea" type="text" class="form-control" value="${userVo.name}" style="width: 200px"><br>
+								</div>
 
-							<div id="joinQuestion" class="row Q">
-								<h4>비밀번호</h4>
-								<input type="password" name="password" class="form-control" placeholder="12345" style="width: 200px"><br>
-							</div>
+								<div id="joinQuestion" class="row Q">
+									<h4>03. 비밀번호</h4><br>
+									<input id="pwArea" type="password" name="password" class="form-control" value="${userVo.password}" style="width: 200px"><br>
+								</div>
 
-							<div id="joinQuestion" class="row Q">
-								<h4>전화번호</h4>
-								<form name="phonenumber">
-									<input type="tel" name="phone1" value="010" style="width: 50px"> - <input type="tel" name="phone2" placeholder="1234" style="width: 50px"> - <input type="tel" name="phone3" placeholder="5678" style="width: 50px">
-								</form>
-							</div>
+								<div id="joinQuestion" class="row Q">
+									<h4>04. 전화번호</h4><br>
+									<input id="hpArea" type="phonenumber" name="" class="form-control" value="${userVo.hp}" style="width: 200px">
+								</div>
 
-							<div id="joinQuestion" class="row LQ"></div>
-							<h4>이메일</h4>
-							<form name='frm'>
-								<input name="e1" id="e1" type="text" style="width: 120px" placeholder="existingEmail"> &nbsp; @ &nbsp; <input name="e2" type="text" style="width: 120px" value=""> <select name="emailServer" id="emailServer" onchange="input_email();">
-									<option value="">직접입력</option>
-									<option value="naver.com">naver.com</option>
-									<option value="gmail.com">gmail.com</option>
-									<option value="hanmail.net">hanmail.net</option>
-									<option value="nate.com">yahoo.com</option>
-									<option value="yahoo.co.kr">yahoo.co.kr</option>
-									<option value="hotmail.com">hotmail.com</option>
-								</select>
-							</form>
+								<div id="joinQuestion" class="row LQ">		
+								</div>
+								<button id="updatebtn" type="submit" class="btn btn-default btn-lg btn-block">내 정보 수정 완료</button>
+								
+							</div>
 						</div>
-
-						<div id="joinQuestion" class="row LQ"></div>
-						<button type="submit" class="btn btn-default btn-lg btn-block">내 정보 수정 완료</button>
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
-	</div>
-</body>
 
-<script>
+	</body>
+
+	<script>
+    //이미지 담아놓을 배열
+    var inputFileList = new Array();
+   
+	 // 파일 업로드 했을때 이벤트
+	 $('input[name=images]').on('change', function(e) {
+	    var files = e.target.files;
+	    var filesArr = Array.prototype.slice.call(files);
+	
+	     filesArr.forEach(function(f) { 
+	 		inputFileList.push(f);    // 이미지 파일을 배열에 담는다.
+	 	 });
+	 });
+	 
 	/* aside */
 	// html dom 이 다 로딩된 후 실행된다.
 	$(document).ready(function() {
@@ -122,42 +113,50 @@
 			$(this).next("ul").toggleClass("hide");
 		});
 	});
-	
-	
-    //이미지 담아놓을 배열
-    var inputFileList = new Array();
-   
-	 // 파일 업로드 했을때 이벤트
-	 $('input[name=images]').on('change', function(e) {
-	    var files = e.target.files;
-	    var filesArr = Array.prototype.slice.call(files);
-	
-	 	// 업로드 된 파일 유효성 체크
-	 	if (filesArr.length > 8) {
-	 		alert("이미지는 최대 8개까지 업로드 가능합니다.");
-	 		$('input[name=images]').val();
-	 		return;
-	 	}
-	
-	     filesArr.forEach(function(f) { 
-	 		inputFileList.push(f);    // 이미지 파일을 배열에 담는다.
-	 	 });
-	 });
-	
+
 	//등록 완료를 눌렀을때
-	$("#hostinsertbtn").on("click", function(){
-			
-			//사진 관련
-			console.log("inputFileList: " + inputFileList);
-			let formData = new FormData($('#uploadForm')[0]);  // 폼 객체
+	$("#updatebtn").on("click", function(){
+		//userVo
+		var userVo ={
+			usersNo : ${requestScope.userVo.usersNo},
+			name : $("#nameArea").val(),
+			password : $("#pwArea").val(),
+			hp : $("#hpArea").val()
+		};
+		//사진
+		console.log("inputFileList: " + inputFileList);
+		let formData = new FormData($('#uploadForm')[0]);  // 폼 객체
 
-			for (let i = 0; i < inputFileList.length; i++) {
-				formData.append("images", inputFileList[i]);  // 배열에서 이미지들을 꺼내 폼 객체에 담는다.
+    	for (let i = 0; i < inputFileList.length; i++) {
+    		formData.append("images", inputFileList[i]);  // 배열에서 이미지들을 꺼내 폼 객체에 담는다.
+    	}
+		
+		console.log(userVo);
+		$.ajax({
+			//요청할때
+			url : "${pageContext.request.contextPath}/user/modify",    
+			type : "post",
+			data : userVo,
+			success : function(count) {
+				$.ajax({
+					url : "${pageContext.request.contextPath}/user/profileUpdate",    
+					type : "post",
+					data : formData,
+					contentType : false,
+					processData : false,
+					success : function(count) {
+						console.log("성공");
+					},
+					error : function(XHR, status, error) {
+						console.error(status + " : " + error);
+					}
+				});
+			},
+			error : function(XHR, status, error) {
+				console.error(status + " : " + error);
 			}
-
-
-
-
-		</script>
+		});
+	})
+	</script>
 
 </html>

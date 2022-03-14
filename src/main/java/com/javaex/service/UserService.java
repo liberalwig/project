@@ -4,6 +4,7 @@ import java.io.BufferedOutputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.util.List;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,12 +20,30 @@ public class UserService {
 	@Autowired
 	private UserDao userDao;
 	
-	// 유저_2> 유저 정보수정 시 프로필사진 업데이트
+	
+	// 유저_1> 유저 정보 수정폼
+	public UserVo modifyForm(int usersNo) {
+		System.out.println("UserService > modifyForm()");
+		
+		return userDao.selectUser(usersNo);
+	}
+	
+		
+	// 유저_2> 유저 수정
+	public int modify(UserVo userVo) {
+		System.out.println("UserService > modify()");
+
+		return userDao.updateUser(userVo);
+	}
+	
+	// 유저_3> 유저 정보수정 시 프로필사진 업데이트
 	public void profileUpdate(MultipartFile file, UserVo userVo) {
 		System.out.println("UserService > profileUpdate()");
+		//맥 저장경로
+		//String saveDir = "/Users/hs/JavaStudy/workspace_project/project/webapp/assets/upload/";
+		//윈도우 저장경로
+		String saveDir = "C:\\javaStudy\\photo\\";
 		
-		//저장경로
-		String saveDir = "C:\\javaStudy\\photo";
 		// 원본파일이름
 		String orgName = file.getOriginalFilename();
 		// 확장자
@@ -35,6 +54,7 @@ public class UserService {
 		String filePath = saveDir + saveName;
 		
 		// 파일 저장
+		/*
 		try {
 			byte[] fileData = file.getBytes();
 			OutputStream out = new FileOutputStream(filePath);
@@ -45,10 +65,12 @@ public class UserService {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		*/
 		
 		//DB 업데이트
 		userVo.setPath(saveName);
-		userDao.profileUpdate(userVo);
+		System.out.println(userVo);
+		userDao.updateProfile(userVo);
 	}
 	
 	
