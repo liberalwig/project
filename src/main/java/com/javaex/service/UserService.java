@@ -19,11 +19,12 @@ public class UserService {
 	@Autowired
 	private UserDao userDao;
 	
-	//유저 정보수정 시 프로필사진 업데이트
+	// 유저_2> 유저 정보수정 시 프로필사진 업데이트
 	public void profileUpdate(MultipartFile file, UserVo userVo) {
 		System.out.println("UserService > profileUpdate()");
-		//내 컴퓨터 저장경로
-		String saveDir = "/C:/javaStudy/workspace_web/project/webapp/assets/upload/";
+		
+		//저장경로
+		String saveDir = "C:\\javaStudy\\photo";
 		// 원본파일이름
 		String orgName = file.getOriginalFilename();
 		// 확장자
@@ -32,6 +33,7 @@ public class UserService {
 		String saveName = System.currentTimeMillis() + UUID.randomUUID().toString() + exName;
 		// 파일패스 생성
 		String filePath = saveDir + saveName;
+		
 		// 파일 저장
 		try {
 			byte[] fileData = file.getBytes();

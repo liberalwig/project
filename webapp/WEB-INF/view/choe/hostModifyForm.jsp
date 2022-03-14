@@ -1,207 +1,276 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-    
-    
+
+
 <!DOCTYPE html>
-<html> 
-    <head>
-        <meta charset="UTF-8"/>
-        <title>펫시팅 정보수정 폼</title>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>회원정보 수정 폼</title>
 
-        <link href="${pageContext.request.contextPath}/assets/bootstrap/css/bootstrap.css"rel="stylesheet">        
-        <link href="${pageContext.request.contextPath}/assets/css/hostModify.css" rel="stylesheet" type="text/css"/>
+<link href="${pageContext.request.contextPath}/assets/bootstrap/css/bootstrap.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/assets/css/userModify.css" rel="stylesheet" type="text/css" />
 
-        <script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/jquery-1.12.4.js"></script>
-        <script type="text/javascript" src="${pageContext.request.contextPath}/assets/bootstrap/js/bootstrap.js"></script>
-
-        <script type="text/javascript" src="${pageContext.request.contextPath}/../assets/js/dragdrop.js"></script>
-    </head>
+<script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/jquery-1.12.4.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/assets/bootstrap/js/bootstrap.js"></script>
+</head>
 
 
-    <body style="margin-top:150px;">
-        <c:import url="/WEB-INF/view/includes/header.jsp"></c:import>
+<body>
+	<c:import url="/WEB-INF/view/includes/header.jsp"></c:import>
 
-        <div id="wrap">
-            <div id="container" class="clearfix">            
-                <div id="aside">
-                    <ul id="b-aside">
-                       <li class="menu">예약관리<img src="${pageContext.request.contextPath}/assets/images/aside_img.png" class="aside-img"></li>
-                       <ul id="s-aside" class="hide">
-                          <li>대기내역</li>
-                          <li>예약신청관리</li>
-                       </ul>
-                       <li>나의 강아지</li>
-                       <li>메세지</li>
-                       <li>찜목록</li>
-                       <li>내 정보 수정</li> 
-                    </ul>
-                </div>
+	<div id="wrap">
+		<div id="container" class="clearfix">
+			<div id="aside">
+				<ul id="b-aside">
+					<li class="menu">예약관리<img src="${pageContext.request.contextPath}/assets/images/images/aside_img.png" class="aside-img"></li>
+					<ul id="s-aside" class="hide">
+						<li>대기내역</li>
+						<li>예약신청관리</li>
+					</ul>
+					<li>나의 강아지</li>
+					<li>메세지</li>
+					<li>찜목록</li>
+					<li>내 정보 수정</li>
+				</ul>
+			</div>
 
-                <div id="content" class="clearfix">
-                    <div class="content-head">
-                        <p id="nav">마이 사이트 > 내 정보 수정</p>
-                        <p id="now">펫시팅 정보 수정</p>
-                    </div>
-                    
-                    <div class="row">
-                        <div class="col-xs-11">
-                            <div id="joinQuestion" class="row Q">
-                                <div class="photo">
-                                    <h4>01. 사진 업로드</h4>
-                                    <p><span class="label label-info">참고</span> 최대 8장입니다. 강아지와 찍은 다정한 사진, 강아지를 능숙하게 훈련하는 사진이라면 더 좋겠죠?</p>
-                                    <div class="contents">
-                                            <div class="upload-box">
-                                                <div id="drop-file" class="drag-file">
-                                                    <img src="https://img.icons8.com/pastel-glyph/2x/image-file.png" alt="파일 아이콘" class="image" >
-                                                    <p class="message">마우스로 드래그해서 이미지를 추가해주세요</p>
-                                                    <img src="" alt="미리보기 이미지" class="preview">
-                                                </div>
-                                                <div id="drop-file" class="drag-file">
-                                                    <img src="https://img.icons8.com/pastel-glyph/2x/image-file.png" alt="파일 아이콘" class="image" >
-                                                    <p class="message">마우스로 드래그해서 이미지를 추가해주세요</p>
-                                                    <img src="" alt="미리보기 이미지" class="preview">
-                                                </div>
-                                                <input id = "fileInput" type = "file" multiple = "false" accept = "image/*" onchange = "uploadPicture()">
-                                                <input class="file" id="chooseFile" type="file" onchange="dropFile.handleFiles(this.files)" accept="image/png, image/jpeg, image/gif">
-                                            </div>
-                                    </div>
-                                </div>
-                            </div>  
+			<div id="content">
+				<div class="content-head" >
+					<p id="nav">마이 사이트 > 내 정보 수정</p>
+					<p id="now">회원 정보 수정</p>
+				</div>
 
-                          <div id="joinQuestion" class="row Q">
-                            <h4>02. 키워드 선택</h4>
-                            <p>회원님에게 해당되는 키워드를 선택해주세요! (중복체크 가능)</p>
-                            <table>
-                                <colgroup>
-                                    <col width="140px">
-                                    <col width="140px">
-                                    <col width="140px">
-                                    <col width="140px">
-                                    <col width="140px">
-                                    <col width="140px">
-                                    <col width="140px">
-                                </colgroup>
-                                <tr height="50">
-                                    <td>
-                                        <input type="checkbox" class="btn-check" id="btn-check1" autocomplete="off">
-                                        <label class="tag" for="btn-check1">집 근처 공원</label>
-                                    </td>
-                                    <td>
-                                        <input type="checkbox" class="btn-check" id="btn-check2" autocomplete="off">
-                                        <label class="tag" for="btn-check2">펫 용품 구비</label>
-                                    </td>
-                                    <td>
-                                        <input type="checkbox" class="btn-check" id="btn-check3" autocomplete="off">
-                                        <label class="tag" for="btn-check3">집 근처 동물병원</label>
-                                    </td>
-                                    <td>
-                                        <input type="checkbox" class="btn-check" id="btn-check4" autocomplete="off">
-                                        <label class="tag" for="btn-check4">응급처치 가능</label>
-                                    </td>
-                                    <td>
-                                        <input type="checkbox" class="btn-check" id="btn-check5" autocomplete="off">
-                                        <label class="tag" for="btn-check5">돌봄 경력 3년이상</label>
-                                    </td>
-                                    <td>
-                                        <input type="checkbox" class="btn-check" id="btn-check6" autocomplete="off">
-                                        <label class="tag" for="btn-check6">전문교육 수료</label>
-                                    </td>
-                                    <td>
-                                        <input type="checkbox" class="btn-check" id="btn-check7" autocomplete="off">
-                                        <label class="tag" for="btn-check7">보험 가입</label>
-                                    </td>
-                                </tr>
-                                <tr height="50">
-                                    <td>
-                                        <input type="checkbox" class="btn-check" id="btn-check8" autocomplete="off">
-                                        <label class="tag"for="btn-check8">약물투여 가능</label>
-                                    </td>
-                                    <td>
-                                        <input type="checkbox" class="btn-check" id="btn-check9" autocomplete="off">
-                                        <label class="tag" for="btn-check9">매일 산책 가능</label>
-                                    </td>
-                                    <td>
-                                        <input type="checkbox" class="btn-check" id="btn-check10" autocomplete="off">
-                                        <label class="tag" for="btn-check10">비흡연</label>
-                                    </td>
-                                    <td>
-                                        <input type="checkbox" class="btn-check" id="btn-check11" autocomplete="off">
-                                        <label class="tag" for="btn-check11">개가 없음</label>
-                                    </td>
-                                    <td>
-                                        <input type="checkbox" class="btn-check" id="btn-check12" autocomplete="off">
-                                        <label class="tag" for="btn-check12">어린이 없음</label>
-                                    </td>
-                                    <td>
-                                        <input type="checkbox" class="btn-check" id="btn-check13" autocomplete="off">
-                                        <label class="tag" for="btn-check13">마당 있음</label>
-                                    </td>
-                                    <td>
-                                        <input type="checkbox" class="btn-check" id="btn-check14" autocomplete="off">
-                                        <label class="tag" for="btn-check14">응답 빠름</label>
-                                    </td>
-                                </tr>
-                            </table>
-                        </div>
+				<div id="content-main">
 
-                        <div id="joinQuestion" class="row Q">
-                            <h4>03. 자기소개</h4>
-                            <p>회원님을 소개해주세요!</p>
-                            <form id="frm_textArea" name="frm_textArea">
-                                <textarea id="intro"
-                                        placeholder="텍스트를 입력하세요."
-                                        class="form-control"
-                                        id="textArea_byteLimit"
-                                        name="textArea_byLimit"
-                                        onkeyup="fn_checkByte(this)">   
-                                </textarea>
-                            </form>
-                        </div>
+					<div class="col-xs-11">
+						<div class="row">
+							<div id="joinQuestion" class="row Q">
+								<div class="photo">
+									<h4>01. 사진 업로드</h4>
+									<p>
+										<span class="label label-info">참고</span> 최대 8장입니다. 강아지와 찍은 다정한 사진, 강아지를 능숙하게 훈련하는 사진이라면 더 좋겠죠?
+									</p>
+									<div class="contents">
+										<div class="upload-box">
+											<div id="drop-file" class="drag-file">
+												<img src="https://img.icons8.com/pastel-glyph/2x/image-file.png" alt="파일 아이콘" class="image">
+												<p class="message">마우스로 드래그해서 이미지를 추가해주세요</p>
+												<img src="" alt="미리보기 이미지" class="preview">
+											</div>
+											<div id="drop-file" class="drag-file">
+												<img src="https://img.icons8.com/pastel-glyph/2x/image-file.png" alt="파일 아이콘" class="image">
+												<p class="message">마우스로 드래그해서 이미지를 추가해주세요</p>
+												<img src="" alt="미리보기 이미지" class="preview">
+											</div>
+											<input id="fileInput" type="file" multiple="false" accept="image/*" onchange="uploadPicture()"> <input class="file" id="chooseFile" type="file" onchange="dropFile.handleFiles(this.files)" accept="image/png, image/jpeg, image/gif">
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div id="joinQuestion" class="row Q">
+								<h4>이름</h4>
+								<input type="text" class="form-control" placeholder="existingNickname" style="width: 200px"><br>
+							</div>
+
+							<div id="joinQuestion" class="row Q">
+								<h4>비밀번호</h4>
+								<input type="password" name="password" class="form-control" placeholder="12345" style="width: 200px"><br>
+							</div>
+
+							<div id="joinQuestion" class="row Q">
+								<h4>전화번호</h4>
+								<form name="phonenumber">
+									<input type="tel" name="phone1" value="010" style="width: 50px"> - <input type="tel" name="phone2" placeholder="1234" style="width: 50px"> - <input type="tel" name="phone3" placeholder="5678" style="width: 50px">
+								</form>
+							</div>
+
+							<div id="joinQuestion" class="row LQ"></div>
+							<h4>이메일</h4>
+							<form name='frm'>
+								<input name="e1" id="e1" type="text" style="width: 120px" placeholder="existingEmail"> &nbsp; @ &nbsp; <input name="e2" type="text" style="width: 120px" value=""> <select name="emailServer" id="emailServer" onchange="input_email();">
+									<option value="">직접입력</option>
+									<option value="naver.com">naver.com</option>
+									<option value="gmail.com">gmail.com</option>
+									<option value="hanmail.net">hanmail.net</option>
+									<option value="nate.com">yahoo.com</option>
+									<option value="yahoo.co.kr">yahoo.co.kr</option>
+									<option value="hotmail.com">hotmail.com</option>
+								</select>
+							</form>
+						</div>
+
+						<div id="joinQuestion" class="row LQ"></div>
+						<button type="submit" class="btn btn-default btn-lg btn-block">내 정보 수정 완료</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	</div>
+
+	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
     
-                        <div id="joinQuestion" class="row Q">
-                            <h4>04. 펫에 대해 알고싶은 내용</h4>
-                            <p>질문을 적어보세요! 작성하신 내용은 회원들이 펫 설명 및 요청사항을 작성할때 참고 할 수 있습니다!</p>
-                            <textarea id="intro" ></textarea>
-                        </div>
+	<script>
+    //이미지 담아놓을 배열
     
-                        <div id="joinQuestion" class="row Q">
-                            <h4>05. 펫시팅 주소</h4>
-                            <p>강아지를 돌볼 장소는 어디인가요? 주소를 입력해주세요!</p>
-                            <div id="address">
-                                <input type="text" id="sample6_postcode" placeholder="우편번호">
-                                <input type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br>
-                                <input type="text" id="sample6_address" placeholder="주소"><br>
-                                <input type="text" id="sample6_detailAddress" placeholder="상세주소">
-                                <input type="text" id="sample3_extraAddress" placeholder="참고항목">                                                            
-                            </div>
-                        </div>
+    var inputFileList = new Array();
+   
+	 // 파일 업로드 했을때 이벤트
+	 $('input[name=images]').on('change', function(e) {
+	    var files = e.target.files;
+	    var filesArr = Array.prototype.slice.call(files);
+	
+	 	// 업로드 된 파일 유효성 체크
+	 	if (filesArr.length > 8) {
+	 		alert("이미지는 최대 8개까지 업로드 가능합니다.");
+	 		$('input[name=images]').val();
+	 		return;
+	 	}
+	
+	     filesArr.forEach(function(f) { 
+	 		inputFileList.push(f);    // 이미지 파일을 배열에 담는다.
+	 	 });
+	 });
+    //등록 완료를 눌렀을때
+    $("#hostinsertbtn").on("click", function(){
+    	//키워드 관련
+    	var keywordList = [];
+		$("[name=keyword]:checked").each(function(){
+		    var chk = $(this).val();
+		    keywordList.push(chk);
+		});
+		console.log(keywordList);
+    	//사진 관련
+    	console.log("inputFileList: " + inputFileList);
+    	let formData = new FormData($('#uploadForm')[0]);  // 폼 객체
+
+    	for (let i = 0; i < inputFileList.length; i++) {
+    		formData.append("images", inputFileList[i]);  // 배열에서 이미지들을 꺼내 폼 객체에 담는다.
+    	}
+
+    	//호스트 관련
+    	var hostVo = {
+    		usersNo : ${sessionScope.authUser.usersNo},
+    		zipcode : $(".zipcode").val(),
+    		adress1 : $(".adress1").val(),
+    		adress2 : $(".adress2").val(),
+    		adress3 : $(".adress3").val(),
+    		intro : $("#intro").val(),
+    		asking : $("#asking").val(),
+    		hostcost : $("#cost").val()
+    	}
+    	console.log(hostVo);
+    	
+		//호스트 등록
+		$.ajax({
+			//요청할때
+			url : "${pageContext.request.contextPath}/photo/${path}",
+			type : "post",
+			data : hostVo,
+			
+			success : function(hostNo) {
+				console.log(hostNo);
+				//호스트 사진 등록
+				$.ajax({
+					//요청할때
+					url : "${pageContext.request.contextPath}/host2/hostphotoinsert?hostNo="+hostNo,    
+					enctype:"multipart/form-data",
+					type : "post",
+					data : formData,
+					contentType : false,
+					processData : false,
+					success : function(hostNo) {
+						//호스트 키워드 등록
+						$.ajax({
+							//요청할때
+							url : "${pageContext.request.contextPath}/host2/hostkeywordinsert?hostNo="+hostNo,    
+							type : "post",
+							data : {
+								keywordNo : keywordList,
+							},
+							
+							success : function(hostNo) {
+								console.log(hostNo);
+								alert("펫시터 신청이 완료되었습니다.");
+								window.location.replace("${pageContext.request.contextPath}/main");
+							},
+							error : function(XHR, status, error) {
+								console.error(status + " : " + error);
+							}
+						}); 
+					},
+					error : function(XHR, status, error) {
+						console.error(status + " : " + error);
+					}
+				}); 
+			},
+			error : function(XHR, status, error) {
+				console.error(status + " : " + error);
+			}
+		}); 
+    	
+
     
-                        <div id="joinQuestion" class="row Q"> 
-                            <h4>06. 돌봄료 책정</h4>
-                            <p><span class="label label-info">참고</span> 설정하신 금액은 1박, 1마리당 가격입니다..</p>
-                                <input id="cost" type="number" name="cost" placeholder="1박의 돌봄료를 입력해주세요" required class="cost" value="10000"> 원(1박/1마리당)
-                        </div>
+    //2. 팝업을 이용하여 도로명 주소와 지번 주소 모두 보여주기
+	//본 예제에서는 도로명 주소 표기 방식에 대한 법령에 따라, 내려오는 데이터를 조합하여 올바른 주소를 구성하는 방법을 설명합니다.
+    function sample4_execDaumPostcode() {
+        new daum.Postcode({
+            oncomplete: function(data) {
+                // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
 
-                        <button type="submit" class="btn btn-default btn-lg btn-block">펫시팅 정보 수정 완료</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-   </body>
+                // 도로명 주소의 노출 규칙에 따라 주소를 표시한다.
+                // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+                var roadAddr = data.roadAddress; // 도로명 주소 변수
+                var extraRoadAddr = ''; // 참고 항목 변수
 
-   <script>
-    /* aside */
-    // html dom 이 다 로딩된 후 실행된다.
-    $(document).ready(function() {
-    // memu 클래스 바로 하위에 있는 a 태그를 클릭했을때
-    $(".menu").click(function() {
-        // 현재 클릭한 태그가 a 이기 때문에
-        // a 옆의 태그중 ul 태그에 hide 클래스 태그를 넣던지 빼던지 한다.
-    $(this).next("ul").toggleClass("hide");
-        });
-    });
-</script>
+                // 법정동명이 있을 경우 추가한다. (법정리는 제외)
+                // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
+                if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
+                    extraRoadAddr += data.bname;
+                }
+                // 건물명이 있고, 공동주택일 경우 추가한다.
+                if(data.buildingName !== '' && data.apartment === 'Y'){
+                   extraRoadAddr += (extraRoadAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+                }
+                // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
+                if(extraRoadAddr !== ''){
+                    extraRoadAddr = ' (' + extraRoadAddr + ')';
+                }
 
+                // 우편번호와 주소 정보를 해당 필드에 넣는다.
+                document.getElementById('sample4_postcode').value = data.zonecode;
+                document.getElementById("sample4_jibunAddress").value = data.jibunAddress;
+                
+                // 참고항목 문자열이 있을 경우 해당 필드에 넣는다.
+                if(roadAddr !== ''){
+                    document.getElementById("sample4_extraAddress").value = extraRoadAddr;
+                } else {
+                    document.getElementById("sample4_extraAddress").value = '';
+                }
+
+                var guideTextBox = document.getElementById("guide");
+                // 사용자가 '선택 안함'을 클릭한 경우, 예상 주소라는 표시를 해준다.
+                 if(data.autoRoadAddress) {
+                    var expRoadAddr = data.autoRoadAddress + extraRoadAddr;
+                    guideTextBox.innerHTML = '(예상 도로명 주소 : ' + expRoadAddr + ')';
+                    guideTextBox.style.display = 'block';
+
+                } else if(data.autoJibunAddress) {
+                    var expJibunAddr = data.autoJibunAddress;
+                    guideTextBox.innerHTML = '(예상 지번 주소 : ' + expJibunAddr + ')';
+                    guideTextBox.style.display = 'block';
+                } else {
+                    guideTextBox.innerHTML = '';
+                    guideTextBox.style.display = 'none';
+                }
+            }
+        }).open();
+    }
+    </script>
+
+</body>
 
 
 </html>

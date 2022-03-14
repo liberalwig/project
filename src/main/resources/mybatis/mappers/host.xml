@@ -1,29 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="host">
 
 	<!-- 호스트정보 가져와서 수정 폼 -->
-	<select id="getHostByHostNo" parameterType="int" resultType="HostVo">
+	<select id="selectHost" parameterType="int" resultType="HostVo">
 			<![CDATA[
 				select ho.hostNo,
-				       ho.usersNo,
-				       ho.keywordNo,
-				       us.path,
-				       ho.zipcode,
-				       ho.adress1,
-				       ho.adress2,
-				       ho.adress3,
-				       ho.x,
-				       ho.y,
-				       ho.intro,
-				       ho.asking,
-				       ho.hostcost,
-				       from   users us, host ho 
-				where  hostNo = #{hostNo}
+			       ho.usersNo,
+			       us.name,
+			       us.path,
+			       ho.zipcode,
+			       ho.adress1,
+			       ho.adress2,
+			       ho.adress3,
+			       ho.x,
+			       ho.y,
+			       ho.intro,
+			       ho.asking
+			from   users us, host ho
+            where  hostNo = #{hostNo}
+            and    us.usersNo = ho.usersNo
 			]]>
 	</select>
 
+
+	<!-- 가져온 키워드정보 수정업데이트 -->
+	<update id="hostUpdate" parameterType="HostVo">
+	<![CDATA[
+		update host
+		set 
+		where  hostNo=#{hostNo}
+    ]]>
+	</update>
+	
 
 	<!-- 키워드 가져와서 수정 폼 -->
 	<select id="getKeywordListByHostNo" parameterType="int" resultType="KeywordVo">
@@ -37,29 +48,4 @@
     ]]>
 	</select>
 	
-	
-	<!-- 가져온 호스트정보 수정업데이트 -->
-	<update id="updateHost" parameterType="HostVo">
-	<![CDATA[
-		update host
-		set         name=#{name},
-		   		       password=#{password},
-		    	       gender=#{gender}
-		where  hostNo=#{hostNo}
-    ]]>
-	</update>
-
-
-	<!-- 가져온 키워드정보 수정업데이트 -->
-	<update id="updateKeyword" parameterType="KeywordVo">
-	<![CDATA[
-		update host
-		set         name=#{name},
-		   		       password=#{password},
-		    	       gender=#{gender}
-		where  hostNo=#{hostNo}
-    ]]>
-	</update>
-
-
 </mapper>

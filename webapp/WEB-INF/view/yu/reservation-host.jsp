@@ -75,21 +75,19 @@
 								</tr>
 							</thead>
 
-							<tbody>
+							<tbody id="bookingDetail">
 								<c:forEach items="${bList}" var="BookingVo">
-						
-									<tr>
-										<td><input type="radio" name="list-radio"></td>
-										<td id="no" onClick="location.href='${pageContext.request.contextPath}/bookingDetailHost?bookingNo=${BookingVo.bookingNo}'" data-bookingno="${BookingVo.bookingNo}">
-											${BookingVo.bookingNo}</td>
-										<td><img src="/project/assets/images/reservation-dog.png"></td>
-										<td>${BookingVo.guestName}</td>
-										<td>${BookingVo.checkin} ~ ${BookingVo.checkout}</td>
-										<td>₩ ${BookingVo.bookingDate * BookingVo.days * BookingVo.ea}</td>
-										<td>${BookingVo.guestHp}</td>
+									<tr class="bRow">
+										<td class="bOne" data-bookingno="${BookingVo.bookingNo}"><input type="radio" name="list-radio"></td>
+										<td id="no" class="bOne" data-bookingno="${BookingVo.bookingNo}">${BookingVo.bookingNo}</td>
+										<td class="bOne" data-bookingno="${BookingVo.bookingNo}"><img src="/project/assets/images/reservation-dog.png"></td>
+										<td class="bOne" data-bookingno="${BookingVo.bookingNo}">${BookingVo.guestName}</td>
+										<td class="bOne" data-bookingno="${BookingVo.bookingNo}">${BookingVo.checkin} ~ ${BookingVo.checkout}</td>
+										<td class="bOne" data-bookingno="${BookingVo.bookingNo}">₩ ${BookingVo.bookingDate * BookingVo.days * BookingVo.ea}</td>
+										<td class="bOne" data-bookingno="${BookingVo.bookingNo}">${BookingVo.guestHp}</td>
 										<c:choose>
 											<c:when test="${BookingVo.status == '승인대기'}">
-												<td onClick="location.href='${pageContext.request.contextPath}/updateStatus?bookingNo=${BookingVo.bookingNo}&hostNo=${param.hostNo}'">
+												<td id="reservationOk" data-bookingno="${BookingVo.bookingNo}">
 												<div class="btn-re-gradient blue mini">예약승인</div></td>
 											</c:when>
 											<c:when test="${BookingVo.status == '결제대기'}">
@@ -109,7 +107,21 @@
 </body>
 
 <script>
+	/* 예약승인버튼 누르기 */
+	$("#reservationOk").on("click" ,function(){
+		var $this = $(this);
+		var bookingNo = $this.data("bookingno");
+		
+		location.href = "${pageContext.request.contextPath}/updateStatus?bookingNo="+bookingNo+"&hostNo=${param.hostNo}";
+	});
 
+	/* 테이블 한줄 누르기 */
+	$(".bRow").on("click", ".bOne", function(){
+		var $this = $(this);
+		var bookingNo = $this.data("bookingno");
+		
+		location.href = "${pageContext.request.contextPath}/bookingDetailHost?bookingNo="+bookingNo;
+	});
 	
 	/* 달력 */
 	document.addEventListener('DOMContentLoaded', function() {
