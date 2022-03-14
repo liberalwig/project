@@ -64,7 +64,7 @@
 								<div id="r-impossible2">차단됨</div>
 							</div>
 						</div>
-						<button class="allBtn" onclick="location.href='${pageContext.request.contextPath}/bookingEndHostDelete?hostNo=${param.hostNo}';">날짜전체닫기</button>
+						<button class="allBtn">날짜전체닫기</button>
 
 					</div>
 					<div id="r-list">
@@ -94,11 +94,11 @@
 								</tr>
 							</thead>
 
-							<tbody>
+							<tbody id="bookingDetail">
 								<c:forEach items="${bList}" var="BookingVo">
-									<tr onClick="location.href='${pageContext.request.contextPath}/bookingDetailHost?bookingNo=${BookingVo.bookingNo}'">
+									<tr class="bRow" data-bookingno="${BookingVo.bookingNo}">
 	                                    <td><input type="radio" name="list-radio"></td>
-										<td id="no" data-bookingno="${BookingVo.bookingNo}">${BookingVo.bookingNo}</td>
+										<td id="no">${BookingVo.bookingNo}</td>
 										<td><img src="/project/assets/images/reservation-dog.png"></td>
 										<td>${BookingVo.guestName}</td>
 										<td>${BookingVo.checkin} ~ ${BookingVo.checkout}</td>
@@ -128,8 +128,23 @@
 	</div>
 </body>
 
+
 <script>
 
+	/* 날짜전체닫기 */
+	$(".allBtn").on("click", function(){
+		
+		location.href = "${pageContext.request.contextPath}/bookingEndHostDelete?hostNo=${param.hostNo}";
+	});
+
+	/* 테이블 한줄 누르기 */
+	$("#bookingDetail").on("click", ".bRow", function(){
+		var $this = $(this);
+		var bookingNo = $this.data("bookingno");
+		
+		location.href = "${pageContext.request.contextPath}/bookingDetailHost?bookingNo="+bookingNo;
+	});
+	
 	/* 체크박스 value값 설정 */
 	var check = "${hvo.hostview}";
 	if(check == 1){

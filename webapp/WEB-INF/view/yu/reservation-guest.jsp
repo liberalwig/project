@@ -64,16 +64,16 @@
 							</tr>
 						</thead>
 						
-						<tbody>
+						<tbody id="bookingDetail">
 							<c:forEach items="${bList}" var="BookingVo">
-								<tr>
-									<td><input type="radio" name="list-radio"></td>
-									<td id="no"  onClick="location.href='${pageContext.request.contextPath}/bookingDetailGuest?bookingNo=${BookingVo.bookingNo}'">${BookingVo.bookingNo}</td>
-									<td><img src="/project/assets/images/reservation-dog.png"></td>
-									<td>${BookingVo.hostName}</td>
-									<td>${BookingVo.checkin} ~ ${BookingVo.checkout}</td>
-									<td>₩ ${BookingVo.bookingDate * BookingVo.days * BookingVo.ea}</td>
-									<td>${BookingVo.hostHp}</td>
+								<tr class="bRow">
+									<td class="bOne" data-bookingno="${BookingVo.bookingNo}"><input type="radio" name="list-radio"></td>
+									<td id="no" class="bOne" data-bookingno="${BookingVo.bookingNo}">${BookingVo.bookingNo}</td>
+									<td class="bOne" data-bookingno="${BookingVo.bookingNo}"><img src="/project/assets/images/reservation-dog.png"></td>
+									<td class="bOne" data-bookingno="${BookingVo.bookingNo}">${BookingVo.hostName}</td>
+									<td class="bOne" data-bookingno="${BookingVo.bookingNo}">${BookingVo.checkin} ~ ${BookingVo.checkout}</td>
+									<td class="bOne" data-bookingno="${BookingVo.bookingNo}">₩ ${BookingVo.bookingDate * BookingVo.days * BookingVo.ea}</td>
+									<td class="bOne" data-bookingno="${BookingVo.bookingNo}">${BookingVo.hostHp}</td>
 									<c:choose>
 										<c:when test="${BookingVo.status == '승인대기'}">
 											<td><div class="btn-re-gradient yellow mini">${BookingVo.status}</div></td>
@@ -175,6 +175,14 @@
 </body>
 
 <script>
+
+/* 테이블 한줄 누르기 */
+$(".bRow").on("click", ".bOne", function(){
+	var $this = $(this);
+	var bookingNo = $this.data("bookingno");
+	
+	location.href = "${pageContext.request.contextPath}/bookingDetailGuest?bookingNo="+bookingNo;
+});
 
 /* 결제대기 눌렀을때 */
 $("#payForm").on("click", function(){
