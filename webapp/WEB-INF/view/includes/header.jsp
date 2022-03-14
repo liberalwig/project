@@ -47,13 +47,26 @@
                    	</div>
                 </c:if>
                     <c:if test="${authUser.usersNo != null}">
-                    	<c:if test="${authUser.usersType == 1}">
-			                <div class="menu_btn1">
-			                    <button type="button" class="btn btn-default">
-			                    	<a href="${pageContext.request.contextPath}/host2/hostjoin" style="color:#000">펫시터되기</a>
-			                    </button>
-			                </div>
-		                </c:if>
+                    	<c:choose>
+                    		<c:when test="${authUser.usersType == 2}">
+                   				<div class="menu_btn1">
+                   					<a href="${pageContext.request.contextPath}/host2/info/${authUser.hostNo}" style="color:#000">
+					                    <button type="button" class="btn btn-default">
+					                    	내 펫시팅 정보
+					                    </button>
+				                    </a>
+				                </div>
+                    		</c:when>
+	                    	<c:otherwise >
+				                <div class="menu_btn1">
+				                	<a href="${pageContext.request.contextPath}/host2/hostjoin" style="color:#000">
+					                    <button type="button" class="btn btn-default">
+					                    	펫시터되기
+					                    </button>
+				                    </a>
+				                </div>
+			                </c:otherwise>
+		                </c:choose>
 		                <div class="menu_btn2">
 		                    <button type="button" class="btn btn-default">
 		                        <a href="#">Messages <span class="badge"><!--메세지 갯수 입력-->3</span></a>

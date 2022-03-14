@@ -23,35 +23,64 @@
 		<div id="container">
 			<div class="row row1">
 				<div id="profile" class="col-xs-12 left">
-					<c:choose>
-						<c:when test="${empty requestScope.hostVo.path}">
-							<img id="hostimg" src="${pageContext.request.contextPath}/assets/images/hostinfo_sample.jpg" alt="PetSitter Image" class="img-circle">
-						</c:when>
-						<c:otherwise>
-							<img id="hostimg" src="${pageContext.request.contextPath}/photo/${requestScope.hostVo.path}" alt="PetSitter Image" class="img-circle">
-						</c:otherwise>
-					</c:choose>
-					<div id="hostinfo">
-						<h3 class="info">${requestScope.hostVo.name}님</h3>
-						<h4 class="info">${requestScope.hostVo.adress1}</h4>
-						<div>
-							<p class="info">${requestScope.hostVo.intro}</p>
+					<div id="hostimgbox" class="col-xs-3">
+						<c:choose>
+							<c:when test="${empty requestScope.hostVo.path}">
+								<img id="hostimg" src="${pageContext.request.contextPath}/assets/images/hostinfo_sample.jpg" alt="PetSitter Image" class="img-circle">
+							</c:when>
+							<c:otherwise>
+								<img id="hostimg" src="${pageContext.request.contextPath}/photo/${requestScope.hostMap.hostVo.path}" alt="PetSitter Image" class="img-circle">
+							</c:otherwise>
+						</c:choose>
+					</div>
+					<div id="hostinfo" class="col-xs-4">
+						<h3 class="info">${requestScope.hostMap.hostVo.name}님</h3>
+						<h4 class="info">${requestScope.hostMap.hostVo.adress1} · ${requestScope.hostMap.hostVo.hostcost}원<small>/1박</small>&nbsp;</h4><br>
+						<div id="infobox">
+							<h4 class="info">${requestScope.hostMap.hostVo.intro}</h4>
 						</div>
 						<div id="tagbox">
-							<c:forEach items="${requestScope.keyList}" var="vo">
+							<c:forEach items="${requestScope.hostMap.keyList}" var="vo">
 								<span class="tag">${vo.keywordName}</span>
 							</c:forEach>
 						</div>
-						<div id="btnbox1">
-							<a href="${pageContext.request.contextPath}/host2/booking?hostNo=${requestScope.hostVo.hostNo}"><button id="btn1" type="button" class="btn btn-primary color">
-								<h4>예약 요청</h4>
-							</button></a>
-							<button id="btn1" type="button" class="btn btn-default">
-								<h4>
-									<span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>&nbsp;메시지 보내기
-								</h4>
-							</button>
-						</div>
+						<c:choose>
+							<c:when test="${sessionScope.authUser.usersType == 2}">
+								<div id="btnbox1">
+									<button id="btn1" type="button" class="btn btn-primary active">
+										<h4>예약 요청</h4>
+									</button>
+									<button id="btn1" type="button" class="btn btn-default active">
+										<h4>
+											<span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>&nbsp;메시지 보내기
+										</h4>
+									</button>
+								</div>
+								<button id="btn2" type="button" class="btn btn-default active">
+									<h4>
+										<span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
+									</h4>
+								</button>
+							</c:when>
+							<c:otherwise>
+								<div id="btnbox1">
+									<a href="${pageContext.request.contextPath}/host2/booking?hostNo=${requestScope.hostMap.hostVo.hostNo}"><button id="btn1" type="button" class="btn btn-primary color">
+										<h4>예약 요청</h4>
+									</button></a>
+									<button id="btn1" type="button" class="btn btn-default">
+										<h4>
+											<span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>&nbsp;메시지 보내기
+										</h4>
+									</button>
+									<button id="btn2" type="button" class="btn btn-default">
+										<h4>
+											<span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
+										</h4>
+									</button>
+								</div>
+							</c:otherwise>
+						</c:choose>
+
 					</div>
 				</div>
 			</div>
@@ -59,9 +88,11 @@
 				<div class="col-xs-4 left">
 					<div class="row" id="puppypoint">
 					<c:choose>
-						<c:when test="${not empty requestScope.reviewList}">
+						<c:when test="${not empty requestScope.hostMap.reviewList}">
 							<div id="point" class="row">
-								<h4 class="normal">${requestScope.hostVo.hostcost}원/1박&nbsp;<span class="glyphicon glyphicon-asterisk" aria-hidden="true"></span>퍼피력 ${requestScope.puppypoint}&nbsp;리뷰 ${requestScope.hostVo.reviewcount}개
+								<h4 class="normal">
+								<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+								퍼피력 ${requestScope.hostMap.puppypoint}
 								</h4>
 							</div>
 							<div id="graph">
@@ -72,8 +103,8 @@
 										</h4>
 									</div>
 									<div class="progress">
-										<div id="bar" class="progress-bar progress-bar-alert top-bar" role="progress-bar" aria-valuenow="6.7" aria-valuemin="0" aria-valuemax="10" style="width: ${(requestScope.point.food)*10}%;">
-											<h4>${requestScope.point.food}</h4>
+										<div id="bar" class="progress-bar progress-bar-alert top-bar" role="progress-bar" aria-valuenow="6.7" aria-valuemin="0" aria-valuemax="10" style="width: ${(requestScope.hostMap.point.food)*10}%;">
+											<h4>${requestScope.hostMap.point.food}</h4>
 										</div>
 									</div>
 								</div>
@@ -84,8 +115,8 @@
 										</h4>
 									</div>
 									<div class="progress">
-										<div id="bar" class="progress-bar progress-bar-alert" role="progress-bar" aria-valuenow="9.2" aria-valuemin="0" aria-valuemax="10" style="width: ${(requestScope.point.walk)*10}%;">
-											<h4>${requestScope.point.walk}</h4>
+										<div id="bar" class="progress-bar progress-bar-alert" role="progress-bar" aria-valuenow="9.2" aria-valuemin="0" aria-valuemax="10" style="width: ${(requestScope.hostMap.point.walk)*10}%;">
+											<h4>${requestScope.hostMap.point.walk}</h4>
 										</div>
 									</div>
 								</div>
@@ -96,8 +127,8 @@
 										</h4>
 									</div>
 									<div class="progress">
-										<div id="bar" class="progress-bar progress-bar-alert" role="progress-bar" aria-valuenow="6.7" aria-valuemin="0" aria-valuemax="10" style="width: ${(requestScope.point.clean)*10}%;">
-											<h4>${requestScope.point.clean}</h4>
+										<div id="bar" class="progress-bar progress-bar-alert" role="progress-bar" aria-valuenow="6.7" aria-valuemin="0" aria-valuemax="10" style="width: ${(requestScope.hostMap.point.clean)*10}%;">
+											<h4>${requestScope.hostMap.point.clean}</h4>
 										</div>
 									</div>
 								</div>
@@ -108,8 +139,8 @@
 										</h4>
 									</div>
 									<div class="progress">
-										<div id="bar" class="progress-bar progress-bar-alert top-bar" role="progress-bar" aria-valuenow="8.8" aria-valuemin="0" aria-valuemax="10" style="width: ${(requestScope.point.play)*10}%;">
-											<h4>${requestScope.point.play}</h4>
+										<div id="bar" class="progress-bar progress-bar-alert top-bar" role="progress-bar" aria-valuenow="8.8" aria-valuemin="0" aria-valuemax="10" style="width: ${(requestScope.hostMap.point.play)*10}%;">
+											<h4>${requestScope.hostMap.point.play}</h4>
 										</div>
 									</div>
 								</div>
@@ -120,8 +151,8 @@
 										</h4>
 									</div>
 									<div class="progress">
-										<div id="bar" class="progress-bar progress-bar-alert warning-bar" role="progress-bar" aria-valuenow="9.8" aria-valuemin="0" aria-valuemax="10" style="width: ${(requestScope.point.communication)*10}%;">
-											<h4>${requestScope.point.communication}</h4>
+										<div id="bar" class="progress-bar progress-bar-alert warning-bar" role="progress-bar" aria-valuenow="9.8" aria-valuemin="0" aria-valuemax="10" style="width: ${(requestScope.hostMap.point.communication)*10}%;">
+											<h4>${requestScope.hostMap.point.communication}</h4>
 										</div>
 									</div>
 								</div>
@@ -129,8 +160,10 @@
 						</c:when>
 						<c:otherwise>
 							<div id="point" class="row">
-								<h4 class="normal">${requestScope.hostVo.hostcost}원/1박&nbsp;<span class="glyphicon glyphicon-asterisk" aria-hidden="true"></span>퍼피력 ${requestScope.puppypoint}&nbsp;리뷰 ${requestScope.hostVo.reviewcount}개
-								</h4>
+								<h3 class="normal">
+									<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+									퍼피력 ${requestScope.hostMap.puppypoint}
+								</h3>
 							</div>
 							<div id="pointinfo">
 								<h4 style="padding:150px 0px 0px 70px">아직 작성된 리뷰가 없어요.</h4>
@@ -142,7 +175,7 @@
 				<div id="picbox" class="col-xs-7">
 					<div id="tapbox">
 						<ul class="nav nav-tabs">
-							<li role="presentation" data-name="호스트사진" class="active"><a href="#">호스트 사진</a></li>
+							<li role="presentation" data-name="호스트사진" class="active"><a href="#">펫시터의 사진</a></li>
 							<li role="presentation" data-name="식사"><a href="#">식사</a></li>
 							<li role="presentation" data-name="산책"><a href="#">산책</a></li>
 							<li role="presentation" data-name="청결"><a href="#">청결</a></li>
@@ -153,7 +186,7 @@
 					<div id="imgbox">
 						<div class="row">
 							<div id="imgbox2">
-								<c:forEach items="${requestScope.photoList}" var="vo">
+								<c:forEach items="${requestScope.hostMap.photoList}" var="vo">
 									<img src="${pageContext.request.contextPath}/photo/${vo.saveName}">
 								</c:forEach>
 							</div>
@@ -170,30 +203,23 @@
 					</div>
 					<div class="row">
 						<div id="maparea" class="row">
-							<h3>${requestScope.hostVo.name}님의 동네</h3>
-							<h4>${requestScope.hostVo.adress1}</h4>
-							<div id="map" style="width:465px;height:300px;"></div>
+							<h3>${requestScope.hostMap.hostVo.name}님의 동네</h3>
+							<div id="map" style="width:465px;height:300px; margin: 20px 0px 20px 0px"></div>
+							<h4>${requestScope.hostMap.hostVo.adress1}</h4>
 						</div>
 					</div>
 
 				</div>
 				<div class="col-xs-8 left clearfix">
 					<div id="review">
-						<h3>리뷰</h3>
+						<h3>리뷰</h3><h4>${requestScope.hostMap.hostVo.reviewcount}개</h4>
 						<div class="row reviewList clearfix">
 							<c:choose>
-								<c:when test="${not empty requestScope.reviewList}">
-									<c:forEach items="${requestScope.reviewList}" var="vo">
+								<c:when test="${not empty requestScope.hostMap.reviewList}">
+									<c:forEach items="${requestScope.hostMap.reviewList}" var="vo">
 										<div class="reviewbox">
 											<div class="row reviewinfo">
-												<c:choose>
-													<c:when test="${empty vo.saveName}">
 														<img class="img-circle reviewimg" src="${pageContext.request.contextPath}/assets/images/hostinfo_sample.jpg">
-													</c:when>
-													<c:otherwise>
-														<img class="img-circle reviewimg" src="${pageContext.request.contextPath}/photo/${vo.saveName}">
-													</c:otherwise>
-												</c:choose>
 												<h4 class="toph4">${vo.name}</h4>
 												<h4>${vo.reviewDate}</h4>
 											</div>
@@ -258,7 +284,7 @@
 		$(this).addClass("active");
 		
 		var photoVo = {
-			hostNo : ${requestScope.hostVo.hostNo},
+			hostNo : ${requestScope.hostMap.hostVo.hostNo},
 			category : name
 		};
 		
@@ -313,7 +339,7 @@
 	var geocoder = new kakao.maps.services.Geocoder();
 
 	// 주소로 좌표를 검색합니다
-	geocoder.addressSearch('${requestScope.hostVo.adress1}', function(result, status) {
+	geocoder.addressSearch('${requestScope.hostMap.hostVo.adress1}', function(result, status) {
 
 	    // 정상적으로 검색이 완료됐으면 
 	     if (status === kakao.maps.services.Status.OK) {
@@ -370,7 +396,7 @@
 			// ajax 처리로 데이터를 로딩 시킨다. 
 			$.ajax({ 
 				type:"get", 
-				url:"${pageContext.request.contextPath}/calendar?hostNo=${requestScope.hostVo.hostNo}", 
+				url:"${pageContext.request.contextPath}/calendar?hostNo=${requestScope.hostMap.hostVo.hostNo}", 
 				dataType : "json",
 				success: function (bList) {
 					for(var i=0; i<bList.length; i++) {
@@ -385,7 +411,7 @@
 			}),
 			$.ajax({ 
 				type:"get", 
-				url:"${pageContext.request.contextPath}/calendarAble?hostNo=${requestScope.hostVo.hostNo}", 
+				url:"${pageContext.request.contextPath}/calendarAble?hostNo=${requestScope.hostMap.hostVo.hostNo}", 
 				dataType : "json",
 				success: function (aList) {
 					for(var i=0; i<aList.length; i++) {

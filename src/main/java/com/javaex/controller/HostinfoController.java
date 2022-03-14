@@ -1,6 +1,7 @@
 package com.javaex.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -20,7 +21,6 @@ import com.javaex.vo.BookingVo;
 import com.javaex.vo.HostVo;
 import com.javaex.vo.KeywordVo;
 import com.javaex.vo.PhotoVo;
-import com.javaex.vo.ReviewVo;
 import com.javaex.vo.UserVo;
 
 @Controller
@@ -48,15 +48,16 @@ public class HostinfoController {
 	@RequestMapping(value = "/hostinsert", method = { RequestMethod.GET, RequestMethod.POST })
 	public int hostinsert(@ModelAttribute HostVo hostVo, HttpSession session) {
 		System.out.println("[hostinfoController.hostinsert()]");
-		System.out.println(hostVo);
-		//호스트 insert하기
+		
+		//호스트 insert
 		hostinfoService.hostinsert(hostVo);
 		
-		//유저 유저타입 update하기
-		hostinfoService.typeUpdate(hostVo.getUsersNo());
+		//변경된 정보 세션에 담기
 		UserVo authUser = (UserVo)session.getAttribute("authUser");
 		authUser.setUsersType(2);
+		authUser.setHostNo(hostVo.getHostNo());
 		session.setAttribute("authUser", authUser);
+		
 		int hostNo = hostVo.getHostNo();
 		
 		return hostNo;
@@ -68,8 +69,7 @@ public class HostinfoController {
 	public int hostphotoinsert(@RequestParam("images") List<MultipartFile> files,
 							   @RequestParam("hostNo") int hostNo) {
 		System.out.println("[hostinfoController.hostphotoinsert()]");
-		System.out.println(files);
-		
+
 		//호스트사진 insert하기
 		for(MultipartFile file: files) {
 			hostinfoService.fileupload(file, hostNo);
@@ -83,7 +83,6 @@ public class HostinfoController {
 								 @RequestParam("hostNo") int hostNo) {
 		System.out.println("[hostinfoController.hostkeywordinsert()]");
 		
-		System.out.println("keywordList:" + keyList);
 		//호스트키워드 insert하기
 		hostinfoService.setKeyword(keyList, hostNo);
 		return hostNo;
@@ -96,23 +95,9 @@ public class HostinfoController {
 
 		int authNo = hostinfoService.checkNo(hostNo);
 		
-		if(authNo > 0) {//호스트가 있음
-			//호스트 정보 리스트 가져오기
-			HostVo hostVo = hostinfoService.getHost(hostNo);
-			List<KeywordVo> keyList = hostinfoService.getKeyword(hostNo);
-			List<ReviewVo> reviewList = hostinfoService.getReview(hostNo);
-			double puppypoint = hostinfoService.getPuppyPoint(hostNo);
-			ReviewVo point = hostinfoService.getPoint(hostNo);
-			List<PhotoVo> photoList = hostinfoService.getHostPhoto(hostNo);
-			List<BookingVo> calendurList = hostinfoService.getCalendur(hostNo);
-			
-			model.addAttribute("hostVo", hostVo);
-			model.addAttribute("keyList", keyList);
-			model.addAttribute("reviewList", reviewList);
-			model.addAttribute("puppypoint", puppypoint);
-			model.addAttribute("point", point);
-			model.addAttribute("photoList", photoList);
-			model.addAttribute("calendurList", calendurList);
+		if(authNo > 0) {
+			Map<String, Object> hostMap = hostinfoService.getHostMap(hostNo);
+			model.addAttribute("hostMap", hostMap);
 			
 			return "/han/hostinfo";
 			

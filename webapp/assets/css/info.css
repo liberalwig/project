@@ -33,24 +33,29 @@ a:hover {text-decoration: none; color: #000}
 		margin: 0px 0px 50px 0px;
 	}
 	#container #profile{
-		padding: 20px 60px 50px 110px;
+		padding: 20px 60px 50px 200px;
 		border-bottom: 1px solid #DDD;
 	}
 	#container #hostimg{
 		width:250px;
 		height:250px;
 		margin:30px 30px 20px 20px;
-		float:left;
+	}
+	#hostimgbox{
+		width: 400px;
 	}
 	#container #hostinfo{
 		margin: 40px 0px 0px 0px;
-		padding: 0px 0px 0px 400px;
+		padding: 0px 0px 0px 50px;
 		height: 60px;
+		width: 700px;
 	}
 	#container #hostinfo .info{
 		margin: 0px 0px 15px 0px;
 	}
-
+	#infobox {
+		padding: 10px 0px 10px 0px;
+	}
 	#tagbox {
 	height: 50px;
 	}
@@ -82,8 +87,17 @@ a:hover {text-decoration: none; color: #000}
 		width: 200px;
 		height: 50px;
 	}
+	#container #btnbox1 #btn2{
+		margin: 10px 0px 0px 0px;
+		padding: 13px 0px 0px 0px;
+		height: 50px;
+		width: 50px;
+	}
 	.color {
 		background-color: #3D9BE9;
+	}
+	.color2 {
+		color: #3D9BE9;
 	}
 	a {
 		color: #333;
@@ -176,6 +190,10 @@ a:hover {text-decoration: none; color: #000}
     border-radius : 5px;
 	
 }
+	#review>h3, h4{
+		display: inline-block;
+		margin: 15px 10px 15px 0px;
+	}
 	.reviewList {
 		text-align:left;
 		width: 850px;
@@ -184,7 +202,7 @@ a:hover {text-decoration: none; color: #000}
 		
 		padding-bottom: 20px;
 	}
-	#review h3{
+	#reviewbox h3{
 		margin: 15px 0px 15px 0px;
 	}
 	.reviewList .row h4{

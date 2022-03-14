@@ -8,7 +8,9 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,70 +38,49 @@ public class HostinfoService {
 	}
 	
 	//호스트 데이터 가져오기
-	public HostVo getHost(int hostNo) {
+	public Map<String, Object> getHostMap(int hostNo) {
 		System.out.println("[HostinfoService.list()]");
-		
+		Map<String, Object> hostMap = new HashMap<String, Object>();
 		//호스트 정보 가져오기
 		HostVo hostVo = hostinfoDao.getHost(hostNo);
-		
-		return hostVo;
-	}
-	
-	//키워드 정보 가져오기
-	public List<KeywordVo> getKeyword(int hostNo) {
-		System.out.println("[HostinfoService.getKeyword()]");
-		
-		return hostinfoDao.getHostKeyword(hostNo);
-	}
-	
-	//리뷰 정보 가져오기
-	public List<ReviewVo> getReview(int hostNo) {
-		System.out.println("[HostinfoService.getKeyword()]");
-		
-		return hostinfoDao.getReview(hostNo);
-	}
-	
-	//퍼피력 계산
-	public double getPuppyPoint(int hostNo) {
-		System.out.println("[HostinfoService.getPuppyPoint()]");
+		//키워드 정보 가져오기
+		List<KeywordVo> keyList = hostinfoDao.getHostKeyword(hostNo);
+		//리뷰 정보 가져오기
+		List<ReviewVo> reviewList = hostinfoDao.getReview(hostNo);
+		//퍼피력 계산
 		double sum = (hostinfoDao.getSum(hostNo)/5.0);
 		double reviewcount = (double)hostinfoDao.getReviewCount(hostNo);
+		double puppypoint = 0;
 		if(reviewcount == 0.0) {
-			return 0;
+			puppypoint = 0;
 		} else {
-			double puppypoint = sum / reviewcount;
-			
-			return puppypoint;
+			puppypoint = sum / reviewcount;
 		}
-	}
-	
-	//항목점수 계산
-	public ReviewVo getPoint(int hostNo) {
-		System.out.println("[HostinfoService.getPoint()]");
+		//항목점수 계산
 		ReviewVo point = new ReviewVo();
 		point.setClean(hostinfoDao.getClean(hostNo));
 		point.setFood(hostinfoDao.getFood(hostNo));
 		point.setPlay(hostinfoDao.getPlay(hostNo));
 		point.setWalk(hostinfoDao.getWalk(hostNo));
 		point.setCommunication(hostinfoDao.getCommunication(hostNo));
+		//호스트 사진 가져오기
+		List<PhotoVo> photoList = hostinfoDao.getHostPhoto(hostNo);
+		//캘린더 정보 가져오기
+		List<BookingVo> calendurList = hostinfoDao.getCalendur(hostNo);
 		
-		return point;
+		hostMap.put("hostVo", hostVo);
+		hostMap.put("keyList", keyList);
+		hostMap.put("reviewList", reviewList);
+		hostMap.put("puppypoint", puppypoint);
+		hostMap.put("point", point);
+		hostMap.put("photoList", photoList);
+		hostMap.put("calendurList", calendurList);
+		
+		return hostMap;
 	}
-	
 	//호스트 사진 가져오기
 	public List<PhotoVo> getHostPhoto(int hostNo){
-		System.out.println("[HostinfoService.getHostPhoto()]");
-		
-		List<PhotoVo> photoList = hostinfoDao.getHostPhoto(hostNo);
-		
-		return photoList;
-	}
-	
-	//캘린더 정보 가져오기
-	public List<BookingVo> getCalendur(int hostNo){
-		System.out.println("[HostinfoService.getCalendur()]");
-		
-		return hostinfoDao.getCalendur(hostNo);
+		return hostinfoDao.getHostPhoto(hostNo);
 	}
 	
 	//카테고리 사진 가져오기
@@ -110,7 +91,10 @@ public class HostinfoService {
 		
 		return photoList;
 	}
-	
+	//호스트Vo 가져오기
+	public HostVo getHost(int hostNo) {
+		return hostinfoDao.getHost(hostNo);
+	}
 	//일수 계산하기
 	public void checkdays(BookingVo bookingVo) {
 		System.out.println("[HostinfoService.checkdays()]");
@@ -169,18 +153,19 @@ public class HostinfoService {
 		return hostinfoDao.getKeywordList();
 	}
 	
-	//호스트 등록
+	//호스트 등록 및 타입 변경
 	public void hostinsert(HostVo hostVo) {
 		System.out.println("[HostinfoService.hostinsert()]");
 		
 		hostinfoDao.hostinsert(hostVo);
+		hostinfoDao.typeUpdate(hostVo.getUsersNo());
 	}
 	
 	//유저타입 변경(유저->호스트)
 	public void typeUpdate(int usersNo) {
 		System.out.println("[HostinfoService.typeUpdate()]");
 		
-		hostinfoDao.typeUpdate(usersNo);
+		
 	}
 	
 	//사진 업로드

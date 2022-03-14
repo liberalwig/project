@@ -8,13 +8,12 @@ public class UserVo {
 	private String hp;
 	private String path;
 	private int usersType;
-
 	private int hostNo;
 
 	public UserVo() {
 	}
 
-	public UserVo(int userNo, String id, String password, String name, String hp, String path, int usersType) {
+	public UserVo(int userNo, String id, String password, String name, String hp, String path, int usersType, int hostNo) {
 		this.usersNo = userNo;
 		this.id = id;
 		this.password = password;
@@ -22,6 +21,7 @@ public class UserVo {
 		this.hp = hp;
 		this.path = path;
 		this.usersType = usersType;
+		this.hostNo = hostNo;
 	}
 
 	public int getUsersNo() {
@@ -91,7 +91,7 @@ public class UserVo {
 	@Override
 	public String toString() {
 		return "UserVo [usersNo=" + usersNo + ", id=" + id + ", password=" + password + ", name=" + name + ", hp=" + hp
-				+ ", path=" + path + ", usersType=" + usersType + "]";
+				+ ", path=" + path + ", usersType=" + usersType + ", hostNo=" + hostNo + "]";
 	}
 
 }
