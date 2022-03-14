@@ -53,10 +53,13 @@
                         <div class="info">
                             <h2>펫사진</h2>
                             <hr>
-                            <c:if test="${!empty pList}">
-                            	<div id="galleryArea">업로드된 인증사진이 없습니다.</div>
+                            <c:if test="${pList.size() <= 0}">
+                            	<div id="galleryArea">
+                            		<img id="fileless" src="https://img.icons8.com/pastel-glyph/2x/image-file.png" alt="파일 아이콘" >
+									<p class="message">아직 업로드된 이미지가 없습니다.</p>
+                            	</div>
                             </c:if>
-                            <%-- <c:if test="${pList}"> --%>
+                            <c:if test="${pList.size() > 0}">
                             	<c:forEach items="${pList}" var="pListDate">
 	                            	<div class="wrapper">
 	                            	<c:if test="${pListDate[0].photoDate != null}">
@@ -120,7 +123,7 @@
 		                            </c:if>
 		                           	</div>
 	                            </c:forEach>
-                            <%-- </c:if> --%>
+                            </c:if>
                             
                             
                         </div>
@@ -188,219 +191,223 @@
                             <h2>리뷰 & 별점</h2>
                             <hr>
                             <div id="review" class="row">
-                                <div class="col-xs-6">
-                                    <h3>식사</h3>
-                                    <div class="rating">
-                                        <input type="radio" name="rating-star2" class="rating__control screen-reader" id="rc6" checked="checked">
-                                        <input type="radio" name="rating-star2" class="rating__control screen-reader" id="rc7" checked="checked">
-                                        <input type="radio" name="rating-star2" class="rating__control screen-reader" id="rc8" checked="checked">
-                                        <input type="radio" name="rating-star2" class="rating__control screen-reader" id="rc9">
-                                        <input type="radio" name="rating-star2" class="rating__control screen-reader" id="rc10">
-                                        <label for="rc6" class="rating__item">
-                                        <svg class="rating__star">
-                                            <use xlink:href="#star"></use>
-                                        </svg>
-                                        </label>
-                                        <label for="rc7" class="rating__item">
-                                        <svg class="rating__star">
-                                            <use xlink:href="#star"></use>
-                                        </svg>
-                                        <span class="screen-reader">2</span>
-                                        </label>
-                                        <label for="rc8" class="rating__item">
-                                        <svg class="rating__star">
-                                            <use xlink:href="#star"></use>
-                                        </svg>
-                                        <span class="screen-reader">3</span>
-                                        </label>
-                                        <label for="rc9" class="rating__item">
-                                        <svg class="rating__star">
-                                            <use xlink:href="#star"></use>
-                                        </svg>
-                                        <span class="screen-reader">4</span>
-                                        </label>
-                                        <label for="rc10" class="rating__item">
-                                        <svg class="rating__star">
-                                            <use xlink:href="#star"></use>
-                                        </svg>
-                                        <span class="screen-reader">5</span>
-                                        </label>   
-                                    </div>
-                                </div>
-
-                                <div class="col-xs-6 review2">
-                                    <h3>산책</h3>
-                                    <div class="rating">
-                                        <input type="radio" name="rating-star2" class="rating__control screen-reader" id="rc6" checked="checked">
-                                        <input type="radio" name="rating-star2" class="rating__control screen-reader" id="rc7" checked="checked">
-                                        <input type="radio" name="rating-star2" class="rating__control screen-reader" id="rc8" checked="checked">
-                                        <input type="radio" name="rating-star2" class="rating__control screen-reader" id="rc9">
-                                        <input type="radio" name="rating-star2" class="rating__control screen-reader" id="rc10">
-                                        <label for="rc6" class="rating__item">
-                                        <svg class="rating__star">
-                                            <use xlink:href="#star"></use>
-                                        </svg>
-                                        </label>
-                                        <label for="rc7" class="rating__item">
-                                        <svg class="rating__star">
-                                            <use xlink:href="#star"></use>
-                                        </svg>
-                                        <span class="screen-reader">2</span>
-                                        </label>
-                                        <label for="rc8" class="rating__item">
-                                        <svg class="rating__star">
-                                            <use xlink:href="#star"></use>
-                                        </svg>
-                                        <span class="screen-reader">3</span>
-                                        </label>
-                                        <label for="rc9" class="rating__item">
-                                        <svg class="rating__star">
-                                            <use xlink:href="#star"></use>
-                                        </svg>
-                                        <span class="screen-reader">4</span>
-                                        </label>
-                                        <label for="rc10" class="rating__item">
-                                        <svg class="rating__star">
-                                            <use xlink:href="#star"></use>
-                                        </svg>
-                                        <span class="screen-reader">5</span>
-                                        </label>   
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div id="review" class="row">
-                                <div class="col-xs-6">
-                                    <h3>청결</h3>
-                                    <div class="rating">
-                                        <input type="radio" name="rating-star2" class="rating__control screen-reader" id="rc6" checked="checked">
-                                        <input type="radio" name="rating-star2" class="rating__control screen-reader" id="rc7" checked="checked">
-                                        <input type="radio" name="rating-star2" class="rating__control screen-reader" id="rc8" checked="checked">
-                                        <input type="radio" name="rating-star2" class="rating__control screen-reader" id="rc9">
-                                        <input type="radio" name="rating-star2" class="rating__control screen-reader" id="rc10">
-                                        <label for="rc6" class="rating__item">
-                                        <svg class="rating__star">
-                                            <use xlink:href="#star"></use>
-                                        </svg>
-                                        </label>
-                                        <label for="rc7" class="rating__item">
-                                        <svg class="rating__star">
-                                            <use xlink:href="#star"></use>
-                                        </svg>
-                                        <span class="screen-reader">2</span>
-                                        </label>
-                                        <label for="rc8" class="rating__item">
-                                        <svg class="rating__star">
-                                            <use xlink:href="#star"></use>
-                                        </svg>
-                                        <span class="screen-reader">3</span>
-                                        </label>
-                                        <label for="rc9" class="rating__item">
-                                        <svg class="rating__star">
-                                            <use xlink:href="#star"></use>
-                                        </svg>
-                                        <span class="screen-reader">4</span>
-                                        </label>
-                                        <label for="rc10" class="rating__item">
-                                        <svg class="rating__star">
-                                            <use xlink:href="#star"></use>
-                                        </svg>
-                                        <span class="screen-reader">5</span>
-                                        </label>   
-                                    </div>
-                                </div>
-
-                                <div class="col-xs-6 review2">
-                                    <h3>놀이</h3>
-                                    <div class="rating">
-                                        <input type="radio" name="rating-star2" class="rating__control screen-reader" id="rc6" checked="checked">
-                                        <input type="radio" name="rating-star2" class="rating__control screen-reader" id="rc7" checked="checked">
-                                        <input type="radio" name="rating-star2" class="rating__control screen-reader" id="rc8" checked="checked">
-                                        <input type="radio" name="rating-star2" class="rating__control screen-reader" id="rc9">
-                                        <input type="radio" name="rating-star2" class="rating__control screen-reader" id="rc10">
-                                        <label for="rc6" class="rating__item">
-                                        <svg class="rating__star">
-                                            <use xlink:href="#star"></use>
-                                        </svg>
-                                        </label>
-                                        <label for="rc7" class="rating__item">
-                                        <svg class="rating__star">
-                                            <use xlink:href="#star"></use>
-                                        </svg>
-                                        <span class="screen-reader">2</span>
-                                        </label>
-                                        <label for="rc8" class="rating__item">
-                                        <svg class="rating__star">
-                                            <use xlink:href="#star"></use>
-                                        </svg>
-                                        <span class="screen-reader">3</span>
-                                        </label>
-                                        <label for="rc9" class="rating__item">
-                                        <svg class="rating__star">
-                                            <use xlink:href="#star"></use>
-                                        </svg>
-                                        <span class="screen-reader">4</span>
-                                        </label>
-                                        <label for="rc10" class="rating__item">
-                                        <svg class="rating__star">
-                                            <use xlink:href="#star"></use>
-                                        </svg>
-                                        <span class="screen-reader">5</span>
-                                        </label>   
-                                    </div>
-                                </div>
-                            </div>
-
-
-                            <div id="review" class="row">
-                                <div class="col-xs-6">
-                                    <h3>소통</h3>
-                                    <div class="rating">
-                                        <input type="radio" name="rating-star2" class="rating__control screen-reader" id="rc6" checked="checked">
-                                        <input type="radio" name="rating-star2" class="rating__control screen-reader" id="rc7" checked="checked">
-                                        <input type="radio" name="rating-star2" class="rating__control screen-reader" id="rc8" checked="checked">
-                                        <input type="radio" name="rating-star2" class="rating__control screen-reader" id="rc9">
-                                        <input type="radio" name="rating-star2" class="rating__control screen-reader" id="rc10">
-                                        <label for="rc6" class="rating__item">
-                                        <svg class="rating__star">
-                                            <use xlink:href="#star"></use>
-                                        </svg>
-                                        </label>
-                                        <label for="rc7" class="rating__item">
-                                        <svg class="rating__star">
-                                            <use xlink:href="#star"></use>
-                                        </svg>
-                                        <span class="screen-reader">2</span>
-                                        </label>
-                                        <label for="rc8" class="rating__item">
-                                        <svg class="rating__star">
-                                            <use xlink:href="#star"></use>
-                                        </svg>
-                                        <span class="screen-reader">3</span>
-                                        </label>
-                                        <label for="rc9" class="rating__item">
-                                        <svg class="rating__star">
-                                            <use xlink:href="#star"></use>
-                                        </svg>
-                                        <span class="screen-reader">4</span>
-                                        </label>
-                                        <label for="rc10" class="rating__item">
-                                        <svg class="rating__star">
-                                            <use xlink:href="#star"></use>
-                                        </svg>
-                                        <span class="screen-reader">5</span>
-                                        </label>   
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div id="review" class="row">
-                                <div class="col-xs-6 review-text">
-                                    <h3>후기</h3>
-                                    <textarea>${bvo.review}</textarea>
-                                </div>
-                            </div>
-
+                            	<c:if test="${bvo.status != '시팅완료'}">
+                            		<div id="reviewEmpty">작성된 리뷰가 없습니다</div>
+                            	</c:if>
+                            	<c:if test="${bvo.status == '시팅완료'}">
+                            		<div class="col-xs-6">
+	                                    <h3>식사</h3>
+	                                    <div class="rating">
+	                                        <input type="radio" name="food" class="rating__control screen-reader" id="food1" value=1> 
+											<input type="radio" name="food" class="rating__control screen-reader" id="food2" value=2> 
+											<input type="radio" name="food" class="rating__control screen-reader" id="food3" value=3> 
+											<input type="radio" name="food" class="rating__control screen-reader" id="food4" value=4> 
+											<input type="radio" name="food" class="rating__control screen-reader" id="food5" value=5> 
+	                                        <label for="rc6" class="rating__item">
+	                                        <svg class="rating__star">
+	                                            <use xlink:href="#star"></use>
+	                                        </svg>
+	                                        </label>
+	                                        <label for="rc7" class="rating__item">
+	                                        <svg class="rating__star">
+	                                            <use xlink:href="#star"></use>
+	                                        </svg>
+	                                        <span class="screen-reader">2</span>
+	                                        </label>
+	                                        <label for="rc8" class="rating__item">
+	                                        <svg class="rating__star">
+	                                            <use xlink:href="#star"></use>
+	                                        </svg>
+	                                        <span class="screen-reader">3</span>
+	                                        </label>
+	                                        <label for="rc9" class="rating__item">
+	                                        <svg class="rating__star">
+	                                            <use xlink:href="#star"></use>
+	                                        </svg>
+	                                        <span class="screen-reader">4</span>
+	                                        </label>
+	                                        <label for="rc10" class="rating__item">
+	                                        <svg class="rating__star">
+	                                            <use xlink:href="#star"></use>
+	                                        </svg>
+	                                        <span class="screen-reader">5</span>
+	                                        </label>   
+	                                    </div>
+	                                </div>
+	                                
+	                                <div class="col-xs-6 review2">
+	                                    <h3>산책</h3>
+	                                    <div class="rating">
+	                                        <input type="radio" name="walk" class="rating__control screen-reader" id="walk1" value=1> 
+											<input type="radio" name="walk" class="rating__control screen-reader" id="walk2" value=2> 
+											<input type="radio" name="walk" class="rating__control screen-reader" id="walk3" value=3> 
+											<input type="radio" name="walk" class="rating__control screen-reader" id="walk4" value=4> 
+											<input type="radio" name="walk" class="rating__control screen-reader" id="walk5" value=5> 
+	                                        <label for="rc6" class="rating__item">
+	                                        <svg class="rating__star">
+	                                            <use xlink:href="#star"></use>
+	                                        </svg>
+	                                        </label>
+	                                        <label for="rc7" class="rating__item">
+	                                        <svg class="rating__star">
+	                                            <use xlink:href="#star"></use>
+	                                        </svg>
+	                                        <span class="screen-reader">2</span>
+	                                        </label>
+	                                        <label for="rc8" class="rating__item">
+	                                        <svg class="rating__star">
+	                                            <use xlink:href="#star"></use>
+	                                        </svg>
+	                                        <span class="screen-reader">3</span>
+	                                        </label>
+	                                        <label for="rc9" class="rating__item">
+	                                        <svg class="rating__star">
+	                                            <use xlink:href="#star"></use>
+	                                        </svg>
+	                                        <span class="screen-reader">4</span>
+	                                        </label>
+	                                        <label for="rc10" class="rating__item">
+	                                        <svg class="rating__star">
+	                                            <use xlink:href="#star"></use>
+	                                        </svg>
+	                                        <span class="screen-reader">5</span>
+	                                        </label>   
+	                                    </div>
+	                                </div>
+	                               </div>
+	                                
+	                                <div id="review" class="row">
+		                                <div class="col-xs-6">
+		                                    <h3>청결</h3>
+		                                    <div class="rating">
+		                                        <input type="radio" name="clean" class="rating__control screen-reader" id="clean1" value=1> 
+												<input type="radio" name="clean" class="rating__control screen-reader" id="clean2" value=2> 
+												<input type="radio" name="clean" class="rating__control screen-reader" id="clean3" value=3> 
+												<input type="radio" name="clean" class="rating__control screen-reader" id="clean4" value=4> 
+												<input type="radio" name="clean" class="rating__control screen-reader" id="clean5" value=5> 
+		                                        <label for="rc6" class="rating__item">
+		                                        <svg class="rating__star">
+		                                            <use xlink:href="#star"></use>
+		                                        </svg>
+		                                        </label>
+		                                        <label for="rc7" class="rating__item">
+		                                        <svg class="rating__star">
+		                                            <use xlink:href="#star"></use>
+		                                        </svg>
+		                                        <span class="screen-reader">2</span>
+		                                        </label>
+		                                        <label for="rc8" class="rating__item">
+		                                        <svg class="rating__star">
+		                                            <use xlink:href="#star"></use>
+		                                        </svg>
+		                                        <span class="screen-reader">3</span>
+		                                        </label>
+		                                        <label for="rc9" class="rating__item">
+		                                        <svg class="rating__star">
+		                                            <use xlink:href="#star"></use>
+		                                        </svg>
+		                                        <span class="screen-reader">4</span>
+		                                        </label>
+		                                        <label for="rc10" class="rating__item">
+		                                        <svg class="rating__star">
+		                                            <use xlink:href="#star"></use>
+		                                        </svg>
+		                                        <span class="screen-reader">5</span>
+		                                        </label>   
+		                                    
+		                                </div>
+		                             </div>
+		                             
+		                             <div class="col-xs-6 review2">
+	                                    <h3>놀이</h3>
+	                                    <div class="rating">
+	                                        <input type="radio" name="play" class="rating__control screen-reader" id="play1" value=1> 
+											<input type="radio" name="play" class="rating__control screen-reader" id="play2" value=2> 
+											<input type="radio" name="play" class="rating__control screen-reader" id="play3" value=3> 
+											<input type="radio" name="play" class="rating__control screen-reader" id="play4" value=4> 
+											<input type="radio" name="play" class="rating__control screen-reader" id="play5" value=5> 
+	                                        <label for="rc6" class="rating__item">
+	                                        <svg class="rating__star">
+	                                            <use xlink:href="#star"></use>
+	                                        </svg>
+	                                        </label>
+	                                        <label for="rc7" class="rating__item">
+	                                        <svg class="rating__star">
+	                                            <use xlink:href="#star"></use>
+	                                        </svg>
+	                                        <span class="screen-reader">2</span>
+	                                        </label>
+	                                        <label for="rc8" class="rating__item">
+	                                        <svg class="rating__star">
+	                                            <use xlink:href="#star"></use>
+	                                        </svg>
+	                                        <span class="screen-reader">3</span>
+	                                        </label>
+	                                        <label for="rc9" class="rating__item">
+	                                        <svg class="rating__star">
+	                                            <use xlink:href="#star"></use>
+	                                        </svg>
+	                                        <span class="screen-reader">4</span>
+	                                        </label>
+	                                        <label for="rc10" class="rating__item">
+	                                        <svg class="rating__star">
+	                                            <use xlink:href="#star"></use>
+	                                        </svg>
+	                                        <span class="screen-reader">5</span>
+	                                        </label>   
+	                                    </div>
+	                                </div>
+	                             </div>
+	                                
+	                                <div id="review" class="row">
+		                                <div class="col-xs-6">
+		                                    <h3>소통</h3>
+		                                    <div class="rating">
+		                                        <input type="radio" name="communication" class="rating__control screen-reader" id="communication1" value=1> 
+												<input type="radio" name="communication" class="rating__control screen-reader" id="communication2" value=2> 
+												<input type="radio" name="communication" class="rating__control screen-reader" id="communication3" value=3> 
+												<input type="radio" name="communication" class="rating__control screen-reader" id="communication4" value=4> 
+												<input type="radio" name="communication" class="rating__control screen-reader" id="communication5" value=5> 
+		                                        <label for="rc6" class="rating__item">
+		                                        <svg class="rating__star">
+		                                            <use xlink:href="#star"></use>
+		                                        </svg>
+		                                        </label>
+		                                        <label for="rc7" class="rating__item">
+		                                        <svg class="rating__star">
+		                                            <use xlink:href="#star"></use>
+		                                        </svg>
+		                                        <span class="screen-reader">2</span>
+		                                        </label>
+		                                        <label for="rc8" class="rating__item">
+		                                        <svg class="rating__star">
+		                                            <use xlink:href="#star"></use>
+		                                        </svg>
+		                                        <span class="screen-reader">3</span>
+		                                        </label>
+		                                        <label for="rc9" class="rating__item">
+		                                        <svg class="rating__star">
+		                                            <use xlink:href="#star"></use>
+		                                        </svg>
+		                                        <span class="screen-reader">4</span>
+		                                        </label>
+		                                        <label for="rc10" class="rating__item">
+		                                        <svg class="rating__star">
+		                                            <use xlink:href="#star"></use>
+		                                        </svg>
+		                                        <span class="screen-reader">5</span>
+		                                        </label>   
+		                                    </div>
+		                                </div>
+		                            </div>
+		                            
+		                            <div id="review" class="row">
+		                                <div class="col-xs-6 review-text">
+		                                    <h3>후기</h3>
+		                                    <textarea>${bvo.review}</textarea>
+		                                </div>
+		                            </div>
+                            	</c:if>
 
                         </div>
 
@@ -445,6 +452,31 @@
 </body>
 
 <script type="text/javascript">
+
+//리뷰별표시
+$(document).ready(function(){
+	var clean = '<c:out value="${bvo.clean}"/>';
+	var food = '<c:out value="${bvo.food}"/>';
+	var play = '<c:out value="${bvo.play}"/>';
+	var walk = '<c:out value="${bvo.walk}"/>';
+	var communication = '<c:out value="${bvo.communication}"/>';
+
+	
+	var reviewArryValue = [clean, food, play, walk, communication];
+	var reviewArryName = ['clean', 'food', 'play', 'walk', 'communication'];
+	
+	//DB에 있는값과 매칭시켜서 cheaked속성 추가
+	for(var i=0; i<=4; i++) {
+		for(var j=1; j<=5; j++) {
+			if(reviewArryValue[i] == j){
+				$("#"+ reviewArryName[i] + j).attr("checked", "checked");
+				break;
+			}
+		}
+	}
+	
+});
+
 //이미지 눌렀을때(이미지보기)
 $(".viewImg").on("click", function() {
 	var $this = $(this);

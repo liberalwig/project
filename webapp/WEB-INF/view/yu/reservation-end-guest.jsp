@@ -75,7 +75,7 @@
 												<td><div class="btn-re-gradient yellow mini">예약완료</div></td>
 											</c:when>
 											<c:when test="${BookingVo.status == '펫시팅중'}">
-												<td id="reviewForm" data-no="${BookingVo.bookingNo}"><div class="btn-re-gradient orange mini">펫시팅중</div></td>
+												<td id="reviewForm" data-no="${BookingVo.bookingNo}"><div class="btn-re-gradient orange mini cursorPointer">펫시팅중</div></td>
 											</c:when>
 											<c:when test="${BookingVo.status == '시팅완료'}">
 												<td><div class="btn-re-gradient blue mini">시팅완료</div></td>
@@ -123,7 +123,7 @@
 									<input type="radio" name="food" class="rating__control screen-reader" id="food2" value=2> 
 									<input type="radio" name="food" class="rating__control screen-reader" id="food3" value=3> 
 									<input type="radio" name="food" class="rating__control screen-reader" id="food4" value=4> 
-									<input type="radio" name="food" class="rating__control screen-reader" id="food5" value=5 checked> 
+									<input type="radio" name="food" class="rating__control screen-reader" id="food5" value=5> 
 									
 									<label for="food1" class="rating__item"> 
 										<svg class="rating__star">
@@ -166,7 +166,7 @@
 									<input type="radio" name="walk" class="rating__control screen-reader" id="walk2" value=2> 
 									<input type="radio" name="walk" class="rating__control screen-reader" id="walk3" value=3> 
 									<input type="radio" name="walk" class="rating__control screen-reader" id="walk4" value=4> 
-									<input type="radio" name="walk" class="rating__control screen-reader" id="walk5" value=5 checked> 
+									<input type="radio" name="walk" class="rating__control screen-reader" id="walk5" value=5> 
 									
 									<label for="walk1" class="rating__item"> 
 										<svg class="rating__star">
@@ -216,7 +216,7 @@
 									<input type="radio" name="clean" class="rating__control screen-reader" id="clean2" value=2> 
 									<input type="radio" name="clean" class="rating__control screen-reader" id="clean3" value=3> 
 									<input type="radio" name="clean" class="rating__control screen-reader" id="clean4" value=4> 
-									<input type="radio" name="clean" class="rating__control screen-reader" id="clean5" value=5 checked> 
+									<input type="radio" name="clean" class="rating__control screen-reader" id="clean5" value=5> 
 									
 									<label for="clean1" class="rating__item"> 
 										<svg class="rating__star">
@@ -258,7 +258,7 @@
 									<input type="radio" name="play" class="rating__control screen-reader" id="play2" value=2> 
 									<input type="radio" name="play" class="rating__control screen-reader" id="play3" value=3> 
 									<input type="radio" name="play" class="rating__control screen-reader" id="play4" value=4> 
-									<input type="radio" name="play" class="rating__control screen-reader" id="play5" value=5 checked> 
+									<input type="radio" name="play" class="rating__control screen-reader" id="play5" value=5> 
 									
 									<label for="play1" class="rating__item"> 
 										<svg class="rating__star">
@@ -306,7 +306,7 @@
 									<input type="radio" name="communication" class="rating__control screen-reader" id="communication2" value=2> 
 									<input type="radio" name="communication" class="rating__control screen-reader" id="communication3" value=3> 
 									<input type="radio" name="communication" class="rating__control screen-reader" id="communication4" value=4> 
-									<input type="radio" name="communication" class="rating__control screen-reader" id="communication5" value=5 checked> 
+									<input type="radio" name="communication" class="rating__control screen-reader" id="communication5" value=5> 
 									
 									<label for="communication1" class="rating__item"> 
 										<svg class="rating__star">
