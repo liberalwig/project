@@ -2,6 +2,7 @@ package com.javaex.vo;
 
 public class FinishPVo {
 	private int bookingNo;
+	private int usersNo;
 	private String name;
 	private String hp;
 	private String adress1;
@@ -15,11 +16,14 @@ public class FinishPVo {
 	private int days;
 	
 	public FinishPVo() {
+		super();
 	}
 
-	public FinishPVo(int bookingNo, String name, String hp, String adress1, String adress2, String adress3,
+	public FinishPVo(int bookingNo, int usersNo, String name, String hp, String adress1, String adress2, String adress3,
 			String checkin, String checkout, int ea, String note, int bookingDate, int days) {
+		super();
 		this.bookingNo = bookingNo;
+		this.usersNo = usersNo;
 		this.name = name;
 		this.hp = hp;
 		this.adress1 = adress1;
@@ -39,6 +43,14 @@ public class FinishPVo {
 
 	public void setBookingNo(int bookingNo) {
 		this.bookingNo = bookingNo;
+	}
+
+	public int getUsersNo() {
+		return usersNo;
+	}
+
+	public void setUsersNo(int usersNo) {
+		this.usersNo = usersNo;
 	}
 
 	public String getName() {
@@ -131,10 +143,10 @@ public class FinishPVo {
 
 	@Override
 	public String toString() {
-		return "FinishPVo [bookingNo=" + bookingNo + ", name=" + name + ", hp=" + hp + ", adress1=" + adress1
-				+ ", adress2=" + adress2 + ", adress3=" + adress3 + ", checkin=" + checkin + ", checkout=" + checkout
-				+ ", ea=" + ea + ", note=" + note + ", bookingDate=" + bookingDate + ", days=" + days + "]";
+		return "FinishPVo [bookingNo=" + bookingNo + ", usersNo=" + usersNo + ", name=" + name + ", hp=" + hp
+				+ ", adress1=" + adress1 + ", adress2=" + adress2 + ", adress3=" + adress3 + ", checkin=" + checkin
+				+ ", checkout=" + checkout + ", ea=" + ea + ", note=" + note + ", bookingDate=" + bookingDate
+				+ ", days=" + days + "]";
 	}
-
 	
 }

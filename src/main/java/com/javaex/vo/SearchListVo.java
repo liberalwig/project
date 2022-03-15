@@ -14,6 +14,7 @@ public class SearchListVo {
 	private String review;          //리뷰
 	private double puppyPoint;  	//퍼피포인트
 	private double reviewPoint;     //리뷰포인트
+	private int hostView;
 	private String hostName;        //이름
 	private String hostCost;        //가
 	private String adress1;         //주소
@@ -33,14 +34,14 @@ public class SearchListVo {
 	private String searchKeyword;
 	private String searchData;
 	
-	public SearchListVo() {
 	
-	}
-
+	//디폴트
+	public SearchListVo() {}
+	
 	public SearchListVo(int bookingNo, int hostNo, String checkin, String checkout, int ea, int bookingDate, int days,
-			String note, String status, String review, double puppyPoint, double reviewPoint, String hostName,
-			String hostCost, String adress1, String adress2, String adress3, double x, double y, String intro,
-			String path, int clean, int food, int play, int walk, int communication, String searchKeyword,
+			String note, String status, String review, double puppyPoint, double reviewPoint, int hostView,
+			String hostName, String hostCost, String adress1, String adress2, String adress3, double x, double y,
+			String intro, String path, int clean, int food, int play, int walk, int communication, String searchKeyword,
 			String searchData) {
 		super();
 		this.bookingNo = bookingNo;
@@ -55,6 +56,7 @@ public class SearchListVo {
 		this.review = review;
 		this.puppyPoint = puppyPoint;
 		this.reviewPoint = reviewPoint;
+		this.hostView = hostView;
 		this.hostName = hostName;
 		this.hostCost = hostCost;
 		this.adress1 = adress1;
@@ -167,6 +169,14 @@ public class SearchListVo {
 
 	public void setReviewPoint(double reviewPoint) {
 		this.reviewPoint = reviewPoint;
+	}
+
+	public int getUsersType() {
+		return hostView;
+	}
+
+	public void setUsersType(int usersType) {
+		this.hostView = usersType;
 	}
 
 	public String getHostName() {
@@ -302,12 +312,14 @@ public class SearchListVo {
 		return "SearchListVo [bookingNo=" + bookingNo + ", hostNo=" + hostNo + ", checkin=" + checkin + ", checkout="
 				+ checkout + ", ea=" + ea + ", bookingDate=" + bookingDate + ", days=" + days + ", note=" + note
 				+ ", status=" + status + ", review=" + review + ", puppyPoint=" + puppyPoint + ", reviewPoint="
-				+ reviewPoint + ", hostName=" + hostName + ", hostCost=" + hostCost + ", adress1=" + adress1
-				+ ", adress2=" + adress2 + ", adress3=" + adress3 + ", x=" + x + ", y=" + y + ", intro=" + intro
-				+ ", path=" + path + ", clean=" + clean + ", food=" + food + ", play=" + play + ", walk=" + walk
-				+ ", communication=" + communication + ", searchKeyword=" + searchKeyword + ", searchData=" + searchData
-				+ "]";
+				+ reviewPoint + ", hostView=" + hostView + ", hostName=" + hostName + ", hostCost=" + hostCost
+				+ ", adress1=" + adress1 + ", adress2=" + adress2 + ", adress3=" + adress3 + ", x=" + x + ", y=" + y
+				+ ", intro=" + intro + ", path=" + path + ", clean=" + clean + ", food=" + food + ", play=" + play
+				+ ", walk=" + walk + ", communication=" + communication + ", searchKeyword=" + searchKeyword
+				+ ", searchData=" + searchData + "]";
 	}
+	
+
 	
 	
 	
