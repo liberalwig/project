@@ -20,8 +20,8 @@ public class SearchListController {
 		
 		System.out.println("searchList.controller");
 		
-		List<SearchListVo> SearchListService = searchListService.searchList(searchListVo);
-		
+		List<SearchListVo> SearchListService = searchListService.searchListD(searchListVo);
+		System.out.println(SearchListService);
 		model.addAttribute("SearchList", SearchListService);
 		
 		return"song/searchList";

@@ -98,7 +98,7 @@
             <div class="search_web">
             	<!-- 반복영역 -->
                 <div class="search_result" class="col-md-6">
-	                <c:if test="${empty SearchList}">
+	                <c:if test="${not empty SearchList}">
 			                <c:forEach items="${SearchList}" var="SearchListVo">
 				                <div class="search_result_list"></div>
 				                <div class="row search_cursor_pointer" onclick="location.href='/project/host2/info/${SearchListVo.hostNo}';">
