@@ -23,5 +23,14 @@ public class SearchListDao {
 		return searchList;
 	}
 	
+	public List<SearchListVo> getSearchListD(SearchListVo searchListVo) {
+		
+		System.out.println("SearchListDao");
+		
+		List<SearchListVo> searchListD = sqlSession.selectList("searchList.selectSearchListD", searchListVo);
+
+		return searchListD;
+	}
+	
 	
 }
