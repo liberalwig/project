@@ -61,7 +61,7 @@
 					<div class="inform">
 						<div class="row">
 							<p class="col-md-6">날짜</p>
-							<p class="col-md-6">${finishPVo.checkin} ~ ${finishPVo.checkout}</p>
+							<p class="col-md-6">${finishPVo.checkin} ~ <br>${finishPVo.checkout}</p>
 						</div>
 
 						<div class="row">
