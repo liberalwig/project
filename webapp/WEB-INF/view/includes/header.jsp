@@ -135,7 +135,7 @@
 	        <div class="modal-body" class="container-fluid">
 	            <div id="u-idPass" class="row">
 	                <div>
-	                    <input id="id" name="id" type="text" placeholder="아이디">
+	                    <input id="join-u-id" name="id" type="text" placeholder="아이디">
 	                </div>
 	                <button id="overlap">중복확인</button>
 	                <p></p>
@@ -143,12 +143,12 @@
 	            
 	            <div class="row">
 	                    <input id="join-u-pass" name="password" type="password" placeholder="비밀번호">
-	                    <input id="u-name" name="name" type="text" placeholder="이름">
+	                    <input id="join-u-name" name="name" type="text" placeholder="이름">
 	                    <p>정부 발급 신분증에 표시된 이름과 일치하는지 확인하세요.</p>
 	            </div>
 	
 	            <div class="row">
-	                <input id="birth" name="hp" type="text" placeholder="휴대폰번호">
+	                <input id="join-u-hp" name="hp" type="text" placeholder="휴대폰번호">
 	                <p>11자리의 숫자를 일렬로 입력해주세요.</p>
 	            </div>
 	
@@ -206,7 +206,7 @@
 	                    <hr>
 	                </div>
 	            </div>
-	
+<!-- 	
 	            <div class="row paddingLogin">
 	                <div class="connect">
 	                    <img src="/project/assets/images/login_facebook.png">
@@ -226,12 +226,12 @@
 	                    <img id="naver-img" src="/project/assets/images/login_naver.png">
 	                    <h2 id="naver">네이버로 로그인하기</h2> 
 	                </div>
-	            </div>
+	            </div> -->
 	
 	            <div class="row paddingLogin">
 	                <div id="joinH" class="connect">
 	                    <img id="join-img" src="/project/assets/images/login_message.png">
-	                    <h2 id="join-text">개어비앤비로 회원가입하기</h2> 
+	                    <h2 id="join-text">개어비앤비 회원가입하기</h2> 
 	                </div>
 	            </div>
 	            
@@ -245,8 +245,14 @@
     <!-- 달력-->
     <script src="https://cdn.jsdelivr.net/npm/litepicker/dist/bundle.js" crossorigin="anonymous"></script>
     <script src="${pageContext.request.contextPath}/assets/js/litepicker.js"></script>
+    <script src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.2.js" charset="utf-8"></script>
     
     <script>
+    	$("#join-text").on("click", function(){
+    		$('#loginForm').modal('hide');
+    		$('#joinForm').modal('show');
+    	});
+    
     	/* 회원가입버튼누름 */
     	$("#join").on("click", function(){
     		//초기화
