@@ -14,7 +14,7 @@ public class SearchListService {
 	@Autowired
 	private SearchListDao searchListDao;
 	//리스트
-	public List<SearchListVo> searchList(SearchListVo searchListVo) {
+	public List<SearchListVo> searchListD(SearchListVo searchListVo) {
 			
 			System.out.println("searchListService.getSearchList()");
 			System.out.println(searchListVo.getSearchData());
@@ -31,13 +31,10 @@ public class SearchListService {
 				System.out.println(array[1]);
 				
 				return searchListDao.getSearchList(searchListVo);
+				
 			}
 			
 			 
-			
-			
-			
-		
 			
 		}
 	

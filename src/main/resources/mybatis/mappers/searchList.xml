@@ -43,28 +43,28 @@
 						and   c.hostNo = h.hostNo
 						and   a.hostNo = h.hostNo
 						and hostView = 1]]> 
-						  <include refid="search"></include>
-						  <choose>
-								<when test="orderType = null">
-									order by h.hostNo desc
-								</when>
-								<when test="orderType = 1">
-									order by c.clean desc
-								</when>
-								<when test="orderType = 2">
-									order by c.walk desc
-								</when>
-								<when test="orderType = 3">
-									order by c.play desc
-								</when>
-								<when test="orderType = 4">
-									order by c.food desc
-								</when>
-								<when test="orderType = 5">
-									order by c.communication desc
-								</when>
-						  </choose> 
-			</select>
+					    <include refid="search"></include>
+					    <choose>
+							  <when test="orderType = null">
+								  order by h.hostNo desc
+							  </when>
+							  <when test="orderType = 1">
+								  order by c.clean desc
+							  </when>
+							  <when test="orderType = 2">
+								  order by c.walk desc
+							  </when>
+							  <when test="orderType = 3">
+								  order by c.play desc
+							  </when>
+							  <when test="orderType = 4">
+								  order by c.food desc
+							  </when>
+							  <when test="orderType = 5">
+								  order by c.communication desc
+							  </when>
+					  </choose> 
+			</select>	
 		
 			<select id="selectSearchListD" parameterType="SearchListVo" resultType="SearchListVo">
 				<![CDATA[
