@@ -114,7 +114,7 @@
 		});
 	});
 
-	//등록 완료를 눌렀을때
+	//수정완료를 눌렀을때
 	$("#updatebtn").on("click", function(){
 		//userVo
 		var userVo ={

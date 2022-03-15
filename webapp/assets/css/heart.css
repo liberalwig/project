@@ -26,11 +26,7 @@ a:hover {text-decoration: none; color: #000}
 #content { float: left; width: 1200px; margin: 0px 0px 100px 0px;}
 
 
-body{
-   margin-top:80px;
-}
-  
- /*어사이드*/
+/*어사이드*/
 #aside {
 float: left;
 width: 240px;
@@ -76,6 +72,13 @@ display: none;
 }
 
 /* 메인컨텐츠(content) */
+
+#now {
+    font-size: 30px;
+    font-weight: bold;
+    margin: 5px 0px 10px 0px;
+}
+
 #content-head {
     margin: 45px 0px 30px 30px;
  }
