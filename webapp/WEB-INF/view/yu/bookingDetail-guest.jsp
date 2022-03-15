@@ -53,13 +53,13 @@
                         <div class="info">
                             <h2>펫사진</h2>
                             <hr>
-                            <c:if test="${pList.size() <= 0}">
+                            <c:if test="${empty pList[0]}">
                             	<div id="galleryArea">
                             		<img id="fileless" src="https://img.icons8.com/pastel-glyph/2x/image-file.png" alt="파일 아이콘" >
 									<p class="message">아직 업로드된 이미지가 없습니다.</p>
                             	</div>
                             </c:if>
-                            <c:if test="${pList.size() > 0}">
+                            <c:if test="${!empty pList[0]}">
                             	<c:forEach items="${pList}" var="pListDate">
 	                            	<div class="wrapper">
 	                            	<c:if test="${pListDate[0].photoDate != null}">
@@ -453,60 +453,60 @@
 
 <script type="text/javascript">
 
-//리뷰별표시
-$(document).ready(function(){
-	var clean = '<c:out value="${bvo.clean}"/>';
-	var food = '<c:out value="${bvo.food}"/>';
-	var play = '<c:out value="${bvo.play}"/>';
-	var walk = '<c:out value="${bvo.walk}"/>';
-	var communication = '<c:out value="${bvo.communication}"/>';
-
+	//리뷰별표시
+	$(document).ready(function(){
+		var clean = '<c:out value="${bvo.clean}"/>';
+		var food = '<c:out value="${bvo.food}"/>';
+		var play = '<c:out value="${bvo.play}"/>';
+		var walk = '<c:out value="${bvo.walk}"/>';
+		var communication = '<c:out value="${bvo.communication}"/>';
 	
-	var reviewArryValue = [clean, food, play, walk, communication];
-	var reviewArryName = ['clean', 'food', 'play', 'walk', 'communication'];
-	
-	//DB에 있는값과 매칭시켜서 cheaked속성 추가
-	for(var i=0; i<=4; i++) {
-		for(var j=1; j<=5; j++) {
-			if(reviewArryValue[i] == j){
-				$("#"+ reviewArryName[i] + j).attr("checked", "checked");
-				break;
+		
+		var reviewArryValue = [clean, food, play, walk, communication];
+		var reviewArryName = ['clean', 'food', 'play', 'walk', 'communication'];
+		
+		//DB에 있는값과 매칭시켜서 cheaked속성 추가
+		for(var i=0; i<=4; i++) {
+			for(var j=1; j<=5; j++) {
+				if(reviewArryValue[i] == j){
+					$("#"+ reviewArryName[i] + j).attr("checked", "checked");
+					break;
+				}
 			}
 		}
-	}
-	
-});
-
-//이미지 눌렀을때(이미지보기)
-$(".viewImg").on("click", function() {
-	var $this = $(this);
-	var no = $this.data("no");
-	getImg(no);
-});
-
-//이미지 불러오기(이미지보기)
-function getImg(no) {
-
-	//var authUserNo = $("#btnImgUpload").data("uno");
-
-	$.ajax({
 		
-		url : "${pageContext.request.contextPath}/viewImg",
-		type : "post",
-		//contentType : "application/json",
-		data : { no : no },
-		dataType : "json",
-		success : function(pvo) {
-			$("#viewModal").modal('show');
-			$("#viewModelImg").attr("src", '${pageContext.request.contextPath}/photo/' + pvo.saveName);
-			$("#viewModelContent").html(pvo.photoTitle);
-			$("#listNo").val(pvo.photoNo);
-		},
-		error : function(XHR, status, error) {
-			console.error(status + " : " + error);
-		}
 	});
-}
+	
+	//이미지 눌렀을때(이미지보기)
+	$(".viewImg").on("click", function() {
+		var $this = $(this);
+		var no = $this.data("no");
+		getImg(no);
+	});
+	
+	//이미지 불러오기(이미지보기)
+	function getImg(no) {
+	
+		//var authUserNo = $("#btnImgUpload").data("uno");
+	
+		$.ajax({
+			
+			url : "${pageContext.request.contextPath}/viewImg",
+			type : "post",
+			//contentType : "application/json",
+			data : { no : no },
+			dataType : "json",
+			success : function(pvo) {
+				$("#viewModal").modal('show');
+				$("#viewModelImg").attr("src", '${pageContext.request.contextPath}/photo/' + pvo.saveName);
+				$("#viewModelContent").html(pvo.photoTitle);
+				$("#listNo").val(pvo.photoNo);
+			},
+			error : function(XHR, status, error) {
+				console.error(status + " : " + error);
+			}
+		});
+	}
 </script>
 
 </html>

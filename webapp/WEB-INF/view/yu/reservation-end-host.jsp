@@ -98,7 +98,7 @@
 								<c:forEach items="${bList}" var="BookingVo">
 									<tr class="bRow" data-bookingno="${BookingVo.bookingNo}">
 	                                    <td><input type="radio" name="list-radio"></td>
-										<td id="no">${BookingVo.bookingNo}</td>
+										<td id="no" data-bookingno="${BookingVo.bookingNo}">${BookingVo.bookingNo}</td>
 										<td><img src="/project/assets/images/reservation-dog.png"></td>
 										<td>${BookingVo.guestName}</td>
 										<td>${BookingVo.checkin} ~ ${BookingVo.checkout}</td>
