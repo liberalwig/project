@@ -4,6 +4,9 @@ import java.io.BufferedOutputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
@@ -23,6 +26,7 @@ public class BookingService {
 
 	@Autowired
 	BookingDao bookingDao;
+	private long diffDay;
 
 	// 예약 + 호스트 리스트 가져오기
 	public List<BookingVo> bookingBeforeGuest(int usersNo) {
@@ -61,7 +65,7 @@ public class BookingService {
 	}
 
 	// 사진업로드
-	public void photoInsert(PhotoVo pvo) {
+	public void photoInsert(PhotoVo pvo) throws ParseException {
 
 		MultipartFile file = pvo.getFile();
 
@@ -93,10 +97,23 @@ public class BookingService {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		
+		//일차구하기
+		//값 가져오기
+		int bookingNo = pvo.getBookingNo();
+		BookingVo bvo = bookingDao.bookingDetailHost(bookingNo);
+		
+		//일수구하는 함수호출
+		String checkInDate = bvo.getCheckin();
+		String uploadDate = pvo.getPhotoDate();
+		checkInDate.replace("-","");
+		long diffDay = getDays(checkInDate, uploadDate);
+		long days = diffDay + 1;
 
 		// DB에 저장
 		pvo.setPhotoPath(filePath);
 		pvo.setSaveName(saveName);
+		pvo.setDay(days);
 
 		// 첫업로드인지 확인(status 변경위해)
 		List<PhotoVo> PList = bookingGallery(pvo.getBookingNo(), 1);
@@ -106,6 +123,27 @@ public class BookingService {
 		}
 
 		bookingDao.photoInsert(pvo);
+	}
+	
+	//일수구하기
+	public long getDays(String strCheckInDate, String strUploadDate) throws ParseException {
+		
+		String dateFormat = "yyyymmdd";
+		
+		//SimpleDateFormat을 이용하여 두 날짜의 객체를 생성한다.
+		SimpleDateFormat sdf = new SimpleDateFormat(dateFormat);
+		try {
+			Date checkInDate = sdf.parse(strCheckInDate);
+			Date uploadDate = sdf.parse(strUploadDate);
+			
+			//두날짜 사이의 시간 차이(ms)를 하루동안의 ms(24시*60분*60초*1000밀리초)로 나눈다.
+			diffDay = (uploadDate.getTime() - checkInDate.getTime()) / (24*60*60*1000);
+			
+		}catch (ParseException e) {
+			e.printStackTrace();
+		}
+		
+		return diffDay;
 	}
 
 	// 사진상세보기

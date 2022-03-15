@@ -62,9 +62,6 @@ ul>li {
 
 
 /* 결제대기버튼 */
-.cursorPointer {
-	cursor: pointer;
-}
 
 .btn-re {
 	position: relative;
@@ -251,7 +248,7 @@ a:hover {color: #000000; text-decoration-line: none;}
 	/* opacity: 0.8; */
 	
 }
-/* <div class="fc-daygrid-event-harness fc-daygrid-event-harness-abs" style="top: 0px; left: 0px; right: -161.979px;"><a class="fc-daygrid-event fc-daygrid-block-event fc-h-event fc-event fc-event-start fc-event-end fc-event-future" tabindex="0" style="border-color: rgb(255, 175, 176); background-color: rgb(255, 175, 176); z-index: 10;"><div class="fc-event-main" style="color: rgb(0, 0, 0);"><div class="fc-event-main-frame"><div class="fc-event-title-container"><div class="fc-event-title fc-sticky">박성훈</div></div></div></div></a></div>*/
+
 .fc-daygrid-event-harness-abs {
 	z-index: 10; 
 }
@@ -259,5 +256,9 @@ a:hover {color: #000000; text-decoration-line: none;}
 /* 폰트 사이즈 */
 .font-l {
 	font-size: 20px;
+}
+
+.cursorPointer {
+	cursor: pointer;
 }
 

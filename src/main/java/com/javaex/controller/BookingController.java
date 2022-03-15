@@ -1,5 +1,6 @@
 package com.javaex.controller;
 
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -171,7 +172,6 @@ public class BookingController {
 		for(int i=0; (i+1)<=bvo.getDays(); i++) {
 			//포토 리스트 가져오기
 			int day = i+1;
-			System.out.println(day + " " + bookingNo);
 			List<PhotoVo> pListDate = bookingService.bookingGallery(bookingNo, day);
 			pList.add(pListDate);
 		}
@@ -184,10 +184,11 @@ public class BookingController {
 	
 	//인증사진 업로드
 	@RequestMapping("/photoInsert")
-	public String photoInsert(Model model, @ModelAttribute PhotoVo pvo) {
+	public String photoInsert(Model model, @ModelAttribute PhotoVo pvo) throws ParseException {
 		System.out.println("사진업로드");
 		
 		String date = pvo.getPhotoDate();
+		System.out.println("date: " + date);
 		date = date.replace(",", "");
 		pvo.setPhotoDate(date);
 		bookingService.photoInsert(pvo);

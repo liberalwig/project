@@ -124,6 +124,7 @@ public class BookingDao {
 	
 	//노출여부업데이트
 	public void viewAble(int hostNo, int hostview) {
+		
 		HostVo hvo = new HostVo();
 		hvo.setHostview(hostview);
 		hvo.setHostNo(hostNo);
