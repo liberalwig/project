@@ -42,7 +42,7 @@
 	                   	<ul class="dropdown-menu" role="menu">
 	                        <li id="login"><a href="#">로그인</a></li>
 	                        <li id="join"><a href="#">회원가입</a></li>
-	                      	<!--  <li class="divider"></li> 줄넣는 방법-->
+	                      	<!--<li class="divider"></li> 줄넣는 방법-->
 	                   	</ul>
                    	</div>
                 </c:if>

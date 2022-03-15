@@ -55,12 +55,12 @@
 											<span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>&nbsp;메시지 보내기
 										</h4>
 									</button>
+									<button id="btn2" type="button" class="btn btn-default active">
+										<h4>
+											<span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
+										</h4>
+									</button>
 								</div>
-								<button id="btn2" type="button" class="btn btn-default active">
-									<h4>
-										<span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
-									</h4>
-								</button>
 							</c:when>
 							<c:otherwise>
 								<div id="btnbox1">
