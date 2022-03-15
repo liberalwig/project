@@ -187,10 +187,6 @@ public class BookingController {
 	public String photoInsert(Model model, @ModelAttribute PhotoVo pvo) {
 		System.out.println("사진업로드");
 		
-		/*String date = pvo.getUploadDate();
-		String[] array = date.split(" ");
-		pvo.setUploadDate(array[0]);*/
-		
 		String date = pvo.getPhotoDate();
 		date = date.replace(",", "");
 		pvo.setPhotoDate(date);

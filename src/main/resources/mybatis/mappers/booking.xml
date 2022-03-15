@@ -30,6 +30,7 @@
 			and h.usersno = u.usersno
 			and b.usersno = #{usersNo}
 			and b.status in('승인대기', '결제대기')
+			order by bookingNo desc
 		]]>
 	</select>
 	
@@ -59,6 +60,7 @@
 			where b.usersNo = u.usersNo
 			and hostNo = #{hostNo}
 			and b.status in('승인대기', '결제대기')
+			order by bookingNo desc
 		]]>
 	</select>
 	
@@ -89,6 +91,7 @@
 			and hostNo = #{hostNo}
 			and	checkin = #{checkin}
 			and b.status in('승인대기', '결제대기')
+			order by bookingNo desc
 		]]>
 	</select>
 	
@@ -218,6 +221,7 @@
 			where b.usersNo = u.usersNo
 			and b.hostNo = #{hostNo}
 			and b.status in('예약완료', '펫시팅중', '시팅완료')
+			order by bookingNo desc
 		]]>
 	</select>
 	
@@ -320,6 +324,7 @@
 			and h.usersno = u.usersno
 			and b.usersno = #{usersNo}
 			and b.status in('예약완료', '펫시팅중', '시팅완료')
+			order by bookingNo desc
 		]]>
 	</select>
 	

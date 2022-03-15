@@ -59,13 +59,13 @@
                         <div class="info">
                             <h2>펫사진</h2>
                             <hr>
-                            <c:if test="${pList.size() <= 0}">
+                            <c:if test="${empty pList[0]}">
                             	<div id="galleryArea">
                             		<img id="fileless" src="https://img.icons8.com/pastel-glyph/2x/image-file.png" alt="파일 아이콘" >
 									<p class="message">아직 업로드된 이미지가 없습니다.</p>
                             	</div>
                             </c:if>
-                            <c:if test="${pList.size() > 0}">
+                            <c:if test="${!empty pList[0]}">
                             <c:forEach items="${pList}" var="pListDate">
                          		
                             	<div class="wrapper">
@@ -194,12 +194,12 @@
 	                                <div class="col-xs-6">
 	                                    <h3>식사</h3>
 	                                    <div class="rating">
-					                           <input type="radio" name="food" class="rating__control screen-reader" id="food1" > 
-					                           <input type="radio" name="food" class="rating__control screen-reader" id="food2" checked> 
-					                           <input type="radio" name="food" class="rating__control screen-reader" id="food3" > 
-					                           <input type="radio" name="food" class="rating__control screen-reader" id="food4" > 
-					                           <input type="radio" name="food" class="rating__control screen-reader" id="food5" >
-					                           
+					                           	<input type="radio" name="food" class="rating__control screen-reader" id="food1" value=1> 
+												<input type="radio" name="food" class="rating__control screen-reader" id="food2" value=2> 
+												<input type="radio" name="food" class="rating__control screen-reader" id="food3" value=3> 
+												<input type="radio" name="food" class="rating__control screen-reader" id="food4" value=4> 
+												<input type="radio" name="food" class="rating__control screen-reader" id="food5" value=5> 
+		                                         
 					                           <label for="food1" class="rating__item"> 
 					                              <svg class="rating__star">
 					                                     <use xlink:href="#star"></use>
@@ -236,12 +236,12 @@
 	                                <div class="col-xs-6 review2">
 	                                    <h3>산책</h3>
 	                                    <div class="rating">
-					                           <input type="radio" name="walk" class="rating__control screen-reader" id="walk1" value=1> 
-					                           <input type="radio" name="walk" class="rating__control screen-reader" id="walk2" value=2> 
-					                           <input type="radio" name="walk" class="rating__control screen-reader" id="walk3" value=3> 
-					                           <input type="radio" name="walk" class="rating__control screen-reader" id="walk4" value=4> 
-					                           <input type="radio" name="walk" class="rating__control screen-reader" id="walk5" value=5 checked> 
-					                           
+					                           	<input type="radio" name="walk" class="rating__control screen-reader" id="walk1" value=1> 
+												<input type="radio" name="walk" class="rating__control screen-reader" id="walk2" value=2> 
+												<input type="radio" name="walk" class="rating__control screen-reader" id="walk3" value=3> 
+												<input type="radio" name="walk" class="rating__control screen-reader" id="walk4" value=4> 
+												<input type="radio" name="walk" class="rating__control screen-reader" id="walk5" value=5> 
+		                                        
 					                           <label for="walk1" class="rating__item"> 
 					                              <svg class="rating__star">
 					                                      <use xlink:href="#star"></use>
@@ -280,12 +280,12 @@
 	                                <div class="col-xs-6">
 	                                    <h3>청결</h3>
 	                                    <div class="rating">
-					                           <input type="radio" name="clean" class="rating__control screen-reader" id="clean1" value=1> 
-					                           <input type="radio" name="clean" class="rating__control screen-reader" id="clean2" value=2> 
-					                           <input type="radio" name="clean" class="rating__control screen-reader" id="clean3" value=3> 
-					                           <input type="radio" name="clean" class="rating__control screen-reader" id="clean4" value=4> 
-					                           <input type="radio" name="clean" class="rating__control screen-reader" id="clean5" value=5 checked> 
-					                           
+					                           	<input type="radio" name="clean" class="rating__control screen-reader" id="clean1" value=1> 
+												<input type="radio" name="clean" class="rating__control screen-reader" id="clean2" value=2> 
+												<input type="radio" name="clean" class="rating__control screen-reader" id="clean3" value=3> 
+												<input type="radio" name="clean" class="rating__control screen-reader" id="clean4" value=4> 
+												<input type="radio" name="clean" class="rating__control screen-reader" id="clean5" value=5> 
+		                                        
 					                           <label for="clean1" class="rating__item"> 
 					                              <svg class="rating__star">
 					                                      <use xlink:href="#star"></use>
@@ -323,12 +323,12 @@
 	                                <div class="col-xs-6 review2">
 	                                    <h3>놀이</h3>
 	                                    <div class="rating">
-					                           <input type="radio" name="play" class="rating__control screen-reader" id="play1" value=1> 
-					                           <input type="radio" name="play" class="rating__control screen-reader" id="play2" value=2> 
-					                           <input type="radio" name="play" class="rating__control screen-reader" id="play3" value=3> 
-					                           <input type="radio" name="play" class="rating__control screen-reader" id="play4" value=4> 
-					                           <input type="radio" name="play" class="rating__control screen-reader" id="play5" value=5 checked> 
-					                           
+					                        <input type="radio" name="play" class="rating__control screen-reader" id="play1" value=1> 
+											<input type="radio" name="play" class="rating__control screen-reader" id="play2" value=2> 
+											<input type="radio" name="play" class="rating__control screen-reader" id="play3" value=3> 
+											<input type="radio" name="play" class="rating__control screen-reader" id="play4" value=4> 
+											<input type="radio" name="play" class="rating__control screen-reader" id="play5" value=5> 
+	                                         
 					                           <label for="play1" class="rating__item"> 
 					                              <svg class="rating__star">
 					                                      <use xlink:href="#star"></use>
@@ -368,12 +368,12 @@
 	                                <div class="col-xs-6">
 	                                    <h3>소통</h3>
 	                                    <div class="rating">
-					                           <input type="radio" name="communication" class="rating__control screen-reader" id="communication1" value=1> 
-					                           <input type="radio" name="communication" class="rating__control screen-reader" id="communication2" value=2> 
-					                           <input type="radio" name="communication" class="rating__control screen-reader" id="communication3" value=3> 
-					                           <input type="radio" name="communication" class="rating__control screen-reader" id="communication4" value=4> 
-					                           <input type="radio" name="communication" class="rating__control screen-reader" id="communication5" value=5 checked> 
-					                           
+					                           	<input type="radio" name="communication" class="rating__control screen-reader" id="communication1" value=1> 
+												<input type="radio" name="communication" class="rating__control screen-reader" id="communication2" value=2> 
+												<input type="radio" name="communication" class="rating__control screen-reader" id="communication3" value=3> 
+												<input type="radio" name="communication" class="rating__control screen-reader" id="communication4" value=4> 
+												<input type="radio" name="communication" class="rating__control screen-reader" id="communication5" value=5> 
+		                                        
 					                           <label for="communication1" class="rating__item"> 
 					                              <svg class="rating__star">
 					                                 <use xlink:href="#star"></use>
@@ -544,6 +544,31 @@
 </body>
 
 <script>
+
+	//리뷰별표시
+	$(document).ready(function(){
+		var clean = '<c:out value="${bvo.clean}"/>';
+		var food = '<c:out value="${bvo.food}"/>';
+		var play = '<c:out value="${bvo.play}"/>';
+		var walk = '<c:out value="${bvo.walk}"/>';
+		var communication = '<c:out value="${bvo.communication}"/>';
+	
+		
+		var reviewArryValue = [clean, food, play, walk, communication];
+		var reviewArryName = ['clean', 'food', 'play', 'walk', 'communication'];
+		
+		//DB에 있는값과 매칭시켜서 cheaked속성 추가
+		for(var i=0; i<=4; i++) {
+			for(var j=1; j<=5; j++) {
+				if(reviewArryValue[i] == j){
+					$("#"+ reviewArryName[i] + j).attr("checked", "checked");
+					break;
+				}
+			}
+		}
+		
+	});
+	
 	//이미지업로드 버튼을 눌렀을때
 	$("[name='imgupload']").on("click", function(){
 		//데이터수집
@@ -608,116 +633,6 @@
 	        reader.readAsDataURL(input.files[0]);
 	    }
 	}
-	/*
-	모달창에서 업로드 버튼을 눌렀을떄
-	$("#modalSubmit").on("click", function(){
-		
-		
-		
-		
-		var photoPath = $("#myFile").files;
-		var photoTitle = $("#modalTitle").val();
-		var category = $("#modalCate").val();
-		
-		var formData = new FormData();
-		formData.append("file", photoPath);
-		formData.append("photoTitle", photoTitle);
-		formData.append("category", category);
-		
-		for (let key of formData.keys()) {
-			   console.log(key);
-		}
-
-		for (let value of formData.values()) {
-		      console.log(value);
-		}
-		
-		$.ajax({
-		    type:"POST",
-		    url: "${pageContext.request.contextPath}/photoInsert?bookingNo=${bvo.bookingNo}",
-		    async: true,
-		    processData: false,
-		    contentType: false,
-		    data: formData,
-		    dataType: "json",
-		    success: function(){
-		    	$('#delModal').modal('hide');
-		    },
-		    err: function(){
-		      console.log("err:", err)
-		    }
-		})
-		
-	});		*/ 
-		
-		
-		
-		
-	/*	
-    function DropFile(dropAreaId, fileListId) {
-
-       let dropArea = document.getElementById(dropAreaId);
-      let fileList = document.getElementById(fileListId);
-
-      function preventDefaults(e) {
-        e.preventDefault();
-        e.stopPropagation();
-      }
-
-      function highlight(e) {
-        preventDefaults(e);
-        dropArea.classList.add("highlight");
-      }
-
-      function unhighlight(e) {
-        preventDefaults(e);
-        dropArea.classList.remove("highlight");
-      }
-
-      function handleDrop(e) {
-        unhighlight(e);
-        let dt = e.dataTransfer;
-        let files = dt.files;
-
-        handleFiles(files);
-
-        const fileList = document.getElementById(fileListId);
-        if (fileList) {
-          fileList.scrollTo({ top: fileList.scrollHeight });
-        }
-      }
-
-      function handleFiles(files) {
-        files = [...files];
-        // files.forEach(uploadFile);
-        files.forEach(previewFile);
-      }
-
-      function previewFile(file) {
-        console.log(file);
-        renderFile(file);
-      }
-
-      function renderFile(file) {
-        let reader = new FileReader();
-        reader.readAsDataURL(file);
-        reader.onloadend = function () {
-          let img = dropArea.getElementsByClassName("preview")[0];
-          img.src = reader.result;
-          img.style.display = "block";
-        };
-      }
-
-      dropArea.addEventListener("dragenter", highlight, false);
-      dropArea.addEventListener("dragover", highlight, false);
-      dropArea.addEventListener("dragleave", unhighlight, false);
-      dropArea.addEventListener("drop", handleDrop, false);
-
-      return {
-        handleFiles
-      }; 
-    }
-
-    const dropFile = new DropFile("drop-file", "files");*/
+	
   </script>
 </html>
