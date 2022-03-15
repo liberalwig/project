@@ -19,7 +19,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.javaex.dao.BookingDao;
 import com.javaex.dao.HostinfoDao;
-import com.javaex.vo.AbleVo;
 import com.javaex.vo.BookingVo;
 import com.javaex.vo.HostVo;
 import com.javaex.vo.KeywordVo;
@@ -187,9 +186,9 @@ public class HostinfoService {
 		System.out.println("[HostinfoService.fileupload()]");
 		
 		//맥 저장경로
-		String saveDir = "/Users/hs/JavaStudy/workspace_project/project/webapp/assets/upload/";
+		//String saveDir = "/Users/hs/JavaStudy/workspace_project/project/webapp/assets/upload/";
 		//윈도우 저장경로
-		//String saveDir = "C:\\javaStudy\\photo\\";
+		String saveDir = "C:\\javaStudy\\photo\\";
 		
 		// 원본파일이름
 		String orgName = file.getOriginalFilename();

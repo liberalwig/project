@@ -56,7 +56,7 @@
 								<th> </th>
 								<th>예약번호</th>
 								<th>프로필사진</th>
-								<th>호스트이름</th>
+								<th>펫시터이름</th>
 								<th>예약날짜</th>
 								<th>가격</th>
 								<th>휴대전화</th>
@@ -117,13 +117,13 @@
 
 <script>
 
-/* 테이블 한줄 누르기 */
-$(".bRow").on("click", ".bOne", function(){
-	var $this = $(this);
-	var bookingNo = $this.data("bookingno");
-	
-	location.href = "${pageContext.request.contextPath}/bookingDetailGuest?bookingNo="+bookingNo;
-});
+	/* 테이블 한줄 누르기 */
+	$(".bRow").on("click", ".bOne", function(){
+		var $this = $(this);
+		var bookingNo = $this.data("bookingno");
+		
+		location.href = "${pageContext.request.contextPath}/bookingDetailGuest?bookingNo="+bookingNo;
+	});
 
 
 </script>

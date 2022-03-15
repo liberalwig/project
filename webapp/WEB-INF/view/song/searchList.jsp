@@ -33,29 +33,44 @@
                  <!-- 버튼 오른쪽 -->
                 <div class="search_button_left col-md-4">
       				<div class="col-xs-2 padding_0">
-      					 <button type="button" class="btn btn-default">
-	                	 	<a href="#">청결 </a>
-	                	 </button>	
+      					<form action="${pageContext.request.contextPath}/searchList" method="get">
+      						<input type="hidden" name="orderType" id="orderType" value="1" >
+		      					 <button class="btn btn-default" type="submit">
+			                	 		청결 
+			                	 </button>	
+	                	 </form>
       				</div>
                     <div class="col-xs-2 padding_0">
-                    	<button type="button" class="btn btn-default">
-	                		<a href="#">산책 </a>
-	                	</button>
+                    	<form action="${pageContext.request.contextPath}/searchList" method="get">
+      						<input type="hidden" name="orderType" id="orderType" value="2" >
+		      					 <button class="btn btn-default" type="submit">
+			                	 		산책 
+			                	 </button>	
+	                	 </form>
+                    </div>
+                    <div class="col-xs-2 padding_0" >
+	                    <form action="${pageContext.request.contextPath}/searchList" method="get">
+      						<input type="hidden" name="orderType" id="orderType" value="3" >
+		      					 <button class="btn btn-default" type="submit">
+			                	 		식사 
+			                	 </button>	
+	                	 </form>
                     </div>
                     <div class="col-xs-2 padding_0">
-	                    <button type="button" class="btn btn-default">
-		                	<a href="#">식사</a>
-		               	</button>
+		                <form action="${pageContext.request.contextPath}/searchList" method="get">
+      						<input type="hidden" name="orderType" id="orderType" value="4" >
+		      					 <button class="btn btn-default" type="submit">
+			                	 		놀이
+			                	 </button>	
+	                	 </form>
                     </div>
                     <div class="col-xs-2 padding_0">
-		                <button type="button" class="btn btn-default">
-		                	<a href="#">청결 </a>
-		                </button>
-                    </div>
-                    <div class="col-xs-2 padding_0">
-	                    <button type="button" class="btn btn-default">
-		               		<a href="#">소통 </a>
-		                </button>
+	                    <form action="${pageContext.request.contextPath}/searchList" method="get">
+      						<input type="hidden" name="orderType" id="orderType" value="5" >
+		      					 <button class="btn btn-default" type="submit">
+			                	 		소통 
+			                	 </button>	
+	                	 </form>
                     </div>
                 </div>
 
@@ -83,14 +98,14 @@
             <div class="search_web">
             	<!-- 반복영역 -->
                 <div class="search_result" class="col-md-6">
-	                <c:if test="${not empty SearchList}">
+	                <c:if test="${empty SearchList}">
 			                <c:forEach items="${SearchList}" var="SearchListVo">
 				                <div class="search_result_list"></div>
 				                <div class="row search_cursor_pointer" onclick="location.href='/project/host2/info/${SearchListVo.hostNo}';">
 				                	<div>
 				                        <div class="col-md-6">
 				                        <c:choose>
-											<c:when test="${empty SearchListVo.path}">
+											<c:when test="${not empty SearchListVo.path}">
 												<img class="result-img" src="${pageContext.request.contextPath}/assets/images/hostinfo_sample.jpg">
 											</c:when>
 											<c:otherwise>
@@ -121,8 +136,8 @@
 				                </div>
 							</c:forEach>
 						</c:if>
-						<c:if test="${ empty SearchList}">
-						<h3>검색결과가 없습니다.</h3>
+						<c:if test="${empty SearchList}">
+							<h3>검색결과가 없습니다.</h3>
 						</c:if>
             	</div>
             
