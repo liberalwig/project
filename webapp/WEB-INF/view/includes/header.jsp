@@ -84,7 +84,7 @@
 		                        <c:if test="${authUser.usersType == 2}">
 		                        	<li><a href="${pageContext.request.contextPath}/bookingEndHost?hostNo=${authUser.hostNo}">마이페이지</a></li>
 		                        </c:if>
-		                        <li><a href="${pageContext.request.contextPath}/user/userModifyForm?hostNo=${authUser.usersNo}">내 정보 수정</a></li>
+		                        <li><a href="${pageContext.request.contextPath}/user/userModifyForm?usersNo=${authUser.usersNo}">내 정보 수정</a></li>
 		                   	</ul>
                     	</div>
                     </c:if>

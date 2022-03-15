@@ -17,7 +17,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.javaex.dao.BookingDao;
 import com.javaex.dao.HostinfoDao;
+import com.javaex.vo.AbleVo;
 import com.javaex.vo.BookingVo;
 import com.javaex.vo.HostVo;
 import com.javaex.vo.KeywordVo;
@@ -29,6 +31,9 @@ public class HostinfoService {
 
 	@Autowired
 	HostinfoDao hostinfoDao;
+	
+	@Autowired
+	BookingDao bookingDao;
 	
 	//hostNo 체크
 	public int checkNo(int hostNo) {
@@ -91,9 +96,19 @@ public class HostinfoService {
 		
 		return photoList;
 	}
+	
 	//호스트Vo 가져오기
 	public HostVo getHost(int hostNo) {
+		System.out.println("[HostinfoService.getHost()]");
+		
 		return hostinfoDao.getHost(hostNo);
+	}
+	
+	//able 가져오기
+	public List<String> getBooking(int hostNo) {
+		List<String> ableList = hostinfoDao.getAbleDate(hostNo);
+		
+		return ableList;
 	}
 	//일수 계산하기
 	public void checkdays(BookingVo bookingVo) {
@@ -164,8 +179,7 @@ public class HostinfoService {
 	//유저타입 변경(유저->호스트)
 	public void typeUpdate(int usersNo) {
 		System.out.println("[HostinfoService.typeUpdate()]");
-		
-		
+
 	}
 	
 	//사진 업로드
@@ -219,5 +233,5 @@ public class HostinfoService {
 			hostinfoDao.setKeyword(keywordVo);
 		}
 	}
-	
+		
 }

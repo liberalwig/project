@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.javaex.vo.AbleVo;
 import com.javaex.vo.BookingVo;
 import com.javaex.vo.HostVo;
 import com.javaex.vo.KeywordVo;
@@ -183,5 +184,12 @@ public class HostinfoDao {
 		System.out.println("[HostinfoService.setKeyword()]");
 		
 		sqlSession.insert("hostinfo.setKeyword", keywordVo);
+	}
+	
+	//가능 날짜 가져오기
+	public List<String> getAbleDate(int hostNo){
+		System.out.println("[HostinfoService.getAbleDate()]");
+		
+		return sqlSession.selectList("hostinfo.getAbleDate", hostNo);
 	}
 }

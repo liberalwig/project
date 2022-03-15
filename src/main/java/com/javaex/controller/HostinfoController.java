@@ -125,10 +125,21 @@ public class HostinfoController {
 		System.out.println("[hostinfoController.bookinginsertForm()]");
 		
 		HostVo hostVo = hostinfoService.getHost(hostNo);
-		
+		System.out.println(hostVo);
 		model.addAttribute("hostVo", hostVo);
 		
 		return "/han/booking";
+	}
+	//able가져오기
+	@ResponseBody
+	@RequestMapping(value = "/booking2", method = { RequestMethod.GET, RequestMethod.POST })
+	public List<String> getAble(@RequestParam("hostNo") int hostNo, Model model) {
+		System.out.println("[hostinfoController.bookinginsertForm()]");
+		
+		List<String> ableList = hostinfoService.getBooking(hostNo);
+		System.out.println(ableList);
+		
+		return ableList;
 	}
 	
 	//예약처리

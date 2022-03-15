@@ -87,3 +87,6 @@ a:hover {text-decoration: none; color: #000}
     width: 226.352942943573px;
     background-color: #3D9BE9;
 }
+.fc-daygrid-day {
+	background-color: #eee;
+}

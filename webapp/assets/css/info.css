@@ -179,7 +179,9 @@ a:hover {text-decoration: none; color: #000}
 #calendar{
 	padding: 0px 0px 0px 20px;
 }
-
+.fc-daygrid-day {
+	background-color: #eee;
+}
 /**5. 리뷰**/
 #review{
     padding: 10px 55px 0px 35px;

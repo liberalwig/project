@@ -218,4 +218,17 @@
 			where  usersNo = #{usersNo}
 		]]>
 	</update>
+	<select id="getAbleDate" parameterType="int" resultType="String">
+		<![CDATA[
+			select   s.today ableDate
+			from     (select     to_char (firstday + level - 1, 'yyyy-mm-dd') today
+	                  from       (select sysdate firstday 
+	                              from   dual) 
+	                  connect by firstday + level - 1 <= trunc(sysdate+30)) s
+			where not s.today in (select abledate
+	                              from   able
+	                              where  hostNo=#{hostNo})
+			order by  s.today asc
+		]]>
+	</select>
 </mapper>

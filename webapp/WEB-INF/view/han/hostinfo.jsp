@@ -382,12 +382,10 @@
 
 			// 요일 클릭 이벤트
 			dateClick : function() {
-				alert('요일 클릭!');
 			},
 
 			// 일정 클릭 이벤트
 			eventClick : function() {
-				alert('일정 클릭!');
 			},
 
 
@@ -401,12 +399,16 @@
 				success: function (bList) {
 					for(var i=0; i<bList.length; i++) {
 						calendar.addEvent({
-							title: bList[i].guestName,
+							title: bList[i].guestName+'('+bList[i].status+')',
 							start: bList[i].checkin,
 							end: bList[i].checkout,
+							status: 'booking',
+							color: '#ffafb0',
+							textColor: '#000000',
 							status: 'booking'
 						});
 					}
+					
 				}
 			}),
 			$.ajax({ 
@@ -419,7 +421,10 @@
 							start: aList[i].ableDate,
 							end: aList[i].ableDate,
 							allDay: true,
-							status: 'done'
+							status: 'done',
+							display: 'background',
+							overlap: false,
+							backgroundColor: 'rgb(255, 255, 255)'
 						});
 					}
 				}
@@ -427,9 +432,7 @@
 		],
 		eventDidMount: function(info) {
 			if(info.event.extendedProps.status == 'done') {
-				info.el.style.backgroundColor = 'white';
-				info.el.style.borderColor = 'white';
-				info.el.style.height = '30px';
+				info.el.style.opacity = '1';
 			}
 		}
 	});

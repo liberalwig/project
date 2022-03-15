@@ -131,7 +131,13 @@
 	<!-- /.modal -->
 </body>
 <script>
+var dayList ;
 
+$(document).ready(function() {//ready: 돔이 만들어진 후 페이지를 뿌리기 전
+	console.log("리스트 요청(페이지 로딩전)");
+	
+	
+});
 
 //마릿수
 $(".btn-group.btn-group button").on("click", function(){
@@ -196,12 +202,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
 		// 요일 클릭 이벤트
 		dateClick : function() {
-			alert('요일 클릭!');
 		},
 
 		// 일정 클릭 이벤트
 		eventClick : function() {
-			alert('일정 클릭!');
 		},
 
 
@@ -210,22 +214,26 @@ document.addEventListener('DOMContentLoaded', function() {
 		// ajax 처리로 데이터를 로딩 시킨다. 
 		$.ajax({ 
 			type:"get", 
-			url:"${pageContext.request.contextPath}/calendar?hostNo=${requestScope.hostVo.hostNo}", 
+			url:"${pageContext.request.contextPath}/calendar?hostNo=${param.hostNo}", 
 			dataType : "json",
 			success: function (bList) {
 				for(var i=0; i<bList.length; i++) {
 					calendar.addEvent({
-						title: bList[i].guestName,
+						title: bList[i].guestName+'('+bList[i].status+')',
 						start: bList[i].checkin,
 						end: bList[i].checkout,
+						status: 'booking',
+						color: '#ffafb0',
+						textColor: '#000000',
 						status: 'booking'
 					});
 				}
+				
 			}
 		}),
 		$.ajax({ 
 			type:"get", 
-			url:"${pageContext.request.contextPath}/calendarAble?hostNo=${requestScope.hostVo.hostNo}", 
+			url:"${pageContext.request.contextPath}/calendarAble?hostNo=${param.hostNo}", 
 			dataType : "json",
 			success: function (aList) {
 				for(var i=0; i<aList.length; i++) {
@@ -233,20 +241,22 @@ document.addEventListener('DOMContentLoaded', function() {
 						start: aList[i].ableDate,
 						end: aList[i].ableDate,
 						allDay: true,
-						status: 'done'
-					}); 
+						status: 'done',
+						display: 'background',
+						overlap: false,
+						backgroundColor: 'rgb(255, 255, 255)'
+					});
 				}
 			}
 		})
 	],
-	eventDidMount: function(info) {
+	 eventDidMount: function(info) {
 		if(info.event.extendedProps.status == 'done') {
-			info.el.style.backgroundColor = 'white';
-			info.el.style.borderColor = 'white';
-			info.el.style.height = '30px';
+			info.el.style.opacity = '1';
 		}
 	}
 });
+	
 	// 렌더링
 	calendar.render();
 
@@ -256,12 +266,12 @@ document.addEventListener('DOMContentLoaded', function() {
 $(function() {	
     $('#datePicker1').datepicker({
         format: "yyyy-mm-dd",	//데이터 포맷 형식(yyyy : 년 mm : 월 dd : 일 )
-        startDate: '-1d',	//달력에서 선택 할 수 있는 가장 빠른 날짜. 이전으로는 선택 불가능 ( d : 일 m : 달 y : 년 w : 주)
+        startDate: '0',	//달력에서 선택 할 수 있는 가장 빠른 날짜. 이전으로는 선택 불가능 ( d : 일 m : 달 y : 년 w : 주)
         endDate: '+1m',	//달력에서 선택 할 수 있는 가장 느린 날짜. 이후로 선택 불가 ( d : 일 m : 달 y : 년 w : 주)
         autoclose : true,	//사용자가 날짜를 클릭하면 자동 캘린더가 닫히는 옵션
         calendarWeeks : false, //캘린더 옆에 몇 주차인지 보여주는 옵션 기본값 false 보여주려면 true
         clearBtn : true, //날짜 선택한 값 초기화 해주는 버튼 보여주는 옵션 기본값 false 보여주려면 true
-        datesDisabled : ["2022-03-13"],//선택 불가능한 일 설정 하는 배열 위에 있는 format 과 형식이 같아야함.
+        datesDisabled : getList(),//선택 불가능한 일 설정 하는 배열 위에 있는 format 과 형식이 같아야함.
         daysOfWeekDisabled : [],	//선택 불가능한 요일 설정 0 : 일요일 ~ 6 : 토요일
         daysOfWeekHighlighted : [], //강조 되어야 하는 요일 설정
         disableTouchKeyboard : false,	//모바일에서 플러그인 작동 여부 기본값 false 가 작동 true가 작동 안함.
@@ -281,21 +291,38 @@ $(function() {
         
     });//datepicker end
 });//ready end
+
+//날짜 찍기
+function getList(){
+	var dayList ;
+	$.ajax({ 
+		type:"get", 
+		url:"${pageContext.request.contextPath}/host2/booking2?hostNo=${requestScope.hostVo.hostNo}", 
+		dataType : "json",
+		async: false,
+		success: function (ableList) {
+			dayList = ableList;
+		},
+		error : function(XHR, status, error) {
+			console.error(status + " : " + error);
+		}
+	})
+	return dayList;
+}
+
+
 //체크인 날짜 변경시
 $('#datePicker1').on("changeDate", function(e){
 	var checkin = $("#datePicker1").val();
 	$("#checkin").html(checkin);
 	//체크인날짜가 체크아웃의 스타트데이트로 변경
 });
+
 //체크아웃 날짜 변경시
 $('#datePicker2').on("changeDate", function(e){
-	var checkout = $("#datePicker2").val();
-	$("#checkout").html(checkout);
-});
-//날짜저장 버튼 클릭
-$("#btndays").on("click", function(){
 	var checkin = $("#datePicker1").val();
 	var checkout = $("#datePicker2").val();
+	$("#checkout").html(checkout);
 	
 	var dayinArr = checkin.split("-");
 	var dayoutArr = checkout.split("-");
@@ -304,27 +331,27 @@ $("#btndays").on("click", function(){
 	var endDate = new Date(dayoutArr[0], dayoutArr[1], dayoutArr[2]);
 	
 	var btMs = endDate.getTime() - stDate.getTime();
-	var days = btMs / (1000*60*60*24);
-	var cost = days * ${requestScope.hostVo.hostcost}
+	var days = (btMs / (1000*60*60*24))+1;
+	$("#days").text(days);
 	
-	$("#date").html('<span id="checkin">'+ checkin +'</span><span id="checkout">'+checkout+'</sapn>');
-	$("#days").html(days);
+	var cost = days * ${requestScope.hostVo.hostcost}
 	
 	$("#bookingDate").text(cost);
 	
 	var ea = $("#ea").text();
-	var day = $("#bookingDate").text();
-	$("#hostcost").text(ea * day);
+	
+	$("#hostcost").text(cost * ea);
 });
+
 $(function() {	
     $('#datePicker2').datepicker({
         format: "yyyy-mm-dd",	//데이터 포맷 형식(yyyy : 년 mm : 월 dd : 일 )
-        startDate: '-1d',	//달력에서 선택 할 수 있는 가장 빠른 날짜. 이전으로는 선택 불가능 ( d : 일 m : 달 y : 년 w : 주)
+        startDate: '0',	//달력에서 선택 할 수 있는 가장 빠른 날짜. 이전으로는 선택 불가능 ( d : 일 m : 달 y : 년 w : 주)
         endDate: '+1m',	//달력에서 선택 할 수 있는 가장 느린 날짜. 이후로 선택 불가 ( d : 일 m : 달 y : 년 w : 주)
         autoclose : true,	//사용자가 날짜를 클릭하면 자동 캘린더가 닫히는 옵션
         calendarWeeks : false, //캘린더 옆에 몇 주차인지 보여주는 옵션 기본값 false 보여주려면 true
         clearBtn : true, //날짜 선택한 값 초기화 해주는 버튼 보여주는 옵션 기본값 false 보여주려면 true
-        datesDisabled : ["2022-03-13"],//선택 불가능한 일 설정 하는 배열 위에 있는 format 과 형식이 같아야함.
+        datesDisabled : getList(),//선택 불가능한 일 설정 하는 배열 위에 있는 format 과 형식이 같아야함.
         daysOfWeekDisabled : [],	//선택 불가능한 요일 설정 0 : 일요일 ~ 6 : 토요일
         daysOfWeekHighlighted : [], //강조 되어야 하는 요일 설정
         disableTouchKeyboard : false,	//모바일에서 플러그인 작동 여부 기본값 false 가 작동 true가 작동 안함.
@@ -344,6 +371,7 @@ $(function() {
         
     });//datepicker end
 });//ready end
+
 
 </script>
 </html>
