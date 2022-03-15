@@ -18,7 +18,7 @@ public class SearchListController {
 	@RequestMapping("/searchList")
 	public String searchList(ModelMap model, SearchListVo searchListVo) {
 		
-		System.out.println("searchList.dao");
+		System.out.println("searchList.controller");
 		
 		List<SearchListVo> SearchListService = searchListService.searchList(searchListVo);
 		
@@ -27,16 +27,5 @@ public class SearchListController {
 		return"song/searchList";
 	}
 	
-//	@RequestMapping("/search")
-//	public String searchListSeoul(Model model, @RequestParam(value="keyword", required=false, defaultValue ="")  String searchKeyword, String searchData) {
-//		
-//		System.out.println("searchList.dao");
-//		
-//		Map<String, Object> pMap = searchListService.Search(keyword);
-//		model.addAttribute("pMap", pMap);
-//		
-//		
-//		return"song/searchList";
-//	}
-
+	
 }
