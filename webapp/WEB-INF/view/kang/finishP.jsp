@@ -8,11 +8,8 @@
 <meta charset="utf-8" />
 
 <!--CSS-->
-<link href="/project/assets/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css">
-<link href="/project/assets/css/finishP.css" rel="stylesheet" type="text/css">
 <!-- 자바스크립트 -->
 <script type="text/javascript" src="/project/assets/js/jquery-1.12.4.js"></script>
-<script type="text/javascript" src="/project/assets/bootstrap/js/bootstrap.js"></script>
 
 <title>결제 완료</title>
 
@@ -22,9 +19,9 @@
 	<div>
 		<!--class="modal fade"-->
 
-		<div class="modal-dialog">
+		<div >
 
-			<div class="modal-content">
+			<div >
 
 
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -97,3 +94,15 @@
 	<!-- /.modal -->
 </body>
 </html>
+
+<script>
+
+
+$("#btnsub").on("click" ,function(){
+	var $this = $(this);
+	var bookingNo = $this.data("bookingNo");
+	
+	location.href = "${pageContext.request.contextPath}/updateStatusP?bookingNo=${finishPVo.bookingNo}&usersNo=${finishPVo.usersNo}";
+});
+
+</script>
