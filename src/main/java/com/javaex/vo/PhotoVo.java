@@ -17,7 +17,7 @@ public class PhotoVo {
 	private MultipartFile file;
 	private String uploadDate;
 	private String saveName;
-	private int day;
+	private long day;
 
 	// 생성자
 	public PhotoVo() {
@@ -36,7 +36,7 @@ public class PhotoVo {
 	}
 
 	public PhotoVo(int photoNo, int userNo, int hostNo, int bookingNo, String photoDate, String category,
-			String photoTitle, String photoPath, MultipartFile file, String uploadDate, String saveName, int day) {
+			String photoTitle, String photoPath, MultipartFile file, String uploadDate, String saveName, long day) {
 		super();
 		this.photoNo = photoNo;
 		this.userNo = userNo;
@@ -141,11 +141,11 @@ public class PhotoVo {
 		this.saveName = saveName;
 	}
 
-	public int getDay() {
+	public long getDay() {
 		return day;
 	}
 
-	public void setDay(int day) {
+	public void setDay(long day) {
 		this.day = day;
 	}
 

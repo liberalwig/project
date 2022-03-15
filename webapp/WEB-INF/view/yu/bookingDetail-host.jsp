@@ -471,18 +471,19 @@
 									월
 									<select id="photoDateD" class="bo_w_select" name="photoDate">
 										<c:forEach begin="1" end="31" varStatus="status">
-											<option>${status.count}</option>
+											<c:if test="${status.count >= 10}"><option>${status.count}</option></c:if>
+											<c:if test="${status.count < 10}"><option>0${status.count}</option></c:if>
 										</c:forEach>
 									</select>
 									일
 								</div>
-									<label class="pDate days">일차</label>
+									<%-- <label class="pDate days">일차</label>
 									<select id="days" class="bo_w_select" name="day">
 										<c:forEach begin="1" end="62" varStatus="status">
 											<option>${status.count}</option>
 										</c:forEach>
 									</select>
-									일차
+									일차 --%>
 								<div>
 								</div>
 								<div>
@@ -499,7 +500,6 @@
 											<img id="View" src="" alt="" class="preview">
 											<label class="file-label" for="myFile">파일 선택</label>
 											<input class="file" name="file" type="file" id="myFile">
-											<!-- onchange="dropFile.handleFiles(this.files)" accept="image/png, image/jpeg, image/gif" -->
 										</div>
 										<label for="submitBtn" id="modalSubmit" class="file-label">확인</label>
 										<input type="submit" id="submitBtn" style="display: none">

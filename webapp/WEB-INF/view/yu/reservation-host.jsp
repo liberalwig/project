@@ -88,7 +88,7 @@
 										<c:choose>
 											<c:when test="${BookingVo.status == '승인대기'}">
 												<td id="reservationOk" data-bookingno="${BookingVo.bookingNo}">
-												<div class="btn-re-gradient blue mini" class="cursorPointer">예약승인</div></td>
+												<div class="btn-re-gradient blue mini cursorPointer">예약승인</div></td>
 											</c:when>
 											<c:when test="${BookingVo.status == '결제대기'}">
 												<td><div class="btn-re-gradient orange mini">결제대기</div></td>
