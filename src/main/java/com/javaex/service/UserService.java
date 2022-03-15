@@ -54,7 +54,6 @@ public class UserService {
 		String filePath = saveDir + saveName;
 		
 		// 파일 저장
-		/*
 		try {
 			byte[] fileData = file.getBytes();
 			OutputStream out = new FileOutputStream(filePath);
@@ -65,7 +64,7 @@ public class UserService {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		*/
+		
 		
 		//DB 업데이트
 		userVo.setPath(saveName);

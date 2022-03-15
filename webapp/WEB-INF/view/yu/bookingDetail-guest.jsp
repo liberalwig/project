@@ -136,7 +136,7 @@
                             <hr>
                             <div class="container-fluid">
                                 <div class="row">
-                                    <div class="col-xs-6">호스트이름</div>
+                                    <div class="col-xs-6">펫시터이름</div>
                                     <div class="col-xs-6">${bvo.hostName}</div>
                                 </div>
                                 <div class="row">
