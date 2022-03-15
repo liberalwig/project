@@ -28,53 +28,53 @@ a:hover {text-decoration: none; color: #000}
 
 /*헤더 빠진 바디 전체*/
 body{
-   margin-top:80px;
+   margin-top:0px;
 }
  
-    /*어사이드*/
-    #aside {
-    float: left;
-    width: 240px;
-    padding: 0px 0px 0px 0px;
-    font-size: 18px;
-    }
-    
-    /* 왼쪽메뉴(aside) */
-    #aside #b-aside {
-    padding: 45px 0px 0px 0px;
-    width: 240px;
-    }
-    
-    #aside>#b-aside {
-    margin: 0px 0px 0px 0px;
-    }
-    
-    .aside-img {
-    width: 30px;
-    margin: 0px 0px 0px 125px;
-    vertical-align: middle;
-    }
-    
-    #aside #b-aside>li {
-    padding-left: 10px;
-    display: block;
-    line-height: 60px;
-    height: 60px;
-    }
-    
-    #aside #b-aside>ul>li {
-    padding: 20px 0px 20px 30px;
-    text-align: left;
-    background-color: #eeeeee;
-    }
-    
-    #aside #b-aside>#s-aside>ul>li:hover {
-    background-color: #eeeeee;
-    }
-    
-    .hide {
-    display: none;
-    }
+/*어사이드*/
+#aside {
+float: left;
+width: 240px;
+padding: 0px 0px 0px 0px;
+font-size: 18px;
+}
+
+/* 왼쪽메뉴(aside) */
+#aside #b-aside {
+padding: 45px 0px 0px 0px;
+width: 240px;
+}
+
+#aside>#b-aside {
+margin: 0px 0px 0px 0px;
+}
+
+.aside-img {
+width: 30px;
+margin: 0px 0px 0px 125px;
+vertical-align: middle;
+}
+
+#aside #b-aside>li {
+padding-left: 10px;
+display: block;
+line-height: 60px;
+height: 60px;
+}
+
+#aside #b-aside>ul>li {
+padding: 20px 0px 20px 30px;
+text-align: left;
+background-color: #eeeeee;
+}
+
+#aside #b-aside>#s-aside>ul>li:hover {
+background-color: #eeeeee;
+}
+
+.hide {
+display: none;
+}
 
 
 /* 컨텐트 헤드*/
@@ -121,7 +121,6 @@ body{
 
 
 /*질문01. 사진*/
-/* 드래그 앤 드롭 */
 #root {
     width: 100%;
     margin: 0 auto;

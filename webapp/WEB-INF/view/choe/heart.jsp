@@ -20,10 +20,10 @@
     	<c:import url="/WEB-INF/view/includes/header.jsp"></c:import>
 
         <div id="wrap">
-            <div id="container" class="clearfix">            
+            <div id="container" class="clearfix">      
                 <div id="aside">
                     <ul id="b-aside">
-                       <li class="menu">예약관리<img src="${pageContext.request.contextPath}/assets/images/images/aside_img.png" class="aside-img"></li>
+                       <li class="menu">예약관리<img src="${pageContext.request.contextPath}/assets/images/aside_img.png" class="aside-img"></li>
                        <ul id="s-aside" class="hide">
                           <li>대기내역</li>
                           <li>예약신청관리</li>
@@ -108,7 +108,7 @@
                                             <div class="result_text row">
                                             <div class="review col-xs-6">(후기108개)</div>
                                             <div class="price col-xs-6">₩54,870/ 박 </div>
-                                            </div>
+                                            </div>                                                                                                                                   
                                         </div>
                                     </div>
                                 </div>
@@ -130,5 +130,31 @@
         $(this).next("ul").toggleClass("hide");
             });
         });
+        
+        $.ajax({
+			//요청할때
+			url : "${pageContext.request.contextPath}/user/heart",    
+			type : "post",
+			data : userVo,
+			success : function(count) {
+				$.ajax({
+					url : "${pageContext.request.contextPath}/user/heart?usersNo=${sessionScope.usersNo}",    
+					type : "post",
+					data : formData,
+					success : function(count) {
+						console.log("성공");
+					},
+					error : function(XHR, status, error) {
+						console.error(status + " : " + error);
+					}
+				});
+			},
+			error : function(XHR, status, error) {
+				console.error(status + " : " + error);
+			}
+											
     </script>
+    
+    
+    
 </html>

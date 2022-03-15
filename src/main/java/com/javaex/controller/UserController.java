@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -16,6 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.javaex.service.UserService;
+import com.javaex.vo.HeartVo;
 import com.javaex.vo.UserVo;
 
 @Controller
@@ -27,8 +27,7 @@ public class UserController {
    
    // 유저_1> 유저 수정 폼
    @RequestMapping("/userModifyForm")
-   public String userModifyForm(@RequestParam("usersNo") int usersNo,
-		   						Model model){
+   public String userModifyForm(@RequestParam("usersNo") int usersNo, Model model){
       System.out.println("UserController > userModifyForm()");
       
       //유저 데이터 적어주기
@@ -73,13 +72,29 @@ public class UserController {
 		}
 		return 1;
 	};
-   
       
-   // 유저_4> 찜
+   // 유저_4> 찜 폼
    @RequestMapping(value="/heart")
-   public String heart() {
-      System.out.println("UserController > heart()");
+   public String heartForm(@RequestParam("usersNo")int usersNo, Model model) {
+      System.out.println("UserController > heartForm()");
+      
+      List<HeartVo> heartList = userService.heartForm(usersNo);
+		
+      model.addAttribute("heartList", heartList);
 
       return"choe/heart";
    };
+
+   /*
+   // 유저_5>찜 추가
+   public String heart(HeartVo heartVo, HttpSession session) {
+	   System.out.println("UserController > heart()");
+	
+	   userService.insertHeart(heartVo);
+	   
+	   return "";
+   }
+    */
+
+
 }
