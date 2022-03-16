@@ -42,7 +42,10 @@ a:hover {text-decoration: none !important;}
 
 /* 레이아웃 관련 */
 #wrap {
-    width: 1440px; 
+    width: 100%; 
+    margin: -35px 0px 0px 0px;
+    padding: 0;
+    z-index: -1;
 }
 
 #logo {
@@ -58,27 +61,28 @@ a:hover {text-decoration: none !important;}
 }
 
 #menu{
-    margin: 9px;
-    left:165px; 
+	width: 100%;
+    margin:0;
+    padding: 0;
 }
 
 figure.logo-img {
-  overflow: visible;
+ 	 overflow: visible;
 }
 
 figure.logo-img * {
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-  -webkit-transition: all 0.45s ease-in-out;
-  transition: all 0.45s ease-in-out;
+	  -webkit-box-sizing: border-box;
+	  box-sizing: border-box;
+	  -webkit-transition: all 0.45s ease-in-out;
+	  transition: all 0.45s ease-in-out;
 }
 
 figure.logo-img:hover img,
 figure.logo-img.hover img {
-  opacity: 1;
-  background-color : #ccf3ff66;
-  -webkit-transform: scale(1.13);
-  transform: scale(1.13);
+	  opacity: 1;
+	  background-color : #ccf3ff66;
+	  -webkit-transform: scale(1.13);
+	  transform: scale(1.13);
 }
 
 /*검색*/
@@ -227,14 +231,15 @@ figure.logo-img.hover img {
 
 /*메인*/
 #main.container-fluid{
-    margin: 0px 0px 0px 0px;
-    width:1440;
-    z-index: -1;
+    margin: 0;
+    padding: 0;
+    width:100%;
 }
 #main .video-container {
     position: relative;
     height: 0;
     padding-bottom: 56.25%;
+    width: 100%;
    
 }
 
@@ -245,22 +250,25 @@ figure.logo-img.hover img {
     width: 100%;
     height: 100%;
     border: 0;
+    z-index:-1;
+    margin:0;
+    padding: 0;
 }
 
 #main-title{
     position: absolute;
     width: 1440;
     top: 50%;
-    left: 18%;
+    left: 21%;
     transform: translate(-50%,-50%);
 }
 
 #main .title-a{
-font-family: 'Oswald', sans-serif;
-font-size: 35px;
-text-align:left;
-color: #FFFFFF;
-margin: 5px 0px 5px 0px;
+	font-family: 'Roboto Slab', serif !important;
+	font-size: 35px;
+	text-align:left;
+	color: #FFFFFF;
+	margin: 5px 0px 5px 0px;
 }
 
 #main .title_a_padding-right80{
@@ -268,39 +276,43 @@ margin: 5px 0px 5px 0px;
 }
 
 #main .title-b{
-font-family: 'Anton', sans-serif;
-font-size: 58px;
-color: #85cbeb;
-text-align:left;
-margin: -2px 0px -2px 0px;
+	font-family: 'Roboto Slab', serif !important;
+	font-size: 70px;
+	color: #85cbeb;
+	text-align:left;
+	margin: -2px 0px -2px 0px;
 }
 
 /*footer*/
 
-#main-footer .row{
-    display: block;
-    margin: -10px 0px 0px 0px;
-    width:1440px;
-    height: 300px;
+#main-footer {
+    display: flex;
+    margin: 10px 10px 10px 0px;
+    left: 80px;
+    width: 95%;
+    height: 60px;
     position: absolute;
+    justify-content: space-between;
 }
 
 .footer.col-xs-4{
-    width: 310px;
-    height: 100px;
-    margin: 10px 0px 0px 45px;
+	display: flex;
+    width: 20%;
+    height: 60px;
+    margin: 0px 10px 0px 10px;
+    padding-left: 40px;
 }
 
 .footer-img{
     width: 50px;
     height: 50px;
+    text-align: center;
+    margin-right: 10px;
 }
 
-.footer-text.col-xs-2{
-    width:150px;
+.footer-text{
+	padding:7px;
     font-size:10px;
-    margin: 5px 0px 0px 10px;
-    border-right: #333 solid;
 }
 
 .footer-text2.col-md-1{
@@ -344,7 +356,12 @@ margin: -2px 0px -2px 0px;
 }
 
 #footer{
-	   background: #fff !important;
+	background: #fff !important;
+	width: 100% !important;
+	display: flex;
+	justify-content: space-between;
+	margin: 50px 0px 0px 0px !important;
+	padding-left: 0px !important;
 }
 
 .litepicker{
@@ -352,5 +369,14 @@ margin: -2px 0px -2px 0px;
 	left: 550px !important;
 }
 
+#copyright {
+	text-align: center;
+	width: 100% !important;
+}
+
+#copyright h4{
+	font-size: 12px !important;
+
+}
 
 
