@@ -209,7 +209,7 @@
 					</div>
 					<div class="row">
 						<div id="maparea" class="row">
-							<h3>${requestScope.hostMap.hostVo.name}님의동네</h3>
+							<h3>${requestScope.hostMap.hostVo.name}의 동네</h3>
 							<div id="map" style="width: 465px; height: 300px; margin: 20px 0px 20px 0px"></div>
 							<h4>${requestScope.hostMap.hostVo.adress1}</h4>
 						</div>
@@ -415,25 +415,6 @@
 			// ajax 처리로 데이터를 로딩 시킨다. 
 			$.ajax({ 
 				type:"get", 
-				url:"${pageContext.request.contextPath}/calendar?hostNo=${requestScope.hostMap.hostVo.hostNo}", 
-				dataType : "json",
-				success: function (bList) {
-					for(var i=0; i<bList.length; i++) {
-						calendar.addEvent({
-							start: bList[i].checkin,
-							end: bList[i].checkout,
-							allDay: true,
-							status: 'done',
-							display: 'background',
-							overlap: false,
-							backgroundColor: 'rgb(238, 238, 238)'
-						});
-					}
-					
-				}
-			}),
-			$.ajax({ 
-				type:"get", 
 				url:"${pageContext.request.contextPath}/calendarAble?hostNo=${requestScope.hostMap.hostVo.hostNo}", 
 				dataType : "json",
 				success: function (aList) {
@@ -448,6 +429,33 @@
 							backgroundColor: 'rgb(255, 255, 255)'
 						});
 					}
+				}
+			}),
+			$.ajax({ 
+				type:"get", 
+				url:"${pageContext.request.contextPath}/calendar?hostNo=${requestScope.hostMap.hostVo.hostNo}", 
+				dataType : "json",
+				success: function (bList) {
+					for(var i=0; i<bList.length; i++) {
+						calendar.addEvent({
+							start: bList[i].checkin,
+							end: bList[i].checkout,
+							allDay: true,
+							status: 'done',
+							display: 'background',
+							overlap: false,
+							backgroundColor: 'rgb(238, 238, 238)'
+						});
+					}
+					calendar.addEvent({
+						start: '22/01/01',
+						end: '22/03/15',
+						allDay: true,
+						status: 'done',
+						display: 'background',
+						overlap: false,
+						backgroundColor: 'rgb(238, 238, 238)'
+					});
 				}
 			})
 		],

@@ -90,3 +90,6 @@ a:hover {text-decoration: none; color: #000}
 .fc-daygrid-day {
 	background-color: #eee;
 }
+.disabled{
+	text-decoration:line-through
+}

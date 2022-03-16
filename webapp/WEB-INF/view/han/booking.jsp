@@ -115,12 +115,12 @@
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             <div class="modal-body">
 	            <img id="checked"  src="${pageContext.request.contextPath}/assets/images/finishR_check2-circle.svg">
-	            <h2>예약이 완료 되었습니다.</h2>
+	            <h2 style="padding:0px 0px 0px 45px;">예약이 완료 되었습니다.</h2>
 	            <p class="sm">상세 내역은 마이페이지에서 확인 가능합니다.</p>
             </div>
           <div class="modal-footer">
             <div id="footer1">
-              <button class="w-btn-outline w-btn-blue-outline" type="button">
+              <button id="modalOk" class="w-btn-outline w-btn-blue-outline" type="button">
                 확인
               </button>
             </div>
@@ -135,8 +135,10 @@ var dayList ;
 
 $(document).ready(function() {//ready: 돔이 만들어진 후 페이지를 뿌리기 전
 	console.log("리스트 요청(페이지 로딩전)");
-	
-	
+});
+//모달 Ok 클릭
+$("#modalOk").on("click", function(){
+	location.replace("${pageContext.request.contextPath}/main");
 });
 
 //마릿수
@@ -167,12 +169,11 @@ $("#btn2").on("click", function(){
 	};
 	console.log(bookingVo);
 	
-    //요청
 	$.ajax({
 		//요청할때
 		url : "${pageContext.request.contextPath}/host2/bookinginsert",    
 		type : "post",
-		data : bookingVo,// 자바스크립트 객체를 제이슨으로 바꿔주는 함수
+		data : bookingVo,
 		
 		success : function(count) {
 			$('#bookingOk').modal('show');
@@ -181,6 +182,38 @@ $("#btn2").on("click", function(){
 			console.error(status + " : " + error);
 		}
 	});
+});
+
+//체크인 날짜 변경시
+$('#datePicker1').on("changeDate", function(e){
+	var checkin = $("#datePicker1").val();
+	$("#checkin").html(checkin);
+	//체크인날짜가 체크아웃의 스타트데이트로 변경
+});
+
+//체크아웃 날짜 변경시
+$('#datePicker2').on("changeDate", function(e){
+	var checkin = $("#datePicker1").val();
+	var checkout = $("#datePicker2").val();
+	$("#checkout").html(checkout);
+	
+	var dayinArr = checkin.split("-");
+	var dayoutArr = checkout.split("-");
+	
+	var stDate = new Date(dayinArr[0], dayinArr[1], dayinArr[2]);
+	var endDate = new Date(dayoutArr[0], dayoutArr[1], dayoutArr[2]);
+	
+	var btMs = endDate.getTime() - stDate.getTime();
+	var days = (btMs / (1000*60*60*24))+1;
+	$("#days").text(days);
+	
+	var cost = days * ${requestScope.hostVo.hostcost}
+	
+	$("#bookingDate").text(cost);
+	
+	var ea = $("#ea").text();
+	
+	$("#hostcost").text(cost * ea);
 });
 
 //캘린더 라이브러리
@@ -214,25 +247,6 @@ document.addEventListener('DOMContentLoaded', function() {
 		// ajax 처리로 데이터를 로딩 시킨다. 
 		$.ajax({ 
 			type:"get", 
-			url:"${pageContext.request.contextPath}/calendar?hostNo=${param.hostNo}", 
-			dataType : "json",
-			success: function (bList) {
-				for(var i=0; i<bList.length; i++) {
-					calendar.addEvent({
-						title: bList[i].guestName+'('+bList[i].status+')',
-						start: bList[i].checkin,
-						end: bList[i].checkout,
-						status: 'booking',
-						color: '#ffafb0',
-						textColor: '#000000',
-						status: 'booking'
-					});
-				}
-				
-			}
-		}),
-		$.ajax({ 
-			type:"get", 
 			url:"${pageContext.request.contextPath}/calendarAble?hostNo=${param.hostNo}", 
 			dataType : "json",
 			success: function (aList) {
@@ -245,6 +259,25 @@ document.addEventListener('DOMContentLoaded', function() {
 						display: 'background',
 						overlap: false,
 						backgroundColor: 'rgb(255, 255, 255)'
+					});
+				}
+				
+			}
+		}),
+		$.ajax({ 
+			type:"get", 
+			url:"${pageContext.request.contextPath}/calendar?hostNo=${param.hostNo}", 
+			dataType : "json",
+			success: function (bList) {
+				for(var i=0; i<bList.length; i++) {
+					calendar.addEvent({
+						start: bList[i].checkin,
+						end: bList[i].checkout,
+						status: 'booking',
+						color: '#ffafb0',
+						textColor: '#000000',
+						display: 'background',
+						backgroundColor: 'rgb(238, 238, 238)'
 					});
 				}
 			}
@@ -309,39 +342,6 @@ function getList(){
 	})
 	return dayList;
 }
-
-
-//체크인 날짜 변경시
-$('#datePicker1').on("changeDate", function(e){
-	var checkin = $("#datePicker1").val();
-	$("#checkin").html(checkin);
-	//체크인날짜가 체크아웃의 스타트데이트로 변경
-});
-
-//체크아웃 날짜 변경시
-$('#datePicker2').on("changeDate", function(e){
-	var checkin = $("#datePicker1").val();
-	var checkout = $("#datePicker2").val();
-	$("#checkout").html(checkout);
-	
-	var dayinArr = checkin.split("-");
-	var dayoutArr = checkout.split("-");
-	
-	var stDate = new Date(dayinArr[0], dayinArr[1], dayinArr[2]);
-	var endDate = new Date(dayoutArr[0], dayoutArr[1], dayoutArr[2]);
-	
-	var btMs = endDate.getTime() - stDate.getTime();
-	var days = (btMs / (1000*60*60*24))+1;
-	$("#days").text(days);
-	
-	var cost = days * ${requestScope.hostVo.hostcost}
-	
-	$("#bookingDate").text(cost);
-	
-	var ea = $("#ea").text();
-	
-	$("#hostcost").text(cost * ea);
-});
 
 $(function() {	
     $('#datePicker2').datepicker({

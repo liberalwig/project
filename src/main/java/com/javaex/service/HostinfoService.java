@@ -108,6 +108,7 @@ public class HostinfoService {
 	}
 	//호스트 사진 가져오기
 	public List<PhotoVo> getHostPhoto(int hostNo){
+		System.out.println("[HostinfoService.getHostPhoto()]");
 		return hostinfoDao.getHostPhoto(hostNo);
 	}
 	
@@ -129,6 +130,7 @@ public class HostinfoService {
 	
 	//able 가져오기
 	public List<String> getBooking(int hostNo) {
+		System.out.println("[HostinfoService.getBooking()]");
 		List<String> ableList = hostinfoDao.getAbleDate(hostNo);
 		
 		return ableList;
@@ -157,33 +159,13 @@ public class HostinfoService {
 	}
 	
 	//예약하기
-	public void bookinginsert(BookingVo bookingVo) {
+	public int bookinginsert(BookingVo bookingVo) {
 		System.out.println("[HostinfoService.bookinginsert()]");
 		
 		//예약테이블 인서트
-		hostinfoDao.bookinginsert(bookingVo);
+		return hostinfoDao.bookinginsert(bookingVo);
 	}
 	
-	//결제정보
-	public BookingVo getPaymentForm(int bookingNo) {
-		System.out.println("[HostinfoService.bookinginsert()]");
-		
-		//결제정보 가져오기
-		BookingVo bookingVo = hostinfoDao.getPayment(bookingNo);
-		bookingVo.setTotalCost((bookingVo.getBookingDate() * bookingVo.getDays() * bookingVo.getEa()));
-		
-		return bookingVo;
-	}
-	
-	//결제이후 상태 변경
-	public int setPayment(BookingVo bookingVo) {
-		System.out.println("[HostinfoService.setPayment()]");
-		
-		bookingVo.setStatus("예약완료");
-		int count = hostinfoDao.setStatus(bookingVo);
-		
-		return count;
-	}
 	//키워드 리스트 가져오기
 	public List<KeywordVo> getKeywordList() {
 		System.out.println("[HostinfoService.getKeywordList()]");

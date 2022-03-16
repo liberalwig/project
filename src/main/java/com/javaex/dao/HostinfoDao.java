@@ -134,10 +134,10 @@ public class HostinfoDao {
 	}
 	
 	//예약하기
-	public void bookinginsert(BookingVo bookingVo) {
+	public int bookinginsert(BookingVo bookingVo) {
 		System.out.println("[HostinfoDao.bookinginsert()]");
 		
-		sqlSession.insert("hostinfo.bookinginsert", bookingVo);
+		return sqlSession.insert("hostinfo.bookinginsert", bookingVo);
 	}
 	
 	//상태값 변경

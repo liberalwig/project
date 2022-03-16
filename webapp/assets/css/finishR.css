@@ -3,15 +3,15 @@
 .clearfix:before, .clearfix:after {display: block; content: ""; line-height: 0;}
 .clearfix:after {clear: both;}
 
-.close {margin: 10px;}
+#bookingOk .close {margin: 10px;}
 
-.modal-title{
+#bookingOk .modal-title{
   font-weight: bolder;
 }
 
-.modal-body {margin: 0px 100px 0px 100px;}
+#bookingOk .modal-body {margin: 0px 100px 0px 100px;}
 
-.small{
+#bookingOk .small{
   font-size: 12px;
   color: #8d8d8d;
   padding: 10px 0px 10px 0px;
@@ -19,16 +19,18 @@
 }
 
 
-.modal-footer p{
+#bookingOk .modal-footer p{
   text-align: center;
   margin: 10px;
   font-size: 10px;
   color: #8d8d8d;
 }
-
+#bookingOk #checked{
+	text-align: center;
+}
 /*버튼*/
 
-.w-btn-outline {
+#bookingOk .w-btn-outline {
   position: relative;
   padding: 15px 60px;
   border-radius: 15px;
@@ -39,44 +41,44 @@
   transition: 0.25s;
 }
 
-.w-btn-blue-outline {
+#bookingOk .w-btn-blue-outline {
   border: 3px solid rgba(84, 150, 207, 85%);
   color: #6e6e6e;
 }
 
-.w-btn-outline:hover {
+#bookingOk .w-btn-outline:hover {
   letter-spacing: 2px;
   transform: scale(1.2);
   cursor: pointer;
 }
 
-.w-btn-blue-outline:hover {
+#bookingOk .w-btn-blue-outline:hover {
   background-color: rgba(84, 150, 207, 85%);
   color: #d4dfe6;
 }
 
-.w-btn-outline:active {
+#bookingOk .w-btn-outline:active {
   transform: scale(1.5);
 }
 
 
 /*finish1*/
-#checked {
+#bookingOk #checked {
   width: 100px;
   height: 100px;
   margin-left: 130px;
 }
 
-#checked h2 {text-align: center;}
+#bookingOk #checked h2 {text-align: center;}
 
-.sm{
+#bookingOk .sm{
   font-size: 12px;
   color: #6e6e6e;
   padding: 10px 0px 10px 0px;
   text-align: center;
 }
 
-#footer1 {
+#bookingOk #footer1 {
   margin: 0px 210px 0px 0px;
 }
 
