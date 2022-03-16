@@ -71,12 +71,12 @@
 									<a href="${pageContext.request.contextPath}/host2/booking?hostNo=${requestScope.hostMap.hostVo.hostNo}"><button id="btn1" type="button" class="btn btn-primary color">
 											<h4>예약 요청</h4>
 										</button></a>
-									<button id="btn1" type="button" class="btn btn-default">
+									<button id="btn2" type="button" class="btn btn-default">
 										<h4>
 											<span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>&nbsp;메시지 보내기
 										</h4>
 									</button>
-									<button id="btn2" type="button" class="btn btn-default">
+									<button id="btn3" type="button" class="btn btn-default">
 										<h4>
 											<span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
 										</h4>
@@ -182,7 +182,7 @@
 					<!--앨범-->
 					<div id="imgbox">
 						<div class="row">
-							<div id="imgbox2">
+							<div id="imgbox2" style="overflow:scroll;width:832px; height:390px;">
 								<c:forEach items="${requestScope.hostMap.photoList}" var="vo">
 									<img src="${pageContext.request.contextPath}/photo/${vo.saveName}">
 								</c:forEach>
@@ -295,7 +295,26 @@
 	$(function () {
 		  $('[data-toggle="tooltip"]').tooltip()
 		});
-	
+	//버튼을 눌렀을때
+	$("#btn1").on("click", function(){
+		if(${sessionScope.authUser.usersType == 2}){
+			alert('펫시터는 할 수 없습니다.');
+		} else {
+			location.replace("${pageContext.request.contextPath}/host2/booking?hostNo=${requestScope.hostMap.hostVo.hostNo}");
+		}
+	});
+	$("#btn2").on("click", function(){
+		if(${sessionScope.authUser.usersType == 2}){
+			alert('펫시터는 할 수 없습니다.');
+		} else {
+		}
+	});
+	$("#btn3").on("click", function(){
+		if(${sessionScope.authUser.usersType == 2}){
+			alert('펫시터는 할 수 없습니다.');
+		} else {
+		}
+	});
 	//사진
 	//탭을 클릭했을때
 	$("#tapbox ul li").on("click", function(){
@@ -447,15 +466,6 @@
 							backgroundColor: 'rgb(238, 238, 238)'
 						});
 					}
-					calendar.addEvent({
-						start: '22/01/01',
-						end: '22/03/15',
-						allDay: true,
-						status: 'done',
-						display: 'background',
-						overlap: false,
-						backgroundColor: 'rgb(238, 238, 238)'
-					});
 				}
 			})
 		],

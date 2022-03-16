@@ -89,6 +89,12 @@ a:hover {text-decoration: none; color: #000}
 	#container #btnbox1 #btn2{
 		margin: 10px 0px 0px 0px;
 		padding: 13px 0px 0px 0px;
+		width: 200px;
+		height: 50px;
+	}
+	#container #btnbox1 #btn3{
+		margin: 10px 0px 0px 0px;
+		padding: 13px 0px 0px 0px;
 		height: 50px;
 		width: 50px;
 	}
@@ -250,6 +256,7 @@ a:hover {text-decoration: none; color: #000}
 		width:50px;
 	}
 	.reviewbox {
+		width: 800px;
 		margin-bottom:5px;
 		border-bottom:1px solid #DDD;
 	}

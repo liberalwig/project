@@ -93,3 +93,6 @@ a:hover {text-decoration: none; color: #000}
 .disabled{
 	text-decoration:line-through
 }
+a {
+	color: #333;
+}
