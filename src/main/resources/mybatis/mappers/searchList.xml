@@ -46,22 +46,22 @@
 					    <include refid="search"></include>
 					    <choose>
 							  <when test="orderType = null">
-								  order by h.hostNo desc
+								  order by hostNo desc
 							  </when>
 							  <when test="orderType = 1">
-								  order by c.clean desc
+								  order by clean desc
 							  </when>
 							  <when test="orderType = 2">
-								  order by c.walk desc
+								  order by walk desc
 							  </when>
 							  <when test="orderType = 3">
-								  order by c.play desc
+								  order by play desc
 							  </when>
 							  <when test="orderType = 4">
-								  order by c.food desc
+								  order by food desc
 							  </when>
 							  <when test="orderType = 5">
-								  order by c.communication desc
+								  order by communication desc
 							  </when>
 					  </choose> 
 			</select>	
@@ -98,38 +98,38 @@
 					where u.usersNo = h.usersNo
 					and   c.hostNo = h.hostNo
 					and hostView = 1]]> 
-				  <include refid="search"></include>
-	
-				  <choose>
-						<when test="orderType = null">
-							order by h.hostNo desc
-						</when>
-						<when test="orderType = 1">
-							order by c.clean desc
-						</when>
-						<when test="orderType = 2">
-							order by c.walk desc
-						</when>
-						<when test="orderType = 3">
-							order by c.play desc
-						</when>
-						<when test="orderType = 4">
-							order by c.food desc
-						</when>
-						<when test="orderType = 5">
-							order by c.communication desc
-						</when>
-				  </choose> 
-				  
-		</select>
+					
+				 	<include refid="search"></include>
+			 	    <choose>
+						  <when test="orderType = null">
+						  	  order by hostNo desc nulls last
+						  </when>
+						  <when test="orderType = 1">
+							  order by clean desc nulls last
+						  </when>
+						  <when test="orderType = 2">
+						   	  order by walk desc nulls last
+						  </when>
+						  <when test="orderType = 3">
+						  	  order by play desc nulls last
+						  </when>
+						  <when test="orderType = 4">
+						   	  order by food desc nulls last
+						  </when>
+						  <when test="orderType = 5">
+						      order by communication desc nulls last
+						  </when>
+				   </choose> 
+				 	
+			</select>
 	  	
-		<sql id="search">
-				<if test="searchKeyword != null and searchKeyword != ''.toString()">
-						and
-					<if test="searchKeyword.toString()">
-						adress1 like '%' || #{searchKeyword} || '%'
+			<sql id="search">
+					<if test="searchKeyword != null and searchKeyword != ''.toString()">
+							and
+						<if test="searchKeyword.toString()">
+							adress1 like '%' || #{searchKeyword} || '%'
+						</if>
 					</if>
-				</if>
-		</sql>
+			</sql>
 
 </mapper>

@@ -35,22 +35,30 @@
       				<div class="col-xs-2 padding_0">
       					<form action="${pageContext.request.contextPath}/searchList" method="get">
       						<input type="hidden" name="orderType" id="orderType" value="1" >
+      						<input type="hidden" name="searchKeyword" id="searchKeyword" value="" >
+      						<input type="hidden" name="searchData" id="searchData" value="" >
 		      					 <button class="btn btn-default" type="submit">
 			                	 		청결 
 			                	 </button>	
 	                	 </form>
       				</div>
-                    <div class="col-xs-2 padding_0">
-                    	<form action="${pageContext.request.contextPath}/searchList" method="get">
-      						<input type="hidden" name="orderType" id="orderType" value="2" >
-		      					 <button class="btn btn-default" type="submit">
-			                	 		산책 
-			                	 </button>	
-	                	 </form>
-                    </div>
+      			
+	                    <div class="col-xs-2 padding_0">
+	                    <form action="${pageContext.request.contextPath}/searchList" method="get">
+	      						<input type="hidden" name="orderType" id="orderType" value="2" >
+	      						<input type="hidden" name="searchKeyword" id="searchKeyword" value="" >
+	      						<input type="hidden" name="searchData" id="searchData" value="" >
+			      					 <button class="btn btn-default" type="submit">
+				                	 		산책 
+				                	 </button>	
+		        		</form>
+	                    </div>
+                    
                     <div class="col-xs-2 padding_0" >
 	                    <form action="${pageContext.request.contextPath}/searchList" method="get">
       						<input type="hidden" name="orderType" id="orderType" value="3" >
+      						<input type="hidden" name="searchKeyword" id="searchKeyword" value="" >
+      						<input type="hidden" name="searchData" id="searchData" value="" >
 		      					 <button class="btn btn-default" type="submit">
 			                	 		식사 
 			                	 </button>	
@@ -59,6 +67,8 @@
                     <div class="col-xs-2 padding_0">
 		                <form action="${pageContext.request.contextPath}/searchList" method="get">
       						<input type="hidden" name="orderType" id="orderType" value="4" >
+      						<input type="hidden" name="searchKeyword" id="searchKeyword" value="" >
+      						<input type="hidden" name="searchData" id="searchData" value="" >
 		      					 <button class="btn btn-default" type="submit">
 			                	 		놀이
 			                	 </button>	
@@ -67,6 +77,8 @@
                     <div class="col-xs-2 padding_0">
 	                    <form action="${pageContext.request.contextPath}/searchList" method="get">
       						<input type="hidden" name="orderType" id="orderType" value="5" >
+      						<input type="hidden" name="searchKeyword" id="searchKeyword" value="" >
+      						<input type="hidden" name="searchData" id="searchData" value="" >
 		      					 <button class="btn btn-default" type="submit">
 			                	 		소통 
 			                	 </button>	
@@ -133,7 +145,7 @@
 					                        </div>
 				                        </div>
 				                	</div>
-				                </div>
+				                </div>				              
 							</c:forEach>
 						</c:if>
 						<c:if test="${empty SearchList}">
@@ -152,83 +164,80 @@
     <!--지도-->
 	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=b041f9ad62c37064e496f0bc81216407&&libraries=services,clusterer"></script>
 		<script>
-			var container = document.getElementById('map');
-			var options = {
-				center: new kakao.maps.LatLng(37.48128882577437, 126.95302167673873),
-				level: 4
-			};
-			
-			 <!--지도생성-->
-			 var map = new kakao.maps.Map(container, options);   
-			 
-			 var positions = [
-				    {
-				        title: '한상선', 
-				        latlng: new kakao.maps.LatLng(37.48128882577437, 126.95302167673873)
-				    },
-				    {
-				        title: '개장수', 
-				        latlng: new kakao.maps.LatLng(37.48128882577437, 126.95302167673875)
-				    },
-				    {
-				        title: '조인성', 
-				        latlng: new kakao.maps.LatLng(37.48128882577437, 126.95302167673878)
-				    },
-				    {
-				        title: '윤개상',
-				        latlng: new kakao.maps.LatLng(37.48128882577437, 126.95302167673872)
-				    }
-				];
-
-				// 마커 이미지의 이미지 주소입니다
-				var imageSrc = "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png"; 
-				    
-				for (var i = 0; i < positions.length; i ++) {
-				    
-				    // 마커 이미지의 이미지 크기 입니다
-				    var imageSize = new kakao.maps.Size(24, 35); 
-				    
-				    // 마커 이미지를 생성합니다    
-				    var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize); 
-				    
-				    // 마커를 생성합니다
-				    var marker = new kakao.maps.Marker({
-				        map: map, // 마커를 표시할 지도
-				        position: positions[i].latlng, // 마커를 표시할 위치
-				        title : positions[i].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
-				        image : markerImage // 마커 이미지 
-				    });
-				}
+			var mapContainer = document.getElementById('map');
+			var mapOption = {
+			    center: new daum.maps.LatLng(37.450701, 126.570667),
+			    level: 14
+			};  
 	
-			 <!--지도 타입변경 컨트롤을 생성한다 -->
-			 var mapTypeControl = new kakao.maps.MapTypeControl();
-			 
-			 <!-- 지도의 상단 우측에 지도 타입 변경 컨트롤을 추가한다 -->
-			 map.addControl(mapTypeControl, kakao.maps.ControlPosition.TOPRIGHT);	
-
-			 <!-- 지도에 확대 축소 컨트롤을 생성한다 -->
-			 var zoomControl = new kakao.maps.ZoomControl();
-
-			 <!-- 지도의 우측에 확대 축소 컨트롤을 추가한다 -->
-			 map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
-			 
-	</script>
+			var map = new daum.maps.Map(mapContainer, mapOption); 
 	
-	<!--하트 클릭-->
-	<script type="text/javascript" >
-	    var i = 0;
-	    $('.bi-heart').on('click',function(){
-	        if(i==0){
-	            $(this).removeClass('bi-heart');
-	            $(this).addClass('bi-heart-fill');
-	            i++;
-	        }else if(i==1){
-	            $(this).removeClass('bi-heart-fill');
-	            $(this).addClass('bi-heart');
-	            i--;
-	        }
-	        
-	    });
+			var geocoder = new daum.maps.services.Geocoder();
+			var listData = [ //db있는 값으로 리스트를 뿌려서 나오는 주소가 여기에 동일하게 나와야 함
+				'${SearchListVo.adress1}',
+			    '서울특별시 관악구 남부순환로 1820 에그옐로우 14층', 
+			    '서울특별시 관악구 봉천동 895-16', 
+			    '서울특별시 송파구 오금로13길 8',
+			    '서울특별시 송파구 올림픽로 25',
+			    '서울특별시 광진구 동일로18길 80',
+			    '서울특별시 종로구 지봉로 25',
+			    '서울특별시 성북구 인촌로 73',
+			    '강원도 춘천시 춘천로310번길 26',
+			    '강원 강릉시 운산동 1081',
+			    '충북 단양군 단양읍 천동리 산 9-1',
+			    '세종특별자치시 금남면 장재리 산 31',
+			    '경북 청도군 화양읍 고평리 산 79-2',
+			    '전라남도 나주시 노안면 학산용산길 104-1'
+			];
+	
+			listData.forEach(function(addr, index) {
+			    geocoder.addressSearch(addr, function(result, status) {
+			        if (status === daum.maps.services.Status.OK) {
+			            var coords = new daum.maps.LatLng(result[0].y, result[0].x);
+	
+			            var marker = new daum.maps.Marker({
+			                map: map,
+			                position: coords
+			            });
+			            var infowindow = new daum.maps.InfoWindow({
+			                content: '<div style="width:150px;text-align:center;padding:6px 0;">' + listData[index] + '</div>',
+			                disableAutoPan: true
+			            });
+			            infowindow.open(map, marker);
+			        } 
+			    });
+			});
+				 
+	
+				 <!--지도 타입변경 컨트롤을 생성한다 -->
+				 var mapTypeControl = new kakao.maps.MapTypeControl();
+				 
+				 <!-- 지도의 상단 우측에 지도 타입 변경 컨트롤을 추가한다 -->
+				 map.addControl(mapTypeControl, kakao.maps.ControlPosition.TOPRIGHT);	
+	
+				 <!-- 지도에 확대 축소 컨트롤을 생성한다 -->
+				 var zoomControl = new kakao.maps.ZoomControl();
+	
+				 <!-- 지도의 우측에 확대 축소 컨트롤을 추가한다 -->
+				 map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
+				 
+		</script>
+		
+		<!--하트 클릭-->
+		<script type="text/javascript" >
+		    var i = 0;
+		    $('.bi-heart').on('click',function(){
+		        if(i==0){
+		            $(this).removeClass('bi-heart');
+		            $(this).addClass('bi-heart-fill');
+		            i++;
+		        }else if(i==1){
+		            $(this).removeClass('bi-heart-fill');
+		            $(this).addClass('bi-heart');
+		            i--;
+		        }
+		        
+		    });
 	    
 	    <!--스크롤-->
 	    $(document).ready(function(){

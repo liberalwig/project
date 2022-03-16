@@ -18,17 +18,15 @@ public class SearchListService {
 			
 			System.out.println("searchListService.getSearchList()");
 			System.out.println(searchListVo.getSearchData());
+			
 			if(searchListVo.getSearchData().equals("")) {
 				
-				
 				return searchListDao.getSearchListD(searchListVo);
+				
 			}else {
 				String[] array = searchListVo.getSearchData().split(" - ");
 				searchListVo.setCheckin(array[0]);
 				searchListVo.setCheckout(array[1]);
-				
-				System.out.println(array[0]);
-				System.out.println(array[1]);
 				
 				return searchListDao.getSearchList(searchListVo);
 				

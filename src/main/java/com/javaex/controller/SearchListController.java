@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.javaex.service.SearchListService;
@@ -16,7 +17,7 @@ public class SearchListController {
 	private SearchListService searchListService;
 	
 	@RequestMapping("/searchList")
-	public String searchList(ModelMap model, SearchListVo searchListVo) {
+	public String searchList(@ModelAttribute SearchListVo searchListVo, ModelMap model ) {
 		
 		System.out.println("searchList.controller");
 		
