@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 import com.javaex.vo.AbleVo;
 import com.javaex.vo.BookingVo;
 import com.javaex.vo.HostVo;
+import com.javaex.vo.MyDogVo;
 import com.javaex.vo.PhotoVo;
 import com.javaex.vo.UserVo;
 
@@ -148,6 +149,12 @@ public class BookingDao {
 	public void updateStatus2(int bookingNo) {
 		
 		sqlsession.update("booking.updateStatus2", bookingNo);
+	}
+	
+	//mydog select
+	public MyDogVo mydogSelect(int usersNo) {
+		
+		return sqlsession.selectOne("mydog.select", usersNo);
 	}
 	
 	//회원가입

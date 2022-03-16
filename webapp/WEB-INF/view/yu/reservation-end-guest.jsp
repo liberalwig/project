@@ -63,22 +63,22 @@
 						<tbody id="bookingDetail">
 							<c:forEach items="${bList}" var="BookingVo">
 									<tr class="bRow">
-	                                    <td class="bOne" data-bookingno="${BookingVo.bookingNo}"><input type="radio" name="list-radio"></td>
-										<td id="no" class="bOne" data-bookingno="${BookingVo.bookingNo}">${BookingVo.bookingNo}</td>
-										<td class="bOne" data-bookingno="${BookingVo.bookingNo}"><img src="/project/assets/images/reservation-dog.png"></td>
-										<td class="bOne" data-bookingno="${BookingVo.bookingNo}">${BookingVo.hostName}</td>
-										<td class="bOne" data-bookingno="${BookingVo.bookingNo}">${BookingVo.checkin} ~ ${BookingVo.checkout}</td>
-										<td class="bOne" data-bookingno="${BookingVo.bookingNo}">₩ ${BookingVo.bookingDate * BookingVo.days * BookingVo.ea}</td>
-										<td class="bOne" data-bookingno="${BookingVo.bookingNo}">${BookingVo.hostHp}</td>
+	                                    <td class="bOne cursorPointer" data-bookingno="${BookingVo.bookingNo}"><input type="radio" name="list-radio"></td>
+										<td id="no" class="bOne cursorPointer" data-bookingno="${BookingVo.bookingNo}">${BookingVo.bookingNo}</td>
+										<td class="bOne cursorPointer" data-bookingno="${BookingVo.bookingNo}"><img src="/project/assets/images/reservation-dog.png"></td>
+										<td class="bOne cursorPointer" data-bookingno="${BookingVo.bookingNo}">${BookingVo.hostName}</td>
+										<td class="bOne cursorPointer" data-bookingno="${BookingVo.bookingNo}">${BookingVo.checkin} ~ ${BookingVo.checkout}</td>
+										<td class="bOne cursorPointer" data-bookingno="${BookingVo.bookingNo}">₩ ${BookingVo.bookingDate * BookingVo.days * BookingVo.ea}</td>
+										<td class="bOne cursorPointer" data-bookingno="${BookingVo.bookingNo}">${BookingVo.hostHp}</td>
 										<c:choose>
 											<c:when test="${BookingVo.status == '예약완료'}">
-												<td><div class="btn-re-gradient yellow mini">예약완료</div></td>
+												<td><div>예약완료</div></td>
 											</c:when>
 											<c:when test="${BookingVo.status == '펫시팅중'}">
 												<td id="reviewForm" data-no="${BookingVo.bookingNo}"><div class="btn-re-gradient orange mini cursorPointer">펫시팅중</div></td>
 											</c:when>
 											<c:when test="${BookingVo.status == '시팅완료'}">
-												<td><div class="btn-re-gradient blue mini">시팅완료</div></td>
+												<td><div>시팅완료</div></td>
 											</c:when>
 										</c:choose>
 									</tr>

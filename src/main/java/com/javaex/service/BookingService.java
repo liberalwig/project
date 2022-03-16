@@ -18,6 +18,7 @@ import com.javaex.dao.BookingDao;
 import com.javaex.vo.AbleVo;
 import com.javaex.vo.BookingVo;
 import com.javaex.vo.HostVo;
+import com.javaex.vo.MyDogVo;
 import com.javaex.vo.PhotoVo;
 import com.javaex.vo.UserVo;
 
@@ -106,9 +107,12 @@ public class BookingService {
 		//일수구하는 함수호출
 		String checkInDate = bvo.getCheckin();
 		String uploadDate = pvo.getPhotoDate();
-		checkInDate.replace("-","");
-		long diffDay = getDays(checkInDate, uploadDate);
+		String checkInDate2 = checkInDate.replace("-","");
+		System.out.println(checkInDate + ", " + uploadDate);
+		long diffDay = getDays(checkInDate2, uploadDate);
 		long days = diffDay + 1;
+		
+		System.out.println("days: " + days);
 
 		// DB에 저장
 		pvo.setPhotoPath(filePath);
@@ -136,8 +140,12 @@ public class BookingService {
 			Date checkInDate = sdf.parse(strCheckInDate);
 			Date uploadDate = sdf.parse(strUploadDate);
 			
+			System.out.println("일수구하기: checkInDate" + checkInDate + ", uploadDate " + uploadDate);
+			
 			//두날짜 사이의 시간 차이(ms)를 하루동안의 ms(24시*60분*60초*1000밀리초)로 나눈다.
 			diffDay = (uploadDate.getTime() - checkInDate.getTime()) / (24*60*60*1000);
+			
+			System.out.println("일수구하기: " + diffDay);
 			
 		}catch (ParseException e) {
 			e.printStackTrace();
@@ -212,6 +220,12 @@ public class BookingService {
 	public void updateStatus(int bookingNo) {
 
 		bookingDao.updateStatus(bookingNo);
+	}
+	
+	//mydog select
+	public MyDogVo mydogSelect(int usersNo) {
+		
+		return bookingDao.mydogSelect(usersNo);
 	}
 
 	// 회원가입

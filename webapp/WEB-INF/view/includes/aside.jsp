@@ -19,6 +19,7 @@
 				<li>메세지</li>
 				<li>찜목록</li>
 				<li>내 정보 수정</li>
+				<li onclick="location.href='${pageContext.request.contextPath}/mydog?usersNo=${authUser.usersNo}'">내 강아지 등록</li>
 			</ul>
 		</div>
 	</c:if>
@@ -32,7 +33,7 @@
 					<li onclick="location.href='${pageContext.request.contextPath}/bookingEndHost?hostNo=${authUser.hostNo}'">예약신청관리</li>
 				</ul>
 				<li>메세지</li>
-				<li>호스트 정보 수정</li>
+				<li>내 정보 수정</li>
 			</ul>
 		</div>
 	</c:if>
