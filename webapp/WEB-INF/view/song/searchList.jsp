@@ -174,7 +174,6 @@
 	
 			var geocoder = new daum.maps.services.Geocoder();
 			var listData = [ //db있는 값으로 리스트를 뿌려서 나오는 주소가 여기에 동일하게 나와야 함
-				'${SearchListVo.adress1}',
 			    '서울특별시 관악구 남부순환로 1820 에그옐로우 14층', 
 			    '서울특별시 관악구 봉천동 895-16', 
 			    '서울특별시 송파구 오금로13길 8',
@@ -199,11 +198,28 @@
 			                map: map,
 			                position: coords
 			            });
+			         	// 인포윈도우를 생성합니다
 			            var infowindow = new daum.maps.InfoWindow({
 			                content: '<div style="width:150px;text-align:center;padding:6px 0;">' + listData[index] + '</div>',
 			                disableAutoPan: true
+
 			            });
-			            infowindow.open(map, marker);
+			            
+			         	// 마커에 오버이벤트를 등록합니다
+						kakao.maps.event.addListener(marker, 'mouseover', (event) => {
+							// 마커 위에 인포윈도우를 표시합니다
+
+								infowindow.open(map, marker);
+			
+						});
+				       	// 마커에 아웃이벤트를 등록합니다
+						kakao.maps.event.addListener(marker, 'mouseout', (event) => {
+							// 마커 위에 인포윈도우를 삭제합니다
+
+								infowindow.close();
+				
+						});
+							
 			        } 
 			    });
 			});
