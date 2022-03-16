@@ -90,13 +90,14 @@ public class HostinfoController {
 	
 	//호스트 정보
 	@RequestMapping(value = "/info/{hostNo}", method = { RequestMethod.GET, RequestMethod.POST })
-	public String hostinfoForm(@PathVariable("hostNo") int hostNo, Model model) {
+	public String hostinfoForm(@PathVariable("hostNo") int hostNo, Model model,
+							   @RequestParam(value = "crtPage", required = false, defaultValue = "1") int crtPage) {
 		System.out.println("[hostinfoController.hostinfoForm()]");
 
 		int authNo = hostinfoService.checkNo(hostNo);
 		
 		if(authNo > 0) {
-			Map<String, Object> hostMap = hostinfoService.getHostMap(hostNo);
+			Map<String, Object> hostMap = hostinfoService.getHostMap(hostNo, crtPage);
 			model.addAttribute("hostMap", hostMap);
 			
 			return "/han/hostinfo";

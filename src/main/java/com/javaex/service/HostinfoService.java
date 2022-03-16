@@ -42,7 +42,7 @@ public class HostinfoService {
 	}
 	
 	//호스트 데이터 가져오기
-	public Map<String, Object> getHostMap(int hostNo) {
+	public Map<String, Object> getHostMap(int hostNo, int crtPage) {
 		System.out.println("[HostinfoService.list()]");
 		Map<String, Object> hostMap = new HashMap<String, Object>();
 		//호스트 정보 가져오기
@@ -50,7 +50,27 @@ public class HostinfoService {
 		//키워드 정보 가져오기
 		List<KeywordVo> keyList = hostinfoDao.getHostKeyword(hostNo);
 		//리뷰 정보 가져오기
-		List<ReviewVo> reviewList = hostinfoDao.getReview(hostNo);
+		int listCnt = 8;
+		crtPage = (crtPage>0) ? crtPage : (crtPage=1);
+		int startRnum = ((crtPage-1)*listCnt) + 1;
+		int endRnum = (startRnum + listCnt) - 1;
+		List<ReviewVo> reviewList = hostinfoDao.getReview(hostNo, startRnum, endRnum);
+		int totalCnt = hostinfoDao.getReviewCount(hostNo);
+		int pageBtnCount = 5;
+		int endPageBtnNo = (int)( Math.ceil(crtPage/(double)pageBtnCount ) )*pageBtnCount;
+		int startPageBtnNo = endPageBtnNo - (pageBtnCount-1);
+		boolean next = false;
+		//다음 화살표
+		if(endPageBtnNo*listCnt < totalCnt) {
+			next = true;
+		} else { // 다음 화살표가 안보이면 마지막 버튼값을 다시 계산한다
+			endPageBtnNo = (int)(Math.ceil(totalCnt/(double)listCnt));
+		}
+		//이전 화살표
+		boolean prev = false;
+		if(startPageBtnNo != 1) {
+			prev = true;
+		}
 		//퍼피력 계산
 		double sum = (hostinfoDao.getSum(hostNo)/5.0);
 		double reviewcount = (double)hostinfoDao.getReviewCount(hostNo);
@@ -79,6 +99,10 @@ public class HostinfoService {
 		hostMap.put("point", point);
 		hostMap.put("photoList", photoList);
 		hostMap.put("calendurList", calendurList);
+		hostMap.put("prev", prev);
+		hostMap.put("startPageBtnNo", startPageBtnNo);
+		hostMap.put("endPageBtnNo", endPageBtnNo);
+		hostMap.put("next", next);
 		
 		return hostMap;
 	}
