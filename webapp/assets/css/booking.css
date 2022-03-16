@@ -109,6 +109,7 @@
 .item {
 	display: inline-block;
 	margin: 2rem 2px 0px 2px;
+	cursor: pointer;
 }
 
 .img-date>h3 {
@@ -137,7 +138,7 @@
 
 #reviewEmpty {
 	margin-left: 15px;
-	width: 92%;
+	width: 95%;
 	height: 400px;
 	background-color: #eeeeee;
 	/* border: 3px dashed #dbdbdb; */

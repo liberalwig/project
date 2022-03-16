@@ -46,18 +46,37 @@
 		]]>
 	</select>
 	
-	<select id="getReview" parameterType="int" resultType="ReviewVo">
+	<select id="getReview" parameterType="map" resultType="ReviewVo">
 		<![CDATA[
-			select bo.bookingNo,
-			       us.usersno,
-			       us.name,
-			       us.path,
-			       bo.review,
-			       to_char(bo.reviewDate, 'YYYY-MM-DD') reviewDate
-			from   booking bo, users us
-			where  bo.usersNo = us.usersNo
-			and    bo.hostNo = #{hostNo}
-		    and    bo.status = '시팅완료'
+			select  rt.rn,
+					rt.bookingNo,
+			        rt.usersNo,
+			        rt.name,
+			        rt.path,
+			        rt.review,
+			        rt.reviewDate
+			from    (select rownum rn,
+							ot.bookingNo,
+			                ot.usersNo,
+			                ot.name,
+			                ot.path,
+			                ot.review,
+			                ot.reviewDate
+			        from    (select bo.bookingNo,
+                                    us.usersno,
+                                    us.name,
+                                    us.path,
+                                    bo.review,
+                                    to_char(bo.reviewDate, 'YYYY-MM-DD') reviewDate
+                             from   booking bo, users us
+                             where  bo.usersNo = us.usersNo
+                             and    bo.hostNo = #{hostNo}
+                             and    bo.status = '시팅완료'
+                             order by bo.reviewdate desc
+                             )ot
+                    )rt
+			where rn >= #{startRnum}
+			and   rn <= #{endRnum}
 		]]>
 	</select>
 	

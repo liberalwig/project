@@ -90,13 +90,14 @@ public class HostinfoController {
 	
 	//호스트 정보
 	@RequestMapping(value = "/info/{hostNo}", method = { RequestMethod.GET, RequestMethod.POST })
-	public String hostinfoForm(@PathVariable("hostNo") int hostNo, Model model) {
+	public String hostinfoForm(@PathVariable("hostNo") int hostNo, Model model,
+							   @RequestParam(value = "crtPage", required = false, defaultValue = "1") int crtPage) {
 		System.out.println("[hostinfoController.hostinfoForm()]");
 
 		int authNo = hostinfoService.checkNo(hostNo);
 		
 		if(authNo > 0) {
-			Map<String, Object> hostMap = hostinfoService.getHostMap(hostNo);
+			Map<String, Object> hostMap = hostinfoService.getHostMap(hostNo, crtPage);
 			model.addAttribute("hostMap", hostMap);
 			
 			return "/han/hostinfo";
@@ -125,7 +126,6 @@ public class HostinfoController {
 		System.out.println("[hostinfoController.bookinginsertForm()]");
 		
 		HostVo hostVo = hostinfoService.getHost(hostNo);
-		System.out.println(hostVo);
 		model.addAttribute("hostVo", hostVo);
 		
 		return "/han/booking";
@@ -134,10 +134,9 @@ public class HostinfoController {
 	@ResponseBody
 	@RequestMapping(value = "/booking2", method = { RequestMethod.GET, RequestMethod.POST })
 	public List<String> getAble(@RequestParam("hostNo") int hostNo, Model model) {
-		System.out.println("[hostinfoController.bookinginsertForm()]");
+		System.out.println("[hostinfoController.getAble()]");
 		
 		List<String> ableList = hostinfoService.getBooking(hostNo);
-		System.out.println(ableList);
 		
 		return ableList;
 	}
@@ -145,37 +144,11 @@ public class HostinfoController {
 	//예약처리
 	@ResponseBody
 	@RequestMapping(value = "/bookinginsert", method = { RequestMethod.GET, RequestMethod.POST })
-	public void bookinginsert(@ModelAttribute BookingVo bookingVo) {
+	public int bookinginsert(@ModelAttribute BookingVo bookingVo) {
 		System.out.println("[hostinfoController.bookinginsert()]");
 		
 		hostinfoService.checkdays(bookingVo);//일수 계산
-		hostinfoService.bookinginsert(bookingVo);
-		
-		System.out.println(bookingVo);
-	}
-	
-	//결제완료 페이지
-	@RequestMapping(value = "/payment/{bookingNo}", method = { RequestMethod.GET, RequestMethod.POST })
-	public String paymentForm(@PathVariable("bookingNo") int bookingNo, Model model) {
-		System.out.println("[hostinfoController.paymentForm()]");
-		
-		//예약정보 가져오기
-		BookingVo bookingVo = hostinfoService.getPaymentForm(bookingNo);
-		HostVo hostVo = hostinfoService.getHost(bookingVo.getHostNo());
-		
-		model.addAttribute("bookingVo", bookingVo);
-		model.addAttribute("hostVo", hostVo);
-		
-		return "/han/payment";
-	}
-	
-	//결제
-	@ResponseBody
-	@RequestMapping(value = "/payment", method = { RequestMethod.GET, RequestMethod.POST })
-	public int payment(@ModelAttribute BookingVo bookingVo) {
-		System.out.println("[hostinfoController.payment()]");
-		
-		int count = hostinfoService.setPayment(bookingVo);
+		int count = hostinfoService.bookinginsert(bookingVo);
 		
 		return count;
 	}

@@ -11,6 +11,7 @@
     <link href="/project/assets/css/yu_main.css" rel="stylesheet" type="text/css">
     <link href="/project/assets/css/booking.css" rel="stylesheet" type="text/css"/>
 	<link href="/project/assets/css/poto-upload.css" rel="stylesheet" type="text/css"/>
+	<link href="/project/assets/css/myDog.css" rel="stylesheet" type="text/css">
 
     <!--자바스크립트-->
     <script type="text/javascript" src="/project/assets/js/jquery-1.12.4.js"></script>
@@ -74,7 +75,7 @@
 				                                        	<img src="/project/assets/images/bookingDetail_gray.png" class="wrapper-img">
 				                                		</c:if>
 				                                		<c:if test="${pListDate[0].photoPath != null}">
-			                                        		<img data-no="${pListDate[0].photoNo}" src="${pageContext.request.contextPath }/photo/${pListDate[0].saveName}" class="wrapper-img viewImg">
+			                                        		<img data-no="${pListDate[0].photoNo}" data-usersno="${bvo.usersNo}" src="${pageContext.request.contextPath }/photo/${pListDate[0].saveName}" class="wrapper-img viewImg">
 			                                        	</c:if>
 			                                            <div class="caption">${pListDate[0].category}</div>
 			                                        </div>
@@ -87,7 +88,7 @@
 				                                        	<img src="/project/assets/images/bookingDetail_gray.png" class="wrapper-img">
 				                                		</c:if>
 				                                		<c:if test="${pListDate[1].photoPath != null}">
-			                                        		<img data-no="${pListDate[1].photoNo}" src="${pageContext.request.contextPath }/photo/${pListDate[1].saveName}" class="wrapper-img viewImg">
+			                                        		<img data-no="${pListDate[1].photoNo}" data-usersno="${bvo.usersNo}" src="${pageContext.request.contextPath }/photo/${pListDate[1].saveName}" class="wrapper-img viewImg">
 			                                        	</c:if>
 			                                            <div class="caption">${pListDate[1].category}</div>
 			                                        </div>
@@ -100,7 +101,7 @@
 				                                        	<img src="/project/assets/images/bookingDetail_gray.png" class="wrapper-img">
 				                                		</c:if>
 				                                		<c:if test="${pListDate[2].photoPath != null}">
-			                                        		<img data-no="${pListDate[2].photoNo}" src="${pageContext.request.contextPath }/photo/${pListDate[2].saveName}" class="wrapper-img viewImg">
+			                                        		<img data-no="${pListDate[2].photoNo}" data-usersno="${bvo.usersNo}" src="${pageContext.request.contextPath }/photo/${pListDate[2].saveName}" class="wrapper-img viewImg">
 			                                        	</c:if>
 			                                            <div class="caption">${pListDate[2].category}</div>
 			                                        </div>
@@ -113,7 +114,7 @@
 				                                        	<img src="/project/assets/images/bookingDetail_gray.png" class="wrapper-img">
 				                                		</c:if>
 				                                		<c:if test="${pListDate[3].photoPath != null}">
-			                                        		<img data-no="${pListDate[3].photoNo}" src="${pageContext.request.contextPath }/photo/${pListDate[3].saveName}" class="wrapper-img viewImg">
+			                                        		<img data-no="${pListDate[3].photoNo}" data-usersno="${bvo.usersNo}" src="${pageContext.request.contextPath }/photo/${pListDate[3].saveName}" class="wrapper-img viewImg">
 			                                        	</c:if>
 			                                            <div class="caption">${pListDate[3].category}</div>
 			                                        </div>
@@ -134,6 +135,39 @@
                         <div class="info">
                             <h2>펫시터 정보</h2>
                             <hr>
+                            <div id="dogCard">
+								<div class="row"></div>
+								<div id="cardHeader">
+									<p id="headerText" class="text-center">강아지 등록증</p>
+								</div>
+								<hr>
+								<div id="cardBody" class="clearfix">
+									<form action="">
+										<div id="imgFile" data-usersno="${bvo.usersNo}">
+											<c:if test="${empty mvo.photo}">
+												<img id="myDogImg" src="${pageContext.request.contextPath}/assets/images/myDogImg2.png">
+											</c:if>
+											<c:if test="${!empty mvo.photo}">
+												<img id="myDogImg" src="${pageContext.request.contextPath}/photo/${mvo.photo}">
+											</c:if>
+											<p>갤러리보기</p>
+										</div>
+										<div id="myDogInfo">
+											<p id="pName" class="text-center">${mvo.name}</p>
+											<p><strong class="index">생년월일 :</strong> ${mvo.birth}</p>
+											<p><strong class="index">성별 :</strong> ${mvo.gender}</p>
+											<p><strong class="index">품종 :</strong> ${mvo.breed}</p>
+											<p><strong class="index">몸무게 :</strong> ${mvo.weight}kg</p>
+											<c:if test="${mvo.neuter == 1}">
+												<p><strong class="index">중성화 :</strong> O</p>
+											</c:if>
+											<c:if test="${mvo.neuter == 0}">
+												<p><strong class="index">중성화 :</strong> X</p>
+											</c:if>
+										</div>
+									</form>
+								</div>
+							</div>
                             <div class="container-fluid">
                                 <div class="row">
                                     <div class="col-xs-6">펫시터이름</div>
@@ -444,10 +478,54 @@
 					<p id="viewModelContent"></p>
 				</div>
 				<input type="hidden" id="listNo" val="">
+				<input type="hidden" id="usersNoModal" val="">
+				<input type="hidden" id="bookingNoModal" val="">
+				<input type="hidden" id="savaNameModal" val="">
+			</div>
+			<div class="modal-footer">
+				<button id="galleryInsert" class="btn btn-default">갤러리에 저장하기</button>
 			</div>
 		</div> <!-- /.modal-content -->
 	</div> <!-- /.modal-dialog -->
 </div> <!-- /.modal -->
+
+<!--class="modal fade"-->
+	<div class="modal fade" id="imgupdateModal">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h4 class="modal-title">갤러리</h4>
+				</div>
+				<div class="modal-body">
+					<div id="listArea"></div>
+						<%-- <div class="wrapper">
+							<div class="item">
+		                        <div class="polaroid">
+		                        		<img data-no="" src="" class="wrapper-img viewImg">
+		                            <div class="caption"></div>
+		                        </div>
+		                        <div class="polaroid">
+		                        		<img data-no="" src="" class="wrapper-img viewImg">
+		                            <div class="caption"></div>
+		                        </div>
+		                        <div class="polaroid">
+		                        		<img data-no="" src="" class="wrapper-img viewImg">
+		                            <div class="caption"></div>
+		                        </div>
+		                        <div class="polaroid">
+		                        		<img data-no="" src="" class="wrapper-img viewImg">
+		                            <div class="caption"></div>
+		                        </div>
+		                    </div>
+	                    </div> --%>
+					<hr>
+					<div class="contents">
+					</div>
+				</div>
+			</div><!--/.modal-content-->
+		</div><!--/.modal-dialog--> 
+	 </div><!--/.modal-->
     
 </body>
 
@@ -477,17 +555,44 @@
 		
 	});
 	
+	//갤러리에 저장버튼 눌렀을떄
+	$("#galleryInsert").on("click", function() {
+		var photoNo = $("#listNo").val();
+		var usersNo = $("#usersNoModal").val();
+		var bookingNo = $("#bookingNoModal").val();
+		var saveName = $("#savaNameModal").val();
+		
+		$.ajax({
+			
+			url : "${pageContext.request.contextPath}/galleryInsert",
+			type : "post",
+			//contentType : "application/json",
+			data : { photoNo : photoNo,
+					 usersNo : usersNo,
+					 bookingNo : bookingNo,
+					 saveName : saveName},
+			//dataType : "json",
+			success : function(result) {
+				if(result == 's') {
+					$("#viewModal").modal('hide');
+				}
+			},
+			error : function(XHR, status, error) {
+				console.error(status + " : " + error);
+			}
+		});
+	});
+	
 	//이미지 눌렀을때(이미지보기)
 	$(".viewImg").on("click", function() {
 		var $this = $(this);
 		var no = $this.data("no");
-		getImg(no);
+		var usersNo = $this.data("usersno");
+		getImg(no, usersNo);
 	});
 	
 	//이미지 불러오기(이미지보기)
-	function getImg(no) {
-	
-		//var authUserNo = $("#btnImgUpload").data("uno");
+	function getImg(no, usersNo) {
 	
 		$.ajax({
 			
@@ -501,6 +606,52 @@
 				$("#viewModelImg").attr("src", '${pageContext.request.contextPath}/photo/' + pvo.saveName);
 				$("#viewModelContent").html(pvo.photoTitle);
 				$("#listNo").val(pvo.photoNo);
+				$("#usersNoModal").val(usersNo);
+				$("#bookingNoModal").val(no);
+				$("#savaNameModal").val(pvo.saveName);
+			},
+			error : function(XHR, status, error) {
+				console.error(status + " : " + error);
+			}
+		});
+	}
+	
+	var cnt=0;
+	//이미지업로드 버튼을 눌렀을때
+	$("#imgFile").on("click", function(){
+		cnt++;
+		var $this = $(this);
+		var usersNo = $this.data("usersno");
+		
+		if(cnt==1) {
+			viewGallery(usersNo);
+		}else {
+			$("#imgupdateModal").modal('show');
+		}
+		
+	});	
+	
+	function viewGallery(usersNo) {
+		
+		$.ajax({
+			url : "${pageContext.request.contextPath}/gallerySelect",
+			type : "post",
+			//contentType : "application/json",
+			data : { usersNo : usersNo },
+			dataType : "json",
+			success : function(gList) {
+				
+				$("#imgupdateModal").modal('show');
+				for(var i=0; i<gList.length; i++){
+					var str = '';
+					str += '	<div class="item">';
+					str += '		<div class="polaroid">';
+					str += '			<img data-usersno='+usersNo+' data-photono='+gList[i].photoNo+' src="${pageContext.request.contextPath}/photo/'+gList[i].saveName+'" class="wrapper-img viewImg"> ';
+					str += '			<div class="caption"></div>';
+					str += '		</div>';
+					str += '	</div>';
+					$("#listArea").append(str);
+				}
 			},
 			error : function(XHR, status, error) {
 				console.error(status + " : " + error);

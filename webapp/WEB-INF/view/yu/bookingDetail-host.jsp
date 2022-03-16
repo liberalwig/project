@@ -11,6 +11,7 @@
     <link href="/project/assets/css/yu_main.css" rel="stylesheet" type="text/css">
     <link href="/project/assets/css/booking.css" rel="stylesheet" type="text/css"/>
 	<link href="/project/assets/css/poto-upload.css" rel="stylesheet" type="text/css"/>
+	<link href="/project/assets/css/myDog.css" rel="stylesheet" type="text/css">
 
     <!--자바스크립트-->
     <script type="text/javascript" src="/project/assets/js/jquery-1.12.4.js"></script>
@@ -54,7 +55,7 @@
                     	</c:if>
                     </div>
 
-                    <div id="gallery" class="col-xs-7">
+                    <div id="gallery" class="col-xs-8">
                         <!-- 사진 넣는 공간 -->
                         <div class="info">
                             <h2>펫사진</h2>
@@ -121,14 +122,43 @@
                         </div>
                     </div>
 
-                    <div id="information" class="col-xs-5">
+                    <div id="information" class="col-xs-4">
                         <!-- 게스트 정보 넣는 공간 -->
                         <div class="info">
                             <h2>게스트 정보</h2>
                             <hr>
+                            <div id="dogCard">
+								<div class="row"></div>
+								<div id="cardHeader">
+									<p id="headerText" class="text-center">강아지 등록증</p>
+								</div>
+								<hr>
+								<div id="cardBody" class="clearfix">
+									<form action="">
+										<div id="imgFile">
+											<img id="myDogImg" src="${pageContext.request.contextPath }/assets/images/myDogImg2.png">
+											
+											<p>갤러리보기</p>
+										</div>
+										<div id="myDogInfo">
+											<p id="pName" class="text-center">${mvo.name}</p>
+											<p><strong class="index">생년월일 :</strong> ${mvo.birth}</p>
+											<p><strong class="index">성별 :</strong> ${mvo.gender}</p>
+											<p><strong class="index">품종 :</strong> ${mvo.breed}</p>
+											<p><strong class="index">몸무게 :</strong> ${mvo.weight}kg</p>
+											<c:if test="${mvo.neuter == 1}">
+												<p><strong class="index">중성화 :</strong> O</p>
+											</c:if>
+											<c:if test="${mvo.neuter == 0}">
+												<p><strong class="index">중성화 :</strong> X</p>
+											</c:if>
+										</div>
+									</form>
+								</div>
+							</div>
                             <div class="container-fluid">
                                 <div class="row">
-                                    <div class="col-xs-6">게스트이름</div>
+                                    <div class="col-xs-6 catalog">게스트이름</div>
                                     <div class="col-xs-6">${bvo.guestName}</div>
                                 </div>
                                 <div class="row">
