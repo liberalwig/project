@@ -8,7 +8,7 @@ body, div, ul, li, dl, dt, ol, td, h2, h3, h4, h5, h6,
 input, fieldset, legend, p, select, table, th, td, tr,
 textarea, button, form {margin:0; padding:0;}
 
-body {font-family: "Helvetica Neue", "맑은 고딕", 돋움, 굴림; color: #333; background-color: #fff;}
+body {font-family: 'Noto Sans KR', sans-serif; color: #333; background-color: #fff !important;}
 
 ul, ol {list-style-type: none;}
 a:link {text-decoration: none; color: #000}
@@ -45,10 +45,10 @@ a:hover {text-decoration: none; color: #000}
 		width: 400px;
 	}
 	#container #hostinfo{
-		margin: 40px 0px 0px 0px;
+		margin: 20px 0px 0px 0px;
 		padding: 0px 0px 0px 50px;
 		height: 60px;
-		width: 700px;
+		width: 850px;
 	}
 	#container #hostinfo .info{
 		margin: 0px 0px 15px 0px;
@@ -87,6 +87,12 @@ a:hover {text-decoration: none; color: #000}
 		height: 50px;
 	}
 	#container #btnbox1 #btn2{
+		margin: 10px 0px 0px 0px;
+		padding: 13px 0px 0px 0px;
+		width: 200px;
+		height: 50px;
+	}
+	#container #btnbox1 #btn3{
 		margin: 10px 0px 0px 0px;
 		padding: 13px 0px 0px 0px;
 		height: 50px;
@@ -179,12 +185,41 @@ a:hover {text-decoration: none; color: #000}
 #calendar{
 	padding: 0px 0px 0px 20px;
 }
-
+#calendar>h3{
+	display: inline-block;
+	margin: 10px 0px 15px 0px;
+}
+.fc-daygrid-day {
+	background-color: #eee;
+}
+#ablediv{
+	display: inline-block;
+	margin: 3px 0px 0px 0px;
+	width: 30px;
+	height: 20px;
+	border:1px solid #777;
+	background-color:#FFF;
+}
+#disablediv{
+	display: inline-block;
+	margin: 3px 0px 0px 0px;
+	width: 30px;
+	height: 20px;
+	border:1px solid #777;
+	background-color:#eee;
+}
+.inlineblock{
+	display: inline-block;
+}
+#calendarinfo{
+	margin: 10px 0px 0px 0px;
+	padding: 0px 0px 0px 170px;
+}
 /**5. 리뷰**/
 #review{
     padding: 10px 55px 0px 35px;
     margin: 0px 40px 0px 30px;
-    height: 811.996528px;
+    height: 1000px;
     border: 1px solid #EEE;
     border-radius : 5px;
 	
@@ -221,6 +256,7 @@ a:hover {text-decoration: none; color: #000}
 		width:50px;
 	}
 	.reviewbox {
+		width: 800px;
 		margin-bottom:5px;
 		border-bottom:1px solid #DDD;
 	}
@@ -230,6 +266,11 @@ a:hover {text-decoration: none; color: #000}
 
 	.reviewbox{
 		padding: 0px 0px 10px 25px;
+	}
+	#paging{
+		text-align: center;
+  		margin: 0;
+  		padding: 0;
 	}
 /**6. 지도**/
 #maparea {

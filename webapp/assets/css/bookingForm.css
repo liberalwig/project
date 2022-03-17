@@ -8,7 +8,7 @@ body, div, ul, li, dl, dt, ol, td, h2, h3, h4, h5, h6,
 input, fieldset, legend, p, select, table, th, td, tr,
 textarea, button, form {margin:0; padding:0;}
 
-body {font-size:18px; font-family: "Helvetica Neue", "맑은 고딕", 돋움, 굴림; color: #333; background-color: #fff;}
+body {font-family: 'Noto Sans KR', sans-serif; color: #333; background-color: #fff !important;}
 
 ul, ol {list-style-type: none;}
 a{color: #000;}
@@ -86,4 +86,14 @@ a:hover {text-decoration: none; color: #000}
     margin: 20px 0px 0px 100px;
     width: 226.352942943573px;
     background-color: #3D9BE9;
+    
+}
+.fc-daygrid-day {
+	background-color: #eee;
+}
+.disabled{
+	text-decoration:line-through
+}
+a {
+	color: #333;
 }

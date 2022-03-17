@@ -17,7 +17,7 @@
 		<!--search-->
 		<div class="searchbox col-md-4">
 		    <!-- Topbar Search -->
-             <form action="./searchList" method="get" class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+             <form action="${pageContext.request.contextPath}/searchList" method="get" class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
                  <div class="input-group input-group-joined border-0">
                      <div class="searchboxin_1 input-group input-group-joined"> 
                          <input type="text" name="searchKeyword" id="searchKeyword" value="" class="search_text1 small form-control ps-0 pointer" placeholder="어디를 찾으세요?" aria-label="Search" aria-describedby="basic-addon2">
@@ -42,7 +42,7 @@
 	                   	<ul class="dropdown-menu" role="menu">
 	                        <li id="login"><a href="#">로그인</a></li>
 	                        <li id="join"><a href="#">회원가입</a></li>
-	                      	<!--  <li class="divider"></li> 줄넣는 방법-->
+	                      	<!--<li class="divider"></li> 줄넣는 방법-->
 	                   	</ul>
                    	</div>
                 </c:if>
@@ -84,7 +84,7 @@
 		                        <c:if test="${authUser.usersType == 2}">
 		                        	<li><a href="${pageContext.request.contextPath}/bookingEndHost?hostNo=${authUser.hostNo}">마이페이지</a></li>
 		                        </c:if>
-		                        <li><a href="${pageContext.request.contextPath}/user/userModifyForm?hostNo=${authUser.usersNo}">내 정보 수정</a></li>
+		                        <li><a href="${pageContext.request.contextPath}/user/userModifyForm?usersNo=${authUser.usersNo}">내 정보 수정</a></li>
 		                   	</ul>
                     	</div>
                     </c:if>

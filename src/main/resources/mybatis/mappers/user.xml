@@ -75,6 +75,28 @@
 	</update>
 	
 	
+	<!-- 유저 찜 폼으로 기존 정보 불러오기 -->
+	<select id="selectHeartByNo" parameterType="int" resultType="HeartVo">
+		<![CDATA[
+			select he.heartNo,
+			       ho.hostNo,
+			       us.name,
+			       us.path
+			from   heart he, users us, host ho
+			where  he.hostNo = ho.hostNo
+			and    ho.usersNo = us.usersNo
+			and    he.usersNo = #{usersNo}
+		]]>
+	</select>
 	
+	
+	<!-- 유저 찜 추가
+	<insert id="insertHeart" parameterType="HeartVo">
+		<![CDATA[
+			insert into heart
+			values(seq_users_no.nextval, #{heartNo}, #{usersNo}, #{hostNo})
+		]]>
+	</insert>
+	-->
 	
 </mapper>

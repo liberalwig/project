@@ -17,6 +17,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.javaex.dao.BookingDao;
 import com.javaex.dao.HostinfoDao;
 import com.javaex.vo.BookingVo;
 import com.javaex.vo.HostVo;
@@ -30,6 +31,9 @@ public class HostinfoService {
 	@Autowired
 	HostinfoDao hostinfoDao;
 	
+	@Autowired
+	BookingDao bookingDao;
+	
 	//hostNo 체크
 	public int checkNo(int hostNo) {
 		System.out.println("[HostinfoService.checkNo()]");
@@ -38,7 +42,7 @@ public class HostinfoService {
 	}
 	
 	//호스트 데이터 가져오기
-	public Map<String, Object> getHostMap(int hostNo) {
+	public Map<String, Object> getHostMap(int hostNo, int crtPage) {
 		System.out.println("[HostinfoService.list()]");
 		Map<String, Object> hostMap = new HashMap<String, Object>();
 		//호스트 정보 가져오기
@@ -46,7 +50,27 @@ public class HostinfoService {
 		//키워드 정보 가져오기
 		List<KeywordVo> keyList = hostinfoDao.getHostKeyword(hostNo);
 		//리뷰 정보 가져오기
-		List<ReviewVo> reviewList = hostinfoDao.getReview(hostNo);
+		int listCnt = 8;
+		crtPage = (crtPage>0) ? crtPage : (crtPage=1);
+		int startRnum = ((crtPage-1)*listCnt) + 1;
+		int endRnum = (startRnum + listCnt) - 1;
+		List<ReviewVo> reviewList = hostinfoDao.getReview(hostNo, startRnum, endRnum);
+		int totalCnt = hostinfoDao.getReviewCount(hostNo);
+		int pageBtnCount = 5;
+		int endPageBtnNo = (int)( Math.ceil(crtPage/(double)pageBtnCount ) )*pageBtnCount;
+		int startPageBtnNo = endPageBtnNo - (pageBtnCount-1);
+		boolean next = false;
+		//다음 화살표
+		if(endPageBtnNo*listCnt < totalCnt) {
+			next = true;
+		} else { // 다음 화살표가 안보이면 마지막 버튼값을 다시 계산한다
+			endPageBtnNo = (int)(Math.ceil(totalCnt/(double)listCnt));
+		}
+		//이전 화살표
+		boolean prev = false;
+		if(startPageBtnNo != 1) {
+			prev = true;
+		}
 		//퍼피력 계산
 		double sum = (hostinfoDao.getSum(hostNo)/5.0);
 		double reviewcount = (double)hostinfoDao.getReviewCount(hostNo);
@@ -75,11 +99,16 @@ public class HostinfoService {
 		hostMap.put("point", point);
 		hostMap.put("photoList", photoList);
 		hostMap.put("calendurList", calendurList);
+		hostMap.put("prev", prev);
+		hostMap.put("startPageBtnNo", startPageBtnNo);
+		hostMap.put("endPageBtnNo", endPageBtnNo);
+		hostMap.put("next", next);
 		
 		return hostMap;
 	}
 	//호스트 사진 가져오기
 	public List<PhotoVo> getHostPhoto(int hostNo){
+		System.out.println("[HostinfoService.getHostPhoto()]");
 		return hostinfoDao.getHostPhoto(hostNo);
 	}
 	
@@ -91,9 +120,20 @@ public class HostinfoService {
 		
 		return photoList;
 	}
+	
 	//호스트Vo 가져오기
 	public HostVo getHost(int hostNo) {
+		System.out.println("[HostinfoService.getHost()]");
+		
 		return hostinfoDao.getHost(hostNo);
+	}
+	
+	//able 가져오기
+	public List<String> getBooking(int hostNo) {
+		System.out.println("[HostinfoService.getBooking()]");
+		List<String> ableList = hostinfoDao.getAbleDate(hostNo);
+		
+		return ableList;
 	}
 	//일수 계산하기
 	public void checkdays(BookingVo bookingVo) {
@@ -119,33 +159,13 @@ public class HostinfoService {
 	}
 	
 	//예약하기
-	public void bookinginsert(BookingVo bookingVo) {
+	public int bookinginsert(BookingVo bookingVo) {
 		System.out.println("[HostinfoService.bookinginsert()]");
 		
 		//예약테이블 인서트
-		hostinfoDao.bookinginsert(bookingVo);
+		return hostinfoDao.bookinginsert(bookingVo);
 	}
 	
-	//결제정보
-	public BookingVo getPaymentForm(int bookingNo) {
-		System.out.println("[HostinfoService.bookinginsert()]");
-		
-		//결제정보 가져오기
-		BookingVo bookingVo = hostinfoDao.getPayment(bookingNo);
-		bookingVo.setTotalCost((bookingVo.getBookingDate() * bookingVo.getDays() * bookingVo.getEa()));
-		
-		return bookingVo;
-	}
-	
-	//결제이후 상태 변경
-	public int setPayment(BookingVo bookingVo) {
-		System.out.println("[HostinfoService.setPayment()]");
-		
-		bookingVo.setStatus("예약완료");
-		int count = hostinfoDao.setStatus(bookingVo);
-		
-		return count;
-	}
 	//키워드 리스트 가져오기
 	public List<KeywordVo> getKeywordList() {
 		System.out.println("[HostinfoService.getKeywordList()]");
@@ -164,8 +184,7 @@ public class HostinfoService {
 	//유저타입 변경(유저->호스트)
 	public void typeUpdate(int usersNo) {
 		System.out.println("[HostinfoService.typeUpdate()]");
-		
-		
+
 	}
 	
 	//사진 업로드
@@ -173,9 +192,9 @@ public class HostinfoService {
 		System.out.println("[HostinfoService.fileupload()]");
 		
 		//맥 저장경로
-		String saveDir = "/Users/hs/JavaStudy/workspace_project/project/webapp/assets/upload/";
+		//String saveDir = "/Users/hs/JavaStudy/workspace_project/project/webapp/assets/upload/";
 		//윈도우 저장경로
-		//String saveDir = "C:\\javaStudy\\photo\\";
+		String saveDir = "C:\\javaStudy\\photo\\";
 		
 		// 원본파일이름
 		String orgName = file.getOriginalFilename();
@@ -219,5 +238,5 @@ public class HostinfoService {
 			hostinfoDao.setKeyword(keywordVo);
 		}
 	}
-	
+		
 }

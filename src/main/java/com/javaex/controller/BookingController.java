@@ -18,6 +18,7 @@ import com.javaex.service.BookingService;
 import com.javaex.vo.AbleVo;
 import com.javaex.vo.BookingVo;
 import com.javaex.vo.HostVo;
+import com.javaex.vo.MyDogVo;
 import com.javaex.vo.PhotoVo;
 import com.javaex.vo.UserVo;
 
@@ -153,6 +154,12 @@ public class BookingController {
 			pList.add(pListDate);
 		}
 		
+		//mydog
+		MyDogVo mvo = bookingService.mydogSelect(bvo.getUsersNo());
+		String[] arry = mvo.getBirth().split(" ");
+		arry[0].replace("-", ".");
+		model.addAttribute("mvo",mvo);
+		
 		model.addAttribute("pList", pList);
 		
 		return "yu/bookingDetail-guest";
@@ -175,9 +182,14 @@ public class BookingController {
 			List<PhotoVo> pListDate = bookingService.bookingGallery(bookingNo, day);
 			pList.add(pListDate);
 		}
-
+		
 		model.addAttribute("pList", pList);
 		
+		//mydog
+		MyDogVo mvo = bookingService.mydogSelect(bvo.getUsersNo());
+		String[] arry = mvo.getBirth().split(" ");
+		arry[0].replace("-", ".");
+		model.addAttribute("mvo",mvo);
 		
 		return "yu/bookingDetail-host";
 	}
@@ -294,6 +306,7 @@ public class BookingController {
 
 		return "redirect:/main";
 	}
+	
 	
 	
 	

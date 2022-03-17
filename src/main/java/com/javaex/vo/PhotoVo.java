@@ -18,6 +18,7 @@ public class PhotoVo {
 	private String uploadDate;
 	private String saveName;
 	private long day;
+	private int usersNo;
 
 	// 생성자
 	public PhotoVo() {
@@ -36,8 +37,8 @@ public class PhotoVo {
 	}
 
 	public PhotoVo(int photoNo, int userNo, int hostNo, int bookingNo, String photoDate, String category,
-			String photoTitle, String photoPath, MultipartFile file, String uploadDate, String saveName, long day) {
-		super();
+			String photoTitle, String photoPath, MultipartFile file, String uploadDate, String saveName, long day,
+			int usersNo) {
 		this.photoNo = photoNo;
 		this.userNo = userNo;
 		this.hostNo = hostNo;
@@ -50,6 +51,7 @@ public class PhotoVo {
 		this.uploadDate = uploadDate;
 		this.saveName = saveName;
 		this.day = day;
+		this.usersNo = usersNo;
 	}
 
 	// 메소드g/s
@@ -149,16 +151,22 @@ public class PhotoVo {
 		this.day = day;
 	}
 
+	public int getUsersNo() {
+		return usersNo;
+	}
+
+	public void setUsersNo(int usersNo) {
+		this.usersNo = usersNo;
+	}
+
 	@Override
 	public String toString() {
 		return "PhotoVo [photoNo=" + photoNo + ", userNo=" + userNo + ", hostNo=" + hostNo + ", bookingNo=" + bookingNo
 				+ ", photoDate=" + photoDate + ", category=" + category + ", photoTitle=" + photoTitle + ", photoPath="
 				+ photoPath + ", file=" + file + ", uploadDate=" + uploadDate + ", saveName=" + saveName + ", day="
-				+ day + "]";
+				+ day + ", usersNo=" + usersNo + "]";
 	}
 
-
 	// 메소드 일반
-	
 
 }

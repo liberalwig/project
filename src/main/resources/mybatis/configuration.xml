@@ -10,6 +10,9 @@
 		<typeAlias alias="BookingVo" type="com.javaex.vo.BookingVo" /> 
 		<typeAlias alias="SearchListVo" type="com.javaex.vo.SearchListVo" />
 		<typeAlias alias="UserVo" type="com.javaex.vo.UserVo" />
+		<typeAlias alias="AbleVo" type="com.javaex.vo.AbleVo" />
+		<typeAlias alias="HeartVo" type="com.javaex.vo.HeartVo" />
+		<typeAlias alias="MyDogVo" type="com.javaex.vo.MyDogVo" />
 	</typeAliases>
 	<mappers>
 		<mapper resource="mybatis/mappers/booking.xml" />
@@ -19,5 +22,6 @@
 		<mapper resource="mybatis/mappers/review.xml" />
 		<mapper resource="mybatis/mappers/searchList.xml" />
 		<mapper resource="mybatis/mappers/user.xml" />
+		<mapper resource="mybatis/mappers/mydog.xml" />
 	</mappers>
 </configuration>

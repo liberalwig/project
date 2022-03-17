@@ -26,11 +26,7 @@ a:hover {text-decoration: none; color: #000}
 #content { float: left; width: 1200px; margin: 0px 0px 100px 0px;}
 
 
-body{
-   margin-top:80px;
-}
-  
- /*어사이드*/
+/*어사이드*/
 #aside {
 float: left;
 width: 240px;
@@ -76,6 +72,13 @@ display: none;
 }
 
 /* 메인컨텐츠(content) */
+
+#now {
+    font-size: 30px;
+    font-weight: bold;
+    margin: 5px 0px 10px 0px;
+}
+
 #content-head {
     margin: 45px 0px 30px 30px;
  }
@@ -172,7 +175,7 @@ display: none;
 
 .search_result{
     float: left;
-    width: 600px;
+    width: 1000px;
     height: 200px;
     margin-top: 10px;
 }
@@ -183,14 +186,14 @@ display: none;
 
 .result-img{
     margin-top: 6px;
-    width: 280px;
+    width: 235px;
     height: 190px;
     border-radius: 5px 5px 5px 5px;
 }
 
 .search_result_text{
     padding: 13px 0px 0px 0px;
-    width: 300px;
+    width: 235px;
     height: 200px;
 }
 
@@ -251,3 +254,26 @@ display: none;
 #btn-margin7{
     margin-left:7px;
 }
+
+.search_result .heart{
+    text-align: right;
+    padding-top: 5px;
+    width: 16px;
+    height: 16px;
+    top: 10px;
+    left: 110px;
+    color: rgb(230, 27, 27);
+    z-index: 1;
+    position:relative;
+}
+ .row_flix{
+ 	display: flex;
+ 	justify-content: space-between;
+ }   
+  .border_500{
+  	margin-right:20px;
+   	border: 1px #bbb solid;
+   	width: 500px;
+   	height: 200px; 
+
+  }

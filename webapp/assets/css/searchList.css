@@ -1,5 +1,9 @@
 @charset "UTF-8";
 
+body{
+font-family: 'Noto Sans KR', sans-serif;
+}
+
 .clearfix:before, .clearfix:after {
     display: block;
     content: '';
@@ -58,7 +62,10 @@
 	margin-right: auto;
 	display: inline-block;
 }
-
+/* #mapdiv{
+	display:fixed;
+	height:unset;	
+} */
 #map{
     width: 900px;
     height: 700px;
@@ -129,6 +136,7 @@
     width: 600px;
     height: 200px;
     margin-top: 10px;
+    z-index: 2;
 }
 
 .search_result_list{
@@ -136,9 +144,9 @@
 }
 
 .result-img{
-    margin-top: 6px;
-    width: 280px;
-    height: 190px;
+    margin-top: 10px;
+    width: 220px;
+    height: 180px;
     border-radius: 5px 5px 5px 5px;
 }
 
@@ -170,6 +178,8 @@
     top: 10px;
     left: 110px;
     color: rgb(230, 27, 27);
+    z-index: 1;
+    position:relative;
 }
 
 .search_result .host_name{

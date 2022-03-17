@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.javaex.dao.UserDao;
+import com.javaex.vo.HeartVo;
 import com.javaex.vo.UserVo;
 
 @Service
@@ -54,7 +55,6 @@ public class UserService {
 		String filePath = saveDir + saveName;
 		
 		// 파일 저장
-		/*
 		try {
 			byte[] fileData = file.getBytes();
 			OutputStream out = new FileOutputStream(filePath);
@@ -65,7 +65,6 @@ public class UserService {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		*/
 		
 		//DB 업데이트
 		userVo.setPath(saveName);
@@ -73,5 +72,32 @@ public class UserService {
 		userDao.updateProfile(userVo);
 	}
 	
+	
+	// 유저_4> 찜 폼
+	public List<HeartVo> heartForm(int usersNo) {
+		System.out.println("UserService > heartForm()");
+		
+		return userDao.selectHeart(usersNo);
+	}
+	
+	/*
+	// 유저_5> 찜 추가+삭제
+	public List<HeartVo> heart(){
+		System.out.println("UserService > heart()");
+		
+		
+		return"";
+	}
+	*/
+	
+	
+	/*
+	// 유저_5> 찜 추가
+	public void insertHeart(HeartVo heartVo) {
+		System.out.println("UserService > heart()");
+		
+		return userDao.insertHeart(heartVo);
+	}
+	*/
 	
 }
