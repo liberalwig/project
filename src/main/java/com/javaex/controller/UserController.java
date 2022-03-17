@@ -75,8 +75,12 @@ public class UserController {
       
    // 유저_4> 찜 폼
    @RequestMapping("/heartForm")
-   public String heartForm(@RequestParam("usersNo")int usersNo, Model model) {
+   public String heartForm(HttpSession session, Model model) {
       System.out.println("UserController > heartForm()");
+      
+      UserVo authUser = (UserVo)session.getAttribute("authUser");
+      
+      int usersNo = authUser.getUsersNo();
       
       List<HeartVo> heartList = userService.heartForm(usersNo);
 		
@@ -86,28 +90,17 @@ public class UserController {
    };
 
    
-   /*
-   // 유저_5> 찜 추가+삭제
-   @RequestMapping("/heart")
-   public String heart(@ModelAttribute HeartVo heartVo,
-		   				@RequestParam("usersNo") int usersNo,HttpSession session) {
-	   System.out.println("UserController > heart()");
-
-	   return userService.heart(usersNo);
-   }
    
-   */
-   
-   /*
-   // 유저_5>찜 추가
-   public String heart(HeartVo heartVo, HttpSession session) {
-	   System.out.println("UserController > heart()");
-	
-	   userService.insertHeart(heartVo);
+   // 유저_6>찜 삭제
+   @ResponseBody
+   @RequestMapping("/heartDelete")
+   public int heartDelete(@RequestParam("heartNo") int heartNo) {
+	   System.out.println("UserController > heartDelete()");
+	   System.out.println(heartNo);
 	   
-	   return "";
+	   return userService.heartDelete(heartNo);
    }
-    */
+   
 
 
 }

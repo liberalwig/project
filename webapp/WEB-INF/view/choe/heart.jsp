@@ -32,24 +32,24 @@
                 <div id="content-main" style="margin-left:50px;">
                     <div class="search_result">
                         <c:forEach items="${requestScope.heartList}" var="vo">
-                            <div class="col-xs-6">
+                            <div class="col-xs-6" id="h-${vo.heartNo}">
 
                                 <div class="col-xs-6">
-                                    <img class="result-img" src="${pageContext.request.contextPath}/photo/${searchListVo.path}">   	
+                                    <img class="result-img" src="${pageContext.request.contextPath}/photo/${vo.path}">   	
                                 </div>
                                 <div class="col-xs-6">
                                     <div class="result_text row">
-                                        <div class="puppy col-xs-6">퍼피력<strong>${requestScope.searchListVo.puppypoint}</strong></div>
-                                        <button id="btn-${vo.hostNo}" class="heart col-xs-6 bi-heart" data-no="${vo.hostNo}">♥</button>
+                                        <div class="puppy col-xs-6">퍼피력<strong>${vo.puppypoint}</strong></div>
+                                        <button id="btn-${vo.heartNo}" class="heart col-xs-6 bi-heart" data-no="${vo.heartNo}">♥${vo.heartNo}</button>
                                     </div>
                                     
                                     <div class="host_name result_text row"><strong>${vo.name}</strong></div>
-                                    <div class="address result_text row">${requestScope.searchListVo.address}</div>
+                                    <div class="address result_text row">${vo.adress1}</div>
                                     <div class="result_text row"></div>
 
                                     <div class="result_text row">
-                                        <div class="review col-xs-6">(후기<strong> ${requestScope.searchListVo.reviewcount}</strong>개)</div>
-                                        <div class="price col-xs-6">₩<strong>${requestScope.searchListVo.hostcost}</strong>/ 1 박 x 1 마리</div>
+                                        <div class="review col-xs-6">(후기<strong> ${vo.reviewcount}</strong>개)</div>
+                                        <div class="price col-xs-6">₩<strong>${vo.hostcost}</strong>/ 1 박 x 1 마리</div>
                                     </div>
                                 </div>
                             </div>	                            	
@@ -61,45 +61,36 @@
     </div>
 </body>
 
-    <script>
-        /* aside */
-        // html dom 이 다 로딩된 후 실행된다.
-        $(document).ready(function() {
-        // memu 클래스 바로 하위에 있는 a 태그를 클릭했을때
-        $(".menu").click(function() {
-            // 현재 클릭한 태그가 a 이기 때문에
-            // a 옆의 태그중 ul 태그에 hide 클래스 태그를 넣던지 빼던지 한다.
-        $(this).next("ul").toggleClass("hide");
-            });
-        });
-        
-        //하트 클릭
-		$(".heart").on("click", function(){
-			var $this = $(this);
-			var hostNo = $this.data('no');
-			console.log(hostNo);
-			
-         $.ajax({
+<script>
+	/* aside */
+	// html dom 이 다 로딩된 후 실행된다.
+	$(document).ready(function() {
+		// memu 클래스 바로 하위에 있는 a 태그를 클릭했을때
+		$(".menu").click(function() {
+			// 현재 클릭한 태그가 a 이기 때문에
+			// a 옆의 태그중 ul 태그에 hide 클래스 태그를 넣던지 빼던지 한다.
+			$(this).next("ul").toggleClass("hide");
+		});
+	});
+      
+      //하트 클릭
+	$(".heart").on("click", function(){
+		var $this = $(this);
+		var heartNo = $this.data('no');
+		console.log(heartNo)
+		$.ajax({
 			//요청할때
-			url : "${pageContext.request.contextPath}/user/heart",    
+			url : "${pageContext.request.contextPath}/user/heartDelete",    
 			type : "post",
-			data : userVo,
+			data : {heartNo: heartNo},
 			success : function(count) {
-				$.ajax({
-					url : "${pageContext.request.contextPath}/user/heart?usersNo=${sessionScope.usersNo}",    
-					type : "post",
-					data : formData,
-					success : function(count) {
-						console.log("성공");
-					},
-					error : function(XHR, status, error) {
-						console.error(status + " : " + error);
-					}
-				});
+				console.log("성공");
+				$("#h-"+heartNo).remove();
 			},
 			error : function(XHR, status, error) {
 				console.error(status + " : " + error);
 			} 
-        });						
-    </script>        
+		});	
+	});
+</script>        
  </html>

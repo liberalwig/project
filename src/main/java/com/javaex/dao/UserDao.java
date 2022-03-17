@@ -48,12 +48,12 @@ public class UserDao {
 		return heartList;
 	}
 	
-	/*
-	// 유저_5> 찜 추가
-	public HeartVo insertHeart(int usersNo) {
-		System.out.println("UserDao > insertHeart()");
+	
+	// 유저_6> 찜 삭제
+	public int heartDelete(int heartNo) {
+		System.out.println("UserDao > heartDelete()");
 		
-		return sqlSession.insert("user.insertHeart", usersNo);
+		return sqlSession.delete("user.heartDelete", heartNo);
 	}
-	*/
+	
 }

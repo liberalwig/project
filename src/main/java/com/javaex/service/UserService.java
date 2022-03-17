@@ -80,24 +80,12 @@ public class UserService {
 		return userDao.selectHeart(usersNo);
 	}
 	
-	/*
-	// 유저_5> 찜 추가+삭제
-	public List<HeartVo> heart(){
-		System.out.println("UserService > heart()");
-		
-		
-		return"";
-	}
-	*/
 	
+   // 유저_6> 찜 삭제
+   public int heartDelete(int heartNo) {
+	   System.out.println("UserController > heartDelete()");
 	
-	/*
-	// 유저_5> 찜 추가
-	public void insertHeart(HeartVo heartVo) {
-		System.out.println("UserService > heart()");
-		
-		return userDao.insertHeart(heartVo);
-	}
-	*/
+	   return userDao.heartDelete(heartNo);
+   }
 	
 }
