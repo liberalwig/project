@@ -79,7 +79,7 @@
 			var hostNo = $this.data('no');
 			console.log(hostNo);
 			
-/*         $.ajax({
+         $.ajax({
 			//요청할때
 			url : "${pageContext.request.contextPath}/user/heart",    
 			type : "post",
@@ -99,7 +99,7 @@
 			},
 			error : function(XHR, status, error) {
 				console.error(status + " : " + error);
-			} */
+			} 
         });						
     </script>        
  </html>
