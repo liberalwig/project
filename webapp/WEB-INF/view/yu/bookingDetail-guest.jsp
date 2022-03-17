@@ -46,6 +46,7 @@
                 <div id="content-main" class="clearfix container-fluid">
 
                     <div id="btn-area2">
+                    	<button class="btn btn-default add-img">메세지보내기</button>
                         <button class="btn btn-default add-img" onclick = "window.history.back()">목록으로 돌아가기</button>
                     </div>
 
@@ -135,39 +136,41 @@
                         <div class="info">
                             <h2>펫시터 정보</h2>
                             <hr>
-                            <div id="dogCard">
-								<div class="row"></div>
-								<div id="cardHeader">
-									<p id="headerText" class="text-center">강아지 등록증</p>
+                            <c:if test="${!empty mvo.name}">
+	                            <div id="dogCard">
+									<div class="row"></div>
+									<div id="cardHeader">
+										<p id="headerText" class="text-center">강아지 등록증</p>
+									</div>
+									<hr>
+									<div id="cardBody" class="clearfix">
+										<form action="">
+											<div id="imgFile" data-usersno="${bvo.usersNo}">
+												<c:if test="${empty mvo.photo}">
+													<img id="myDogImg" src="${pageContext.request.contextPath}/assets/images/myDogImg2.png">
+												</c:if>
+												<c:if test="${!empty mvo.photo}">
+													<img id="myDogImg" src="${pageContext.request.contextPath}/photo/${mvo.photo}">
+												</c:if>
+												<p>갤러리보기</p>
+											</div>
+											<div id="myDogInfo">
+												<p id="pName" class="text-center">${mvo.name}</p>
+												<p><strong class="index">생년월일 :</strong> ${mvo.birth}</p>
+												<p><strong class="index">성별 :</strong> ${mvo.gender}</p>
+												<p><strong class="index">품종 :</strong> ${mvo.breed}</p>
+												<p><strong class="index">몸무게 :</strong> ${mvo.weight}kg</p>
+												<c:if test="${mvo.neuter == 1}">
+													<p><strong class="index">중성화 :</strong> O</p>
+												</c:if>
+												<c:if test="${mvo.neuter == 0}">
+													<p><strong class="index">중성화 :</strong> X</p>
+												</c:if>
+											</div>
+										</form>
+									</div>
 								</div>
-								<hr>
-								<div id="cardBody" class="clearfix">
-									<form action="">
-										<div id="imgFile" data-usersno="${bvo.usersNo}">
-											<c:if test="${empty mvo.photo}">
-												<img id="myDogImg" src="${pageContext.request.contextPath}/assets/images/myDogImg2.png">
-											</c:if>
-											<c:if test="${!empty mvo.photo}">
-												<img id="myDogImg" src="${pageContext.request.contextPath}/photo/${mvo.photo}">
-											</c:if>
-											<p>갤러리보기</p>
-										</div>
-										<div id="myDogInfo">
-											<p id="pName" class="text-center">${mvo.name}</p>
-											<p><strong class="index">생년월일 :</strong> ${mvo.birth}</p>
-											<p><strong class="index">성별 :</strong> ${mvo.gender}</p>
-											<p><strong class="index">품종 :</strong> ${mvo.breed}</p>
-											<p><strong class="index">몸무게 :</strong> ${mvo.weight}kg</p>
-											<c:if test="${mvo.neuter == 1}">
-												<p><strong class="index">중성화 :</strong> O</p>
-											</c:if>
-											<c:if test="${mvo.neuter == 0}">
-												<p><strong class="index">중성화 :</strong> X</p>
-											</c:if>
-										</div>
-									</form>
-								</div>
-							</div>
+							</c:if>
                             <div class="container-fluid">
                                 <div class="row">
                                     <div class="col-xs-6">펫시터이름</div>
@@ -489,7 +492,7 @@
 	</div> <!-- /.modal-dialog -->
 </div> <!-- /.modal -->
 
-<!--class="modal fade"-->
+	<!--class="modal fade"-->
 	<div class="modal fade" id="imgupdateModal">
 		<div class="modal-dialog">
 			<div class="modal-content">
@@ -499,26 +502,6 @@
 				</div>
 				<div class="modal-body">
 					<div id="listArea"></div>
-						<%-- <div class="wrapper">
-							<div class="item">
-		                        <div class="polaroid">
-		                        		<img data-no="" src="" class="wrapper-img viewImg">
-		                            <div class="caption"></div>
-		                        </div>
-		                        <div class="polaroid">
-		                        		<img data-no="" src="" class="wrapper-img viewImg">
-		                            <div class="caption"></div>
-		                        </div>
-		                        <div class="polaroid">
-		                        		<img data-no="" src="" class="wrapper-img viewImg">
-		                            <div class="caption"></div>
-		                        </div>
-		                        <div class="polaroid">
-		                        		<img data-no="" src="" class="wrapper-img viewImg">
-		                            <div class="caption"></div>
-		                        </div>
-		                    </div>
-	                    </div> --%>
 					<hr>
 					<div class="contents">
 					</div>
