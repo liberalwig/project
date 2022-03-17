@@ -1,5 +1,9 @@
 @charset "UTF-8";
 
+body{
+font-family: 'Noto Sans KR', sans-serif;
+}
+
 .clearfix:before, .clearfix:after {
     display: block;
     content: '';
@@ -58,7 +62,10 @@
 	margin-right: auto;
 	display: inline-block;
 }
-
+/* #mapdiv{
+	display:fixed;
+	height:unset;	
+} */
 #map{
     width: 900px;
     height: 700px;

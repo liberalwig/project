@@ -21,10 +21,12 @@ public class SearchListController {
 		
 		System.out.println("searchList.controller");
 		
+		System.out.println(searchListVo);
+		
 		List<SearchListVo> SearchList = searchListService.searchListD(searchListVo);
 	
 		
-		System.out.println(SearchList);
+	
 		model.addAttribute("searchList", SearchList);
 		
 		return"song/searchList";

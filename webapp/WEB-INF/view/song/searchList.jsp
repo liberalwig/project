@@ -12,6 +12,9 @@
 	    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/searchList.css" type="text/css">
 	 	<script src="${pageContext.request.contextPath}/assets/js/jquery-1.12.4.js"></script>
 	    <script src="${pageContext.request.contextPath}/assets/bootstrap/js/bootstrap.js"></script>
+	    <link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
 
 	    <!--지도관련-->
 	    <script src="${pageContext.request.contextPath}/assets/js/map.js"></script>
@@ -117,7 +120,7 @@
 				                	<div>
 				                        <div class="col-md-6">
 				                        <c:choose>
-											<c:when test="${not empty searchListVo.path}">
+											<c:when test="${empty searchListVo.path}">
 												<img class="result-img" src="${pageContext.request.contextPath}/assets/images/hostinfo_sample.jpg">
 											</c:when>
 											<c:otherwise>
@@ -156,7 +159,9 @@
 			<!-- 반복영역 -->
             </div>
             <!-- 지도자리 -->
-  		    <div id="map" class="scroll"></div>
+            <c:if test="${not empty searchList}">
+  		    	<div id="map" class="scroll"></div>
+  		    </c:if>
     	</div>
         </div>
      
@@ -164,32 +169,26 @@
     <!--지도-->
 	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=b041f9ad62c37064e496f0bc81216407&&libraries=services,clusterer"></script>
 		<script>
-		
-		/*var arr = [];
-			
-			for(i=0; i<${searchList}.length; i++){
-				arr[i] = (${searchList[i].adress1});
-			} */
-			
-			var arr = [];
-			
-			<c:forEach items="${searchList}" var="svo">
-				arr.push({adress1: "${svo.adress1}"});
-			</c:forEach>
-			console.log(arr); 
-			
-			var mapContainer = document.getElementById('map');
+						
+		 	var mapContainer = document.getElementById('map');
 			var mapOption = {
-			    center: new daum.maps.LatLng(37.450701, 126.570667),
-			    level: 14
-			};  
-	
+					//시작시 지도 위치 
+			    center: new daum.maps.LatLng(35.17403275838313, 129.05328714015042),
+			    level: 5
+			};
 			var map = new daum.maps.Map(mapContainer, mapOption); 
-	
+			
+			//위도경도 지역으로 변
 			var geocoder = new daum.maps.services.Geocoder();
 			
-			var listData = arr;
-	
+			var adress = [];
+			
+			<c:forEach items="${searchList}" var="svo">
+				adress.push("${svo.adress1}");
+			</c:forEach>
+			
+			var listData = adress;
+					
 			listData.forEach(function(addr, index) {
 			    geocoder.addressSearch(addr, function(result, status) {
 			        if (status === daum.maps.services.Status.OK) {
@@ -199,50 +198,40 @@
 			                map: map,
 			                position: coords
 			            });
-			            
 			         	// 인포윈도우를 생성합니다
 			            var infowindow = new daum.maps.InfoWindow({
 			                content: '<div style="width:150px;text-align:center;padding:6px 0;">' + listData[index] + '</div>',
 			                disableAutoPan: true
-
 			            });
-			            
 			         	// 마커에 오버이벤트를 등록합니다
 						kakao.maps.event.addListener(marker, 'mouseover', (event) => {
 							// 마커 위에 인포윈도우를 표시합니다
-
 								infowindow.open(map, marker);
-			
+								
 						});
 				       	// 마커에 아웃이벤트를 등록합니다
 						kakao.maps.event.addListener(marker, 'mouseout', (event) => {
 							// 마커 위에 인포윈도우를 삭제합니다
-
-								infowindow.close();
-				
+							infowindow.close();
 						});
-							
 			        } 
+			        map.setCenter(coords);
 			    });
-			});
-				 
+			}); 
+			
+			 <!--지도 타입변경 컨트롤을 생성한다 -->
+			 var mapTypeControl = new kakao.maps.MapTypeControl();
+			 
+			 <!-- 지도의 상단 우측에 지도 타입 변경 컨트롤을 추가한다 -->
+			 map.addControl(mapTypeControl, kakao.maps.ControlPosition.TOPRIGHT);	
 	
-				 <!--지도 타입변경 컨트롤을 생성한다 -->
-				 var mapTypeControl = new kakao.maps.MapTypeControl();
-				 
-				 <!-- 지도의 상단 우측에 지도 타입 변경 컨트롤을 추가한다 -->
-				 map.addControl(mapTypeControl, kakao.maps.ControlPosition.TOPRIGHT);	
+			 <!-- 지도에 확대 축소 컨트롤을 생성한다 -->
+			 var zoomControl = new kakao.maps.ZoomControl();
 	
-				 <!-- 지도에 확대 축소 컨트롤을 생성한다 -->
-				 var zoomControl = new kakao.maps.ZoomControl();
-	
-				 <!-- 지도의 우측에 확대 축소 컨트롤을 추가한다 -->
-				 map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
-				 
-		</script>
-		
-		<!--하트 클릭-->
-		<script type="text/javascript" >
+			 <!-- 지도의 우측에 확대 축소 컨트롤을 추가한다 -->
+			 map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
+			
+			 
 		    var i = 0;
 		    $('.bi-heart').on('click',function(){
 		        if(i==0){
@@ -256,17 +245,17 @@
 		        }
 		        
 		    });
-	    
-	    <!--스크롤-->
-	    $(document).ready(function(){
-	    	  var currentPosition = parseInt($(".scroll").css("top"));
-	    	  $(window).scroll(function() {
-	    	    var position = $(window).scrollTop(); 
-	    	    $(".scroll").stop().animate({"top":position+currentPosition+"px"},1000);
-	    	  });
-	    	});
-	</script>
-	
-
+		    
+	   	    <!--스크롤-->
+		    $(document).ready(function(){
+		    	  var currentPosition = parseInt($(".scroll").css("top"));
+		    	  $(window).scroll(function() {
+		    	    var position = $(window).scrollTop(); 
+		    	    $(".scroll").stop().animate({"top":position+currentPosition+"px"},1000);
+		    	  });
+		    	});
+			 
+		</script>
+		
 	</body>
 </html>
