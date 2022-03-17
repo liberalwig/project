@@ -15,6 +15,9 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/assets/bootstrap/js/bootstrap.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/fullcalendar.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/locales-all.min.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
 
 </head>
 <body>
@@ -25,7 +28,7 @@
 				<div id="profile" class="col-xs-12 left">
 					<div id="hostimgbox" class="col-xs-3">
 						<c:choose>
-							<c:when test="${empty requestScope.hostVo.path}">
+							<c:when test="${empty requestScope.hostMap.hostVo.path}">
 								<img id="hostimg" src="${pageContext.request.contextPath}/assets/images/hostinfo_sample.jpg" alt="PetSitter Image" class="img-circle">
 							</c:when>
 							<c:otherwise>
@@ -477,7 +480,6 @@
 	});
 		// 렌더링
 		calendar.render();
-
 	});
 	
 	
