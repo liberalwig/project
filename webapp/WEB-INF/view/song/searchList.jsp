@@ -110,45 +110,45 @@
             <div class="search_web">
             	<!-- 반복영역 -->
                 <div class="search_result" class="col-md-6">
-	                <c:if test="${not empty SearchList}">
-			                <c:forEach items="${SearchList}" var="SearchListVo">
+	                <c:if test="${not empty searchList}">
+			                <c:forEach items="${searchList}" var="searchListVo">
 				                <div class="search_result_list"></div>
-				                <div class="row search_cursor_pointer" onclick="location.href='/project/host2/info/${SearchListVo.hostNo}';">
+				                <div class="row search_cursor_pointer" onclick="location.href='/project/host2/info/${searchListVo.hostNo}';">
 				                	<div>
 				                        <div class="col-md-6">
 				                        <c:choose>
-											<c:when test="${not empty SearchListVo.path}">
+											<c:when test="${not empty searchListVo.path}">
 												<img class="result-img" src="${pageContext.request.contextPath}/assets/images/hostinfo_sample.jpg">
 											</c:when>
 											<c:otherwise>
-												<img class="result-img" src="${pageContext.request.contextPath}/photo/${SearchListVo.path}">
+												<img class="result-img" src="${pageContext.request.contextPath}/photo/${searchListVo.path}">
 											</c:otherwise>
 										</c:choose>
 				                        </div>
 				                        <div class="search_result_text col-md-6">
 				                            <div class="result_text row">
 				                                <div class="puppy col-xs-6">
-				  								    퍼피력 &nbsp;${SearchListVo.puppyPoint} 
+				  								    퍼피력 &nbsp;${searchListVo.puppyPoint} 
 				                                </div>
 				                        		<div class="heart col-xs-6 bi-heart"></div>
 				                        	</div>
 				                            <div class="host_name result_text row">
-				                            	${SearchListVo.hostName}
+				                            	${searchListVo.hostName}
 				                            </div>
 				                            <div class="address result_text row">
-				                           		${SearchListVo.adress1}
+				                           		${searchListVo.adress1}
 				                            </div>
 			                           		<div class="result_text row"></div>
 				                            <div class="result_text row">
-					                            <div class="review col-xs-6">후기(${SearchListVo.review}개)</div>
-					                            <div class="price col-xs-6">₩${SearchListVo.hostCost}/ 박 </div>
+					                            <div class="review col-xs-6">후기(${searchListVo.review}개)</div>
+					                            <div class="price col-xs-6">₩${searchListVo.hostCost}/ 박 </div>
 					                        </div>
 				                        </div>
 				                	</div>
-				                </div>				              
+				                </div>	              
 							</c:forEach>
 						</c:if>
-						<c:if test="${empty SearchList}">
+						<c:if test="${empty searchList}">
 							<h3>검색결과가 없습니다.</h3>
 						</c:if>
             	</div>
@@ -164,6 +164,20 @@
     <!--지도-->
 	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=b041f9ad62c37064e496f0bc81216407&&libraries=services,clusterer"></script>
 		<script>
+		
+		/*var arr = [];
+			
+			for(i=0; i<${searchList}.length; i++){
+				arr[i] = (${searchList[i].adress1});
+			} */
+			
+			var arr = [];
+			
+			<c:forEach items="${searchList}" var="svo">
+				arr.push({adress1: "${svo.adress1}"});
+			</c:forEach>
+			console.log(arr); 
+			
 			var mapContainer = document.getElementById('map');
 			var mapOption = {
 			    center: new daum.maps.LatLng(37.450701, 126.570667),
@@ -173,21 +187,8 @@
 			var map = new daum.maps.Map(mapContainer, mapOption); 
 	
 			var geocoder = new daum.maps.services.Geocoder();
-			var listData = [ //db있는 값으로 리스트를 뿌려서 나오는 주소가 여기에 동일하게 나와야 함
-			    '서울특별시 관악구 남부순환로 1820 에그옐로우 14층', 
-			    '서울특별시 관악구 봉천동 895-16', 
-			    '서울특별시 송파구 오금로13길 8',
-			    '서울특별시 송파구 올림픽로 25',
-			    '서울특별시 광진구 동일로18길 80',
-			    '서울특별시 종로구 지봉로 25',
-			    '서울특별시 성북구 인촌로 73',
-			    '강원도 춘천시 춘천로310번길 26',
-			    '강원 강릉시 운산동 1081',
-			    '충북 단양군 단양읍 천동리 산 9-1',
-			    '세종특별자치시 금남면 장재리 산 31',
-			    '경북 청도군 화양읍 고평리 산 79-2',
-			    '전라남도 나주시 노안면 학산용산길 104-1'
-			];
+			
+			var listData = arr;
 	
 			listData.forEach(function(addr, index) {
 			    geocoder.addressSearch(addr, function(result, status) {
@@ -198,6 +199,7 @@
 			                map: map,
 			                position: coords
 			            });
+			            
 			         	// 인포윈도우를 생성합니다
 			            var infowindow = new daum.maps.InfoWindow({
 			                content: '<div style="width:150px;text-align:center;padding:6px 0;">' + listData[index] + '</div>',
