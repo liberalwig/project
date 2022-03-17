@@ -27,11 +27,19 @@ public class MyDogController {
 		
 		//mydog
 		MyDogVo mvo = myDogService.myDogSelect(usersNo);
-		String[] arry = mvo.getBirth().split(" ");
-		arry[0].replace("-", ".");
-		model.addAttribute("mvo",mvo);
 		
-		return "yu/myDogForm";
+		if(mvo != null) {
+			String[] arry = mvo.getBirth().split(" ");
+			arry[0].replace("-", ".");
+			model.addAttribute("mvo",mvo);
+			
+			return "yu/myDogForm";
+		}else {
+			
+			return "yu/myDogFormFirst";
+		}
+		
+		
 	}
 	
 	//내 강아지 최초 등록

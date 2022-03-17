@@ -52,6 +52,7 @@
                     	</c:if>
                     	<c:if test="${bvo.status != '펫시팅중' && bvo.status != '예약완료'}">
                     		<button class="btn btn-default add-img3" onclick = "window.history.back()">목록으로 돌아가기</button>
+                    		
                     	</c:if>
                     </div>
 
@@ -127,35 +128,41 @@
                         <div class="info">
                             <h2>게스트 정보</h2>
                             <hr>
-                            <div id="dogCard">
-								<div class="row"></div>
-								<div id="cardHeader">
-									<p id="headerText" class="text-center">강아지 등록증</p>
+                            <c:if test="${!empty mvo.name}">
+	                            <div id="dogCard">
+									<div class="row"></div>
+									<div id="cardHeader">
+										<p id="headerText" class="text-center">강아지 등록증</p>
+									</div>
+									<hr>
+									<div id="cardBody" class="clearfix">
+										<form action="">
+											<div id="imgFile" data-usersno="${bvo.usersNo}">
+												<c:if test="${empty mvo.photo}">
+													<img id="myDogImg" src="${pageContext.request.contextPath}/assets/images/myDogImg2.png">
+												</c:if>
+												<c:if test="${!empty mvo.photo}">
+													<img id="myDogImg" src="${pageContext.request.contextPath}/photo/${mvo.photo}">
+												</c:if>
+												<p>갤러리보기</p>
+											</div>
+											<div id="myDogInfo">
+												<p id="pName" class="text-center">${mvo.name}</p>
+												<p><strong class="index">생년월일 :</strong> ${mvo.birth}</p>
+												<p><strong class="index">성별 :</strong> ${mvo.gender}</p>
+												<p><strong class="index">품종 :</strong> ${mvo.breed}</p>
+												<p><strong class="index">몸무게 :</strong> ${mvo.weight}kg</p>
+												<c:if test="${mvo.neuter == 1}">
+													<p><strong class="index">중성화 :</strong> O</p>
+												</c:if>
+												<c:if test="${mvo.neuter == 0}">
+													<p><strong class="index">중성화 :</strong> X</p>
+												</c:if>
+											</div>
+										</form>
+									</div>
 								</div>
-								<hr>
-								<div id="cardBody" class="clearfix">
-									<form action="">
-										<div id="imgFile">
-											<img id="myDogImg" src="${pageContext.request.contextPath }/assets/images/myDogImg2.png">
-											
-											<p>갤러리보기</p>
-										</div>
-										<div id="myDogInfo">
-											<p id="pName" class="text-center">${mvo.name}</p>
-											<p><strong class="index">생년월일 :</strong> ${mvo.birth}</p>
-											<p><strong class="index">성별 :</strong> ${mvo.gender}</p>
-											<p><strong class="index">품종 :</strong> ${mvo.breed}</p>
-											<p><strong class="index">몸무게 :</strong> ${mvo.weight}kg</p>
-											<c:if test="${mvo.neuter == 1}">
-												<p><strong class="index">중성화 :</strong> O</p>
-											</c:if>
-											<c:if test="${mvo.neuter == 0}">
-												<p><strong class="index">중성화 :</strong> X</p>
-											</c:if>
-										</div>
-									</form>
-								</div>
-							</div>
+							</c:if>
                             <div class="container-fluid">
                                 <div class="row">
                                     <div class="col-xs-6 catalog">게스트이름</div>
@@ -544,31 +551,49 @@
 	</div><!--/.modal-dialog--> 
  </div><!--/.modal-->
 	  
-<!-- 이미지보기 팝업(모달)창 -->
-<form action="">
-	<div class="modal fade" id="viewModal">
+	<!-- 이미지보기 팝업(모달)창 -->
+	<form action="">
+		<div class="modal fade" id="viewModal">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+						<h4 class="modal-title">이미지보기</h4>
+					</div>
+					<div class="modal-body">
+						<div class="formgroup">
+							<img id="viewModelImg" src="">
+							<!-- ajax로 처리 : 이미지출력 위치-->
+						</div>
+						<div class="formgroup">
+							<p id="viewModelContent"></p>
+						</div>
+						<input type="hidden" id="listNo" val="">
+					</div>
+				</div> <!-- /.modal-content -->
+			</div> <!-- /.modal-dialog -->
+		</div> <!-- /.modal -->
+	</form>
+
+	<!--class="modal fade"-->
+	<div class="modal fade" id="galleryModal">
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-					<h4 class="modal-title">이미지보기</h4>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h4 class="modal-title">갤러리</h4>
 				</div>
 				<div class="modal-body">
-					<div class="formgroup">
-						<img id="viewModelImg" src="">
-						<!-- ajax로 처리 : 이미지출력 위치-->
+					<div id="listArea"></div>
+					<hr>
+					<div class="contents">
 					</div>
-					<div class="formgroup">
-						<p id="viewModelContent"></p>
-					</div>
-					<input type="hidden" id="listNo" val="">
 				</div>
-			</div> <!-- /.modal-content -->
-		</div> <!-- /.modal-dialog -->
-	</div> <!-- /.modal -->
-</form>
+			</div><!--/.modal-content-->
+		</div><!--/.modal-dialog--> 
+	 </div><!--/.modal-->
 
   	
 </body>
@@ -662,6 +687,49 @@
 	        }
 	        reader.readAsDataURL(input.files[0]);
 	    }
+	}
+	
+	var cnt=0;
+	//이미지업로드 버튼을 눌렀을때
+	$("#imgFile").on("click", function(){
+		cnt++;
+		var $this = $(this);
+		var usersNo = $this.data("usersno");
+		
+		if(cnt==1) {
+			viewGallery(usersNo);
+		}else {
+			$("#galleryModal").modal('show');
+		}
+		
+	});	
+	
+	function viewGallery(usersNo) {
+		
+		$.ajax({
+			url : "${pageContext.request.contextPath}/gallerySelect",
+			type : "post",
+			//contentType : "application/json",
+			data : { usersNo : usersNo },
+			dataType : "json",
+			success : function(gList) {
+				
+				$("#galleryModal").modal('show');
+				for(var i=0; i<gList.length; i++){
+					var str = '';
+					str += '	<div class="item">';
+					str += '		<div class="polaroid">';
+					str += '			<img data-usersno='+usersNo+' data-photono='+gList[i].photoNo+' src="${pageContext.request.contextPath}/photo/'+gList[i].saveName+'" class="wrapper-img viewImg"> ';
+					str += '			<div class="caption"></div>';
+					str += '		</div>';
+					str += '	</div>';
+					$("#listArea").append(str);
+				}
+			},
+			error : function(XHR, status, error) {
+				console.error(status + " : " + error);
+			}
+		});
 	}
 	
   </script>

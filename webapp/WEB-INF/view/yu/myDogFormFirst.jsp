@@ -46,27 +46,23 @@
 					<p class="text-center f-m">예약 시 아래와 같은 카드 형식으로 펫시터에게 내 강아지의 정보를 제공할 수 있습니다.</p>
 						
 							<div id="dogCard">
-								<div class="row"></div>
+							
 								<div id="cardHeader">
 									<p id="headerText" class="text-center">강아지 등록증</p>
 								</div>
+								
 								<hr>
 								
 								<div id="cardBody" class="clearfix">
-									<input type="hidden" name="usersNo" value="${param.usersNo}">
-										<div id="imgFile" data-usersno="${param.usersNo}">
-											<c:if test="${empty mvo.photo}">
-												<img id="myDogImg" src="${pageContext.request.contextPath}/assets/images/myDogImg2.png">
-											</c:if>
-											<c:if test="${!empty mvo.photo}">
-												<img id="myDogImg" src="${pageContext.request.contextPath}/photo/${mvo.photo}">
-											</c:if>
+										<div id="imgFile">
+											<img id="myDogImg" src="/project/assets/images/myDogImg2.png">
 											<label class="file-label">사진업로드</label>
 										</div>
-										<form id="myDogForm" action="${pageContext.request.contextPath}/mydogUpdate" method="get">
+										<form id="myDogForm" action="${pageContext.request.contextPath}/mydogInsert" method="get">
+											<input type="hidden" name="usersNo" value="${param.usersNo}">
 											<div id="myDogInfo">
 												<label for="name">이름:</label>
-												<input id="name" name="name" type="text" value="${mvo.name}">
+												<input id="name" name="name" type="text">
 												<div>
 													<label for="photoDate">생년월일:</label>
 													<select class="bo_w_select" name="birth">
@@ -99,11 +95,11 @@
 												</div>
 												<div>
 													<label for="breed">품종:</label>
-													<input id="breed" name="breed" type="text" value="${mvo.breed}">
+													<input id="breed" name="breed" type="text">
 												</div>
 												<div>
 													<label for="weight">몸무게:</label>
-													<input id="weight" name="weight" type="text" value="${mvo.weight}">
+													<input id="weight" name="weight" type="text">
 													kg
 													<label id="neuterLabel" for="neuter">중성화:</label>
 													<select id="neuter" name="neuter">
@@ -111,19 +107,20 @@
 														<option value="0">X</option>
 													</select>
 												</div>
+												
 											</div>
-										</form>
+										
 										<div>
-											<input id="myDogSubmit" class="btn btn-default" type="submit" value="수정">
+											<input id="myDogSubmit" class="btn btn-default" type="submit" value="등록">
 										</div>
-									
+									</form>
 								</div>
 							</div>
-							
-						</div>
-					
-				</div>
+				
+					</div>
+				
 			</div>
+			
 		</div>
 	</div>
 	
