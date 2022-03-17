@@ -25,10 +25,8 @@ public class SearchListDao {
 	
 	public List<SearchListVo> getSearchListD(SearchListVo searchListVo) {
 		
-	
-		
 		List<SearchListVo> searchListD = sqlSession.selectList("searchList.selectSearchListD", searchListVo);
-		System.out.println(searchListD);	
+		
 		return searchListD;
 	}
 	
