@@ -43,6 +43,7 @@ a:hover {text-decoration: none; color: #000}
 	}
 	#hostimgbox{
 		width: 400px;
+		height: 300px;
 	}
 	#container #hostinfo{
 		margin: 20px 0px 0px 0px;
