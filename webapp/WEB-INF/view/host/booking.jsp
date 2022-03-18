@@ -333,7 +333,7 @@ function getList(){
 	var dayList ;
 	$.ajax({ 
 		type:"get", 
-		url:"${pageContext.request.contextPath}/host2/booking2?hostNo=${requestScope.hostVo.hostNo}", 
+		url:"${pageContext.request.contextPath}/host2/getAble?hostNo=${requestScope.hostVo.hostNo}", 
 		dataType : "json",
 		async: false,
 		success: function (ableList) {
