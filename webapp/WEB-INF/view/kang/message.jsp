@@ -46,92 +46,52 @@
 
 				<div id="content-main">
 					<div class=" row clearfix">
-						<div id="list" class="col-md-12">
+						<div id="list" class="col-xs-12">
 							<img class="profile" src="/project/assets/images/message_profile4.jpeg">
-							<p>안녕 나는 호스트</p>
+							<p>${messageVo.name} 님</p>
 						</div>
-						<div id="pdetail" class="col-md-12 clearfix">
+						<div id="pdetail" class="col-xs-12 clearfix">
 							<img class="profile" src="/project/assets/images/message_profile1.jpg">
-							<p class="name">뿡빵</p>
-							<p class="btn-re-gradient blue mini">승인 대기</p>
+							<p class="name">${getMInfo.usersFromName} 님과의 쪽지</p>
 						</div>
 					</div>
 					<div class=" row clearfix">
-						<div id="dList" class="col-md-12 clearfix scroll scroll1">
-							<div class="clearfix link">
-								<img class="profile" src="/project/assets/images/message_profile1.jpg">
-								<p class="name">뿡빵</p>
-								<p class="timeL">21/02/27 19:00</p>
-								<div class="state col-md-6">펫시팅 중</div>
-
-							</div>
-							<div class="clearfix link">
-								<a href=""><img class="profile" src="/project/assets/images/message_profile2.jpg"></a>
-								<p class="name">뿡빵</p>
-								<p class="timeL">21/02/27 19:00</p>
-								<div class="state col-md-6">결제 대기</div>
-							</div>
-							<div class="clearfix link">
-								<a href=""><img class="profile" src="/project/assets/images/message_profile3.jpg"></a>
-								<p class="name">뿡빵</p>
-								<p class="timeL">21/02/27 19:00</p>
-								<div class="state col-md-6">승인 대기</div>
-							</div>
-							<div class="clearfix link">
-								<a href=""><img class="profile" src="/project/assets/images/message_profile4.jpeg"></a>
-								<p class="name">뿡빵</p>
-								<p class="timeL">21/02/27 19:00</p>
-								<div class="state col-md-6">문의</div>
-							</div>
-							<div class="clearfix link">
-								<a href=""><img class="profile" src="/project/assets/images/message_profile4.jpeg"></a>
-								<p class="name">뿡빵</p>
-								<p class="timeL">21/02/27 19:00</p>
-								<div class="state col-md-6">문의</div>
-							</div>
-							<div class="clearfix link">
-								<a href=""><img class="profile" src="/project/assets/images/message_profile4.jpeg"></a>
-								<p class="name">뿡빵</p>
-								<p class="timeL">21/02/27 19:00</p>
-								<div class="state col-md-6">문의</div>
-							</div>
-							<div class="clearfix link">
-								<a href=""><img class="profile" src="/project/assets/images/message_profile4.jpeg"></a>
-								<p class="name">뿡빵</p>
-								<p class="timeL">21/02/27 19:00</p>
-								<div class="state col-md-6">문의</div>
-							</div>
-							<div class="clearfix link">
-								<a href=""><img class="profile" src="/project/assets/images/message_profile4.jpeg"></a>
-								<p class="name">뿡빵</p>
-								<p class="timeL">21/02/27 19:00</p>
-								<div class="state col-md-6">문의</div>
-							</div>
+						<div id="dList" class="clearfix scroll scroll1">
+							<c:forEach items="${mList}" var="MessageVo">
+								<div class="clearfix link Mlist">
+									
+									<img class="profile" src="/project/assets/images/message_profile1.jpg">
+									<p class="name">${getMInfo.usersFromName} 님 </p>
+									<div>
+										<p class="timeL">${getMInfo.sendDate}</p>
+									</div>
+								</div>
+							</c:forEach>
 						</div>
 
-						<div id="conver" class="col-md-12 clearfix scroll scroll1">
+						<div id="conver" class="col-xs-12 clearfix scroll scroll1">
 							<div class="textyou">
 								<!--메세지창+시간-->
 								<div class="talk-bubble">
 									<div class="talktext">
-										<p>메롱메롱메롱메롱메롱메롱메롱메롱v메롱메롱메롱메롱메롱메롱메롱메롱메롱메롱메롱메롱메롱메롱메롱메롱메롱메롱메롱메롱메롱 메롱메롱메롱메롱메롱메롱메롱메롱메롱메롱메롱메롱 메롱메롱메롱메롱메롱메롱메롱메롱메롱v메롱메롱메롱메롱메롱 메롱메롱메롱메롱메롱메롱메롱메롱메롱메롱메롱메롱메롱메롱메롱메롱v메롱메롱메롱메롱 메롱메롱메롱메롱메롱메롱메롱메롱메롱</p>
+										<p></p>
 									</div>
 								</div>
-								<p class="time">21/02/27 19:00</p>
+								<p class="time"></p>
 							</div>
 							<div class="textme">
 								<!--메세지창+시간-->
 								<div class="talk-bubblet">
 									<div class="talktext">
-										<p>메롱</p>
+										<p></p>
 									</div>
 								</div>
-								<p class="timeme">21/02/27 22:00</p>
+								<p class="timeme"></p>
 							</div>
 
 						</div>
 						<div id="text" class="clearfix">
-							<textarea id="insert" class="col-md-7" placeholder="메세지를 입력하세요"></textarea>
+							<textarea id="insert" class="col-xs-7" placeholder="메세지를 입력하세요"></textarea>
 							<!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
 							<button class="btn btn-default btn-send" type="submit">보내기</button>
 						</div>
@@ -139,8 +99,6 @@
 					</div>
 
 				</div>
-
-
 
 
 			</div>
@@ -162,5 +120,17 @@
 			$(this).next("ul").toggleClass("hide");
 		});
 	});
+	
+	//리스트 중 하나 눌렀을 때
+	/* ${".Mlist"}.on("click", function(){
+		
+		$.ajax({
+			url:"${pageContext.request.contextPath}/message/read?usersNo=${MessageVo.usersNo}",
+	        type:"POST"
+	    }).
+		
+	}); */
+	
+	
 </script>
 </html>

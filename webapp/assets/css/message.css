@@ -25,7 +25,6 @@ a:hover {text-decoration: none; color: #000}
 
 
 body {
-    padding-top: 80px;
     font-family: "맑은 고딕";
     font-size: 16px;
 }
@@ -136,7 +135,7 @@ body {
 }
 
 #list>.profile {
-    margin: 10px 0px 0px 0px;
+    margin: 10px 0px 0px 10px;
     width: 40px;
     height: 40px;
 }
@@ -169,16 +168,14 @@ body {
 
 #dList .name {
     float: left;
-    margin: 2px 0px 0px 15px;
+    margin: 7px 0px 0px 15px;
     padding: 0px 40px 0px 0px;
 }
-#dList .state {
-    float: left;
-    margin: 5px 0px 0px 0px;
-}
+
 #dList .timeL {
-    float: right;
-    margin: 5px 10px 0px 0px;
+    float: left;
+    margin: 7px 10px 0px 15px;
+    padding: 0px 40px 0px 0px;
     font-size: 10px;
     color: #666;
 }
@@ -225,7 +222,7 @@ body {
 
 #pdetail .profile {
     float: left;
-    margin: 10px 0px 10px 25px;
+    margin: 10px 0px 10px 15px;
     width: 40px;
     height: 40px;
     border-radius: 70%

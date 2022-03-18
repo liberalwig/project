@@ -11,6 +11,7 @@
 		]]>
 	</insert>
 	
+	
 	<!-- 로그인(게스트) -->
 	<select id="loginGuest" parameterType="com.javaex.vo.UserVo" resultType="com.javaex.vo.UserVo">
 		<![CDATA[
@@ -22,6 +23,7 @@
 			and     password = #{password}
 		]]>
 	</select>
+	
 	
 	<!-- 로그인(호스트) -->
 	<select id="loginHost" parameterType="com.javaex.vo.UserVo" resultType="com.javaex.vo.UserVo">
@@ -36,7 +38,6 @@
 			and     password = #{password}
 		]]>
 	</select>
-	
 	
 	
    <!--유저 수정 폼으로 기존 정보 불러오기-->
@@ -78,22 +79,33 @@
 	<!-- 유저 찜 폼으로 기존 정보 불러오기 -->
 	<select id="selectHeartByNo" parameterType="int" resultType="HeartVo">
 		<![CDATA[
-		select 	h.heartNo,
-      			h.usersNo,
-      			h.hostNo
-        from heart h
-		where usersNo = #{usersNo}
+			select he.heartNo,
+			       ho.hostNo,
+			       us.name,
+			       us.path,
+			       ho.adress1,
+                   ho.hostcost,
+			       bo.reviewcount,
+                   bo.puppypoint
+			from   heart he, users us, host ho, (select count(*) reviewcount,
+                                                        avg((clean+food+play+walk+communication)/5) as puppypoint
+                                                 from   booking
+                                                 where  usersNo = #{usersNo}
+                                                 and    review is not null) bo
+			where  he.hostNo = ho.hostNo
+			and    ho.usersNo = us.usersNo
+			and    he.usersNo = #{usersNo}
 		]]>
 	</select>
 	
 	
-	<!-- 유저 찜 추가
-	<insert id="insertHeart" parameterType="HeartVo">
+	<!-- 유저 찜 삭제-->
+	<delete id="heartDelete" parameterType="int">
 		<![CDATA[
-			insert into heart
-			values(seq_users_no.nextval, #{heartNo}, #{usersNo}, #{hostNo})
+			delete from heart
+			where heartNo = #{heartNo}
 		]]>
-	</insert>
-	-->
+	</delete>
+	
 	
 </mapper>

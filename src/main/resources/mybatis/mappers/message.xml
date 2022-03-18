@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="message">
+
+	<!-- 메세지 유저 정보 가져오기 -->
+	<select id="getUser"   parameterType="int"  resultType="MessageVo">
+		
+		<![CDATA[
+			select usersNo,
+	       		   name
+			from users
+			where usersNo=#{usersNo}
+		]]>
+	</select>
+	
+	<!-- 메세지 리스트 가져오기 미완-->
+	<select id="getList"   parameterType="int"  resultType="MessageVo">
+		<![CDATA[
+			select  us.usersNo,
+			        name.messegeNo,
+			        name.usersFrom,
+			        usersFromName,
+			        name.usersTo,
+			        us.name,
+			        name.roomno
+			from   (select  m.messegeNo,
+			                m.usersFrom,
+			                m.usersTo,
+			                m.roomno,
+			                u.name usersFromName
+			        from messege m, users u
+			        where m.usersFrom=u.usersno)name, users us
+			where name.usersTo = us.usersNo
+			and us.usersNo = #{usersNo}
+		]]>
+	</select>
+	
+	<!-- 메세지 정보 가져오기 -->
+	<select id="getMInfo"   parameterType="int"  resultType="MessageVo">
+		<![CDATA[
+			select  us.usersno userstoNo,
+			        us.name userstoname,
+			        name.messegeNo,
+			        name.usersFrom,
+			        usersFromName,
+			        name.usersTo,
+			        name.roomno,
+			        name.senddate,
+			        name.text
+			from (select m.messegeNo messegeNo,
+			             m.usersFrom,
+			             u.name usersFromName,
+			             m.usersTo,
+			             m.roomno,
+			             m.senddate,
+			             m.text
+			      from messege m, users u
+			      where m.usersFrom=u.usersno)name, users us
+			where us.usersno in (name.usersfrom,name.usersto)
+			and name.usersFrom in (name.usersfrom,name.usersto)
+			and us.usersno =#{usersNo}
+			and name.usersFrom =4
+		]]>
+	</select> 
+	
+
+</mapper>
