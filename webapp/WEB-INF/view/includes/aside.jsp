@@ -18,9 +18,9 @@
 						<li onclick="location.href='${pageContext.request.contextPath}/bookingEndGuest?usersNo=${authUser.usersNo}'">예약관리</li>
 					</ul>
 					<li>메세지</li>
-					<li>찜 목록</li>
+					<li onclick="location.href='${pageContext.request.contextPath}/user/heartForm?usersNo=${authUser.usersNo}'">찜 목록</li>
 					<li onclick="location.href='${pageContext.request.contextPath}/mydog?usersNo=${authUser.usersNo}'">내 강아지</li>
-					<li onclick="location.href='${pageContext.request.contextPath}/user/userModifyForm?usersNo=${authUser.usersNo}'">유저 정보 수정</li>
+					<li onclick="location.href='${pageContext.request.contextPath}/user/userModifyForm?usersNo=${authUser.usersNo}'">회원 정보 수정</li>
 				</ul>
 			</div>
 		</c:when>
@@ -36,7 +36,7 @@
 					<li>메세지</li>
 					<li class="menu">내 정보<img src="/project/assets/images/aside_img.png" class="aside-img"></li>
 					<ul id="s-aside">
-						<li onclick="location.href='${pageContext.request.contextPath}/user/userModifyForm?usersNo=${authUser.usersNo}'">유저 정보 수정</li>
+						<li onclick="location.href='${pageContext.request.contextPath}/user/userModifyForm?usersNo=${authUser.usersNo}'">회원 정보 수정</li>
 						<li onclick="location.href='${pageContext.request.contextPath}/host/modifyForm?hostNo=${authUser.hostNo}'">펫시터 정보 수정</li>
 					</ul>
 				</ul>

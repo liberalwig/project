@@ -5,7 +5,7 @@ body, div, ul, li, dl, dt, ol, ht, h2, h3, h4, h5, h6,
 input, fieldset, legend, p, select, table, th, td, tr,
 textarea, button, form {margin:0; padding:0;}
 
-body {font-size:16px; font-family: "Helvetica Neue"; color: #333; background-color: #fff}
+body {font-family: 'Noto Sans KR', sans-serif; color: #333; background-color: #fff !important;}
 
 ul, ol {list-style-type: none;}
 a:link {text-decoration: none; color: #000}
@@ -154,6 +154,12 @@ display: none;
 }
 
 /*left 버튼*/
+.heartbox{
+	border: 1px solid #BBB;
+	padding: 20px 0px 20px 15px;
+	margin: 0px 0px 0px 0px;
+}
+
 #search_list .filter_button_left{
     width: 70px;
     margin: 10px;
@@ -174,8 +180,7 @@ display: none;
 }
 
 .search_result{
-    float: left;
-    width: 1000px;
+    width: 1200px;
     height: 200px;
     margin-top: 10px;
 }
@@ -186,8 +191,8 @@ display: none;
 
 .result-img{
     margin-top: 6px;
-    width: 235px;
-    height: 190px;
+    width: 180px;
+    height: 180px;
     border-radius: 5px 5px 5px 5px;
 }
 
@@ -195,11 +200,6 @@ display: none;
     padding: 13px 0px 0px 0px;
     width: 235px;
     height: 200px;
-}
-
-.search_result .result_text{
-    width: 300px;
-    height: 35px;
 }
 
 .search_result .puppy{
@@ -232,9 +232,9 @@ display: none;
 
 .search_result .address{
     padding-top: 5px;
-    padding-left: 13px;
     text-align: left;
     font-weight: 600;
+    margin: 0px 0px 70px 0px;
 }
 
 .search_result .review{

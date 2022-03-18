@@ -8,11 +8,14 @@
 <meta charset="UTF-8" />
 <title>회원정보 수정 폼</title>
 
-<link href="${pageContext.request.contextPath}/assets/bootstrap/css/bootstrap.css" rel="stylesheet">
-<link href="${pageContext.request.contextPath}/assets/css/userModify.css" rel="stylesheet" type="text/css" />
-
-<script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/jquery-1.12.4.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/assets/bootstrap/js/bootstrap.js"></script>
+	<link href="${pageContext.request.contextPath}/assets/bootstrap/css/bootstrap.css" rel="stylesheet">
+	<link href="${pageContext.request.contextPath}/assets/css/userModify.css" rel="stylesheet" type="text/css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
+    
+	<script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/jquery-1.12.4.js"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath}/assets/bootstrap/js/bootstrap.js"></script>
 </head>
 
 
@@ -21,24 +24,17 @@
 
 		<div id="wrap">
 			<div id="container" class="clearfix">
-				<div id="aside">
-					<ul id="b-aside">
-						<li class="menu">예약관리<img src="${pageContext.request.contextPath}/assets/images/aside_img.png" class="aside-img"></li>
-						<ul id="s-aside" class="hide">
-							<li>대기내역</li>
-							<li>예약신청관리</li>
-						</ul>
-						<li>나의 강아지</li>
-						<li>메세지</li>
-						<li>찜목록</li>
-						<li>내 정보 수정</li>
-					</ul>
-				</div>
-
+				<c:import url="/WEB-INF/view/includes/aside.jsp"></c:import>
 				<div id="content">
-					<div class="content-head" >
-						<p id="nav">마이 사이트 > 내 정보 수정</p>
-						<p id="now">회원 정보 수정</p>
+					<div id="content-head" >
+						<div id="location" class="clearfix">
+							<ul>
+								<li>마이페이지</li>
+								<li>내 정보 수정</li>
+								<li class="last">회원 정보 수정</li>
+							</ul>
+						</div>
+						<h1>회원 정보 수정</h1>
 					</div>
 
 					<div id="content-main">
