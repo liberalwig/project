@@ -25,10 +25,16 @@
             <c:import url="/WEB-INF/view/includes/aside.jsp"></c:import>
         
             <div id="content">
-                <div id="content-head">
-                    <p id="nav">마이 사이트 > 찜 목록</p>
-                    <p id="now">찜 목록</p>
-                </div>
+            	<div id="content-head" >
+					<div id="location" class="clearfix">
+						<ul>
+							<li>마이페이지</li>
+							<li>찜 목록</li>
+							<li class="last">찜 목록</li>
+						</ul>
+					</div>
+					<h1>찜 목록</h1>
+				</div><!-- //content-head -->
                 <div id="content-main" style="margin-left:50px;">
                     <div class="search_result">
                         <c:forEach items="${requestScope.heartList}" var="vo">
