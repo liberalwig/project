@@ -156,7 +156,7 @@ public class HostinfoController {
 	
 	//호스트 정보 수정폼
 	@RequestMapping(value = "/modifyForm", method = { RequestMethod.GET, RequestMethod.POST })
-	public String modifyForm(@ModelAttribute BookingVo bookingVo) {
+	public String modifyForm(@RequestParam("hostNo") int hostNo) {
 		System.out.println("[hostinfoController.modifyForm()]");
 		
 		return "/host/modifyForm";

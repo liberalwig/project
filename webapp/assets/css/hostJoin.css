@@ -22,8 +22,7 @@ a:hover {text-decoration: none; color: #000}
 .clearfix:after {clear: both;}
 
 /* 레이아웃 */
-#wrap {margin: 0px auto; 
-       width: 1440px;}		
+#wrap {margin: 0px auto; width: 1440px;}		
 #container { width: 1440px;}
 #aside {float: left; width: 360px; padding: 0px 0px 0px 0px;}
 #content { float: left; width: 1080px; margin: 0px 0px 100px 0px;}
@@ -94,7 +93,6 @@ a:hover {text-decoration: none; color: #000}
   display : block;
   resize: none;
 }
-
 
 /*질문05번.주소*/
 #address {

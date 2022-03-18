@@ -174,7 +174,7 @@ $("#btn2").on("click", function(){
 	
 	$.ajax({
 		//요청할때
-		url : "${pageContext.request.contextPath}/host2/bookinginsert",    
+		url : "${pageContext.request.contextPath}/host/bookinginsert",    
 		type : "post",
 		data : bookingVo,
 		
@@ -333,7 +333,7 @@ function getList(){
 	var dayList ;
 	$.ajax({ 
 		type:"get", 
-		url:"${pageContext.request.contextPath}/host2/getAble?hostNo=${requestScope.hostVo.hostNo}", 
+		url:"${pageContext.request.contextPath}/host/getAble?hostNo=${requestScope.hostVo.hostNo}", 
 		dataType : "json",
 		async: false,
 		success: function (ableList) {
