@@ -5,7 +5,7 @@ body, div, ul, li, dl, dt, ol, ht, h2, h3, h4, h5, h6,
 input, fieldset, legend, p, select, table, th, td, tr,
 textarea, button, form {margin:0; padding:0;}
 
-body {font-size:16px; font-family: "Helvetica Neue"; color: #333; background-color: #fff}
+body {font-family: 'Noto Sans KR', sans-serif; color: #333; background-color: #fff !important;}
 
 ul, ol {list-style-type: none;}
 a:link {text-decoration: none; color: #000}
@@ -25,12 +25,6 @@ a:hover {text-decoration: none; color: #000}
 
 #content { float: left; width: 1080px; margin: 0px 0px 100px 0px;}
 
-
-body{
-   margin-top:80px;
-}
-   
-   
  /* 왼쪽메뉴(aside) */
     #aside {
     float: left;

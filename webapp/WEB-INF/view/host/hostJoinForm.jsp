@@ -180,7 +180,7 @@
 		//호스트 등록
 		$.ajax({
 			//요청할때
-			url : "${pageContext.request.contextPath}/host2/hostinsert",
+			url : "${pageContext.request.contextPath}/host/hostinsert",
 			type : "post",
 			data : hostVo,
 			
@@ -189,7 +189,7 @@
 				//호스트 사진 등록
 				$.ajax({
 					//요청할때
-					url : "${pageContext.request.contextPath}/host2/hostphotoinsert?hostNo="+hostNo,    
+					url : "${pageContext.request.contextPath}/host/hostphotoinsert?hostNo="+hostNo,    
 					enctype:"multipart/form-data",
 					type : "post",
 					data : formData,
@@ -199,7 +199,7 @@
 						//호스트 키워드 등록
 						$.ajax({
 							//요청할때
-							url : "${pageContext.request.contextPath}/host2/hostkeywordinsert?hostNo="+hostNo,    
+							url : "${pageContext.request.contextPath}/host/hostkeywordinsert?hostNo="+hostNo,    
 							type : "post",
 							data : {
 								keywordNo : keywordList,

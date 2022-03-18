@@ -71,7 +71,7 @@
 							</c:when>
 							<c:otherwise>
 								<div id="btnbox1">
-									<a href="${pageContext.request.contextPath}/host2/booking?hostNo=${requestScope.hostMap.hostVo.hostNo}"><button id="btn1" type="button" class="btn btn-primary color">
+									<a href="${pageContext.request.contextPath}/host/booking?hostNo=${requestScope.hostMap.hostVo.hostNo}"><button id="btn1" type="button" class="btn btn-primary color">
 											<h4>예약 요청</h4>
 										</button></a>
 									<button id="btn2" type="button" class="btn btn-default">
@@ -246,10 +246,10 @@
 											<c:forEach begin="${hostMap.startPageBtnNo}" end="${hostMap.endPageBtnNo}" step="1" var="page">
 												<c:choose>
 													<c:when test="${page == param.crtPage}">
-														<li class="active"><a class="active" href="${pageContext.request.contextPath}/host2/info/${requestScope.hostMap.hostVo.hostNo}?crtPage=${page}">${page}</a></li>
+														<li class="active"><a class="active" href="${pageContext.request.contextPath}/host/info/${requestScope.hostMap.hostVo.hostNo}?crtPage=${page}">${page}</a></li>
 													</c:when>
 													<c:otherwise>
-														<li><a class="active" href="${pageContext.request.contextPath}/host2/info/${requestScope.hostMap.hostVo.hostNo}?crtPage=${page}">${page}</a></li>
+														<li><a class="active" href="${pageContext.request.contextPath}/host/info/${requestScope.hostMap.hostVo.hostNo}?crtPage=${page}">${page}</a></li>
 													</c:otherwise>
 												</c:choose>
 											</c:forEach>
@@ -303,7 +303,7 @@
 		if(${sessionScope.authUser.usersType == 2}){
 			alert('펫시터는 할 수 없습니다.');
 		} else {
-			location.replace("${pageContext.request.contextPath}/host2/booking?hostNo=${requestScope.hostMap.hostVo.hostNo}");
+			location.replace("${pageContext.request.contextPath}/host/booking?hostNo=${requestScope.hostMap.hostVo.hostNo}");
 		}
 	});
 	$("#btn2").on("click", function(){
@@ -336,7 +336,7 @@
 		//요청
 		$.ajax({
 			//요청할때
-			url : "${pageContext.request.contextPath}/host2/getPhoto",    
+			url : "${pageContext.request.contextPath}/host/getPhoto",    
 			type : "post",
 			data : photoVo,
 			
