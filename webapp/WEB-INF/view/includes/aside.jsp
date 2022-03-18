@@ -8,37 +8,41 @@
 <link href="/project/assets/css/booking.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
-	<c:if test="${authUser.usersType == 1}">
-		<div id="aside">
-			<ul id="b-aside">
-				<li class="menu">예약관리<img src="/project/assets/images/aside_img.png" class="aside-img"></li>
-				<ul id="s-aside">
-					<li onclick="location.href='${pageContext.request.contextPath}/bookingBeforeGuest?usersNo=${authUser.usersNo}'">결제 대기내역</li>
-					<li onclick="location.href='${pageContext.request.contextPath}/bookingEndGuest?usersNo=${authUser.usersNo}'">예약관리</li>
+	<c:choose>
+		<c:when test="${authUser.usersType == 1}">
+			<div id="aside">
+				<ul id="b-aside">
+					<li class="menu">예약관리<img src="/project/assets/images/aside_img.png" class="aside-img"></li>
+					<ul id="s-aside">
+						<li onclick="location.href='${pageContext.request.contextPath}/bookingBeforeGuest?usersNo=${authUser.usersNo}'">결제 대기내역</li>
+						<li onclick="location.href='${pageContext.request.contextPath}/bookingEndGuest?usersNo=${authUser.usersNo}'">예약관리</li>
+					</ul>
+					<li>메세지</li>
+					<li>찜 목록</li>
+					<li onclick="location.href='${pageContext.request.contextPath}/mydog?usersNo=${authUser.usersNo}'">내 강아지</li>
+					<li onclick="location.href='${pageContext.request.contextPath}/user/userModifyForm?usersNo=${authUser.usersNo}'">유저 정보 수정</li>
 				</ul>
-				<li>메세지</li>
-				<li>찜목록</li>
-				<li>내 정보 수정</li>
-				<li onclick="location.href='${pageContext.request.contextPath}/mydog?usersNo=${authUser.usersNo}'">내 강아지</li>
-			</ul>
-		</div>
-	</c:if>
-	
-	<c:if test="${authUser.usersType == 2}">
-		<div id="aside">
-			<ul id="b-aside">
-				<li class="menu">예약관리<img src="/project/assets/images/aside_img.png" class="aside-img"></li>
-				<ul id="s-aside">
-					<li onclick="location.href='${pageContext.request.contextPath}/bookingBeforeHost?hostNo=${authUser.hostNo}'">대기내역</li>
-					<li onclick="location.href='${pageContext.request.contextPath}/bookingEndHost?hostNo=${authUser.hostNo}'">예약신청관리</li>
+			</div>
+		</c:when>
+		
+		<c:otherwise>
+			<div id="aside">
+				<ul id="b-aside">
+					<li class="menu">예약관리<img src="/project/assets/images/aside_img.png" class="aside-img"></li>
+					<ul id="s-aside">
+						<li onclick="location.href='${pageContext.request.contextPath}/bookingBeforeHost?hostNo=${authUser.hostNo}'">대기내역</li>
+						<li onclick="location.href='${pageContext.request.contextPath}/bookingEndHost?hostNo=${authUser.hostNo}'">예약신청관리</li>
+					</ul>
+					<li>메세지</li>
+					<li class="menu">내 정보<img src="/project/assets/images/aside_img.png" class="aside-img"></li>
+					<ul id="s-aside">
+						<li onclick="location.href='${pageContext.request.contextPath}/user/userModifyForm?usersNo=${authUser.usersNo}'">유저 정보 수정</li>
+						<li onclick="location.href='${pageContext.request.contextPath}/host/modifyForm?hostNo=${authUser.hostNo}'">펫시터 정보 수정</li>
+					</ul>
 				</ul>
-				<li>메세지</li>
-				<li>내 정보 수정</li>
-			</ul>
-		</div>
-	</c:if>
-	
-
+			</div>
+		</c:otherwise>
+	</c:choose>
 </body>
 
 <script>
