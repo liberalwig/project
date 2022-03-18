@@ -20,6 +20,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.javaex.dao.BookingDao;
 import com.javaex.dao.HostinfoDao;
 import com.javaex.vo.BookingVo;
+import com.javaex.vo.HeartVo;
 import com.javaex.vo.HostVo;
 import com.javaex.vo.KeywordVo;
 import com.javaex.vo.PhotoVo;
@@ -37,7 +38,6 @@ public class HostinfoService {
 	//hostNo 체크
 	public int checkNo(int hostNo) {
 		System.out.println("[HostinfoService.checkNo()]");
-		
 		return hostinfoDao.checkNo(hostNo);
 	}
 	
@@ -104,6 +104,23 @@ public class HostinfoService {
 		hostMap.put("endPageBtnNo", endPageBtnNo);
 		hostMap.put("next", next);
 		
+		return hostMap;
+	}
+	//수정용 호스트데이터 가져오기
+	public Map<String, Object> getModify(int hostNo){
+		System.out.println("[HostinfoService.getModify()]");
+		Map<String, Object> hostMap = new HashMap<String, Object>();
+		
+		//키워드리스트 가져오기
+		List<KeywordVo> keywordList = hostinfoDao.getKeywordList();
+		//호스트 Vo 가져오기
+		HostVo hostVo = hostinfoDao.getHost(hostNo);
+		
+		hostMap.put("keywordList", keywordList);
+		hostMap.put("hostVo", hostVo);
+		
+		
+		//호스트 키워드 가져오기
 		return hostMap;
 	}
 	//호스트 사진 가져오기
@@ -238,5 +255,16 @@ public class HostinfoService {
 			hostinfoDao.setKeyword(keywordVo);
 		}
 	}
+	//찜등록
+	public int heartinsert(HeartVo heartVo) {
+		System.out.println("[HostinfoService.heartinsert()]");
 		
+		return hostinfoDao.heartinsert(heartVo);
+	}
+	//찜삭제
+	public int heartdelete(HeartVo heartVo) {
+		System.out.println("[HostinfoService.heartinsert()]");
+		
+		return hostinfoDao.heartdelete(heartVo);
+	}
 }

@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.javaex.vo.BookingVo;
+import com.javaex.vo.HeartVo;
 import com.javaex.vo.HostVo;
 import com.javaex.vo.KeywordVo;
 import com.javaex.vo.PhotoVo;
@@ -192,5 +193,19 @@ public class HostinfoDao {
 		System.out.println("[HostinfoService.getAbleDate()]");
 		
 		return sqlSession.selectList("hostinfo.getAbleDate", hostNo);
+	}
+	
+	//찜등록
+	public int heartinsert(HeartVo heartVo) {
+		System.out.println("[HostinfoService.heartinsert()]");
+		
+		return sqlSession.insert("hostinfo.heartinsert", heartVo);
+	}
+	
+	//찜삭제
+	public int heartdelete(HeartVo heartVo) {
+		System.out.println("[HostinfoService.heartdelete()]");
+		
+		return sqlSession.delete("hostinfo.heartdelete", heartVo);
 	}
 }

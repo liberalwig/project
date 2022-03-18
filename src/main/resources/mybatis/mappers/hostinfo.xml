@@ -191,6 +191,20 @@
 		]]>
 	</select>
 	
+	<select id="getAbleDate" parameterType="int" resultType="String">
+		<![CDATA[
+			select   s.today ableDate
+			from     (select     to_char (firstday + level - 1, 'yyyy-mm-dd') today
+	                  from       (select sysdate firstday 
+	                              from   dual) 
+	                  connect by firstday + level - 1 <= trunc(sysdate+30)) s
+			where not s.today in (select abledate
+	                              from   able
+	                              where  hostNo=#{hostNo})
+			order by  s.today asc
+		]]>
+	</select>
+	
 	<insert id="hostinsert" parameterType="hostVo">
 		<selectKey keyProperty="hostNo" resultType="int" order="BEFORE">
 			select seq_host_no.nextval from dual
@@ -222,6 +236,21 @@
 		]]>
 	</insert>
 	
+	<insert id="heartinsert" parameterType="HeartVo">
+		<![CDATA[
+			insert into heart
+			values(seq_heart_no.nextval, #{usersNo}, #{hostNo})
+		]]>
+	</insert>
+	
+	<delete id="heartdelete" parameterType="HeartVo">
+		<![CDATA[
+			delete heart
+			where hostNo = #{hostNo}
+			and   usersNo = #{usersNo}
+		]]>
+	</delete>
+	
 	<update id="setStatus" parameterType="BookingVo">
 		<![CDATA[
 			update booking
@@ -237,17 +266,14 @@
 			where  usersNo = #{usersNo}
 		]]>
 	</update>
-	<select id="getAbleDate" parameterType="int" resultType="String">
+	
+	<update id="hostUpdate" parameterType="int">
 		<![CDATA[
-			select   s.today ableDate
-			from     (select     to_char (firstday + level - 1, 'yyyy-mm-dd') today
-	                  from       (select sysdate firstday 
-	                              from   dual) 
-	                  connect by firstday + level - 1 <= trunc(sysdate+30)) s
-			where not s.today in (select abledate
-	                              from   able
-	                              where  hostNo=#{hostNo})
-			order by  s.today asc
+			update users
+			set    userstype = 2
+			where  usersNo = #{usersNo}
 		]]>
-	</select>
+	</update>
+	
+
 </mapper>

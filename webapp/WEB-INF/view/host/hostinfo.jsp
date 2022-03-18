@@ -51,42 +51,28 @@
 								<span class="tag">#${vo.keywordName}</span>
 							</c:forEach>
 						</div>
-						<c:choose>
-							<c:when test="${sessionScope.authUser.usersType == 2}">
-								<div id="btnbox1">
-									<button id="btn1" type="button" class="btn btn-primary active">
+							<div id="btnbox1">
+								<a href="${pageContext.request.contextPath}/host/booking?hostNo=${requestScope.hostMap.hostVo.hostNo}"><button id="btn1" type="button" class="btn btn-primary color">
 										<h4>예약 요청</h4>
-									</button>
-									<button id="btn1" type="button" class="btn btn-default active">
-										<h4>
-											<span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>&nbsp;메시지 보내기
-										</h4>
-									</button>
-									<button id="btn2" type="button" class="btn btn-default active">
-										<h4>
-											<span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
-										</h4>
-									</button>
-								</div>
-							</c:when>
-							<c:otherwise>
-								<div id="btnbox1">
-									<a href="${pageContext.request.contextPath}/host/booking?hostNo=${requestScope.hostMap.hostVo.hostNo}"><button id="btn1" type="button" class="btn btn-primary color">
-											<h4>예약 요청</h4>
-										</button></a>
-									<button id="btn2" type="button" class="btn btn-default">
-										<h4>
-											<span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>&nbsp;메시지 보내기
-										</h4>
-									</button>
+									</button></a>
+								<button id="btn2" type="button" class="btn btn-default">
+									<h4>
+										<span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>&nbsp;메시지 보내기
+									</h4>
+								</button>
+								<c:if test="${not empty sessionScope.authUser}">
 									<button id="btn3" type="button" class="btn btn-default">
-										<h4>
-											<span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
-										</h4>
-									</button>
-								</div>
-							</c:otherwise>
-						</c:choose>
+										<c:choose>
+											<c:when test="${requestScope.hostMap.heart == 1}">
+												<span id="heartmark" class="glyphicon glyphicon-heart" aria-hidden="true"></span>
+											</c:when>
+											<c:otherwise>
+												<span id="heartmark" class="glyphicon glyphicon-heart-empty" aria-hidden="true"></span>
+											</c:otherwise>
+										</c:choose>
+									</button>	
+								</c:if>								
+							</div>
 
 					</div>
 				</div>
@@ -302,6 +288,8 @@
 	$("#btn1").on("click", function(){
 		if(${sessionScope.authUser.usersType == 2}){
 			alert('펫시터는 할 수 없습니다.');
+		} else if(${sessionScope.authUser == null}){
+			alert('로그인을 해주세요.');
 		} else {
 			location.replace("${pageContext.request.contextPath}/host/booking?hostNo=${requestScope.hostMap.hostVo.hostNo}");
 		}
@@ -309,15 +297,56 @@
 	$("#btn2").on("click", function(){
 		if(${sessionScope.authUser.usersType == 2}){
 			alert('펫시터는 할 수 없습니다.');
-		} else {
+		} else if(${empty sessionScope.authUser}) {
+			alert('로그인을 해주세요');
 		}
 	});
 	$("#btn3").on("click", function(){
 		if(${sessionScope.authUser.usersType == 2}){
 			alert('펫시터는 할 수 없습니다.');
 		} else {
+			 if($("#heartmark").hasClass("glyphicon-heart-empty") === true) {
+				$('#heartmark').removeClass('glyphicon-heart-empty');
+				$('#heartmark').addClass('glyphicon-heart');
+				
+				var userno = ${sessionScope.authUser.usersNo};
+				$.ajax({
+					//요청할때
+					url : "${pageContext.request.contextPath}/host/heartinsert",    
+					type : "post",
+					data : {
+						usersNo : userno,
+						hostNo : ${requestScope.hostMap.hostVo.hostNo}
+					},
+					
+					success : function(count) {
+					},
+					error : function(XHR, status, error) {
+						console.error(status + " : " + error);
+					}
+				});
+			} else {
+				$('#heartmark').removeClass('glyphicon-heart');
+				$('#heartmark').addClass('glyphicon-heart-empty');
+				$.ajax({
+					//요청할때
+					url : "${pageContext.request.contextPath}/host/heartdelete",    
+					type : "post",
+					data : {
+						usersNo : userno,
+						hostNo : ${requestScope.hostMap.hostVo.hostNo}
+					},
+					
+					success : function(count) {
+					},
+					error : function(XHR, status, error) {
+						console.error(status + " : " + error);
+					}
+				});
+			}
 		}
 	});
+
 	//사진
 	//탭을 클릭했을때
 	$("#tapbox ul li").on("click", function(){

@@ -18,6 +18,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.javaex.service.HostinfoService;
 import com.javaex.vo.BookingVo;
+import com.javaex.vo.HeartVo;
 import com.javaex.vo.HostVo;
 import com.javaex.vo.KeywordVo;
 import com.javaex.vo.PhotoVo;
@@ -156,9 +157,48 @@ public class HostinfoController {
 	
 	//호스트 정보 수정폼
 	@RequestMapping(value = "/modifyForm", method = { RequestMethod.GET, RequestMethod.POST })
-	public String modifyForm(@RequestParam("hostNo") int hostNo) {
+	public String modifyForm(HttpSession session,
+							 Model model) {
 		System.out.println("[hostinfoController.modifyForm()]");
 		
+		UserVo authUser = (UserVo)session.getAttribute("authUser");
+		Map<String, Object> hostMap = hostinfoService.getModify(authUser.getHostNo());
+		model.addAttribute("hostMap", hostMap);
+		
 		return "/host/modifyForm";
+	}
+	//호스트 정보 수정
+	@ResponseBody
+	@RequestMapping(value = "/modify", method = { RequestMethod.GET, RequestMethod.POST })
+	public String modify(HttpSession session,
+							 Model model) {
+		System.out.println("[hostinfoController.modifyForm()]");
+		
+		UserVo authUser = (UserVo)session.getAttribute("authUser");
+		Map<String, Object> hostMap = hostinfoService.getModify(authUser.getHostNo());
+		model.addAttribute("hostMap", hostMap);
+		
+		return "/host/modifyForm";
+	}
+	
+	//찜 추가
+	@ResponseBody
+	@RequestMapping(value = "/heartinsert", method = { RequestMethod.GET, RequestMethod.POST })
+	public int heartinsert(@ModelAttribute HeartVo heartVo) {
+		System.out.println("[hostinfoController.heartinsert()]");
+		
+		int count = hostinfoService.heartinsert(heartVo);
+		
+		return count;
+	}
+	//찜 삭제
+	@ResponseBody
+	@RequestMapping(value = "/heartdelete", method = { RequestMethod.GET, RequestMethod.POST })
+	public int heartdelete(@ModelAttribute HeartVo heartVo) {
+		System.out.println("[hostinfoController.heartinsert()]");
+		
+		int count = hostinfoService.heartdelete(heartVo);
+		
+		return count;
 	}
 }
