@@ -47,11 +47,15 @@
 	margin: 0px 0px 10px 15px;
 }
 
-.info #review textarea {
+.info #review p {
 	margin-left: 15px;
 	width: 350px;
 	height: 100px;
-	resize: none;
+}
+
+.f-b {
+	font-weight: bold;
+	color: #787878;
 }
 
 .info .row div {
