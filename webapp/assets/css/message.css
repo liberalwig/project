@@ -130,7 +130,7 @@ body {
 }
 
 #list>p {
-    margin: 20px 0px 0px 50px;
+    margin: 20px 0px 0px 60px;
     font-weight: bolder;
 }
 
@@ -146,6 +146,10 @@ body {
     height: 60px;
     border-radius: 70%
 }
+
+/* .mList {
+	cursor: pointer;
+} */
 
 #dList {
     float: left;
@@ -253,7 +257,7 @@ body {
 
 /* CSS talk bubble */
 .talk-bubble {
-    margin: 20px 100px 10px 10px;
+    margin: 20px 100px 5px 10px;
     display: inline-block;
     position: relative;
     width: 300px;
@@ -264,7 +268,7 @@ body {
     border-bottom-right-radius: 30px;
 }
 .talk-bubblet {
-    margin: 20px 0px 10px 100px;
+    margin: 20px 0px 5px 100px;
     display: inline-block;
     position: relative;
     width: 300px;
@@ -291,7 +295,7 @@ body {
 
 .time {
     font-size: 14px;
-    margin-left: 205px;
+    margin-left: 170px;
 }
 
 .timeme {

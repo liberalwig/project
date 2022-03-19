@@ -1,10 +1,14 @@
 package com.javaex.controller;
 
 import java.util.List;
+import java.util.Map;
+
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -28,20 +32,47 @@ public class MessageController {
 		model.addAttribute("messageVo", messageVo);
 		System.out.println(messageVo+"컨트롤러");
 		
-		//리스트 불러오기
-		List<MessageVo> mList = messageService.messageList(usersNo);
-		model.addAttribute("mList", mList);
-		System.out.println(mList + "컨트롤러");
-		
-		//메세지 정보 가져오기
-		
-		 MessageVo getMInfo = messageService.getmUser(usersNo);
-		 model.addAttribute("getMInfo", getMInfo);
+		//map으로 리스트와 정보 가져오기
+		Map<String, Object> map = messageService.getMap(usersNo);
+		System.out.println(map+"맵 컨트롤러");
+		model.addAttribute("map", map);
 		 
-		
 		return "kang/message";
 		
 	}
+	
+	//메세지 가져오기
+	@RequestMapping(value="/message/getm", method = {RequestMethod.GET, RequestMethod.POST})
+	public String getM( @ModelAttribute MessageVo messageVo,
+							@RequestParam int usersNo,
+							@RequestParam int target,
+						   	Model model){
+		
+		List<MessageVo> mList = messageService.getMessage(target);
+		model.addAttribute("mList", mList);
+		System.out.println(mList +"mList컨트롤러");
+		
+		return "redirect:/message?usersNo="+usersNo;
+	}
+	
+	
+	
+	@RequestMapping(value="/message/setm", method = {RequestMethod.GET, RequestMethod.POST})
+	public String setM( @ModelAttribute MessageVo messageVo,
+							@RequestParam int usersNo,
+							@RequestParam int roomNo,
+						   	Model model,
+						   	HttpSession session) {
+		
+		//메세지 작성
+		System.out.println(messageVo);
+		messageService.sentM(messageVo);
+		System.out.println("인서트 컨트롤러");
+		
+		
+		return "redirect:/message?usersNo="+usersNo;
+	}
+	
 	
 	//메세지 읽기
 //	@RequestMapping(value="/message/read", method = {RequestMethod.GET, RequestMethod.POST})

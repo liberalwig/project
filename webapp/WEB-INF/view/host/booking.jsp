@@ -123,7 +123,7 @@
             </div>
           <div class="modal-footer">
             <div id="footer1">
-              <button id="modalOk" class="w-btn-outline w-btn-blue-outline" type="button">
+              <button id="modalOk" class="btnsub" type="button">
                 확인
               </button>
             </div>
