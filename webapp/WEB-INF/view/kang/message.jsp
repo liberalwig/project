@@ -58,7 +58,7 @@
 					<div class=" row clearfix">
 						<div id="dList" class="clearfix scroll scroll1">
 							<c:forEach items="${map.getList}" var="list">
-								<div class="clearfix link mList" OnClick="location.href ='${pageContext.request.contextPath}/message/getm?target=${list.target}&usersNo=${messageVo.usersNo}'" style="cursor:pointer;">
+								<div class="clearfix link mList" OnClick="location.href ='${pageContext.request.contextPath}/message/getm?roomNo=${list.roomNo}&usersNo=${messageVo.usersNo}'" style="cursor:pointer;">
 									<img class="profile" src="/project/assets/images/message_profile1.jpg">
 									<p class="name">${list.name} 님 </p>
 									<div>

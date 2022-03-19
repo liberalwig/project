@@ -42,8 +42,8 @@ public class MessageDao {
 	}
 	
 	//메세지 가져오기
-	public List<MessageVo> getMessage(int target) {
-		List<MessageVo> mList = sqlsession.selectList("message.getMessage", target);
+	public List<MessageVo> getMessage(int roomNo) {
+		List<MessageVo> mList = sqlsession.selectList("message.getMessage", roomNo);
 		System.out.println(mList+"mList다오");
 		return mList;
 	}

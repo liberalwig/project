@@ -41,8 +41,8 @@ public class MessageService {
 		return map;
 	}
 	//메세지 가져오기
-	public List<MessageVo> getMessage(int target) {
-		List<MessageVo> mList = messageDao.getMessage(target);
+	public List<MessageVo> getMessage(int roomNo) {
+		List<MessageVo> mList = messageDao.getMessage(roomNo);
 		System.out.println(mList +"mList서비스");
 		return mList;
 	}

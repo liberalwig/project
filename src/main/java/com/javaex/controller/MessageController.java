@@ -45,10 +45,10 @@ public class MessageController {
 	@RequestMapping(value="/message/getm", method = {RequestMethod.GET, RequestMethod.POST})
 	public String getM( @ModelAttribute MessageVo messageVo,
 							@RequestParam int usersNo,
-							@RequestParam int target,
+							@RequestParam int roomNo,
 						   	Model model){
 		
-		List<MessageVo> mList = messageService.getMessage(target);
+		List<MessageVo> mList = messageService.getMessage(roomNo);
 		model.addAttribute("mList", mList);
 		System.out.println(mList +"mList컨트롤러");
 		
@@ -72,6 +72,16 @@ public class MessageController {
 		
 		return "redirect:/message?usersNo="+usersNo;
 	}
+	
+	//맨처음 대화 시작하기
+//	@RequestMapping(value="/message/setm", method = {RequestMethod.GET, RequestMethod.POST})
+//	public String startM( @ModelAttribute MessageVo messageVo,
+//							@RequestParam int usersNo,
+//						   	Model model,
+//						   	HttpSession session) {
+//		
+//		
+//	}
 	
 	
 	//메세지 읽기

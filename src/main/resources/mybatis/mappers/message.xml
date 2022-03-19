@@ -18,23 +18,26 @@
 	<select id="getList"   parameterType="int"  resultType="MessageVo">
 		<![CDATA[
 			select tg.target,
-			       u.usersNo,
-			       u.id,
-			       u.name,
-			       u.usersType
+			        tg.roomno,
+			        u.usersNo,
+			        u.id,
+			        u.name,
+			        u.usersType
 			from (
-			      (select usersTo target
-			       from messege
-			       where usersFrom = #{usersNo}
-			       )  
-			       union
-			      (select usersFrom
-			       from messege
-			       where usersTo = #{usersNo}
-			       )  
+			        (select usersTo target,
+			                roomno roomno
+			        from messege
+			        where usersFrom = #{usersNo} 
+			        )  
+			        union
+			        (select usersFrom  ,
+			                roomno
+			        from messege
+			        where usersTo = #{usersNo}
+			        )  
 			      ) tg,
-			users u
-			where tg.target = u.usersNo
+			      users u
+			      where tg.target = u.usersNo
 		]]>
 	</select>
 	
