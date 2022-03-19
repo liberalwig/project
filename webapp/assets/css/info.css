@@ -288,3 +288,7 @@ a:hover {text-decoration: none; color: #000}
 #maparea h2, h4 {
 	margin: 0px 0px 20px 0px;
 }
+
+#l-calendar{
+	height:432px;
+}

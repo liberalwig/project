@@ -178,7 +178,7 @@
 					<div class="row">
 						<div id="calendar">
 							<h3>일정</h3>
-							<div id="l-calendar" style=""></div>
+							<div id="l-calendar"></div>
 						</div>
 						<div>
 							<div id="calendarinfo" class="row">
@@ -250,6 +250,7 @@
 			</div>
 		</div>
 	</div>
+	<input type="hidden" id="usersNo" value="${sessionScope.authUser.usersNo}">
 	<c:import url="/WEB-INF/view/includes/footer.jsp"></c:import>
 	<div class="modal fade" id="photomodal">
 		<div class="modal-dialog">
@@ -274,14 +275,12 @@
 		$('[data-point="'+arr[3]+'"]').addClass('top-bar');	
 		$('[data-point="'+arr[4]+'"]').addClass('top-bar');	
 		//찜 체크
-		var no = ${sessionScope.authUser.usersNo};
-		if (no != null){
 			$.ajax({
 				//요청할때
 				url : "${pageContext.request.contextPath}/host/getheart",    
 				type : "post",
 				data : {
-					usersNo : no,
+					usersNo : $('#usersNo').val(),
 					hostNo : ${requestScope.hostMap.hostVo.hostNo}
 				},
 				
@@ -295,7 +294,6 @@
 					console.error(status + " : " + error);
 				}
 			});	
-		}
 	});
 
 	$(function () {
@@ -319,46 +317,39 @@
 		}
 	});
 	$("#btn3").on("click", function(){
-		if(${sessionScope.authUser.usersType == 2}){
-			alert('펫시터는 할 수 없습니다.');
+		 if($("#heartmark").hasClass("glyphicon-heart-empty") === true) {
+			$.ajax({
+				url : "${pageContext.request.contextPath}/host/heartinsert",    
+				type : "post",
+				data : {
+					usersNo : $('#usersNo').val(),
+					hostNo : ${requestScope.hostMap.hostVo.hostNo}
+				},
+				
+				success : function(count) {
+					$('#heartmark').removeClass('glyphicon-heart-empty');
+					$('#heartmark').addClass('glyphicon-heart');
+				},
+				error : function(XHR, status, error) {
+					console.error(status + " : " + error);
+				}
+			});
 		} else {
-			 if($("#heartmark").hasClass("glyphicon-heart-empty") === true) {
-				var userno = ${sessionScope.authUser.usersNo};
-				$.ajax({
-					url : "${pageContext.request.contextPath}/host/heartinsert",    
-					type : "post",
-					data : {
-						usersNo : userno,
-						hostNo : ${requestScope.hostMap.hostVo.hostNo}
-					},
-					
-					success : function(count) {
-						$('#heartmark').removeClass('glyphicon-heart-empty');
-						$('#heartmark').addClass('glyphicon-heart');
-					},
-					error : function(XHR, status, error) {
-						console.error(status + " : " + error);
-					}
-				});
-			} else {
-				var userno = ${sessionScope.authUser.usersNo};
-				$.ajax({
-					url : "${pageContext.request.contextPath}/host/heartdelete",    
-					type : "post",
-					data : {
-						usersNo : userno,
-						hostNo : ${requestScope.hostMap.hostVo.hostNo}
-					},
-					
-					success : function(count) {
-						$('#heartmark').removeClass('glyphicon-heart');
-						$('#heartmark').addClass('glyphicon-heart-empty');
-					},
-					error : function(XHR, status, error) {
-						console.error(status + " : " + error);
-					}
-				});
-			}
+			$.ajax({
+				url : "${pageContext.request.contextPath}/host/heartdelete",    
+				type : "post",
+				data : {
+					usersNo : $('#usersNo').val(),
+					hostNo : ${requestScope.hostMap.hostVo.hostNo}
+				},
+				success : function(count) {
+					$('#heartmark').removeClass('glyphicon-heart');
+					$('#heartmark').addClass('glyphicon-heart-empty');
+				},
+				error : function(XHR, status, error) {
+					console.error(status + " : " + error);
+				}
+			});
 		}
 	});
 
