@@ -90,6 +90,7 @@
 	});
       
       //하트 클릭
+    var i = 0;
 	$(".heart").on("click", function(){
 		var $this = $(this);
 		var heartNo = $this.data('no');

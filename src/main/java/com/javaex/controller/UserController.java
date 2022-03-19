@@ -35,7 +35,7 @@ public class UserController {
       
       model.addAttribute("userVo", userVo);
       
-      return "choe/userModifyForm";
+      return "user/userModifyForm";
    };
   
    // 유저_2> 유저 수정
@@ -86,7 +86,7 @@ public class UserController {
 		
       model.addAttribute("heartList", heartList);
 
-      return"choe/heart";
+      return"user/heart";
    };
 
    
