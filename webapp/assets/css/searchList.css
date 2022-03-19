@@ -147,7 +147,6 @@ font-family: 'Noto Sans KR', sans-serif;
     margin-top: 10px;
     width: 220px;
     height: 180px;
-    padding-left: 20px;
     border-radius: 5px 5px 5px 5px;
 }
 
@@ -155,7 +154,7 @@ font-family: 'Noto Sans KR', sans-serif;
     padding: 13px 0px 0px 0px;
     width: 270px;
     height: 200px;
-    right: 15px;
+    right: 30px;
 }
 
 .search_result .result_text{
