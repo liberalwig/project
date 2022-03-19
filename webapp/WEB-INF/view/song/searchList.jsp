@@ -116,7 +116,7 @@
 	                <c:if test="${not empty searchList}">
 			                <c:forEach items="${searchList}" var="searchListVo">
 				                <div class="search_result_list"></div>
-				                <div class="row search_cursor_pointer" onclick="location.href='/project/host2/info/${searchListVo.hostNo}';">
+				                <div class="row search_cursor_pointer" onclick="location.href='/project/host/info/${searchListVo.hostNo}';">
 				                	<div>
 				                        <div class="col-md-6">
 				                        <c:choose>
@@ -182,9 +182,11 @@
 			var geocoder = new daum.maps.services.Geocoder();
 			
 			var adress = [];
+			var hostNo =[];
 			
 			<c:forEach items="${searchList}" var="svo">
 				adress.push("${svo.adress1}");
+				hostNo.push("${svo.hostNo}");
 			</c:forEach>
 			
 			var listData = adress;
@@ -198,11 +200,25 @@
 			                map: map,
 			                position: coords
 			            });
-			         	// 인포윈도우를 생성합니다
+			            
+			        	// 인포윈도우를 생성합니다
 			            var infowindow = new daum.maps.InfoWindow({
-			                content: '<div style="width:150px;text-align:center;padding:6px 0;">' + listData[index] + '</div>',
+			                content :'<div style="width:150px;;text-align:center;padding:5px 0;">' + listData[index] + '</div>',       //생성할때 주소는 넣어 줬음
+			                title : hostNo[index],        //hostNo[1,2,3,4,5]      이런식으로 들어있음                                                     //번호도 넣어 줬음
 			                disableAutoPan: true
+			            	
 			            });
+			         	
+			            console.log(hostNo[index]);
+			            console.log(listData[index]);
+			            
+			         	// 마커에 클릭이벤트를 등록합니다
+						kakao.maps.event.addListener(marker, 'click', (event) => {
+							console.log("마커 클릭");
+								location.href = '${pageContext.request.contextPath}/host/info/1' ;          //자기자신 타이틀 번호를 써야함
+					
+						});
+			         	
 			         	// 마커에 오버이벤트를 등록합니다
 						kakao.maps.event.addListener(marker, 'mouseover', (event) => {
 							// 마커 위에 인포윈도우를 표시합니다
