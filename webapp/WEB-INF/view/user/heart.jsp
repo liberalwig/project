@@ -41,8 +41,8 @@
                 	<div class="search_result">
                 	
                         <c:forEach items="${requestScope.heartList}" var="vo">
-                            <div class="col-xs-6 heartbox" id="h-${vo.heartNo}" onclick="location.href='/project/host/info/${hostVo.hostNo}';">
-								<div class="row search_cursor_pointer" onclick="location.href='/project/host/info/${hostVo.hostNo}';">
+                            <div class="col-xs-6 heartbox" id="h-${vo.heartNo}">
+								
 	                                <div class="col-xs-5" style="padding:0px 0px 0px 45px">
 	                                	<c:choose>
 	                                	<c:when test="${empty vo.path}">
@@ -68,7 +68,7 @@
 	                                    </div>
 	                                </div>
 	                          	</div>
-                            </div>	                            	
+                                                      	
                         </c:forEach>
                     </div>
                 <div>
