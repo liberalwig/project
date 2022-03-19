@@ -79,7 +79,7 @@
 											<td><div>${BookingVo.status}</div></td>
 										</c:when>
 										<c:when test="${BookingVo.status == '결제대기'}">
-											<td id="payForm" data-toggle="modal" href="${pageContext.request.contextPath}/finishP?bookingNo=${BookingVo.bookingNo}" data-target="#finishP"><div class="btn-re-gradient orange mini">결제대기</div></td>
+											<td id="payForm" data-toggle="modal" href="${pageContext.request.contextPath}/finishP?bookingNo=${BookingVo.bookingNo}" data-target="#finishP"><div class="btn-re-gradient orange mini cursorPointer">결제대기</div></td>
 										</c:when>
 									</c:choose>
 								</tr>
