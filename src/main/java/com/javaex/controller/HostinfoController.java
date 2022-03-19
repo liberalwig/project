@@ -204,7 +204,7 @@ public class HostinfoController {
 	public int getHeart(@ModelAttribute HeartVo heartVo) {
 		System.out.println("[hostinfoController.heartinsert()]");
 		
-		int count = hostinfoService.heartinsert(heartVo);
+		int count = hostinfoService.getHeart(heartVo);
 		
 		return count;
 	}

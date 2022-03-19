@@ -127,7 +127,13 @@ public class HostinfoService {
 	public int hostupdate(HostVo hostVo, List<Integer> keyList) {
 		System.out.println("[HostinfoService.hostupdate()]");
 		
+		//호스트 정보 수정
 		hostinfoDao.hostupdate(hostVo);
+		
+		//키워드 수정
+		
+		//사진 수정
+		
 		return 0;
 	}
 	//호스트 사진 가져오기

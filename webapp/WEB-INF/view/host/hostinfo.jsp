@@ -273,17 +273,18 @@
 		console.log(arr);
 		$('[data-point="'+arr[0]+'"]').addClass('warning-bar');	
 		$('[data-point="'+arr[3]+'"]').addClass('top-bar');	
-		$('[data-point="'+arr[4]+'"]').addClass('top-bar');	
+		$('[data-point="'+arr[4]+'"]').addClass('top-bar');
+		
 		//찜 체크
+		var no = $('#usersNo').val();
 			$.ajax({
 				//요청할때
 				url : "${pageContext.request.contextPath}/host/getheart",    
 				type : "post",
 				data : {
-					usersNo : $('#usersNo').val(),
+					usersNo : no,
 					hostNo : ${requestScope.hostMap.hostVo.hostNo}
 				},
-				
 				success : function(count) {
 					if(count == 1){
 						$('#heartmark').removeClass('glyphicon-heart-empty');
@@ -314,37 +315,41 @@
 			alert('펫시터는 할 수 없습니다.');
 		} else if(${empty sessionScope.authUser}) {
 			alert('로그인을 해주세요');
+		} else {
+			location.replace("${pageContext.request.contextPath}/message?usersNo=${sessionScope.authUser.usersNo}");
 		}
 	});
 	$("#btn3").on("click", function(){
+		 var no = $('#usersNo').val();
 		 if($("#heartmark").hasClass("glyphicon-heart-empty") === true) {
+				$('#heartmark').removeClass('glyphicon-heart-empty');
+				$('#heartmark').addClass('glyphicon-heart');
 			$.ajax({
 				url : "${pageContext.request.contextPath}/host/heartinsert",    
 				type : "post",
 				data : {
-					usersNo : $('#usersNo').val(),
+					usersNo : no,
 					hostNo : ${requestScope.hostMap.hostVo.hostNo}
 				},
-				
 				success : function(count) {
-					$('#heartmark').removeClass('glyphicon-heart-empty');
-					$('#heartmark').addClass('glyphicon-heart');
+					console.log(count);
 				},
 				error : function(XHR, status, error) {
 					console.error(status + " : " + error);
 				}
 			});
 		} else {
+			$('#heartmark').removeClass('glyphicon-heart');
+			$('#heartmark').addClass('glyphicon-heart-empty');
 			$.ajax({
 				url : "${pageContext.request.contextPath}/host/heartdelete",    
 				type : "post",
 				data : {
-					usersNo : $('#usersNo').val(),
+					usersNo : no,
 					hostNo : ${requestScope.hostMap.hostVo.hostNo}
 				},
 				success : function(count) {
-					$('#heartmark').removeClass('glyphicon-heart');
-					$('#heartmark').addClass('glyphicon-heart-empty');
+					console.log(count);
 				},
 				error : function(XHR, status, error) {
 					console.error(status + " : " + error);
