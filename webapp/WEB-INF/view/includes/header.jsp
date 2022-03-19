@@ -59,7 +59,7 @@
                     		</c:when>
 	                    	<c:otherwise >
 				                <div class="menu_btn1">
-				                	<a href="${pageContext.request.contextPath}/host2/hostjoin" style="color:#000">
+				                	<a href="${pageContext.request.contextPath}/host/hostjoin" style="color:#000">
 					                    <button type="button" class="btn btn-default">
 					                    	펫시터되기
 					                    </button>
@@ -68,9 +68,11 @@
 			                </c:otherwise>
 		                </c:choose>
 		                <div class="menu_btn2">
-		                    <button type="button" class="btn btn-default">
-		                        <a href="#">Messages <span class="badge"><!--메세지 갯수 입력-->3</span></a>
-		                    </button>
+		                	<a href="${pageContext.request.contextPath}/message?usersNo=${authUser.usersNo}">
+		                    	<button type="button" class="btn btn-default">
+		                        	Messages <span class="badge"><!--메세지 갯수 입력-->3</span>
+		                    	</button>
+		                    </a>
 		                </div>
                     	<div class="btn-group pull-right menu_btn3">
 		                    <button type="button" class="menu_text3 btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
