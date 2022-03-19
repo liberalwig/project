@@ -108,6 +108,14 @@ a:hover {text-decoration: none; color: #000}
 	a {
 		color: #333;
 	}
+	#btn3 {
+		display: inline-block;
+		border: 1px solid #BBB;
+		padding: 0px !important;
+	}
+	#btn3 span{
+		color: #FF5555;
+	}
 /** 2. 퍼피력 **/
 #container #puppypoint{
 	text-align:left;

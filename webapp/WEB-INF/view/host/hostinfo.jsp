@@ -62,14 +62,7 @@
 								</button>
 								<c:if test="${not empty sessionScope.authUser}">
 									<button id="btn3" type="button" class="btn btn-default">
-										<c:choose>
-											<c:when test="${requestScope.hostMap.heart == 1}">
-												<span id="heartmark" class="glyphicon glyphicon-heart" aria-hidden="true"></span>
-											</c:when>
-											<c:otherwise>
-												<span id="heartmark" class="glyphicon glyphicon-heart-empty" aria-hidden="true"></span>
-											</c:otherwise>
-										</c:choose>
+										<span id="heartmark" class="glyphicon glyphicon-heart-empty" aria-hidden="true"></span>
 									</button>	
 								</c:if>								
 							</div>
@@ -273,12 +266,36 @@
 	// 로딩되기전에 요청
 	//페이지가 dom을 생성하고 로딩이 되기 전일때
 	$(document).ready(function() {//ready: 돔이 만들어진 후 페이지를 뿌리기 전
+		//그래프 컬러
 		var arr = [$('.food').data('point'), $('.walk').data('point'), $('.play').data('point'), $('.clean').data('point'), $('.communication').data('point')];
 		arr.sort();
 		console.log(arr);
 		$('[data-point="'+arr[0]+'"]').addClass('warning-bar');	
 		$('[data-point="'+arr[3]+'"]').addClass('top-bar');	
 		$('[data-point="'+arr[4]+'"]').addClass('top-bar');	
+		//찜 체크
+		var no = ${sessionScope.authUser.usersNo};
+		if (no != null){
+			$.ajax({
+				//요청할때
+				url : "${pageContext.request.contextPath}/host/getheart",    
+				type : "post",
+				data : {
+					usersNo : no,
+					hostNo : ${requestScope.hostMap.hostVo.hostNo}
+				},
+				
+				success : function(count) {
+					if(count == 1){
+						$('#heartmark').removeClass('glyphicon-heart-empty');
+						$('#heartmark').addClass('glyphicon-heart');
+					}
+				},
+				error : function(XHR, status, error) {
+					console.error(status + " : " + error);
+				}
+			});	
+		}
 	});
 
 	$(function () {
@@ -306,12 +323,8 @@
 			alert('펫시터는 할 수 없습니다.');
 		} else {
 			 if($("#heartmark").hasClass("glyphicon-heart-empty") === true) {
-				$('#heartmark').removeClass('glyphicon-heart-empty');
-				$('#heartmark').addClass('glyphicon-heart');
-				
 				var userno = ${sessionScope.authUser.usersNo};
 				$.ajax({
-					//요청할때
 					url : "${pageContext.request.contextPath}/host/heartinsert",    
 					type : "post",
 					data : {
@@ -320,16 +333,16 @@
 					},
 					
 					success : function(count) {
+						$('#heartmark').removeClass('glyphicon-heart-empty');
+						$('#heartmark').addClass('glyphicon-heart');
 					},
 					error : function(XHR, status, error) {
 						console.error(status + " : " + error);
 					}
 				});
 			} else {
-				$('#heartmark').removeClass('glyphicon-heart');
-				$('#heartmark').addClass('glyphicon-heart-empty');
+				var userno = ${sessionScope.authUser.usersNo};
 				$.ajax({
-					//요청할때
 					url : "${pageContext.request.contextPath}/host/heartdelete",    
 					type : "post",
 					data : {
@@ -338,6 +351,8 @@
 					},
 					
 					success : function(count) {
+						$('#heartmark').removeClass('glyphicon-heart');
+						$('#heartmark').addClass('glyphicon-heart-empty');
 					},
 					error : function(XHR, status, error) {
 						console.error(status + " : " + error);

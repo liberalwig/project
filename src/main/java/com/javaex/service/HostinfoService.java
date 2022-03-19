@@ -123,6 +123,13 @@ public class HostinfoService {
 		//호스트 키워드 가져오기
 		return hostMap;
 	}
+	//호스트 수정
+	public int hostupdate(HostVo hostVo, List<Integer> keyList) {
+		System.out.println("[HostinfoService.hostupdate()]");
+		
+		hostinfoDao.hostupdate(hostVo);
+		return 0;
+	}
 	//호스트 사진 가져오기
 	public List<PhotoVo> getHostPhoto(int hostNo){
 		System.out.println("[HostinfoService.getHostPhoto()]");
@@ -209,9 +216,9 @@ public class HostinfoService {
 		System.out.println("[HostinfoService.fileupload()]");
 		
 		//맥 저장경로
-		//String saveDir = "/Users/hs/JavaStudy/workspace_project/project/webapp/assets/upload/";
+		String saveDir = "/Users/hs/JavaStudy/workspace_project/project/webapp/assets/upload/";
 		//윈도우 저장경로
-		String saveDir = "C:\\javaStudy\\photo\\";
+		//String saveDir = "C:\\javaStudy\\photo\\";
 		
 		// 원본파일이름
 		String orgName = file.getOriginalFilename();
@@ -255,6 +262,12 @@ public class HostinfoService {
 			hostinfoDao.setKeyword(keywordVo);
 		}
 	}
+	//찜체크
+	public int getHeart(HeartVo heartVo) {
+		System.out.println("[HostinfoService.getHeart()]");
+		
+		return hostinfoDao.getHeart(heartVo);
+	}
 	//찜등록
 	public int heartinsert(HeartVo heartVo) {
 		System.out.println("[HostinfoService.heartinsert()]");
@@ -263,7 +276,7 @@ public class HostinfoService {
 	}
 	//찜삭제
 	public int heartdelete(HeartVo heartVo) {
-		System.out.println("[HostinfoService.heartinsert()]");
+		System.out.println("[HostinfoService.heartdelete()]");
 		
 		return hostinfoDao.heartdelete(heartVo);
 	}

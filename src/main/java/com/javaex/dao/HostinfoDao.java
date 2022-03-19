@@ -169,11 +169,17 @@ public class HostinfoDao {
 	
 	//유저타입 변경(유저->호스트)
 	public void typeUpdate(int usersNo) {
-		System.out.println("[HostinfoService.typeUpdate()]");
+		System.out.println("[HostinfoDao.typeUpdate()]");
 		
-		sqlSession.update("hostinfo.typeUpdate", usersNo);
+		sqlSession.update("hostinfo.setTypeHost", usersNo);
 	}
-	
+	//호스트 정보 수정
+	public int hostupdate(HostVo hostVo) {
+		System.out.println("[HostinfoDao.hostupdate()]");
+		
+		return sqlSession.update("hostinfo.hostupdate", hostVo);
+	}
+
 	//사진 넣기
 	public void setHostPhoto(PhotoVo photoVo) {
 		System.out.println("[HostinfoService.setHostPhoto()]");
@@ -195,17 +201,30 @@ public class HostinfoDao {
 		return sqlSession.selectList("hostinfo.getAbleDate", hostNo);
 	}
 	
+	//찜체크
+	public int getHeart(HeartVo heartVo) {
+		System.out.println("[HostinfoDao.getheart()]");
+		
+		return sqlSession.selectOne("hostinfo.getHeart", heartVo);
+	}
+	
 	//찜등록
 	public int heartinsert(HeartVo heartVo) {
-		System.out.println("[HostinfoService.heartinsert()]");
+		System.out.println("[HostinfoDao.heartinsert()]");
+		System.out.println(heartVo);
+		int count =  sqlSession.insert("hostinfo.heartinsert", heartVo);
+		System.out.println("["+count+"건이 추가되었습니다(찜)]");
 		
-		return sqlSession.insert("hostinfo.heartinsert", heartVo);
+		return count;
 	}
 	
 	//찜삭제
 	public int heartdelete(HeartVo heartVo) {
-		System.out.println("[HostinfoService.heartdelete()]");
+		System.out.println("[HostinfoDao.heartdelete()]");
+		System.out.println(heartVo);
+		int count = sqlSession.delete("hostinfo.heartdelete", heartVo);
+		System.out.println("["+count+"건이 삭제되었습니다(찜)]");
 		
-		return sqlSession.delete("hostinfo.heartdelete", heartVo);
+		return count;
 	}
 }

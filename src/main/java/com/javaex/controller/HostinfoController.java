@@ -92,7 +92,9 @@ public class HostinfoController {
 	
 	//펫시터 정보 폼
 	@RequestMapping(value = "/info/{hostNo}", method = { RequestMethod.GET, RequestMethod.POST })
-	public String hostinfoForm(@PathVariable("hostNo") int hostNo, Model model,
+	public String hostinfoForm(@PathVariable("hostNo") int hostNo, 
+							   Model model,
+							   HttpSession session,
 							   @RequestParam(value = "crtPage", required = false, defaultValue = "1") int crtPage) {
 		System.out.println("[hostinfoController.hostinfoForm()]");
 
@@ -108,6 +110,22 @@ public class HostinfoController {
 			System.out.println("[실패: 존재하지 않는 펫시터 입니다.]");
 			return "/host/booking";
 		}
+	}
+	//펫시터 정보 수정
+	//host insert
+	@ResponseBody
+	@RequestMapping(value = "/hostmodify", method = { RequestMethod.GET, RequestMethod.POST })
+	public int hostModify(@ModelAttribute HostVo hostVo,
+						  @RequestParam("keywordNo[]") List<Integer> keyList,
+			              HttpSession session) {
+		System.out.println("[hostinfoController.hostupdate()]");
+		
+		//정보 수정
+		hostinfoService.hostupdate(hostVo, keyList);
+	
+		int hostNo = hostVo.getHostNo();
+		
+		return hostNo;	
 	}
 	//사진 탭 클릭시
 	@ResponseBody
@@ -180,6 +198,16 @@ public class HostinfoController {
 		
 		return "/host/modifyForm";
 	}
+	//찜 체크
+	@ResponseBody
+	@RequestMapping(value = "/getheart", method = { RequestMethod.GET, RequestMethod.POST })
+	public int getHeart(@ModelAttribute HeartVo heartVo) {
+		System.out.println("[hostinfoController.heartinsert()]");
+		
+		int count = hostinfoService.heartinsert(heartVo);
+		
+		return count;
+	}
 	
 	//찜 추가
 	@ResponseBody
@@ -191,6 +219,7 @@ public class HostinfoController {
 		
 		return count;
 	}
+	
 	//찜 삭제
 	@ResponseBody
 	@RequestMapping(value = "/heartdelete", method = { RequestMethod.GET, RequestMethod.POST })

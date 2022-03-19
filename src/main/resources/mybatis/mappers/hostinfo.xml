@@ -205,6 +205,15 @@
 		]]>
 	</select>
 	
+	<select id="getHeart" parameterType="HeartVo" resultType="int">
+		<![CDATA[
+			select heartNo
+			from   heart
+			where  usersNo = #{usersNo}
+			and    hostNo = #{hostNo}
+		]]>
+	</select>
+	
 	<insert id="hostinsert" parameterType="hostVo">
 		<selectKey keyProperty="hostNo" resultType="int" order="BEFORE">
 			select seq_host_no.nextval from dual
@@ -246,8 +255,8 @@
 	<delete id="heartdelete" parameterType="HeartVo">
 		<![CDATA[
 			delete heart
-			where hostNo = #{hostNo}
-			and   usersNo = #{usersNo}
+			where  hostNo = #{hostNo}
+			and    usersNo = #{usersNo}
 		]]>
 	</delete>
 	
@@ -267,13 +276,25 @@
 		]]>
 	</update>
 	
-	<update id="hostUpdate" parameterType="int">
+	<update id="hostUpdate" parameterType="HostVo">
+		<![CDATA[
+			update host
+			set    zipcode = #{zipcode},
+			       adress1 = #{adress1},
+			       adress2 = #{adress2},
+			       adress3 = #{adress3},
+			       intro = #{intro},
+			       asking = #{asking},
+			       hostcost = #{hostcost}
+			where  hostNo = #{hostNo}
+		]]>
+	</update>
+	<update id="hostUpdate" parameterType="HostVo">
 		<![CDATA[
 			update users
 			set    userstype = 2
 			where  usersNo = #{usersNo}
 		]]>
 	</update>
-	
 
 </mapper>
