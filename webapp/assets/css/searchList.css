@@ -147,13 +147,15 @@ font-family: 'Noto Sans KR', sans-serif;
     margin-top: 10px;
     width: 220px;
     height: 180px;
+    padding-left: 20px;
     border-radius: 5px 5px 5px 5px;
 }
 
 .search_result_text{
     padding: 13px 0px 0px 0px;
-    width: 300px;
+    width: 270px;
     height: 200px;
+    right: 15px;
 }
 
 .search_result .result_text{
@@ -172,14 +174,12 @@ font-family: 'Noto Sans KR', sans-serif;
 
 .search_result .heart{
     text-align: right;
-    padding-top: 5px;
+    top: 22px;
+    padding: 0px;
     width: 16px;
     height: 16px;
-    top: 10px;
-    left: 110px;
     color: rgb(230, 27, 27);
-    z-index: 1;
-    position:relative;
+    z-index: 4;
 }
 
 .search_result .host_name{

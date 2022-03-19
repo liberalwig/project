@@ -23,7 +23,7 @@
 	   
 	<!--<script src="https://kit.fontawesome.com/28ef845f49.js"></script> -->
 	    
-	    <title>searchList</title>
+	    <title>검색리스트</title>
 	</head>
 	<body>
 	
@@ -92,7 +92,7 @@
                 <div class="search_button_center col-md-4"></div>
                 <!-- 버튼 왼쪽 -->    
                 <div class="search_button_right col-md4">
-       				  <div class="col-xs-2 padding_1">
+       			<!-- 	  <div class="col-xs-2 padding_1">
 	                    <button type="button" class="btn btn-default button_right1">
 		               		<a href="#">어디서 </a>
 		                </button>
@@ -106,7 +106,7 @@
 	                    <button type="button" class="btn btn-default button_right3">
 		               		<a href="#">필터 </a>
 		                </button>
-                    </div>
+                    </div> -->
                 </div>
             </div>
             <div class="container-fluid search_container search_flex">
@@ -115,9 +115,10 @@
                 <div class="search_result" class="col-md-6">
 	                <c:if test="${not empty searchList}">
 			                <c:forEach items="${searchList}" var="searchListVo">
-				                <div class="search_result_list"></div>
-				                <div class="row search_cursor_pointer" onclick="location.href='/project/host/info/${searchListVo.hostNo}';">
-				                	<div>
+				                <div class="search_result_list"></div> <!-- 라인 -->
+
+				                <div class="row">
+				                	<div class="search_cursor_pointer" onclick="location.href='/project/host/info/${searchListVo.hostNo}';">
 				                        <div class="col-md-6">
 				                        <c:choose>
 											<c:when test="${empty searchListVo.path}">
@@ -128,13 +129,13 @@
 											</c:otherwise>
 										</c:choose>
 				                        </div>
-				                        <div class="search_result_text col-md-6">
+				                        <div class="search_result_text col-md-5">
 				                            <div class="result_text row">
 				                                <div class="puppy col-xs-6">
 				  								    퍼피력 &nbsp;${searchListVo.puppyPoint} 
-				                                </div>
-				                        		<div class="heart col-xs-6 bi-heart"></div>
+				                                </div>				                      
 				                        	</div>
+				                        	
 				                            <div class="host_name result_text row">
 				                            	${searchListVo.hostName}
 				                            </div>
@@ -148,7 +149,10 @@
 					                        </div>
 				                        </div>
 				                	</div>
-				                </div>	              
+				                	<!-- 하트 -->
+				                	<div class="heart col-md-1 bi-heart"></div>
+				                </div>	   
+				                           
 							</c:forEach>
 						</c:if>
 						<c:if test="${empty searchList}">
@@ -198,20 +202,20 @@
 	
 			            var marker = new daum.maps.Marker({
 			                map: map,
-			                position: coords
+			                position: coords,
+			                title : hostNo[index]
 			            });
 			            
+			            console.log(hostNo[index]);
 			        	// 인포윈도우를 생성합니다
 			            var infowindow = new daum.maps.InfoWindow({
 			                content :'<div style="width:150px;;text-align:center;padding:5px 0;">' + listData[index] + '</div>',       //생성할때 주소는 넣어 줬음
-			                title : hostNo[index],        //hostNo[1,2,3,4,5]      이런식으로 들어있음                                                     //번호도 넣어 줬음
+			                        //hostNo[1,2,3,4,5]      이런식으로 들어있음                                                     //번호도 넣어 줬음
 			                disableAutoPan: true
 			            	
 			            });
 			         	
-			            console.log(hostNo[index]);
-			            console.log(listData[index]);
-			            
+
 			         	// 마커에 클릭이벤트를 등록합니다
 						kakao.maps.event.addListener(marker, 'click', (event) => {
 							console.log("마커 클릭");

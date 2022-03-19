@@ -14,7 +14,7 @@
 	
 	    <!-- font -->
 	    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@600&display=swap" rel="stylesheet">
-	    <title>header</title>
+	    <title>메인</title>
 	</head>
 	<body>
 	
