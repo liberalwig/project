@@ -185,24 +185,24 @@
 			//위도경도 지역으로 변
 			var geocoder = new daum.maps.services.Geocoder();
 			
-			var adress = [];   //주소	
+		 	var adress = [];   //주소	
 			var hostNo =[];   //호스트넘버
 			
 			<c:forEach items="${searchList}" var="svo">
 				adress.push("${svo.adress1}");
 				hostNo.push("${svo.hostNo}");
-			</c:forEach>
+			</c:forEach> 
 			
 			var imageSrc = '${pageContext.request.contextPath}/assets/images/searchListMarker.png', // 마커이미지의 주소입니다    
 			
 		    imageSize = new kakao.maps.Size(64, 69), // 마커이미지의 크기입니다
-		    imageOption = {offset: new kakao.maps.Point(31, 71)}; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
+		    imageOption = {offset: new kakao.maps.Point(33, 71)}; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
 		    
 			// 마커의 이미지정보를 가지고 있는 마커이미지를 생성합니다
 		    var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imageOption),
 		        markerPosition = new kakao.maps.LatLng(37.54699, 127.09598); // 마커가 표시될 위치입니다
-			
-			var listData = adress;
+				
+		    var listData = adress;
 					
 			listData.forEach(function(addr, index) {
 			    geocoder.addressSearch(addr, function(result, status) {
@@ -213,24 +213,21 @@
 			                map: map,
 			                position: coords,
 			                image: markerImage, // 마커이미지 설정 
-			                title : hostNo[index]  //호스트넘버
+			                no : hostNo[index]  //호스트넘버
 			            });
 			            
-			            console.log(hostNo[index]);
+			        
 			        	// 인포윈도우를 생성합니다
 			            var infowindow = new daum.maps.InfoWindow({
-			                content :'<div style="width:150px;;text-align:center;padding:5px 0;">' + listData[index] + '</div>',       //생성할때 주소는 넣어 줬음
-			                        //hostNo[1,2,3,4,5]      이런식으로 들어있음                                                     //번호도 넣어 줬음
+			                content :'<div style="width:150px;;text-align:center;padding:5px 0;font-size: 8px;">' + listData[index] + '</div>',       //생성할때 주소는 넣어 줬음
 			                disableAutoPan: true
-			            	
 			            });
 			         	
 
 			         	// 마커에 클릭이벤트를 등록합니다
 						kakao.maps.event.addListener(marker, 'click', (event) => {
-							console.log("마커 클릭");
-								location.href = '${pageContext.request.contextPath}/host/info/1' ;          //자기자신 타이틀 번호를 써야함
-					
+							var no = hostNo[index]
+							location.href = '${pageContext.request.contextPath}/host/info/' + no ;          //자기자신 타이틀 번호를 써야함
 						});
 			         	
 			         	// 마커에 오버이벤트를 등록합니다
