@@ -14,8 +14,10 @@
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
     
-    <script type="text/javascript" src="${pageContext.request.contextPath}/assets/bootstrap/js/bootstrap.js"></script>
+    
     <script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/jquery-1.12.4.js"></script>   
+    <script type="text/javascript" src="${pageContext.request.contextPath}/assets/bootstrap/js/bootstrap.js"></script>
+    
 </head>
 
 
@@ -42,8 +44,7 @@
                 	
                         <c:forEach items="${requestScope.heartList}" var="vo" >
                             
-                            <a href="" >
-	                            <div class="col-xs-6 heartbox" id="h-${vo.heartNo}" >
+	                            <div class="col-xs-6 heartbox" id="h-${vo.heartNo}" data-hostno="${vo.hostNo}" >
 									
 		                                <div class="col-xs-5" style="padding:0px 0px 0px 45px">
 		                                	<c:choose>
@@ -70,7 +71,6 @@
 		                                    </div>
 		                                </div>
 		                          </div>
-                            </a>                      	
                         </c:forEach>
                     </div>
                 <div>
@@ -78,6 +78,7 @@
                 </div>
             </div>    
         </div>
+    	</div>
     </div>
 </body>
 
@@ -127,5 +128,19 @@
 			} 
 		});	
 	});
+     
+     
+     
+    //하트 박스 클릭시 상세페이지로 이동 
+    $(".heartbox").on("click", function(){
+    	
+    	var hostNo =$(this).data("hostno");
+    	console.log(hostNo);
+    	
+    	window.location.href = "${pageContext.request.contextPath}/host/info/"+hostNo;
+    	
+    });
+    
+    
 </script>        
  </html>
