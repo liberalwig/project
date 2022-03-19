@@ -40,35 +40,37 @@
                 <div id="content-main" style="margin-left:50px;">
                 	<div class="search_result">
                 	
-                        <c:forEach items="${requestScope.heartList}" var="vo">
-                            <div class="col-xs-6 heartbox" id="h-${vo.heartNo}">
-								
-	                                <div class="col-xs-5" style="padding:0px 0px 0px 45px">
-	                                	<c:choose>
-	                                	<c:when test="${empty vo.path}">
-	                                		<img class="result-img" src="${pageContext.request.contextPath}/assets/images/hostinfo_sample.jpg">
-	                               		</c:when>
-	                               		<c:otherwise>
-	                               			<img class="result-img" src="${pageContext.request.contextPath}/photo/${vo.path}">   	
-	                               		</c:otherwise>
-	                               		</c:choose>
-	                                </div>
-	                                <div class="col-xs-6">
-	                                    <div class="result_text row">
-	                                        <div class="puppy col-xs-6">퍼피력<strong>${vo.puppypoint}</strong></div>
-	                                        <button id="btn-${vo.heartNo}" class="heart col-xs-6 bi-heart" data-no="${vo.heartNo}"> ♥ </button>
-	                                    </div>
-	                                    
-	                                    <div class="host_name row"><strong>${vo.name}</strong></div>
-	                                    <div class="address row">${vo.adress1}</div>
-	
-	                                    <div class="row">
-	                                        <div class="review col-xs-4">(후기<strong> ${vo.reviewcount}</strong>개)</div>
-	                                        <div class="price col-xs-8"><h4>₩<strong>${vo.hostcost}</strong><small>(1박 x 1마리)</small></h4></div>
-	                                    </div>
-	                                </div>
-	                          	</div>
-                                                      	
+                        <c:forEach items="${requestScope.heartList}" var="vo" >
+                            
+                            <a href="" >
+	                            <div class="col-xs-6 heartbox" id="h-${vo.heartNo}" >
+									
+		                                <div class="col-xs-5" style="padding:0px 0px 0px 45px">
+		                                	<c:choose>
+		                                	<c:when test="${empty vo.path}">
+		                                		<img class="result-img" src="${pageContext.request.contextPath}/assets/images/hostinfo_sample.jpg">
+		                               		</c:when>
+		                               		<c:otherwise>
+		                               			<img class="result-img" src="${pageContext.request.contextPath}/photo/${vo.path}">   	
+		                               		</c:otherwise>
+		                               		</c:choose>
+		                                </div>
+		                                <div class="col-xs-6">
+		                                    <div class="result_text row">
+		                                        <div class="puppy col-xs-6">퍼피력<strong>${vo.puppypoint}</strong></div>
+		                                        <button id="btn-${vo.heartNo}" class="heart col-xs-6 bi-heart" data-no="${vo.heartNo}"> ♥ </button>
+		                                    </div>
+		                                    
+		                                    <div class="host_name row"><strong>${vo.name}</strong></div>
+		                                    <div class="address row">${vo.adress1}</div>
+		
+		                                    <div class="row">
+		                                        <div class="review col-xs-4">(후기<strong> ${vo.reviewcount}</strong>개)</div>
+		                                        <div class="price col-xs-8"><h4>₩<strong>${vo.hostcost}</strong><small>(1박 x 1마리)</small></h4></div>
+		                                    </div>
+		                                </div>
+		                          </div>
+                            </a>                      	
                         </c:forEach>
                     </div>
                 <div>
