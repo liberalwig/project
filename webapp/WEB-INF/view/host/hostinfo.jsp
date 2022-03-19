@@ -286,7 +286,8 @@
 					hostNo : ${requestScope.hostMap.hostVo.hostNo}
 				},
 				success : function(count) {
-					if(count == 1){
+					console.log(count);
+					if(count > 0){
 						$('#heartmark').removeClass('glyphicon-heart-empty');
 						$('#heartmark').addClass('glyphicon-heart');
 					}
@@ -321,7 +322,7 @@
 	});
 	$("#btn3").on("click", function(){
 		 var no = $('#usersNo').val();
-		 if($("#heartmark").hasClass("glyphicon-heart-empty") === true) {
+		 if($("#heartmark").hasClass("glyphicon-heart-empty") == true) {
 				$('#heartmark').removeClass('glyphicon-heart-empty');
 				$('#heartmark').addClass('glyphicon-heart');
 			$.ajax({
