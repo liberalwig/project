@@ -14,55 +14,78 @@
 		]]>
 	</select>
 	
-	<!-- 메세지 리스트 가져오기 미완-->
+	<!-- 메세지 리스트 가져오기-->
 	<select id="getList"   parameterType="int"  resultType="MessageVo">
 		<![CDATA[
-			select  us.usersNo,
-			        name.messegeNo,
-			        name.usersFrom,
-			        usersFromName,
-			        name.usersTo,
-			        us.name,
-			        name.roomno
-			from   (select  m.messegeNo,
-			                m.usersFrom,
-			                m.usersTo,
-			                m.roomno,
-			                u.name usersFromName
-			        from messege m, users u
-			        where m.usersFrom=u.usersno)name, users us
-			where name.usersTo = us.usersNo
-			and us.usersNo = #{usersNo}
+			select tg.target,
+			       u.usersNo,
+			       u.id,
+			       u.name,
+			       u.usersType
+			from (
+			      (select usersTo target
+			       from messege
+			       where usersFrom = #{usersNo}
+			       )  
+			       union
+			      (select usersFrom
+			       from messege
+			       where usersTo = #{usersNo}
+			       )  
+			      ) tg,
+			users u
+			where tg.target = u.usersNo
 		]]>
 	</select>
 	
 	<!-- 메세지 정보 가져오기 -->
 	<select id="getMInfo"   parameterType="int"  resultType="MessageVo">
 		<![CDATA[
-			select  us.usersno userstoNo,
-			        us.name userstoname,
-			        name.messegeNo,
-			        name.usersFrom,
-			        usersFromName,
-			        name.usersTo,
-			        name.roomno,
-			        name.senddate,
-			        name.text
-			from (select m.messegeNo messegeNo,
-			             m.usersFrom,
-			             u.name usersFromName,
-			             m.usersTo,
-			             m.roomno,
-			             m.senddate,
-			             m.text
-			      from messege m, users u
-			      where m.usersFrom=u.usersno)name, users us
-			where us.usersno in (name.usersfrom,name.usersto)
-			and name.usersFrom in (name.usersfrom,name.usersto)
-			and us.usersno =#{usersNo}
-			and name.usersFrom =4
+			select  us.usersno,
+                 us.name userstoname,
+                 name.messegeNo,
+                 name.usersFrom,
+                 usersFromName,
+                 name.usersTo,
+                 name.roomno,
+                 name.senddate,
+                 name.text
+         from (select m.messegeNo messegeNo,
+                      m.usersFrom,
+                      u.name usersFromName,
+                      m.usersTo,
+                      m.roomno,
+                      m.senddate,
+                      m.text
+               from messege m, users u
+               where m.usersFrom=u.usersno)name, users us
+         where us.usersno in (name.usersfrom,name.usersto)
+         and name.usersFrom in (name.usersfrom,name.usersto)
+         and us.usersno =#{usersNo}
+         and name.usersFrom =#{usersNo}
 		]]>
 	</select> 
 	
-
+	<!-- 메세지 가져오기 -->
+		<select id="getMessage"   parameterType="int"  resultType="MessageVo">
+			<![CDATA[
+				select  text,
+                   		usersfrom target,
+                   		sendDate
+            	from messege
+            	where (usersFrom = #{usersNo} and usersTo = #{target})
+            	or (usersFrom = #{target} and usersTo = #{usersNo})
+            	order by senddate desc
+			]]>
+		</select> 
+		
+		
+		<!-- 메세지 전송 -->
+		<select id="insertM" parameterType="MessageVo" >
+			<![CDATA[
+				insert into messege
+				values (seq_messege_no.nextval, #{roomNo}, #{usersNo}, #{usersFrom}, sysdate, #{text})
+			]]>
+		
+		</select>
 </mapper>

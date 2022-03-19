@@ -52,48 +52,61 @@
 						</div>
 						<div id="pdetail" class="col-xs-12 clearfix">
 							<img class="profile" src="/project/assets/images/message_profile1.jpg">
-							<p class="name">${getMInfo.usersFromName} 님과의 쪽지</p>
+							<p class="name">${map.getMInfo.name} 님과의 쪽지</p>
 						</div>
 					</div>
 					<div class=" row clearfix">
 						<div id="dList" class="clearfix scroll scroll1">
-							<c:forEach items="${mList}" var="MessageVo">
-								<div class="clearfix link Mlist">
-									
+							<c:forEach items="${map.getList}" var="list">
+								<div class="clearfix link mList" OnClick="location.href ='${pageContext.request.contextPath}/message/getm?target=${list.target}&usersNo=${messageVo.usersNo}'" style="cursor:pointer;">
 									<img class="profile" src="/project/assets/images/message_profile1.jpg">
-									<p class="name">${getMInfo.usersFromName} 님 </p>
+									<p class="name">${list.name} 님 </p>
 									<div>
-										<p class="timeL">${getMInfo.sendDate}</p>
+										<p class="timeL">${list.sendDate}</p>
 									</div>
 								</div>
 							</c:forEach>
 						</div>
 
 						<div id="conver" class="col-xs-12 clearfix scroll scroll1">
-							<div class="textyou">
-								<!--메세지창+시간-->
-								<div class="talk-bubble">
-									<div class="talktext">
-										<p></p>
-									</div>
-								</div>
-								<p class="time"></p>
-							</div>
-							<div class="textme">
-								<!--메세지창+시간-->
-								<div class="talk-bubblet">
-									<div class="talktext">
-										<p></p>
-									</div>
-								</div>
-								<p class="timeme"></p>
-							</div>
-
+							<c:forEach items="${mList}" var="mList">
+								<c:choose>
+									<c:when test="${mList.usersFrom} eq ${messageVo.usersNo}">
+										<div class="textme">
+											<!--메세지창+시간-->
+											<div class="talk-bubblet">
+												<div class="talktext">
+													<p> ${mList.text} </p>
+												</div>
+											</div>
+											<p class="timeme">${mList.sendDate}</p>
+										</div>
+									</c:when>
+									<c:when test="empty">
+									
+									</c:when>
+									<c:otherwise>
+										<div class="textyou">
+											<!--메세지창+시간-->
+											<div class="talk-bubble">
+												<div class="talktext">
+													<p>${mList.text}</p>
+												</div>
+											</div>
+											<p class="time">${mList.sendDate}</p>
+										</div>
+									</c:otherwise>
+								</c:choose>
+							</c:forEach>
 						</div>
 						<div id="text" class="clearfix">
-							<textarea id="insert" class="col-xs-7" placeholder="메세지를 입력하세요"></textarea>
-							<!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
-							<button class="btn btn-default btn-send" type="submit">보내기</button>
+							<form id= "inserttext" method="get" action="${pageContext.request.contextPath}/message/setm">
+								<textarea id="text" name="text" class="col-xs-7" placeholder="메세지를 입력하세요"> </textarea>
+								<input type="hidden" name= "roomNo" value=1>
+								<input type="hidden" name= "usersNo" value=2>
+								<input type="hidden" name= "usersFrom" value=1>
+								<button class="btn btn-default btn-send" type="submit">보내기</button>
+							</form>
 						</div>
 
 					</div>

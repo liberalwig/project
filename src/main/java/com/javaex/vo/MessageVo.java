@@ -8,6 +8,7 @@ public class MessageVo {
 	private String sendDate;
 	private String text;
 	private int roomNo;
+	private int target;
 	
 	//users 테이블
 	private int usersNo;
@@ -18,14 +19,16 @@ public class MessageVo {
 	public MessageVo() {
 	}
 
-	public MessageVo(int messegeNo, int usersFrom, int usersTo, String sendDate, String text, int roomNo, int usersNo,
-			String name, String usersFromName) {
+	public MessageVo(int messegeNo, int usersFrom, int usersTo, String sendDate, String text, int roomNo, int target,
+			int usersNo, String name, String usersFromName) {
+		super();
 		this.messegeNo = messegeNo;
 		this.usersFrom = usersFrom;
 		this.usersTo = usersTo;
 		this.sendDate = sendDate;
 		this.text = text;
 		this.roomNo = roomNo;
+		this.target = target;
 		this.usersNo = usersNo;
 		this.name = name;
 		this.usersFromName = usersFromName;
@@ -79,6 +82,14 @@ public class MessageVo {
 		this.roomNo = roomNo;
 	}
 
+	public int getTarget() {
+		return target;
+	}
+
+	public void setTarget(int target) {
+		this.target = target;
+	}
+
 	public int getUsersNo() {
 		return usersNo;
 	}
@@ -106,11 +117,8 @@ public class MessageVo {
 	@Override
 	public String toString() {
 		return "MessageVo [messegeNo=" + messegeNo + ", usersFrom=" + usersFrom + ", usersTo=" + usersTo + ", sendDate="
-				+ sendDate + ", text=" + text + ", roomNo=" + roomNo + ", usersNo=" + usersNo + ", name=" + name
-				+ ", usersFromName=" + usersFromName + "]";
+				+ sendDate + ", text=" + text + ", roomNo=" + roomNo + ", target=" + target + ", usersNo=" + usersNo
+				+ ", name=" + name + ", usersFromName=" + usersFromName + "]";
 	}
 
-	
-	
-	
 }
