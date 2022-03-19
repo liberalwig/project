@@ -277,3 +277,8 @@ display: none;
    	height: 200px; 
 
   }
+  
+  .search_cursor_pointer{
+	cursor:pointer;
+	z-index:1;
+}
