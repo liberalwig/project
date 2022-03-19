@@ -30,8 +30,7 @@
 }
 /*버튼*/
 
-#bookingOk .w-btn-outline {
-	margin: 0px 235px 0px 0px;
+#bookingOk .btnsub {
 	padding: 15px 60px;
 	background-color: #6DB5EF;
 	border: none;

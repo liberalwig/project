@@ -165,11 +165,11 @@
 							</c:if>
                             <div class="container-fluid">
                                 <div class="row">
-                                    <div class="col-xs-6 catalog">게스트이름</div>
+                                    <div class="col-xs-6 catalog f-b">게스트이름</div>
                                     <div class="col-xs-6">${bvo.guestName}</div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-xs-6">연락처</div>
+                                    <div class="col-xs-6 f-b">연락처</div>
                                     <div class="col-xs-6">${bvo.guestHp}</div>
                                 </div>
                             </div>
@@ -181,15 +181,15 @@
                             <hr>
                             <div class="container-fluid">
                                 <div class="row">
-                                    <div class="col-xs-6">위치</div>
+                                    <div class="col-xs-6 f-b">위치</div>
                                     <div class="col-xs-6">${bvo.adress1} ${bvo.adress2} ${bvo.adress3}</div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-xs-6">펫설명/요청사항</div>
+                                    <div class="col-xs-6 f-b">펫설명/요청사항</div>
                                     <div class="col-xs-6">${bvo.note}</div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-xs-6">펫시팅일자</div>
+                                    <div class="col-xs-6 f-b">펫시팅일자</div>
                                     <div class="col-xs-6">${bvo.checkin} ~ ${bvo.checkout}</div>
                                 </div>
                             </div>
@@ -201,19 +201,19 @@
                             <hr>
                             <div class="container-fluid">
                                 <div class="row">
-                                    <div class="col-xs-6">가격(1박)</div>
+                                    <div class="col-xs-6 f-b">가격(1박)</div>
                                     <div class="col-xs-6">₩ ${bvo.bookingDate}</div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-xs-6">시팅일수</div>
+                                    <div class="col-xs-6 f-b">시팅일수</div>
                                     <div class="col-xs-6">${bvo.days}일</div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-xs-6">반려견 수</div>
+                                    <div class="col-xs-6 f-b">반려견 수</div>
                                     <div class="col-xs-6">${bvo.ea}마리</div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-xs-6">총 결제 금액</div>
+                                    <div class="col-xs-6 f-b">총 결제 금액</div>
                                     <div class="col-xs-6">₩ ${bvo.bookingDate * bvo.days * bvo.ea}</div>
                                 </div>
                             </div>
@@ -229,7 +229,7 @@
                             	</c:if>
                             	<c:if test="${bvo.status == '시팅완료'}">
 	                                <div class="col-xs-6">
-	                                    <h3>식사</h3>
+	                                    <h3 class="f-b">식사</h3>
 	                                    <div class="rating">
 					                           	<input type="radio" name="food" class="rating__control screen-reader" id="food1" value=1> 
 												<input type="radio" name="food" class="rating__control screen-reader" id="food2" value=2> 
@@ -271,7 +271,7 @@
 	                                </div>
 	
 	                                <div class="col-xs-6 review2">
-	                                    <h3>산책</h3>
+	                                    <h3 class="f-b">산책</h3>
 	                                    <div class="rating">
 					                           	<input type="radio" name="walk" class="rating__control screen-reader" id="walk1" value=1> 
 												<input type="radio" name="walk" class="rating__control screen-reader" id="walk2" value=2> 
@@ -315,7 +315,7 @@
 	
 	                            <div id="review" class="row">
 	                                <div class="col-xs-6">
-	                                    <h3>청결</h3>
+	                                    <h3 class="f-b">청결</h3>
 	                                    <div class="rating">
 					                           	<input type="radio" name="clean" class="rating__control screen-reader" id="clean1" value=1> 
 												<input type="radio" name="clean" class="rating__control screen-reader" id="clean2" value=2> 
@@ -358,7 +358,7 @@
 	                                </div>
 	
 	                                <div class="col-xs-6 review2">
-	                                    <h3>놀이</h3>
+	                                    <h3 class="f-b">놀이</h3>
 	                                    <div class="rating">
 					                        <input type="radio" name="play" class="rating__control screen-reader" id="play1" value=1> 
 											<input type="radio" name="play" class="rating__control screen-reader" id="play2" value=2> 
@@ -403,7 +403,7 @@
 	
 	                            <div id="review" class="row">
 	                                <div class="col-xs-6">
-	                                    <h3>소통</h3>
+	                                    <h3 class="f-b">소통</h3>
 	                                    <div class="rating">
 					                           	<input type="radio" name="communication" class="rating__control screen-reader" id="communication1" value=1> 
 												<input type="radio" name="communication" class="rating__control screen-reader" id="communication2" value=2> 
@@ -447,8 +447,8 @@
 	
 	                            <div id="review" class="row">
 	                                <div class="col-xs-6 review-text">
-	                                    <h3>후기</h3>
-	                                    <textarea>좋아요~</textarea>
+	                                    <h3 class="f-b">후기</h3>
+	                                    <p>${bvo.review}</p>
 	                                </div>
 	                            </div>
 							</c:if>
