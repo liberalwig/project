@@ -13,7 +13,7 @@
 	 	<script src="${pageContext.request.contextPath}/assets/js/jquery-1.12.4.js"></script>
 	    <script src="${pageContext.request.contextPath}/assets/bootstrap/js/bootstrap.js"></script>
 	    <link rel="preconnect" href="https://fonts.googleapis.com">
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link rel="preconnect" href="https://fonts.gstatic.com">
 		<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
 
 	    <!--지도관련-->
@@ -35,57 +35,78 @@
             <div id="search_button">
                  <!-- 버튼 오른쪽 -->
                 <div class="search_button_left col-md-4">
+                  	<!-- 1 -->
       				<div class="col-xs-2 padding_0">
-      					<form action="${pageContext.request.contextPath}/searchList" method="get">
-      						<input type="hidden" name="orderType" id="orderType" value="1" >
-      						<input type="hidden" name="searchKeyword" id="searchKeyword" value="" >
-      						<input type="hidden" name="searchData" id="searchData" value="" >
-		      					 <button class="btn btn-default" type="submit">
-			                	 		청결 
-			                	 </button>	
-	                	 </form>
+	     				<form action="${pageContext.request.contextPath}/searchList" method="post">
+	      					<input type="hidden" name="orderType" id="orderType" value="1" >
+	      					<input type="hidden" name="searchKeyword" id="searchKeyword" value="" >
+	      					<input type="hidden" name="searchData" id="searchData" value="" >
+		      				<button class="btn btn-default" type="submit">
+			                	 청결 
+			                </button>	
+	                	</form>
+      					<!-- <button class="btn btn-default communication" data-data-sort="dorder:asc" type="button">
+	                	 		communication 
+	                	</button>	 -->
       				</div>
-      			
-	                    <div class="col-xs-2 padding_0">
-	                    <form action="${pageContext.request.contextPath}/searchList" method="get">
-	      						<input type="hidden" name="orderType" id="orderType" value="2" >
-	      						<input type="hidden" name="searchKeyword" id="searchKeyword" value="" >
-	      						<input type="hidden" name="searchData" id="searchData" value="" >
-			      					 <button class="btn btn-default" type="submit">
-				                	 		산책 
-				                	 </button>	
-		        		</form>
-	                    </div>
+      				<!--2 -->
+                    <div class="col-xs-2 padding_0">
+	                   	<form action="${pageContext.request.contextPath}/searchList" method="post">
+	      					<input type="hidden" name="orderType" id="orderType" value="2" >
+	      					<input type="hidden" name="searchKeyword" id="searchKeyword" value="" >
+	      					<input type="hidden" name="searchData" id="searchData" value="" >
+		      				<button class="btn btn-default" type="submit">
+			                	 산책 
+			                </button>	
+		        	 	</form>
                     
+              			<!-- <button class="btn btn-default clean" data-sort="dorder:asc" type="button">
+	                	 		clean 
+	                	</button>	 -->
+                    </div>
+                    <!--3 -->
                     <div class="col-xs-2 padding_0" >
-	                    <form action="${pageContext.request.contextPath}/searchList" method="get">
-      						<input type="hidden" name="orderType" id="orderType" value="3" >
-      						<input type="hidden" name="searchKeyword" id="searchKeyword" value="" >
-      						<input type="hidden" name="searchData" id="searchData" value="" >
-		      					 <button class="btn btn-default" type="submit">
-			                	 		식사 
-			                	 </button>	
-	                	 </form>
+                    	<form action="${pageContext.request.contextPath}/searchList" method="post">
+	      					<input type="hidden" name="orderType" id="orderType" value="3" >
+	      					<input type="hidden" name="searchKeyword" id="searchKeyword" value="" >
+	      					<input type="hidden" name="searchData" id="searchData" value="" >
+		      				<button class="btn btn-default" type="submit">
+			                	 식사 
+			                </button>	
+		        	 	</form>
+                    
+	              	<!-- 	<button class="btn btn-default food" data-sort="dorder:asc" type="button">
+	                	 		food 
+	                	</button> -->	
                     </div>
+                    <!-- 4 -->
                     <div class="col-xs-2 padding_0">
-		                <form action="${pageContext.request.contextPath}/searchList" method="get">
-      						<input type="hidden" name="orderType" id="orderType" value="4" >
-      						<input type="hidden" name="searchKeyword" id="searchKeyword" value="" >
-      						<input type="hidden" name="searchData" id="searchData" value="" >
-		      					 <button class="btn btn-default" type="submit">
-			                	 		놀이
-			                	 </button>	
-	                	 </form>
+                    	<form action="${pageContext.request.contextPath}/searchList" method="post">
+	      					<input type="hidden" name="orderType" id="orderType" value="4" >
+	      					<input type="hidden" name="searchKeyword" id="searchKeyword" value="" >
+	      					<input type="hidden" name="searchData" id="searchData" value="" >
+		      				<button class="btn btn-default" type="submit">
+			                	 놀이 
+			                </button>	
+		        	 	</form>
+                    
+		           <!--   	<button class="btn btn-default play" data-sort="dorder:asc" type="button">
+	                	 		play 
+	                	</button>	 -->
                     </div>
+                    <!-- 5 -->
                     <div class="col-xs-2 padding_0">
-	                    <form action="${pageContext.request.contextPath}/searchList" method="get">
-      						<input type="hidden" name="orderType" id="orderType" value="5" >
-      						<input type="hidden" name="searchKeyword" id="searchKeyword" value="" >
-      						<input type="hidden" name="searchData" id="searchData" value="" >
-		      					 <button class="btn btn-default" type="submit">
-			                	 		소통 
-			                	 </button>	
+	                   	<form action="${pageContext.request.contextPath}/searchList" method="post">
+	     					<input type="hidden" name="orderType" id="orderType" value="5" >
+	     					<input type="hidden" name="searchKeyword" id="searchKeyword" value="" >
+	     					<input type="hidden" name="searchData" id="searchData" value="" >
+	      					<button class="btn btn-default" type="submit">
+		                	 		소통 
+		                	</button>	
 	                	 </form>
+	              	 <!-- 	<button class="btn btn-default walk" data-sort="dorder:asc" type="button">
+	                	 		walk 
+	                	</button>	 -->
                     </div>
                 </div>
 
@@ -110,66 +131,93 @@
                 </div>
             </div>
             <div class="container-fluid search_container search_flex">
-            <div class="search_web">
-            	<!-- 반복영역 -->
-                <div class="search_result" class="col-md-6">
+	            <div class="mix-wrapper clean food play walk communication search_web">
+	            	<!-- 반복영역 -->
+	                <div class="mix search_result" class="col-md-6">
 	                <c:if test="${not empty searchList}">
-			                <c:forEach items="${searchList}" var="searchListVo">
-				                <div class="search_result_list"></div> <!-- 라인 -->
-
-				                <div class="row">
-				                	<div class="search_cursor_pointer" onclick="location.href='/project/host/info/${searchListVo.hostNo}';">
-				                        <div class="col-md-6">
-				                        <c:choose>
-											<c:when test="${empty searchListVo.path}">
-												<img class="result-img" src="${pageContext.request.contextPath}/assets/images/hostinfo_sample.jpg">
-											</c:when>
-											<c:otherwise>
-												<img class="result-img" src="${pageContext.request.contextPath}/photo/${searchListVo.path}">
-											</c:otherwise>
-										</c:choose>
+		                <c:forEach items="${searchList}" var="searchListVo">
+			                <div class="search_result_list"></div> <!-- 라인 -->
+	
+			                <div class="row">
+			                	<!-- 클릭 영역 -->
+			                	<div class="search_cursor_pointer" onclick="location.href='/project/host/info/${searchListVo.hostNo}';">
+			                         <!-- 사진 -->
+			                        <div class="col-md-6">
+			                        <c:choose>
+										<c:when test="${empty searchListVo.path}">
+											<img class="result-img" src="${pageContext.request.contextPath}/assets/images/hostinfo_sample.jpg">
+										</c:when>
+										<c:otherwise>
+											<img class="result-img" src="${pageContext.request.contextPath}/photo/${searchListVo.path}">
+										</c:otherwise>
+									</c:choose>
+			                        </div>
+			                         <!-- 내용 -->
+			                        <div class="search_result_text col-md-5">
+			                            <div class="esult_text row">
+			                                <div class="puppy col-xs-6">
+			  								    퍼피력 &nbsp;${searchListVo.puppyPoint} 
+			                                </div>				                      
+			                        	</div>
+			                        	
+			                            <div class="host_name result_text row">
+			                            	${searchListVo.hostName}
+			                            </div>
+			                            <div class="address result_text row">
+			                           		${searchListVo.adress1}
+			                            </div>
+		                           		<div class="result_text row"></div>
+			                            <div class="result_text row">
+				                            <div class="review col-xs-6">후기(${searchListVo.review}개)</div>
+				                            <div class="price col-xs-6">₩${searchListVo.hostCost}/ 박 </div>
 				                        </div>
-				                        <div class="search_result_text col-md-5">
-				                            <div class="result_text row">
-				                                <div class="puppy col-xs-6">
-				  								    퍼피력 &nbsp;${searchListVo.puppyPoint} 
-				                                </div>				                      
-				                        	</div>
-				                        	
-				                            <div class="host_name result_text row">
-				                            	${searchListVo.hostName}
-				                            </div>
-				                            <div class="address result_text row">
-				                           		${searchListVo.adress1}
-				                            </div>
-			                           		<div class="result_text row"></div>
-				                            <div class="result_text row">
-					                            <div class="review col-xs-6">후기(${searchListVo.review}개)</div>
-					                            <div class="price col-xs-6">₩${searchListVo.hostCost}/ 박 </div>
-					                        </div>
-				                        </div>
-				                	</div>
-				                	<!-- 하트 -->
-				                	<div class="heart col-md-1 bi-heart"></div>
-				                </div>	   
+			                        </div>
+			                	</div>
+			                	<!-- 하트 -->
+			                	<c:if test="${not empty authUser}">
+			                		<div class="heart col-md-1 bi-heart"></div>
+			                	</c:if>	
+			                	<!-- 각항목별 점수 -->
+			                	<input class="clean" type="hidden" value="${searchListVo.clean}" data-order="1">
+			                	<input class="food" type="hidden" value="${searchListVo.food}" data-order="2">
+			                	<input class="play" type="hidden" value="${searchListVo.play}" data-order="3">
+			                	<input class="walk" type="hidden" value="${searchListVo.walk}" data-order="4">
+			                	<input class="communication" type="hidden" value="${searchListVo.communication}" data-order="5">
+			                </div>	   
 				                           
-							</c:forEach>
-						</c:if>
-						<c:if test="${empty searchList}">
-							<h3>검색결과가 없습니다.</h3>
-						</c:if>
-            	</div>
-            
-			<!-- 반복영역 -->
-            </div>
+						</c:forEach>
+					</c:if>
+					<!-- 결과없음 -->
+					<c:if test="${empty searchList}">
+						<h3>검색결과가 없습니다.</h3>
+					</c:if>
+	            	</div>
+	            
+				<!-- 반복영역 -->
+	            </div>
             <!-- 지도자리 -->
             <c:if test="${not empty searchList}">
   		    	<div id="map" class="scroll"></div>
   		    </c:if>
-    	</div>
+    		</div>
         </div>
-     
-    </div>
+   		 <!-- 페이징 -->
+	     <div id="paging" class="col-md-1">
+			<ul>
+				<c:if test="${requestScope.pMap.prev == true}">
+					<li><a href="${pageContext.request.contextPath}/board/bList2?crtPage=${requestScope.pMap.startPageBtnNo-1}">◀</a></li>
+				</c:if>
+				
+				<c:forEach begin="${pMap.startPageBtnNo}" end="${pMap.endPageBtnNo}" step="1" var="page">
+					<li><a href="${pageContext.request.contextPath}/board/bList2?crtPage=${page}">${page}</a></li>
+				</c:forEach>
+				
+				<c:if test="${requestScope.pMap.next == true}">
+					<li><a href="${pageContext.request.contextPath}/board/bList2?crtPage=${requestScope.pMap.endPageBtnNo+1}">▶</a></li>
+				</c:if>
+			</ul>
+		</div>
+  	</div>
     <!--지도-->
 	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=b041f9ad62c37064e496f0bc81216407&&libraries=services,clusterer"></script>
 		<script>
@@ -275,14 +323,20 @@
 		    
 	   	    <!--스크롤-->
 		    $(document).ready(function(){
-		    	  var currentPosition = parseInt($(".scroll").css("top"));
+		    	  var currentPosition = parseInt($('.scroll').css('top'));
 		    	  $(window).scroll(function() {
 		    	    var position = $(window).scrollTop(); 
-		    	    $(".scroll").stop().animate({"top":position+currentPosition+"px"},1000);
+		    	    $('.scroll').stop().animate({'top':position+currentPosition+'px'},100);
 		    	  });
 		    	});
+		    
+		   <!--솔팅-->
+		   var mixer = mixitup('.mix-wrapper');
+		    
 			 
 		</script>
 		
 	</body>
+	
+	
 </html>

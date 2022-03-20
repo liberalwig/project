@@ -17,7 +17,7 @@
 		<!--search-->
 		<div class="searchbox col-md-4">
 		    <!-- Topbar Search -->
-             <form action="${pageContext.request.contextPath}/searchList" method="get" class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+             <form action="${pageContext.request.contextPath}/searchList" method="post" class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
                  <div class="input-group input-group-joined border-0">
                      <div class="searchboxin_1 input-group input-group-joined"> 
                          <input type="text" name="searchKeyword" id="searchKeyword" value="" class="search_text1 small form-control ps-0 pointer" placeholder="어디를 찾으세요?" aria-label="Search" aria-describedby="basic-addon2" autocomplete="off">
