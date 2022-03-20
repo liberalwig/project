@@ -46,7 +46,9 @@ a:hover {text-decoration: none; color: #000}
 /* 드래그 앤 드롭 */
 #photoarea{
 	border: 1px solid #DDD;
-	height: 220px;
+	width: 922px;
+	height: 242px;
+	padding: 10px 10px 0px 10px;
 	overflow: scroll;
 }
 

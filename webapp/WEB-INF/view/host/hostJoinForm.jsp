@@ -31,11 +31,11 @@
                     <div id="joinQuestion" class="row Q">
                         <div class="photo">
                             <h3>01. 펫시터 사진</h3>
-                            <p class="exp lead">당신의 펫시팅을 어필 할 수 있는 사진을 올려보세요. 파일형식은 png, jpg, jpeg으로 최대 8장까지 올릴 수 있어요.</p>
+                            <p class="exp lead">당신의 펫시팅을 어필 할 수 있는 사진을 올려보세요. 파일형식은 png, jpg, jpeg 올릴 수 있어요.</p>
 							<form method="post" enctype="multipart/form-data"> 
 								<input type="file" name="images" multiple="multiple" accept=".png, .jpg, .jpeg" onchange="setThumbnail(event);">
 							</form>
-							<div id="photoarea">
+							<div id="photozone">
 							</div>
                         </div>
                     </div>  
@@ -137,26 +137,21 @@
 	 $('input[name=images]').on('change', function(e) {
 	    var files = e.target.files;
 	    var filesArr = Array.prototype.slice.call(files);
-	
-	 	// 업로드 된 파일 유효성 체크
-	 	if (filesArr.length > 8) {
-	 		alert("이미지는 최대 8개까지 업로드 가능합니다.");
-	 		$('input[name=images]').val();
-	 		return;
-	 	}
+	    $('#photoarea img').remove();
 	
 	     filesArr.forEach(function(f) { 
 	 		inputFileList.push(f);    // 이미지 파일을 배열에 담는다.
-	 		console.log(f);
+	 		
 	 	 });
 	 });
 	 function setThumbnail(event) { 
+		 $("#photozone").html('<div id="photoarea"></div>');
 		 for (var image of event.target.files) { 
 			 var reader = new FileReader(); 
 			 
 			 reader.onload = function(event) { 
 				 var img = document.createElement("img"); 
-				 img.setAttribute("src", event.target.result); 
+				 img.setAttribute("src", event.target.result);
 				 document.querySelector("#photoarea").appendChild(img); 
 				 console.log(img);
 			 }; 

@@ -328,7 +328,7 @@
 			alert('로그인을 해주세요');
 			return;
 		} else {
-			location.replace("${pageContext.request.contextPath}/startM?usersNo=${sessionScope.authUser.usersNo}&target=${requestScope.hostMap.hostVo.hostNo}");
+			location.replace("${pageContext.request.contextPath}/message/startM?usersNo=${sessionScope.authUser.usersNo}&target=${requestScope.hostMap.hostVo.hostNo}");
 		}
 	});
 	$("#btn3").on("click", function(){
