@@ -207,7 +207,14 @@
 									<c:forEach items="${requestScope.hostMap.reviewList}" var="vo">
 										<div class="reviewbox">
 											<div class="row reviewinfo">
-												<img class="img-circle reviewimg" src="${pageContext.request.contextPath}/assets/images/hostinfo_sample.jpg">
+												<c:choose>
+													<c:when test="${not empty vo.path}">
+														<img class="img-circle reviewimg" src="${pageContext.request.contextPath}/photo/${vo.path}">
+													</c:when>
+													<c:otherwise>
+														<img class="img-circle reviewimg" src="${pageContext.request.contextPath}/assets/images/hostinfo_sample.jpg">
+													</c:otherwise>
+												</c:choose>
 												<p class="toph4">${vo.name}</p>
 												<p>${vo.reviewDate}</p>
 											</div>
@@ -305,8 +312,10 @@
 	$("#btn1").on("click", function(){
 		if(${sessionScope.authUser.usersType == 2}){
 			alert('펫시터는 할 수 없습니다.');
+			return;
 		} else if(${sessionScope.authUser == null}){
 			alert('로그인을 해주세요.');
+			return;
 		} else {
 			location.replace("${pageContext.request.contextPath}/host/booking?hostNo=${requestScope.hostMap.hostVo.hostNo}");
 		}
@@ -314,10 +323,12 @@
 	$("#btn2").on("click", function(){
 		if(${sessionScope.authUser.usersType == 2}){
 			alert('펫시터는 할 수 없습니다.');
+			return;
 		} else if(${empty sessionScope.authUser}) {
 			alert('로그인을 해주세요');
+			return;
 		} else {
-			location.replace("${pageContext.request.contextPath}/message?usersNo=${sessionScope.authUser.usersNo}");
+			location.replace("${pageContext.request.contextPath}/startM?usersNo=${sessionScope.authUser.usersNo}&target=${requestScope.hostMap.hostVo.hostNo}");
 		}
 	});
 	$("#btn3").on("click", function(){
@@ -496,18 +507,17 @@
 			}),
 			$.ajax({ 
 				type:"get", 
-				url:"${pageContext.request.contextPath}/calendar?hostNo=${requestScope.hostMap.hostVo.hostNo}", 
+				url:"${pageContext.request.contextPath}/host/calendar?hostNo=${requestScope.hostMap.hostVo.hostNo}", 
 				dataType : "json",
 				success: function (bList) {
 					for(var i=0; i<bList.length; i++) {
 						calendar.addEvent({
 							start: bList[i].checkin,
 							end: bList[i].checkout,
-							allDay: true,
-							status: 'done',
+							status: 'booking',
 							display: 'background',
-							overlap: false,
-							backgroundColor: 'rgb(238, 238, 238)'
+							overlap: true,
+							backgroundColor: 'rgb(210, 210, 210)'
 						});
 					}
 				}

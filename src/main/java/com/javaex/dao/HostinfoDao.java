@@ -7,6 +7,7 @@ import java.util.Map;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.javaex.vo.BookingVo;
 import com.javaex.vo.HeartVo;
@@ -105,6 +106,13 @@ public class HostinfoDao {
 		List<PhotoVo> photoList = sqlSession.selectList("hostinfo.getHostPhotoList", hostNo);
 		
 		return photoList;
+	}
+	
+	//예약리스트
+	public List<BookingVo> bookingList(int hostNo){
+		System.out.println("[hostinfoDao.bookingList()]");
+
+		return sqlSession.selectList("hostinfo.bookingList",hostNo);
 	}
 	
 	//결제내역

@@ -44,7 +44,17 @@ a:hover {text-decoration: none; color: #000}
 
 /*질문01. 사진*/
 /* 드래그 앤 드롭 */
+#photoarea{
+	border: 1px solid #DDD;
+	height: 220px;
+	overflow: scroll;
+}
 
+#photoarea img{
+	width: 220px;
+	height: 220px;
+	margin: 0px 0px 5px 5px;
+}
 
 /*질문02. 키워드선택*/
 /* 키워드 버튼 */

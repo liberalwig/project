@@ -111,6 +111,17 @@ public class HostinfoController {
 			return "/host/booking";
 		}
 	}
+	//예약 리스트
+	@ResponseBody
+	@RequestMapping("/calendar")
+	public List<BookingVo> bookingList(@RequestParam int hostNo){
+		System.out.println("[hostinfoController.bookingList()]");
+		
+		//예약 + 게스트 리스트 가져오기
+		List<BookingVo> bList = hostinfoService.bookingList(hostNo);
+		
+		return bList;
+	}
 	//펫시터 정보 수정
 	//host insert
 	@ResponseBody

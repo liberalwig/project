@@ -43,6 +43,7 @@
                             <p class="exp lead">당신의 펫시팅을 어필 할 수 있는 사진을 올려보세요. 파일형식은 png, jpg, jpeg으로 최대 8장까지 올릴 수 있어요.</p>
 							<form method="post" enctype="multipart/form-data"> 
 								<input type="file" name="images" multiple="multiple" accept=".png, .jpg, .jpeg">
+								<input id="uploadDate" type="hidden" name="uploadDate" multiple="multiple" accept=".png, .jpg, .jpeg" value="">
 							</form>
                         </div>
                     </div>  
@@ -126,7 +127,7 @@ var inputFileList = new Array();
  $('input[name=images]').on('change', function(e) {
     var files = e.target.files;
     var filesArr = Array.prototype.slice.call(files);
-
+	
  	// 업로드 된 파일 유효성 체크
  	if (filesArr.length > 8) {
  		alert("이미지는 최대 8개까지 업로드 가능합니다.");
@@ -136,6 +137,7 @@ var inputFileList = new Array();
 
      filesArr.forEach(function(f) { 
  		inputFileList.push(f);    // 이미지 파일을 배열에 담는다.
+ 		console.log(f);
  	 });
  });
 //등록 완료를 눌렀을때

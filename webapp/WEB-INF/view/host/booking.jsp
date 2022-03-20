@@ -79,7 +79,14 @@
                 </div>
             <div id="hostprofile" class="col-xs-4">
                 <div id="profile" class="row">
-                    <img id="hostimg" src="${pageContext.request.contextPath}/assets/images/hostinfo_sample.jpg" class="img-circle">
+                	<c:choose>
+                		<c:when test="${not empty requestScope.hostVo.path}">
+                		<img id="hostimg" src="${pageContext.request.contextPath}/photo/${requestScope.hostVo.path}" class="img-circle">
+                		</c:when>
+                		<c:otherwise>
+                			<img id="hostimg" src="${pageContext.request.contextPath}/assets/images/hostinfo_sample.jpg" class="img-circle">
+                		</c:otherwise>
+                	</c:choose>
                     <h3>${requestScope.hostVo.name}님</h3>
                     <h4>${requestScope.hostVo.adress1}</h4>
                     <button id="btn1" type="button" class="btn btn-default"><h5><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>&nbsp;메시지 보내기</h5></button>
@@ -191,7 +198,6 @@ $("#btn2").on("click", function(){
 $('#datePicker1').on("changeDate", function(e){
 	var checkin = $("#datePicker1").val();
 	$("#checkin").html(checkin);
-	//체크인날짜가 체크아웃의 스타트데이트로 변경
 });
 
 //체크아웃 날짜 변경시
@@ -260,7 +266,7 @@ document.addEventListener('DOMContentLoaded', function() {
 						allDay: true,
 						status: 'done',
 						display: 'background',
-						overlap: false,
+						overlap: true,
 						backgroundColor: 'rgb(255, 255, 255)'
 					});
 				}
@@ -269,7 +275,7 @@ document.addEventListener('DOMContentLoaded', function() {
 		}),
 		$.ajax({ 
 			type:"get", 
-			url:"${pageContext.request.contextPath}/calendar?hostNo=${param.hostNo}", 
+			url:"${pageContext.request.contextPath}/host/calendar?hostNo=${param.hostNo}", 
 			dataType : "json",
 			success: function (bList) {
 				for(var i=0; i<bList.length; i++) {
@@ -277,10 +283,9 @@ document.addEventListener('DOMContentLoaded', function() {
 						start: bList[i].checkin,
 						end: bList[i].checkout,
 						status: 'booking',
-						color: '#ffafb0',
-						textColor: '#000000',
 						display: 'background',
-						backgroundColor: 'rgb(238, 238, 238)'
+						overlap: true,
+						backgroundColor: 'rgb(210, 210, 210)'
 					});
 				}
 			}

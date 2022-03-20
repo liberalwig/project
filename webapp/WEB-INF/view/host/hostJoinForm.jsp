@@ -12,7 +12,7 @@
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
-	
+
 	<!-- JS -->
 	<script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/jquery-1.12.4.js"></script>
 	<script type="text/javascript" src="${pageContext.request.contextPath}/assets/bootstrap/js/bootstrap.js"></script>
@@ -33,8 +33,10 @@
                             <h3>01. 펫시터 사진</h3>
                             <p class="exp lead">당신의 펫시팅을 어필 할 수 있는 사진을 올려보세요. 파일형식은 png, jpg, jpeg으로 최대 8장까지 올릴 수 있어요.</p>
 							<form method="post" enctype="multipart/form-data"> 
-								<input type="file" name="images" multiple="multiple" accept=".png, .jpg, .jpeg">
+								<input type="file" name="images" multiple="multiple" accept=".png, .jpg, .jpeg" onchange="setThumbnail(event);">
 							</form>
+							<div id="photoarea">
+							</div>
                         </div>
                     </div>  
                
@@ -123,12 +125,12 @@
         </div>
     </div>
     </div>
+    <input type="hidden" id="usersNo" value="${sessionScope.authUser.usersNo}">
     	<c:import url="/WEB-INF/view/includes/footer.jsp"></c:import>
     
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
     <script>
     //이미지 담아놓을 배열
-    
     var inputFileList = new Array();
    
 	 // 파일 업로드 했을때 이벤트
@@ -145,8 +147,25 @@
 	
 	     filesArr.forEach(function(f) { 
 	 		inputFileList.push(f);    // 이미지 파일을 배열에 담는다.
+	 		console.log(f);
 	 	 });
 	 });
+	 function setThumbnail(event) { 
+		 for (var image of event.target.files) { 
+			 var reader = new FileReader(); 
+			 
+			 reader.onload = function(event) { 
+				 var img = document.createElement("img"); 
+				 img.setAttribute("src", event.target.result); 
+				 document.querySelector("#photoarea").appendChild(img); 
+				 console.log(img);
+			 }; 
+			 
+			 console.log(image); 
+			 reader.readAsDataURL(image); 
+			 } 
+		 }
+
     //등록 완료를 눌렀을때
     $("#hostinsertbtn").on("click", function(){
     	//키워드 관련
@@ -166,7 +185,7 @@
 
     	//호스트 관련
     	var hostVo = {
-    		usersNo : ${sessionScope.authUser.usersNo},
+    		usersNo : $('#usersNo').val(),
     		zipcode : $(".zipcode").val(),
     		adress1 : $(".adress1").val(),
     		adress2 : $(".adress2").val(),

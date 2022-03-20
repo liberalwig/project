@@ -15,6 +15,7 @@ import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.javaex.dao.BookingDao;
@@ -105,6 +106,11 @@ public class HostinfoService {
 		hostMap.put("next", next);
 		
 		return hostMap;
+	}
+	public List<BookingVo> bookingList(int hostNo){
+		System.out.println("[hostinfoService.bookingList()]");
+		
+		return hostinfoDao.bookingList(hostNo);
 	}
 	//수정용 호스트데이터 가져오기
 	public Map<String, Object> getModify(int hostNo){

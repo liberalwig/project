@@ -193,14 +193,14 @@
 	
 	<select id="getAbleDate" parameterType="int" resultType="String">
 		<![CDATA[
-			select   s.today ableDate
+            select   s.today ableDate
 			from     (select     to_char (firstday + level - 1, 'yyyy-mm-dd') today
 	                  from       (select sysdate firstday 
 	                              from   dual) 
 	                  connect by firstday + level - 1 <= trunc(sysdate+30)) s
 			where not s.today in (select abledate
 	                              from   able
-	                              where  hostNo=#{hostNo})
+	                              where  hostNo= #{hostNo})    
 			order by  s.today asc
 		]]>
 	</select>
@@ -211,6 +211,18 @@
 			from   heart
 			where  usersNo = #{usersNo}
 			and    hostNo = #{hostNo}
+		]]>
+	</select>
+	
+	<select id="bookingList" parameterType="int" resultType="BookingVo">
+		<![CDATA[
+			select to_char(checkin, 'yyyy-mm-dd') checkin,
+			       to_char(checkout, 'yyyy-mm-dd') checkout
+			from   booking
+			where  hostNo = #{hostNo}
+			and    status in('예약완료', '펫시팅중', '시팅완료')
+			and    checkin > sysdate
+            and    checkout > sysdate
 		]]>
 	</select>
 	
