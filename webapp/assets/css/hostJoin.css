@@ -48,10 +48,14 @@ a:hover {text-decoration: none; color: #000}
 	border: 1px solid #DDD;
 	width: 922px;
 	height: 242px;
+	margin: 10px 0px 0px 0px;
 	padding: 10px 10px 0px 10px;
 	overflow: scroll;
 }
-
+#photoarea h3{
+	display: inline-block;
+	padding: 90px 0px 0px 320px;
+}
 #photoarea img{
 	width: 220px;
 	height: 220px;
@@ -109,10 +113,13 @@ a:hover {text-decoration: none; color: #000}
 /*질문05번.주소*/
 #address {
   text-align: left;
-  padding: 0px 0px 0 280px;
+  padding: 0px 0px 0 325px;
 }
 #address #sample4_jibunAddress{
-	width: 408px;
+	width: 300px;
+}
+#address #sample4_detailAddress{
+	width: 300px;
 }
 
 /*질문06.돌봄료책정*/
@@ -150,7 +157,6 @@ a:hover {text-decoration: none; color: #000}
   padding: 20px 0px 30px 30px;
   border-bottom:0px;
 }
-
 
 #finalbtn {
   padding:10px;

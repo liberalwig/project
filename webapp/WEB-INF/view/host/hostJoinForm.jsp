@@ -24,25 +24,27 @@
         <div id="container" class="clearfix">
       		<div id="joinform" class="col-xs-8">
             	<div style="text-align:center;">
-            		<h2>펫시터 등록하기</h2>
+            		<img src="${pageContext.request.contextPath}/assets/images/hostjoin_dogicon1.png" width="50px" style="padding:0px 0px 10px 0px">
+            		<h2 style="display: inline-block">펫시터 등록하기</h2><br>
             		<p class="exp lead">게어비엔비에서 펫시팅을 시작하고 반려견을 돌봐주며 수입을 만들어보세요.</p>	
             	</div>
                 <div class="row">
                     <div id="joinQuestion" class="row Q">
                         <div class="photo">
-                            <h3>01. 펫시터 사진</h3>
+                            <h3>01. 사진</h3>
                             <p class="exp lead">당신의 펫시팅을 어필 할 수 있는 사진을 올려보세요. 파일형식은 png, jpg, jpeg 올릴 수 있어요.</p>
 							<form method="post" enctype="multipart/form-data"> 
 								<input type="file" name="images" multiple="multiple" accept=".png, .jpg, .jpeg" onchange="setThumbnail(event);">
 							</form>
-							<div id="photozone">
+							<div id="photoarea">
+								<h3 class="exp lead">이곳에서 사진을 미리 볼 수 있습니다.</h3>
 							</div>
                         </div>
                     </div>  
                
                 <div id="joinQuestion" class="row Q">
-                    <h3>02. 키워드 선택</h3>
-                    <p class="exp lead">당신에게 해당되는 키워드를 선택해주세요. 중복체크가 가능해요.</p>
+                    <h3>02. 강점 키워드</h3>
+                    <p class="exp lead">당신에게 해당되는 강점 키워드를 선택해주세요. 중복체크가 가능해요.</p>
                     <table>
                         <colgroup>
                             <col width="140px">
@@ -92,7 +94,6 @@
 						<input type="button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기"><br>
 						<input type="text" id="sample4_jibunAddress" class="adress1" placeholder="지번주소"><br>
 						<input type="text" id="sample4_detailAddress" class="adress2" placeholder="상세주소">
-						<input type="text" id="sample4_extraAddress" class="adress3" placeholder="참고항목">
                     </div>
                 </div>
 
@@ -126,7 +127,7 @@
     </div>
     </div>
     <input type="hidden" id="usersNo" value="${sessionScope.authUser.usersNo}">
-    	<c:import url="/WEB-INF/view/includes/footer.jsp"></c:import>
+    <c:import url="/WEB-INF/view/includes/footer.jsp"></c:import>
     
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
     <script>
@@ -138,6 +139,7 @@
 	    var files = e.target.files;
 	    var filesArr = Array.prototype.slice.call(files);
 	    $('#photoarea img').remove();
+	    $('#photoarea h3').remove();
 	
 	     filesArr.forEach(function(f) { 
 	 		inputFileList.push(f);    // 이미지 파일을 배열에 담는다.
@@ -145,7 +147,6 @@
 	 	 });
 	 });
 	 function setThumbnail(event) { 
-		 $("#photozone").html('<div id="photoarea"></div>');
 		 for (var image of event.target.files) { 
 			 var reader = new FileReader(); 
 			 
@@ -184,7 +185,7 @@
     		zipcode : $(".zipcode").val(),
     		adress1 : $(".adress1").val(),
     		adress2 : $(".adress2").val(),
-    		adress3 : $(".adress3").val(),
+    		adress3 : '0',
     		intro : $("#intro").val(),
     		asking : $("#asking").val(),
     		hostcost : $("#cost").val()
@@ -270,13 +271,6 @@
                 // 우편번호와 주소 정보를 해당 필드에 넣는다.
                 document.getElementById('sample4_postcode').value = data.zonecode;
                 document.getElementById("sample4_jibunAddress").value = data.jibunAddress;
-                
-                // 참고항목 문자열이 있을 경우 해당 필드에 넣는다.
-                if(roadAddr !== ''){
-                    document.getElementById("sample4_extraAddress").value = extraRoadAddr;
-                } else {
-                    document.getElementById("sample4_extraAddress").value = '';
-                }
 
                 var guideTextBox = document.getElementById("guide");
             }

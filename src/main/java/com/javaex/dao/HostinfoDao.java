@@ -64,39 +64,16 @@ public class HostinfoDao {
 	}
 	
 	//호스트 점수 합계
-	public double getSum(int hostNo){
-		System.out.println("[HostinfoDao.getSum()]");
+	public double getPuppypoint(int hostNo){
+		System.out.println("[HostinfoDao.getPuppypoint()]");
 		
-		double sum = sqlSession.selectOne("hostinfo.getSum", hostNo);
-		
-		return sum;
+		return sqlSession.selectOne("hostinfo.getPuppypoint", hostNo);
 	}
 	
 	//각각 점수 가져오기
-	public double getClean(int hostNo){
-		System.out.println("[HostinfoDao.getClean()]");
-		
-		return sqlSession.selectOne("hostinfo.getClean", hostNo);
-	}
-	public double getFood(int hostNo){
-		System.out.println("[HostinfoDao.getFood()]");
-		
-		return sqlSession.selectOne("hostinfo.getFood", hostNo);
-	}
-	public double getPlay(int hostNo){
-		System.out.println("[HostinfoDao.getPlay()]");
-		
-		return sqlSession.selectOne("hostinfo.getPlay", hostNo);
-	}
-	public double getWalk(int hostNo){
-		System.out.println("[HostinfoDao.getWalk()]");
-		
-		return sqlSession.selectOne("hostinfo.getWalk", hostNo);
-	}
-	public double getCommunication(int hostNo){
-		System.out.println("[HostinfoDao.getCommunication()]");
-		
-		return sqlSession.selectOne("hostinfo.getCommunication", hostNo);
+	public ReviewVo getPoint(int hostNo) {
+		System.out.println("[HostinfoDao.getPoint()]");
+		return sqlSession.selectOne("hostinfo.getPoint", hostNo);
 	}
 	
 	//호스트 사진 가져오기

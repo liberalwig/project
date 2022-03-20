@@ -46,11 +46,11 @@ public class HostinfoService {
 	public Map<String, Object> getHostMap(int hostNo, int crtPage) {
 		System.out.println("[HostinfoService.list()]");
 		Map<String, Object> hostMap = new HashMap<String, Object>();
-		//호스트 정보 가져오기
+		//호스트 정보
 		HostVo hostVo = hostinfoDao.getHost(hostNo);
-		//키워드 정보 가져오기
+		//키워드 리스트
 		List<KeywordVo> keyList = hostinfoDao.getHostKeyword(hostNo);
-		//리뷰 정보 가져오기
+		//리뷰 리스트, 페이징
 		int listCnt = 8;
 		crtPage = (crtPage>0) ? crtPage : (crtPage=1);
 		int startRnum = ((crtPage-1)*listCnt) + 1;
@@ -61,36 +61,22 @@ public class HostinfoService {
 		int endPageBtnNo = (int)( Math.ceil(crtPage/(double)pageBtnCount ) )*pageBtnCount;
 		int startPageBtnNo = endPageBtnNo - (pageBtnCount-1);
 		boolean next = false;
-		//다음 화살표
 		if(endPageBtnNo*listCnt < totalCnt) {
 			next = true;
-		} else { // 다음 화살표가 안보이면 마지막 버튼값을 다시 계산한다
+		} else { 
 			endPageBtnNo = (int)(Math.ceil(totalCnt/(double)listCnt));
 		}
-		//이전 화살표
 		boolean prev = false;
 		if(startPageBtnNo != 1) {
 			prev = true;
 		}
-		//퍼피력 계산
-		double sum = (hostinfoDao.getSum(hostNo)/5.0);
-		double reviewcount = (double)hostinfoDao.getReviewCount(hostNo);
-		double puppypoint = 0;
-		if(reviewcount == 0.0) {
-			puppypoint = 0;
-		} else {
-			puppypoint = sum / reviewcount;
-		}
-		//항목점수 계산
-		ReviewVo point = new ReviewVo();
-		point.setClean(hostinfoDao.getClean(hostNo));
-		point.setFood(hostinfoDao.getFood(hostNo));
-		point.setPlay(hostinfoDao.getPlay(hostNo));
-		point.setWalk(hostinfoDao.getWalk(hostNo));
-		point.setCommunication(hostinfoDao.getCommunication(hostNo));
-		//호스트 사진 가져오기
+		//퍼피력
+		double puppypoint = hostinfoDao.getPuppypoint(hostNo);
+		//항목점수
+		ReviewVo point = hostinfoDao.getPoint(hostNo);
+		//호스트 사진 리스트
 		List<PhotoVo> photoList = hostinfoDao.getHostPhoto(hostNo);
-		//캘린더 정보 가져오기
+		//일정 리스트
 		List<BookingVo> calendurList = hostinfoDao.getCalendur(hostNo);
 		
 		hostMap.put("hostVo", hostVo);

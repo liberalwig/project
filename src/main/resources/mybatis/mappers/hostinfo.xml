@@ -80,9 +80,9 @@
 		]]>
 	</select>
 	
-	<select id="getSum" parameterType="int" resultType="double">
+	<select id="getPuppypoint" parameterType="int" resultType="double">
 		<![CDATA[
-			select NVL(SUM(clean), 0) + NVL(SUM(food), 0) + NVL(SUM(play), 0) + NVL(SUM(walk), 0) + NVL(SUM(communication), 0)
+			select (NVL(avg(clean), 0) + NVL(avg(food), 0) + NVL(avg(play), 0) + NVL(avg(walk), 0) + NVL(avg(communication), 0))/5
 			from   booking
 			where  hostNo = #{hostNo}
 		]]>
@@ -96,41 +96,13 @@
 		]]>
 	</select>
 	
-	<select id="getClean" parameterType="int" resultType="double">
+	<select id="getPoint" parameterType="int" resultType="ReviewVo">
 		<![CDATA[
-			select NVL(avg(clean), 0)
-			from   booking
-			where  hostNo = #{hostNo}
-		]]>
-	</select>
-	
-	<select id="getFood" parameterType="int" resultType="double">
-		<![CDATA[
-			select NVL(avg(food), 0)
-			from   booking
-			where  hostNo = #{hostNo}
-		]]>
-	</select>
-	
-	<select id="getPlay" parameterType="int" resultType="double">
-		<![CDATA[
-			select NVL(avg(play), 0)
-			from   booking
-			where  hostNo = #{hostNo}
-		]]>
-	</select>
-	
-	<select id="getWalk" parameterType="int" resultType="double">
-		<![CDATA[
-			select NVL(avg(walk), 0)
-			from   booking
-			where  hostNo = #{hostNo}
-		]]>
-	</select>
-	
-	<select id="getCommunication" parameterType="int" resultType="double">
-		<![CDATA[
-			select NVL(avg(communication), 0)
+			select NVL(avg(clean), 0) clean,
+				   NVL(avg(food), 0) food,
+				   NVL(avg(play), 0) play,
+				   NVL(avg(walk), 0) walk,
+				   NVL(avg(communication), 0) communication
 			from   booking
 			where  hostNo = #{hostNo}
 		]]>
