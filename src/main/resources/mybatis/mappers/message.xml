@@ -7,7 +7,8 @@
 	<select id="getType" parameterType="int" resultType="MessageVo">
       <![CDATA[
          select userstype,
-               name
+               name,
+               usersNo
          from users
          where usersno = #{usersNo}
       ]]>
@@ -16,66 +17,39 @@
 	<!-- 메세지 리스트 가져오기 -->
 	<select id="getList" parameterType="int" resultType="MessageVo">
       <![CDATA[
-         select  tg.target,
-                 tg.roomNo,
-                 u.id,
-                 u.name,
-                 u.usersType
-         from (
-                 (select usersTo target,
-                         roomno roomNo
-                 from messege
-                 where usersFrom = #{usersNo} 
-                 )  
-                 union
-                 (select usersFrom  ,
-                         roomno
-                 from messege
-                 where usersTo = #{usersNo}
-                 )  
-               ) tg,
-               users u
-               where tg.target = u.usersNo
-      ]]>
-	</select>
-
-	<!-- 메세지 정보 가져오기 -->
-	<select id="getMInfo" parameterType="int" resultType="MessageVo">
-      <![CDATA[
-         select tg.target,
-                u.usersNo,
-                u.id,
-                u.name,
-                u.usersType
-         from (
-               (select usersTo target,
-                       roomno roomNo
-                from messege
-                where usersFrom = #{usersNo}
-                )  
-                union
-               (select usersFrom,
-                       roomno
-                from messege
-                where usersTo = #{usersNo}
-                )  
-               ) tg, users u, messege m
-         where tg.target = u.usersNo
-         and   m.roomno = tg.roomNo
+		select tg.target,
+		       u.usersNo,
+		       u.id,
+		       u.name,
+		       u.usersType,
+		       tg.me
+		from (
+		      (select usersTo target,
+		              usersFrom me
+		       from messege
+		       where usersFrom = #{usersNo}
+		       )  
+		       union
+		      (select usersFrom, 
+		              usersTo mee
+		       from messege
+		       where usersTo = #{usersNo}
+		       )  
+		      ) tg, users u
+		where tg.target = u.usersNo
       ]]>
 	</select>
 
 	<!-- 메세지 가져오기 -->
-	<select id="getMessage" parameterType="int"
-		resultType="MessageVo">
+	<select id="getMessage" parameterType="int" resultType="MessageVo">
          <![CDATA[
             select  text,
-                         usersfrom,
-                         sendDate
-               from messege
-               where (usersFrom = #{usersNo} and usersTo = #{target})
-               or (usersFrom = #{target} and usersTo = #{usersNo})
-               order by senddate asc
+                    usersFrom,
+                    to_char(sendDate,'YYYY-MM-DD HH24:MI') sendDate
+            from messege
+            where (usersFrom = #{usersNo} and usersTo = #{target})
+            or (usersFrom = #{target} and usersTo = #{usersNo})
+            order by senddate asc
          ]]>
 	</select>
 
@@ -84,8 +58,25 @@
 	<select id="insertM" parameterType="MessageVo">
          <![CDATA[
             insert into messege
-            values (seq_messege_no.nextval, #{roomNo}, #{usersNo}, #{usersFrom}, sysdate, #{text})
+            values (seq_messege_no.nextval, #{usersNo}, #{target}, sysdate, #{text})
+         ]]>
+
+	</select>
+	
+	<!-- 맨처음 대화 시작하기 -->
+	<select id="startM" parameterType="MessageVo">
+         <![CDATA[
+            insert into messege
+            values (seq_messege_no.nextval, #{usersNo}, #{hostNo}, sysdate, #{text})
          ]]>
 
 	</select>
 </mapper>
+
+
+
+
+
+
+
+
