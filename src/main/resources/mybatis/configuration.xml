@@ -13,15 +13,16 @@
 		<typeAlias alias="AbleVo" type="com.javaex.vo.AbleVo" />
 		<typeAlias alias="HeartVo" type="com.javaex.vo.HeartVo" />
 		<typeAlias alias="MyDogVo" type="com.javaex.vo.MyDogVo" />
+		<typeAlias alias="MessageVo" type="com.javaex.vo.MessageVo" />
 	</typeAliases>
 	<mappers>
 		<mapper resource="mybatis/mappers/booking.xml" />
 		<mapper resource="mybatis/mappers/finishP.xml" />
-		<mapper resource="mybatis/mappers/host.xml" />
 		<mapper resource="mybatis/mappers/hostinfo.xml" />
 		<mapper resource="mybatis/mappers/review.xml" />
 		<mapper resource="mybatis/mappers/searchList.xml" />
 		<mapper resource="mybatis/mappers/user.xml" />
 		<mapper resource="mybatis/mappers/mydog.xml" />
+		<mapper resource="mybatis/mappers/message.xml" />
 	</mappers>
 </configuration>

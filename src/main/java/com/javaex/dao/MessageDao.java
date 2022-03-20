@@ -10,58 +10,54 @@ import com.javaex.vo.MessageVo;
 
 @Repository
 public class MessageDao {
-	
-	@Autowired
-	private SqlSession sqlsession;
-	
-	//메세지 주인 가져오기
-	public MessageVo getUser(int usersNo) {
-		
-		MessageVo messageVo = sqlsession.selectOne("message.getUser", usersNo);
-		
-		System.out.println(usersNo+"다오");
-		
-		return messageVo;
-	}
-	
-	//리스트 가져오기
-	public List<MessageVo> messageList(int usersNo) {
-		List<MessageVo> getList = sqlsession.selectList("message.getList", usersNo);
-		System.out.println(getList +"리스트 다오");
-		return getList;
-	}
-	
-	//메세지 정보 가져오기
-	public MessageVo getmUser(int usersNo) {
-		 
-		MessageVo getMInfo = sqlsession.selectOne("message.getMInfo", usersNo);
-		  
-		System.out.println(getMInfo+"메세지 정보 다오");
-		 
-		return getMInfo; 
-	}
-	
-	//메세지 가져오기
-	public List<MessageVo> getMessage(int roomNo) {
-		List<MessageVo> mList = sqlsession.selectList("message.getMessage", roomNo);
-		System.out.println(mList+"mList다오");
-		return mList;
-	}
-	
-	//메세지 인서트
-	public int setM(MessageVo messageVo) {
-		System.out.println("인서트 다오"+messageVo);
-		return sqlsession.insert("message.insertM", messageVo);
-	}
-	 
-//	 public MessageVo getN(int usersNo) {
-//		 
-//		 MessageVo getN = sqlsession.selectOne("message.getMInfo", usersNo);
-//		  
-//		 System.out.println(getN+"getN다오");
-//		 
-//		 return getN; 
-//		 }
-	 
+   
+   @Autowired
+   private SqlSession sqlsession;
+   
+   //유저타입
+   public MessageVo getType(int usersNo) {
+      
+      return sqlsession.selectOne("message.getType", usersNo);
+   }
+   
+   //리스트 가져오기
+   public List<MessageVo> messageList(int usersNo) {
+      List<MessageVo> getList = sqlsession.selectList("message.getList", usersNo);
+      System.out.println(getList +"리스트 다오");
+      return getList;
+   }
+   
+   //메세지 정보 가져오기
+   public MessageVo getMInfo(int usersNo) {
+       
+      MessageVo getMInfo = sqlsession.selectOne("message.getMInfo", usersNo);
+        
+      System.out.println(getMInfo+"메세지 정보 다오");
+       
+      return getMInfo; 
+   }
+   
+   //메세지 가져오기
+   public List<MessageVo> getMessage(int target) {
+      List<MessageVo> mList = sqlsession.selectList("message.getMessage", target);
+      System.out.println(mList+"mList다오");
+      return mList;
+   }
+   
+   //메세지 인서트
+   public int setM(MessageVo messageVo) {
+      System.out.println("인서트 다오"+messageVo);
+      return sqlsession.insert("message.insertM", messageVo);
+   }
+    
+//    public MessageVo getN(int usersNo) {
+//       
+//       MessageVo getN = sqlsession.selectOne("message.getMInfo", usersNo);
+//        
+//       System.out.println(getN+"getN다오");
+//       
+//       return getN; 
+//       }
+    
 
 }
