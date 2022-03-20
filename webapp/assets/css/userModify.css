@@ -43,6 +43,7 @@ font-size: 18px;
 #aside #b-aside {
 padding: 45px 0px 0px 0px;
 width: 240px;
+cursor: pointer
 }
 
 #aside>#b-aside {
@@ -60,6 +61,7 @@ padding-left: 10px;
 display: block;
 line-height: 60px;
 height: 60px;
+cursor: pointer
 }
 
 #aside #b-aside>ul>li {

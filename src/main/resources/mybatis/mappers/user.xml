@@ -86,7 +86,7 @@
 			       ho.adress1,
                    ho.hostcost,
 			       bo.reviewcount,
-                   trunc(bo.puppypoint, 1)puppypoint
+                   trunc(bo.puppypoint, 2)puppypoint
 			from   heart he, users us, host ho, (select count(*) reviewcount,
                                                         avg((clean+food+play+walk+communication)/5) as puppypoint
                                                  from   booking
