@@ -26,7 +26,7 @@
 	    <title>검색리스트</title>
 	</head>
 	<body>
-	
+	<!-- header -->
 	<c:import url="/WEB-INF/view/includes/header.jsp"></c:import>
 	
     <div id="wrap" class="container-fluid">
@@ -201,7 +201,7 @@
   		    </c:if>
     		</div>
         </div>
-   		 <!-- 페이징 -->
+   		 <!-- 페이징 
 	     <div id="paging" class="col-md-1">
 			<ul>
 				<c:if test="${requestScope.pMap.prev == true}">
@@ -216,8 +216,10 @@
 					<li><a href="${pageContext.request.contextPath}/board/bList2?crtPage=${requestScope.pMap.endPageBtnNo+1}">▶</a></li>
 				</c:if>
 			</ul>
-		</div>
+		</div>-->
   	</div>
+  	
+  	<c:import url="/WEB-INF/view/includes/footer.jsp"></c:import>
     <!--지도-->
 	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=b041f9ad62c37064e496f0bc81216407&&libraries=services,clusterer"></script>
 		<script>
@@ -243,7 +245,7 @@
 			
 			var imageSrc = '${pageContext.request.contextPath}/assets/images/searchListMarker.png', // 마커이미지의 주소입니다    
 			
-		    imageSize = new kakao.maps.Size(64, 69), // 마커이미지의 크기입니다
+		    imageSize = new kakao.maps.Size(69, 73), // 마커이미지의 크기입니다
 		    imageOption = {offset: new kakao.maps.Point(33, 71)}; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
 		    
 			// 마커의 이미지정보를 가지고 있는 마커이미지를 생성합니다
@@ -267,7 +269,7 @@
 			        
 			        	// 인포윈도우를 생성합니다
 			            var infowindow = new daum.maps.InfoWindow({
-			                content :'<div style="width:150px;;text-align:center;padding:5px 0;font-size: 8px;">' + listData[index] + '</div>',       //생성할때 주소는 넣어 줬음
+			                content :'<div style="width:150px;;text-align:center;padding:5px 0;font-size: 12px;">' + listData[index] + '</div>',       //생성할때 주소는 넣어 줬음
 			                disableAutoPan: true
 			            });
 			         	

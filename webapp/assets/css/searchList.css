@@ -51,6 +51,7 @@ font-family: 'Noto Sans KR', sans-serif;
 .search_container{
 	padding-left: 0px;
 	padding-right: 0px;
+	width: 	1550px;
 }
 .search_flex{
   display: flex;
@@ -59,7 +60,7 @@ font-family: 'Noto Sans KR', sans-serif;
 
 .search_web{
 	width: 630px;
-	margin-right: auto;
+	margin-right: 0;
 	display: inline-block;
 }
 /* #mapdiv{
@@ -67,8 +68,8 @@ font-family: 'Noto Sans KR', sans-serif;
 	height:unset;	
 } */
 #map{
-    width: 900px;
-    height: 700px;
+    width: 1100px;
+    height: 805px;
     margin-top:10px;
     border:1px solid #bbb;
     display: inline-block;
@@ -235,6 +236,11 @@ font-family: 'Noto Sans KR', sans-serif;
 .search_cursor_pointer{
 	cursor:pointer;
 	z-index:1;
+}
+
+#footer{
+	font-size: 12px;
+	background:  #6fb5ef !important;
 }
 
 

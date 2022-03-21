@@ -13,7 +13,8 @@
 	    <script src="${pageContext.request.contextPath}/assets/bootstrap/js/bootstrap.js"></script>
 	
 	    <!-- font -->
-	    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@600&display=swap" rel="stylesheet">
+	    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
+	    <!-- <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@600&display=swap" rel="stylesheet"> -->
 	    <title>메인</title>
 	</head>
 	<body>
