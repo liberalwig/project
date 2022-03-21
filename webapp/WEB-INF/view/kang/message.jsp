@@ -14,12 +14,15 @@
 <!--CSS -->
 <link href="/project/assets/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css">
 <link href="/project/assets/css/message.css" rel="stylesheet" type="text/css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
 <!-- 자바스크립트 -->
 <script type="text/javascript" src="/project/assets/js/jquery-1.12.4.js"></script>
 <script type="text/javascript" src="/project/assets/bootstrap/js/bootstrap.js"></script>
 
 
-<title>메세지</title>
+<title>개어비엔비</title>
 </head>
 <body>
 	<!-- 헤더 -->
@@ -60,12 +63,11 @@
 						</div>
 						<div id="pdetail" class="col-xs-12 clearfix">
 							<c:choose>
-								<c:when test="${empty map.getMInfo.name}">
-                            		메세지 상대를 선택해주세요.
+								<c:when test="${empty getName.name}">
                         		</c:when>
 								<c:otherwise>
 									<img class="profile" src="/project/assets/images/message_profile1.jpg">
-									<p class="name">${ name}님과의쪽지</p>
+									<p class="name">${getName.name}님과의쪽지</p>
 								</c:otherwise>
 							</c:choose>
 						</div>
@@ -74,7 +76,7 @@
 						<div id="dList" class="clearfix scroll scroll1">
 							<c:forEach items="${getList}" var="list">
 								<c:choose>
-									<c:when test="${ getType.usersType eq 0 }">
+									<c:when test="${ list.usersType eq 1 }">
 										<div class="clearfix link mList" OnClick="location.href ='${pageContext.request.contextPath}/message/getm?target=${list.target}&usersNo=${list.me}'" style="cursor: pointer;">
 											<img class="profile" src="/project/assets/images/message_profile1.jpg">
 											<p class="name">${list.name}님</p>
@@ -86,7 +88,7 @@
 									<c:otherwise>
 										<div class="clearfix link mList" OnClick="location.href ='${pageContext.request.contextPath}/message/getm?target=${list.target}&usersNo=${list.me}'" style="cursor: pointer;">
 											<img class="profile" src="/project/assets/images/message_profile1.jpg">
-											<p class="name">${list.name}님 헿</p>
+											<p class="name">${list.name}님 호스트</p>
 											<div>
 												<p class="timeL">${list.sendDate}</p>
 											</div>
@@ -167,5 +169,9 @@
 	    }).
 	   
 	}); */
+	
+	$(document).ready(funtion(){
+		$('#scroll').scrollTop($('scroll')[0].scrollHeight);
+	});
 </script>
 </html>

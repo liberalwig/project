@@ -276,7 +276,7 @@
 						</div>
 					</div>
 					<div class="modal-footer">
-						<input type="hidden" name= "bookingNo" value=1> <!-- value="${bookingno}" --> 
+						<input type="hidden" name= "bookingNo" value=>
 						<input type="hidden" name= "reviewDate" value= sysdate>
 						<button id="btnsub" type="submit">올리기</button>
 					</div>
