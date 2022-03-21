@@ -57,7 +57,7 @@
 								<div class="col-xs-6">
 									<div class="result_text row">
 										<div class="puppy col-xs-6">퍼피력<strong>${vo.puppypoint}</strong></div>
-										<button id="btn-${vo.heartNo}" class="heart col-xs-6 bi-heart" data-no="${vo.heartNo}"> ♥ </button>
+										<button id="btn-${vo.heartNo}" class="heart col-xs-6 bi-heart" data-no="${vo.heartNo}"><h2>♥</h2></button>
 									</div>
 									
 									<div class="host_name row"><strong>${vo.name}</strong></div>
