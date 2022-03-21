@@ -12,6 +12,10 @@
     <link href="/project/assets/css/booking.css" rel="stylesheet" type="text/css"/>
 	<link href="/project/assets/css/poto-upload.css" rel="stylesheet" type="text/css"/>
 	<link href="/project/assets/css/myDog.css" rel="stylesheet" type="text/css">
+	
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
 
     <!--자바스크립트-->
     <script type="text/javascript" src="/project/assets/js/jquery-1.12.4.js"></script>
@@ -48,11 +52,12 @@
                     <div id="btn-area1">
                     	<c:if test="${bvo.status == '펫시팅중' || bvo.status == '예약완료'}">
                     		<button name="imgupload" class="btn btn-default add-img1" data-photodate="${pListDate[0].photoDate}">이미지 업로드</button>
+                    		<button id="messeage" data-usersno="${bvo.usersNo}" data-hostno="${bvo.hostNo}" class="btn btn-default hover-boot list-btn" type="submit">메세지보내기</button>
                     		<button class="btn btn-default add-img2" onclick = "window.history.back()">목록으로 돌아가기</button>
                     	</c:if>
                     	<c:if test="${bvo.status != '펫시팅중' && bvo.status != '예약완료'}">
+                    		<button id="messeage" data-usersno="${bvo.usersNo}" data-hostno="${bvo.hostNo}" class="btn btn-default hover-boot list-btn" type="submit">메세지보내기</button>
                     		<button class="btn btn-default add-img3" onclick = "window.history.back()">목록으로 돌아가기</button>
-                    		
                     	</c:if>
                     </div>
 
@@ -599,6 +604,15 @@
 </body>
 
 <script>
+	//메세지 버튼클릭
+	$("#messeage").on("click", function(){
+		var $this = $(this);
+		var hostNo = $this.data("hostno");
+		var usersNo = $this.data("usersno");
+		console.log(hostNo+', '+usersNo);
+		
+		location.href = "${pageContext.request.contextPath}/message/getm?usersNo="+hostNo+"&target="+usersNo;
+	});
 
 	//리뷰별표시
 	$(document).ready(function(){

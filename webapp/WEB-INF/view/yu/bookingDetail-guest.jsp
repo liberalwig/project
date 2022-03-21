@@ -6,12 +6,16 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<!--CSS-->
+	<!--CSS-->
     <link href="/project/assets/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css">
     <link href="/project/assets/css/yu_main.css" rel="stylesheet" type="text/css">
     <link href="/project/assets/css/booking.css" rel="stylesheet" type="text/css"/>
 	<link href="/project/assets/css/poto-upload.css" rel="stylesheet" type="text/css"/>
 	<link href="/project/assets/css/myDog.css" rel="stylesheet" type="text/css">
+	
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
 
     <!--자바스크립트-->
     <script type="text/javascript" src="/project/assets/js/jquery-1.12.4.js"></script>
@@ -46,6 +50,7 @@
                 <div id="content-main" class="clearfix container-fluid">
 
                     <div id="btn-area2">
+                    	<button id="g-messeage" data-usersno="${bvo.hostNo}" data-hostno="${bvo.usersNo}" class="btn btn-default hover-boot list-btn" type="submit">메세지보내기</button>
                         <button class="btn btn-default add-img" onclick = "window.history.back()">목록으로 돌아가기</button>
                     </div>
 
@@ -512,6 +517,16 @@
 </body>
 
 <script type="text/javascript">
+
+	//메세지 버튼클릭
+	$("#messeage").on("click", function(){
+		var $this = $(this);
+		var hostNo = $this.data("hostno");
+		var usersNo = $this.data("usersno");
+		console.log(hostNo+', '+usersNo);
+		
+		location.href = "${pageContext.request.contextPath}/message/getm?usersNo="+hostNo+"&target="+usersNo;
+	});
 
 	//리뷰별표시
 	$(document).ready(function(){
