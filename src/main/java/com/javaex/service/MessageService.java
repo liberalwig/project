@@ -31,8 +31,8 @@ public class MessageService {
       return getList;
    }
    //메세지 가져오기
-   public List<MessageVo> getMessage(int target) {
-      List<MessageVo> mList = messageDao.getMessage(target);
+   public List<MessageVo> getMessage(MessageVo messageVo) {
+      List<MessageVo> mList = messageDao.getMessage(messageVo);
       System.out.println(mList +"mList서비스");
       return mList;
    }
@@ -43,6 +43,13 @@ public class MessageService {
       messageDao.setM(messageVo);
       
    }
+   
+   //맨처음 대화 시작하기
+   public void sentMFirst (MessageVo messageVo) {
+	      System.out.println("인서트 서비스");
+	      messageDao.sentMFirst(messageVo);
+	      
+	   }
    
    //리스트 불러오기
 //   public MessageVo messageList (int usersNo) {

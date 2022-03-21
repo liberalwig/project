@@ -105,7 +105,9 @@
     });
 	
      //하트 클릭 시 삭제
-	$(".heart").on("click", function(){
+	$(".heart").on("click", function(event){
+		
+		event.stopPropagation();
 		var $this = $(this);
 		var heartNo = $this.data('no');
 		console.log(heartNo)

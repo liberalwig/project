@@ -38,8 +38,8 @@ public class MessageDao {
    }
    
    //메세지 가져오기
-   public List<MessageVo> getMessage(int target) {
-      List<MessageVo> mList = sqlsession.selectList("message.getMessage", target);
+   public List<MessageVo> getMessage(MessageVo messageVo) {
+      List<MessageVo> mList = sqlsession.selectList("message.getMessage", messageVo);
       System.out.println(mList+"mList다오");
       return mList;
    }
@@ -48,6 +48,12 @@ public class MessageDao {
    public int setM(MessageVo messageVo) {
       System.out.println("인서트 다오"+messageVo);
       return sqlsession.insert("message.insertM", messageVo);
+   }
+   
+   //맨처음 대화 시작하기
+   public int sentMFirst(MessageVo messageVo) {
+	      System.out.println("인서트 다오"+messageVo);
+	      return sqlsession.insert("message.sentMFirst", messageVo);
    }
     
 //    public MessageVo getN(int usersNo) {
@@ -59,5 +65,16 @@ public class MessageDao {
 //       return getN; 
 //       }
     
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
 
 }

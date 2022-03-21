@@ -46,11 +46,11 @@
 							<div class="rate col-md-6">
 		
 								<div class="rating">
-									<input type="radio" name="food" class="rating__control screen-reader" id="food1" value=1> 
-									<input type="radio" name="food" class="rating__control screen-reader" id="food2" value=2> 
-									<input type="radio" name="food" class="rating__control screen-reader" id="food3" value=3> 
-									<input type="radio" name="food" class="rating__control screen-reader" id="food4" value=4> 
-									<input type="radio" name="food" class="rating__control screen-reader" id="food5" value=5 checked> 
+									<input type="radio" name="food" class="rating__control screen-reader" id="food1" value=2.0> 
+									<input type="radio" name="food" class="rating__control screen-reader" id="food2" value=4.0> 
+									<input type="radio" name="food" class="rating__control screen-reader" id="food3" value=6.0> 
+									<input type="radio" name="food" class="rating__control screen-reader" id="food4" value=8.0> 
+									<input type="radio" name="food" class="rating__control screen-reader" id="food5" value=10.0 checked> 
 									
 									<label for="food1" class="rating__item"> 
 										<svg class="rating__star">
@@ -89,11 +89,11 @@
 							<div class="rate col-md-6">
 			
 								<div class="rating">
-									<input type="radio" name="walk" class="rating__control screen-reader" id="walk1" value=1> 
-									<input type="radio" name="walk" class="rating__control screen-reader" id="walk2" value=2> 
-									<input type="radio" name="walk" class="rating__control screen-reader" id="walk3" value=3> 
-									<input type="radio" name="walk" class="rating__control screen-reader" id="walk4" value=4> 
-									<input type="radio" name="walk" class="rating__control screen-reader" id="walk5" value=5 checked> 
+									<input type="radio" name="walk" class="rating__control screen-reader" id="walk1" value=2.0> 
+									<input type="radio" name="walk" class="rating__control screen-reader" id="walk2" value=4.0> 
+									<input type="radio" name="walk" class="rating__control screen-reader" id="walk3" value=6.0> 
+									<input type="radio" name="walk" class="rating__control screen-reader" id="walk4" value=8.0> 
+									<input type="radio" name="walk" class="rating__control screen-reader" id="walk5" value=10.0 checked> 
 									
 									<label for="walk1" class="rating__item"> 
 										<svg class="rating__star">
@@ -139,11 +139,11 @@
 							<div class="rate col-md-6">
 	
 								<div class="rating">
-									<input type="radio" name="clean" class="rating__control screen-reader" id="clean1" value=1> 
-									<input type="radio" name="clean" class="rating__control screen-reader" id="clean2" value=2> 
-									<input type="radio" name="clean" class="rating__control screen-reader" id="clean3" value=3> 
-									<input type="radio" name="clean" class="rating__control screen-reader" id="clean4" value=4> 
-									<input type="radio" name="clean" class="rating__control screen-reader" id="clean5" value=5 checked> 
+									<input type="radio" name="clean" class="rating__control screen-reader" id="clean1" value=2.0> 
+									<input type="radio" name="clean" class="rating__control screen-reader" id="clean2" value=4.0> 
+									<input type="radio" name="clean" class="rating__control screen-reader" id="clean3" value=6.0> 
+									<input type="radio" name="clean" class="rating__control screen-reader" id="clean4" value=8.0> 
+									<input type="radio" name="clean" class="rating__control screen-reader" id="clean5" value=10.0 checked> 
 									
 									<label for="clean1" class="rating__item"> 
 										<svg class="rating__star">
@@ -181,11 +181,11 @@
 							<div class="rate col-md-6">
 			
 								<div class="rating">
-									<input type="radio" name="play" class="rating__control screen-reader" id="play1" value=1> 
-									<input type="radio" name="play" class="rating__control screen-reader" id="play2" value=2> 
-									<input type="radio" name="play" class="rating__control screen-reader" id="play3" value=3> 
-									<input type="radio" name="play" class="rating__control screen-reader" id="play4" value=4> 
-									<input type="radio" name="play" class="rating__control screen-reader" id="play5" value=5 checked> 
+									<input type="radio" name="play" class="rating__control screen-reader" id="play1" value=2.0> 
+									<input type="radio" name="play" class="rating__control screen-reader" id="play2" value=4.0> 
+									<input type="radio" name="play" class="rating__control screen-reader" id="play3" value=6.0> 
+									<input type="radio" name="play" class="rating__control screen-reader" id="play4" value=8.0> 
+									<input type="radio" name="play" class="rating__control screen-reader" id="play5" value=10.0 checked> 
 									
 									<label for="play1" class="rating__item"> 
 										<svg class="rating__star">
@@ -229,11 +229,11 @@
 							<div class="rate col-md-6">
 		
 								<div class="rating">
-									<input type="radio" name="communication" class="rating__control screen-reader" id="communication1" value=1> 
-									<input type="radio" name="communication" class="rating__control screen-reader" id="communication2" value=2> 
-									<input type="radio" name="communication" class="rating__control screen-reader" id="communication3" value=3> 
-									<input type="radio" name="communication" class="rating__control screen-reader" id="communication4" value=4> 
-									<input type="radio" name="communication" class="rating__control screen-reader" id="communication5" value=5 checked> 
+									<input type="radio" name="communication" class="rating__control screen-reader" id="communication1" value=2.0> 
+									<input type="radio" name="communication" class="rating__control screen-reader" id="communication2" value=4.0> 
+									<input type="radio" name="communication" class="rating__control screen-reader" id="communication3" value=6.0> 
+									<input type="radio" name="communication" class="rating__control screen-reader" id="communication4" value=8.0> 
+									<input type="radio" name="communication" class="rating__control screen-reader" id="communication5" value=10.0 checked> 
 									
 									<label for="communication1" class="rating__item"> 
 										<svg class="rating__star">

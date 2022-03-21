@@ -40,12 +40,21 @@ public class MessageController {
    //메세지 가져오기
    @RequestMapping(value="/message/getm", method = {RequestMethod.GET, RequestMethod.POST})
    public String getM( @ModelAttribute MessageVo messageVo,
-                     @RequestParam int usersNo,
-                     @RequestParam int roomNo,
-                     @RequestParam int target,
-                        Model model,
-                        HttpSession session){
-      List<MessageVo> mList = messageService.getMessage(target);
+		   			   @RequestParam int usersNo,
+                       @RequestParam int target,
+                     Model model,
+                     HttpSession session){
+	  //유저타입
+	  MessageVo getType = messageService.getType(usersNo);
+	  model.addAttribute("getType", getType);
+	  System.out.println(getType+"가져오기");
+	  
+	  //리스트
+	  List<MessageVo> getList = messageService.getList(usersNo);
+	  model.addAttribute("getList", getList);
+	  
+	  //메세지 리스트
+      List<MessageVo> mList = messageService.getMessage(messageVo);
       model.addAttribute("mList", mList);
       System.out.println(mList +"mList컨트롤러");
       
@@ -55,26 +64,30 @@ public class MessageController {
    
    //메세지 보내기
    @RequestMapping(value="/message/setm", method = {RequestMethod.GET, RequestMethod.POST})
-   public String setM( @ModelAttribute MessageVo messageVo,
-                     @RequestParam int usersNo,
+   public String setM( @ModelAttribute MessageVo messageVo,	
+		   				@RequestParam int usersNo,
+		   				@RequestParam int target,
                         HttpSession session) {
-      System.out.println(messageVo);
+	   
       messageService.sentM(messageVo);
       System.out.println("인서트 컨트롤러");
       
       
-      return "redirect://message/getm?roomNo=${roomNo}&target=${target}&usersNo="+ usersNo;
+      return "redirect://message/getm?usersNo="+usersNo +"&target="+target;
    }
    
    //맨처음 대화 시작하기
-//   @RequestMapping(value="/message/setm", method = {RequestMethod.GET, RequestMethod.POST})
-//   public String startM( @ModelAttribute MessageVo messageVo,
-//                     @RequestParam int usersNo,
-//                        Model model,
-//                        HttpSession session) {
-//      
-//      
-//   }
+   @RequestMapping(value="/message/startM", method = {RequestMethod.GET, RequestMethod.POST})
+   public String startM( @ModelAttribute MessageVo messageVo,
+		   				 @RequestParam int usersNo,
+		   				@RequestParam int target,
+                         HttpSession session) {
+		messageService.sentMFirst(messageVo);
+		System.out.println("첫대화 컨트롤러");
+
+
+		return "redirect://message/getm?usersNo="+usersNo +"&target="+target;
+   }
    
    
    //메세지 읽기

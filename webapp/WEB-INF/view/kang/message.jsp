@@ -61,11 +61,11 @@
 						<div id="pdetail" class="col-xs-12 clearfix">
 							<c:choose>
 								<c:when test="${empty map.getMInfo.name}">
-                            메세지 상대를 선택해주세요.
-                        </c:when>
+                            		메세지 상대를 선택해주세요.
+                        		</c:when>
 								<c:otherwise>
 									<img class="profile" src="/project/assets/images/message_profile1.jpg">
-									<p class="name">${ name}님과의 쪽지</p>
+									<p class="name">${ name}님과의쪽지</p>
 								</c:otherwise>
 							</c:choose>
 						</div>
@@ -73,20 +73,34 @@
 					<div class=" row clearfix">
 						<div id="dList" class="clearfix scroll scroll1">
 							<c:forEach items="${getList}" var="list">
-								<div class="clearfix link mList" OnClick="location.href ='${pageContext.request.contextPath}/message/getm?roomNo=${list.roomNo}&target=${list.target}&usersNo=4'" style="cursor: pointer;">
-									<img class="profile" src="/project/assets/images/message_profile1.jpg">
-									<p class="name">${list.name}님</p>
-									<div>
-										<p class="timeL">${list.sendDate}</p>
-									</div>
-								</div>
+								<c:choose>
+									<c:when test="${ getType.usersType eq 0 }">
+										<div class="clearfix link mList" OnClick="location.href ='${pageContext.request.contextPath}/message/getm?target=${list.target}&usersNo=${list.me}'" style="cursor: pointer;">
+											<img class="profile" src="/project/assets/images/message_profile1.jpg">
+											<p class="name">${list.name}님</p>
+											<div>
+												<p class="timeL">${list.sendDate}</p>
+											</div>
+										</div>
+									</c:when>
+									<c:otherwise>
+										<div class="clearfix link mList" OnClick="location.href ='${pageContext.request.contextPath}/message/getm?target=${list.target}&usersNo=${list.me}'" style="cursor: pointer;">
+											<img class="profile" src="/project/assets/images/message_profile1.jpg">
+											<p class="name">${list.name}님 헿</p>
+											<div>
+												<p class="timeL">${list.sendDate}</p>
+											</div>
+										</div>
+									</c:otherwise>
+								</c:choose>
+								
 							</c:forEach>
 						</div>
 
 						<div id="conver" class="col-xs-12 clearfix scroll scroll1">
 							<c:forEach items="${mList}" var="mList">
 								<c:choose>
-									<c:when test="${mList.usersfrom} ne ${messageVo.usersNo}">
+									<c:when test="${mList.usersFrom eq param.usersNo}">
 										<div class="textme">
 											<!--메세지창+시간-->
 											<div class="talk-bubblet">
@@ -97,7 +111,7 @@
 											<p class="timeme">${mList.sendDate}</p>
 										</div>
 									</c:when>
-									<c:when test="${mList.usersfrom} eq ${messageVo.usersNo}">
+									<c:otherwise>
 										<div class="textyou">
 											<!--메세지창+시간-->
 											<div class="talk-bubble">
@@ -107,9 +121,6 @@
 											</div>
 											<p class="time">${mList.sendDate}</p>
 										</div>
-									</c:when>
-									<c:otherwise>
-										<p>대화를 시작해보세요.</p>
 									</c:otherwise>
 								</c:choose>
 							</c:forEach>
@@ -117,7 +128,7 @@
 						<div id="text" class="clearfix">
 							<form id="insertText" method="get" action="${pageContext.request.contextPath}/message/setm">
 								<textarea id="insert" name="text" class="col-xs-7" placeholder="메세지를 입력하세요"> </textarea>
-								<input type="hidden" name="roomNo" value=1> <input type="hidden" name="usersNo" value=2> <input type="hidden" name="usersFrom" value=1>
+								<input type="hidden" name="usersNo" value=${param.usersNo}> <input type="hidden" name="target" value=${param.target}>
 								<button class="btn btn-default btn-send" type="submit">보내기</button>
 							</form>
 						</div>
