@@ -46,6 +46,6 @@
 	</bean>
 
 	<!-- url매핑 -->
-	<mvc:resources mapping="/upload/**" location="#" />
+	<mvc:resources mapping="/photo/**" location="file:C:/javaStudy/workspace_web/project/webapp/assets/upload/" />
 
 </beans>
