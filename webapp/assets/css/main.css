@@ -9,7 +9,7 @@ body, div, ul, li, dl, dt, ol, ht, h2, h3, h4, h5, h6,
 input, fieldset, legend, p, select, table, th, td, tr,
 textarea, button, form {margin:0; padding:0;}
 
-body {font-size:16px; font-family: "맑은 고딕", 돋움, 굴림; text-align:center; color: #333; background-color: #fff}
+body {font-size:16px; font-family: 'Noto Sans KR', sans-serif; text-align:center; color: #333; background-color: #fff}
 
 /*기본*/
 ul, ol {list-style-type: none !important;}
@@ -40,6 +40,10 @@ a:hover {text-decoration: none !important;}
 .clearfix:before, .clearfix:after {display: block; content: ""; line-height: 0;}
 .clearfix:after {clear: both;}
 
+body{
+
+}
+
 /* 레이아웃 관련 */
 #wrap {
     width: 100%; 
@@ -47,7 +51,7 @@ a:hover {text-decoration: none !important;}
     padding: 0;
     z-index: -1;
 }
-
+	
 #logo {
     margin: 0px 0px 0px 0px;
     width: 300px;
@@ -264,7 +268,7 @@ figure.logo-img.hover img {
 }
 
 #main .title-a{
-	font-family: 'Roboto Slab', serif !important;
+	font-family: 'Noto Sans KR', sans-serif;
 	font-size: 35px;
 	text-align:left;
 	color: #FFFFFF;
@@ -276,7 +280,7 @@ figure.logo-img.hover img {
 }
 
 #main .title-b{
-	font-family: 'Roboto Slab', serif !important;
+	font-family: 'Noto Sans KR', sans-serif;
 	font-size: 70px;
 	color: #85cbeb;
 	text-align:left;

@@ -6,11 +6,16 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link href="/project/assets/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css">
-<link href="/project/assets/css/yu_main.css" rel="stylesheet" type="text/css">
-<link href="/project/assets/css/booking.css" rel="stylesheet" type="text/css"/>
-<link href="/project/assets/css/poto-upload.css" rel="stylesheet" type="text/css"/>
-<link href="/project/assets/css/myDog.css" rel="stylesheet" type="text/css">
+	<!--CSS-->
+	<link href="/project/assets/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css">
+	<link href="/project/assets/css/yu_main.css" rel="stylesheet" type="text/css">
+	<link href="/project/assets/css/booking.css" rel="stylesheet" type="text/css"/>
+	<link href="/project/assets/css/poto-upload.css" rel="stylesheet" type="text/css"/>
+	<link href="/project/assets/css/myDog.css" rel="stylesheet" type="text/css">
+
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
 </head>
 
 <script type="text/javascript" src="/project/assets/js/jquery-1.12.4.js"></script>

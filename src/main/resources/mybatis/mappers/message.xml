@@ -49,25 +49,25 @@
             from messege
             where (usersFrom = #{usersNo} and usersTo = #{target})
             or (usersFrom = #{target} and usersTo = #{usersNo})
-            order by senddate asc
+            order by messegeNo asc
          ]]>
+         
 	</select>
-
-
+	
+	<!-- 상대방 이름 가져오기 -->
+		<select id="getName" parameterType="int" resultType="MessageVo">
+	         <![CDATA[
+	         	select name
+	         	from users
+	         	where usersNo =  #{target}
+	         ]]>
+		</select>
+		
 	<!-- 메세지 전송 -->
 	<select id="insertM" parameterType="MessageVo">
          <![CDATA[
             insert into messege
             values (seq_messege_no.nextval, #{usersNo}, #{target}, sysdate, #{text})
-         ]]>
-
-	</select>
-	
-	<!-- 맨처음 대화 시작하기 -->
-	<select id="startM" parameterType="MessageVo">
-         <![CDATA[
-            insert into messege
-            values (seq_messege_no.nextval, #{usersNo}, #{hostNo}, sysdate, #{text})
          ]]>
 
 	</select>

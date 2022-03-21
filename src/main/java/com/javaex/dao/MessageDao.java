@@ -44,6 +44,12 @@ public class MessageDao {
       return mList;
    }
    
+   //상대방 이름 가져오기
+   public MessageVo getName(int target) {
+	   
+	   return sqlsession.selectOne("message.getName", target);
+   }
+   
    //메세지 인서트
    public int setM(MessageVo messageVo) {
       System.out.println("인서트 다오"+messageVo);

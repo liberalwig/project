@@ -42,12 +42,16 @@ public class MessageController {
    public String getM( @ModelAttribute MessageVo messageVo,
 		   			   @RequestParam int usersNo,
                        @RequestParam int target,
-                     Model model,
-                     HttpSession session){
+                       Model model){
 	  //유저타입
 	  MessageVo getType = messageService.getType(usersNo);
 	  model.addAttribute("getType", getType);
 	  System.out.println(getType+"가져오기");
+	  
+	  //상대방 이름 가져오기
+	  MessageVo getName = messageService.getName(target);
+	  model.addAttribute("getName", getName);
+	  System.out.println(getName+"가져오기");
 	  
 	  //리스트
 	  List<MessageVo> getList = messageService.getList(usersNo);
@@ -76,19 +80,7 @@ public class MessageController {
       return "redirect://message/getm?usersNo="+usersNo +"&target="+target;
    }
    
-   //맨처음 대화 시작하기
-   @RequestMapping(value="/message/startM", method = {RequestMethod.GET, RequestMethod.POST})
-   public String startM( @ModelAttribute MessageVo messageVo,
-		   				 @RequestParam int usersNo,
-		   				@RequestParam int target,
-                         HttpSession session) {
-		messageService.sentMFirst(messageVo);
-		System.out.println("첫대화 컨트롤러");
 
-
-		return "redirect://message/getm?usersNo="+usersNo +"&target="+target;
-   }
-   
    
    //메세지 읽기
 //   @RequestMapping(value="/message/read", method = {RequestMethod.GET, RequestMethod.POST})

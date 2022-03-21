@@ -19,7 +19,7 @@
 }
 
 #btn-area2 {
-	margin: 0px 0px 10px 1000px;
+	margin: 0px 0px 10px 890px;
 }
 
 .review2 {
@@ -72,9 +72,14 @@
 	margin: 0px 0px 20px 0px;
 }
 
+#messeage {
+	font-size: 15px;
+	margin: 0px 0px 20px 895px;
+}
+
 .add-img3 {
 	font-size: 15px;
-	margin: 0px 0px 20px 990px;
+	margin: 0px 0px 20px 0px;
 }
 
 #galleryArea {

@@ -7,6 +7,10 @@
 	width: 1170px;
 }
 
+.g-table {
+	margin-top: 70px;
+}
+
 .table>tbody>tr>td {
 	vertical-align: middle;
 }
@@ -47,7 +51,7 @@ ul>li {
 }
 
 #list-btn {
-	margin: 0px 0px 30px 970px;
+	margin: 0px 0px 30px 1080px;
 }
 
 .list-btn {

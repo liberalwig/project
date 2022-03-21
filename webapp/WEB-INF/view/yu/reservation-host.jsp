@@ -48,12 +48,10 @@
 					<div id="r-list">
 
 						<div id="list-btn">
-							<button class="btn btn-default hover-boot" type="submit">메세지보내기</button>
 							<button class="btn btn-default hover-boot" type="submit">예약거절</button>
 						</div>
 						<table class="table table-hover">
 							<colgroup>
-								<col style="width: 5%;">
 								<col style="width: 10%;">
 								<col style="width: 10%;">
 								<col style="width: 10%;">
@@ -64,7 +62,6 @@
 							</colgroup>
 							<thead id="guest-table">
 								<tr>
-									<th></th>
 									<th>예약번호</th>
 									<th>프로필사진</th>
 									<th>게스트이름</th>
@@ -78,7 +75,6 @@
 							<tbody id="bookingDetail">
 								<c:forEach items="${bList}" var="BookingVo">
 									<tr class="bRow">
-										<td class="bOne" data-bookingno="${BookingVo.bookingNo}"><input type="radio" name="list-radio"></td>
 										<td id="no" class="bOne" data-bookingno="${BookingVo.bookingNo}">${BookingVo.bookingNo}</td>
 										<td class="bOne" data-bookingno="${BookingVo.bookingNo}"><img src="/project/assets/images/reservation-dog.png"></td>
 										<td class="bOne" data-bookingno="${BookingVo.bookingNo}">${BookingVo.guestName}</td>
