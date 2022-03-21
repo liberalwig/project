@@ -6,11 +6,16 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link href="/project/assets/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css">
-<link href="/project/assets/css/yu_main.css" rel="stylesheet" type="text/css">
-<link href="/project/assets/css/fullcalendar.css" rel="stylesheet" type="text/css">
-<link href="/project/assets/css/reservation.css" rel="stylesheet" type="text/css">
-<link href="/project/assets/css/finishP.css" rel="stylesheet" type="text/css">
+	<!--CSS-->
+	<link href="/project/assets/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css">
+	<link href="/project/assets/css/yu_main.css" rel="stylesheet" type="text/css">
+	<link href="/project/assets/css/fullcalendar.css" rel="stylesheet" type="text/css">
+	<link href="/project/assets/css/reservation.css" rel="stylesheet" type="text/css">
+	<link href="/project/assets/css/finishP.css" rel="stylesheet" type="text/css">
+
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
 </head>
 
 <script type="text/javascript" src="/project/assets/js/jquery-1.12.4.js"></script>
@@ -45,15 +50,10 @@
 				</div>
 				
 				<div id="content-main">
-					<div id="list-btn">
-						<button class="btn btn-default hover-boot" type="submit">메세지보내기</button>
-						<button class="btn btn-default hover-boot" type="submit">결제취소</button>
-					</div>
 					
-					<table class="table table-hover">
+					<table class="table table-hover g-table">
 						<thead>
 							<tr>
-								<th> </th>
 								<th>예약번호</th>
 								<th>프로필사진</th>
 								<th>펫시터이름</th>
@@ -67,7 +67,6 @@
 						<tbody id="bookingDetail">
 							<c:forEach items="${bList}" var="BookingVo">
 								<tr class="bRow">
-									<td class="bOne cursorPointer" data-bookingno="${BookingVo.bookingNo}"><input type="radio" name="list-radio"></td>
 									<td id="no" class="bOne cursorPointer" data-bookingno="${BookingVo.bookingNo}">${BookingVo.bookingNo}</td>
 									<td class="bOne cursorPointer" data-bookingno="${BookingVo.bookingNo}"><img src="/project/assets/images/reservation-dog.png"></td>
 									<td class="bOne cursorPointer" data-bookingno="${BookingVo.bookingNo}">${BookingVo.hostName}</td>
