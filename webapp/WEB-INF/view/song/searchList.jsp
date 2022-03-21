@@ -237,10 +237,12 @@
 			
 		 	var adress = [];   //주소	
 			var hostNo =[];   //호스트넘버
+			var hostname =[];
 			
 			<c:forEach items="${searchList}" var="svo">
 				adress.push("${svo.adress1}");
 				hostNo.push("${svo.hostNo}");
+				hostname.push("${svo.hostName}");
 			</c:forEach> 
 			
 			var imageSrc = '${pageContext.request.contextPath}/assets/images/searchListMarker.png', // 마커이미지의 주소입니다    
@@ -251,8 +253,9 @@
 			// 마커의 이미지정보를 가지고 있는 마커이미지를 생성합니다
 		    var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imageOption),
 		        markerPosition = new kakao.maps.LatLng(37.54699, 127.09598); // 마커가 표시될 위치입니다
-				
+		    var namelist = name;
 		    var listData = adress;
+		   
 					
 			listData.forEach(function(addr, index) {
 			    geocoder.addressSearch(addr, function(result, status) {
@@ -269,7 +272,7 @@
 			        
 			        	// 인포윈도우를 생성합니다
 			            var infowindow = new daum.maps.InfoWindow({
-			                content :'<div style="width:150px;;text-align:center;padding:5px 0;font-size: 12px;">' + listData[index] + '</div>',       //생성할때 주소는 넣어 줬음
+			                content :'<div style="text-align:center;font-size: 12px;height:23px;"><p>' + hostname[index] + '</p></div>',       //생성할때 주소는 넣어 줬음
 			                disableAutoPan: true
 			            });
 			         	
