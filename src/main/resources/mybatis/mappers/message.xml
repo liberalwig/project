@@ -49,7 +49,7 @@
             from messege
             where (usersFrom = #{usersNo} and usersTo = #{target})
             or (usersFrom = #{target} and usersTo = #{usersNo})
-            order by senddate asc
+            order by messegeNo asc
          ]]>
          
 	</select>
@@ -68,15 +68,6 @@
          <![CDATA[
             insert into messege
             values (seq_messege_no.nextval, #{usersNo}, #{target}, sysdate, #{text})
-         ]]>
-
-	</select>
-	
-	<!-- 맨처음 대화 시작하기 -->
-	<select id="startM" parameterType="MessageVo">
-         <![CDATA[
-            insert into messege
-            values (seq_messege_no.nextval, #{usersNo}, #{hostNo}, sysdate, #{text})
          ]]>
 
 	</select>

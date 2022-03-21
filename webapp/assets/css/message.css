@@ -23,49 +23,6 @@ a:hover {text-decoration: none; color: #000}
 
 #content { float: left; width: 1200px; margin: 0px 0px 100px 0px;}
 
-#aside {
-	float: left;
-	padding: 0px 0px 0px 0px;
-	width: 240px;
-    font-size: 18px;
-}
-/* 왼쪽메뉴(aside) **/
-#aside #b-aside {
-    padding: 45px 0px 0px 0px;
-    width: 240px;
-}
- 
-#aside>#b-aside {
-    margin: 0px 0px 0px 0px;
-}
- 
-.aside-img {
-    width: 30px;
-    margin: 0px 0px 0px 125px;
-    vertical-align: middle;
-}
- 
-#aside #b-aside>li {
-    padding-left: 10px;
-    display: block;
-    line-height: 60px;
-    height: 60px;
-}
- 
-#aside #b-aside>ul>li {
-    padding: 20px 0px 20px 30px;
-    text-align: left;
-    background-color: #eeeeee;
-}
- 
-#aside #b-aside>#s-aside>ul>li:hover {
-    background-color: #eeeeee;
-}
- 
-.hide {
-    display: none;
-}
-
 /* 메인컨텐츠(content) */
 #content-head {
     margin: 45px 0px 30px 30px;
@@ -241,6 +198,14 @@ a:hover {text-decoration: none; color: #000}
     border-right: 1px solid #bdbdbd;
 }
 
+#conver #defualt {
+	margin-top: 110px;
+	color: #6EB6F0;
+	font-weight: bolder;
+	font-size: 60px;
+	text-align: center;
+}
+
 /* CSS talk bubble */
 .talk-bubble {
     margin: 20px 100px 5px 10px;
@@ -281,7 +246,7 @@ a:hover {text-decoration: none; color: #000}
 
 .time {
     font-size: 14px;
-    margin-left: 170px;
+    margin-left: 175px;
 }
 
 .timeme {
@@ -314,11 +279,14 @@ a:hover {text-decoration: none; color: #000}
 .btn-send {
 	background-color: #6EB6F0;
     margin: 35px 0px 0px 50px;
-    padding: 20px 30px 20px 30px;
+    padding: 10px 20px 10px 20px;
+    font-size: 20px;
+    color: #ffffff;
 }
 
 .btn-send:hover {
 	background-color: #6EB6F0;
+	color: #ffffff;
 }
 
  

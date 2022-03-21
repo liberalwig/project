@@ -13,6 +13,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!--CSS -->
 <link href="/project/assets/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css">
+<link href="/project/assets/css/yu_main.css" rel="stylesheet" type="text/css">
 <link href="/project/assets/css/message.css" rel="stylesheet" type="text/css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -66,8 +67,15 @@
 								<c:when test="${empty getName.name}">
                         		</c:when>
 								<c:otherwise>
-									<img class="profile" src="/project/assets/images/message_profile1.jpg">
-									<p class="name">${getName.name}님과의쪽지</p>
+									<c:choose>
+										<c:when test="${empty requestScope.hostMap.hostVo.path}">
+											<img id="hostimg" src="${pageContext.request.contextPath}/assets/images/hostinfo_sample.jpg" alt="PetSitter Image" class="profile">
+										</c:when>
+										<c:otherwise>
+											<img id="hostimg" src="${pageContext.request.contextPath}/photo/${requestScope.hostMap.hostVo.path}" alt="PetSitter Image" class="profile">
+										</c:otherwise>
+									</c:choose>
+									<p class="name">${getName.name}님과 채팅</p>
 								</c:otherwise>
 							</c:choose>
 						</div>
@@ -78,7 +86,14 @@
 								<c:choose>
 									<c:when test="${ list.usersType eq 1 }">
 										<div class="clearfix link mList" OnClick="location.href ='${pageContext.request.contextPath}/message/getm?target=${list.target}&usersNo=${list.me}'" style="cursor: pointer;">
-											<img class="profile" src="/project/assets/images/message_profile1.jpg">
+											<c:choose>
+												<c:when test="${empty requestScope.hostMap.hostVo.path}">
+													<img id="hostimg" src="${pageContext.request.contextPath}/assets/images/hostinfo_sample.jpg" alt="PetSitter Image" class="profile">
+												</c:when>
+												<c:otherwise>
+													<img id="hostimg" src="${pageContext.request.contextPath}/photo/${requestScope.hostMap.hostVo.path}" alt="PetSitter Image" class="profile">
+												</c:otherwise>
+											</c:choose>
 											<p class="name">${list.name}님</p>
 											<div>
 												<p class="timeL">${list.sendDate}</p>
@@ -87,8 +102,15 @@
 									</c:when>
 									<c:otherwise>
 										<div class="clearfix link mList" OnClick="location.href ='${pageContext.request.contextPath}/message/getm?target=${list.target}&usersNo=${list.me}'" style="cursor: pointer;">
-											<img class="profile" src="/project/assets/images/message_profile1.jpg">
-											<p class="name">${list.name}님 호스트</p>
+											<c:choose>
+												<c:when test="${empty requestScope.hostMap.hostVo.path}">
+													<img id="hostimg" src="${pageContext.request.contextPath}/assets/images/hostinfo_sample.jpg" alt="PetSitter Image" class="profile">
+												</c:when>
+												<c:otherwise>
+													<img id="hostimg" src="${pageContext.request.contextPath}/photo/${requestScope.hostMap.hostVo.path}" alt="PetSitter Image" class="profile">
+												</c:otherwise>
+											</c:choose>
+											<p class="name">${list.name}님</p>
 											<div>
 												<p class="timeL">${list.sendDate}</p>
 											</div>
@@ -100,32 +122,40 @@
 						</div>
 
 						<div id="conver" class="col-xs-12 clearfix scroll scroll1">
-							<c:forEach items="${mList}" var="mList">
-								<c:choose>
-									<c:when test="${mList.usersFrom eq param.usersNo}">
-										<div class="textme">
-											<!--메세지창+시간-->
-											<div class="talk-bubblet">
-												<div class="talktext">
-													<p>${mList.text}</p>
+							<c:choose>
+								<c:when test ="${empty mList}">
+									<p id="defualt">대화를 <br>시작해보세요!</p>
+								</c:when>
+								
+								<c:otherwise>
+									<c:forEach items="${mList}" var="mList">
+										<c:choose>
+											<c:when test="${mList.usersFrom eq param.usersNo}">
+												<div class="textme">
+													<!--메세지창+시간-->
+													<div class="talk-bubblet">
+														<div class="talktext">
+															<p>${mList.text}</p>
+														</div>
+													</div>
+													<p class="timeme">${mList.sendDate}</p>
 												</div>
-											</div>
-											<p class="timeme">${mList.sendDate}</p>
-										</div>
-									</c:when>
-									<c:otherwise>
-										<div class="textyou">
-											<!--메세지창+시간-->
-											<div class="talk-bubble">
-												<div class="talktext">
-													<p>${mList.text}</p>
+											</c:when>
+											<c:otherwise>
+												<div class="textyou">
+													<!--메세지창+시간-->
+													<div class="talk-bubble">
+														<div class="talktext">
+															<p>${mList.text}</p>
+														</div>
+													</div>
+													<p class="time">${mList.sendDate}</p>
 												</div>
-											</div>
-											<p class="time">${mList.sendDate}</p>
-										</div>
-									</c:otherwise>
-								</c:choose>
-							</c:forEach>
+											</c:otherwise>
+										</c:choose>
+									</c:forEach>
+								</c:otherwise>
+							</c:choose>
 						</div>
 						<div id="text" class="clearfix">
 							<form id="insertText" method="get" action="${pageContext.request.contextPath}/message/setm">
