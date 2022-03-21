@@ -92,4 +92,6 @@ a:hover {text-decoration: none; color: #000}
 	width: 240px;
 	border-radius: 0px;
 }
-
+.modal-dialog{
+	margin-top:250px;
+}

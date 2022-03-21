@@ -22,33 +22,76 @@
 		<div id="container">
 			<div id="infoArea" class="row">
 				<div id="imageArea" class="col-xs-6">
-					<img src="${pageContext.request.contextPath}/assets/images/shopinfo_sample.png">
+					<img src="${pageContext.request.contextPath}/photo/${requestScope.itemVo.path}">
 				</div>
 				<div id="itemArea" class="col-xs-6">
 					<div id="info1">
-						<h3 class="lead">(성수매장 방문픽업)Merry WholeSome Box</h3>
-						<h3 class="lead">32,000원</h3>
+						<h3 class="lead">${requestScope.itemVo.title}</h3>
+						<h3 class="lead">${requestScope.itemVo.cost}원</h3>
 					</div>
 					<div id="info2">
-						<p>따뜻하고 맛있는 여러분의 2021년 연말을 위한 홀썸의 Merry WHOLESOME Box 입니다.</p>
-						<p>모두 해피하세요!</p>
+						<p>${requestScope.itemVo.info}</p>
 					</div>
 					<div id="buyinfo">
 						
 					</div>
 					<div id="buyDetail" class="clearfix">
 						<p>총 상품금액(1개)</p>
-						<h4>63,000원</h4>
+						<h4>${requestScope.itemVo.cost}원</h4>
 					</div>
 					<div id="buttonArea">
-						<button type="button" class="btn btn-primary color">구매하기</button>
-						<button type="button" class="btn btn-default">장바구니</button>
+						<a href="${pageContext.request.contextPath}/shop/pay?itemNo=${requestScope.itemVo.itemNo}">
+							<button id="buy" type="button" class="btn btn-primary color">구매하기</button>
+						</a>
+						<button id="addcart" type="button" class="btn btn-default">장바구니</button>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-	
+		<input type="hidden" id="usersNo" value="${sessionScope.authUser.usersNo}">
+		<input type="hidden" id="itemNo" value="${requestScope.itemVo.itemNo}">
 	<c:import url="/WEB-INF/view/includes/footer.jsp"></c:import>
+
+<!-- 모달 -->
+		<div class="modal fade" id="cartInsertOk" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-body">
+						<p class="text-center" style="margin-bottom: 0;" id="cart_add_result_msg">
+							선택하신 상품을 장바구니에 담았습니다.						
+						</p>
+					</div>
+					<div class="modal-footer">
+						<div class="btn-group-justified">
+							<a href="javascript:" class="btn" onclick="SITE_SHOP_DETAIL.hideAddCartAlarm();">계속쇼핑</a>
+							<a href="javascript:" class="btn right" onclick="SITE_SHOP_DETAIL.moveCart();">장바구니</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+<!-- //모달 -->
 </body>
+<script>
+	//장바구니 버튼 클릭시
+	$('#addcart').on("click",function(){
+		$('#cartInsertOk').modal('show');
+		$.ajax({
+			url : "${pageContext.request.contextPath}/shop/cartinsert",    
+			type : "post",
+			data : {
+				usersNo: $('#usersNo').val(),
+				itemNo: $('#itemNo').val(),
+			},
+			success : function(count) {
+				console.log(count);
+			},
+			error : function(XHR, status, error) {
+				console.error(status + " : " + error);
+			}
+		});
+	});
+</script>
+	
 </html>

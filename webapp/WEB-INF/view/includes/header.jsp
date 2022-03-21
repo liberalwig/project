@@ -35,6 +35,13 @@
             <!--menu  로그인-->
            <div class="menu col-md-2">
                 <c:if test="${authUser.usersNo == null}">
+               		<div class="menu_btn2">
+	                	<a href="${pageContext.request.contextPath}/shop/list">
+	                    	<button type="button" class="btn btn-default">
+	                        	<span class="glyphicon glyphicon-shopping-cart"></span>Shop
+	                    	</button>
+	                    </a>
+	                </div>
 	                <div class="btn-group pull-right menu_btn3">
 	                    <button type="button" class="menu_text3 btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
 	                    <span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span>
