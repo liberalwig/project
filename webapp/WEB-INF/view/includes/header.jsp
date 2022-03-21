@@ -17,7 +17,7 @@
 		<!--search-->
 		<div class="searchbox col-md-4">
 		    <!-- Topbar Search -->
-             <form action="${pageContext.request.contextPath}/searchList" method="post" class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+             <form action="${pageContext.request.contextPath}/searchList" method="get" class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
                  <div class="input-group input-group-joined border-0">
                      <div class="searchboxin_1 input-group input-group-joined"> 
                          <input type="text" name="searchKeyword" id="searchKeyword" value="" class="search_text1 small form-control ps-0 pointer" placeholder="어디를 찾으세요?" aria-label="Search" aria-describedby="basic-addon2" autocomplete="off">
@@ -68,12 +68,20 @@
 			                </c:otherwise>
 		                </c:choose>
 		                <div class="menu_btn2">
+		                	<a href="${pageContext.request.contextPath}/shop/list">
+		                    	<button type="button" class="btn btn-default">
+		                        	<span class="glyphicon glyphicon-shopping-cart"></span>Shop
+		                    	</button>
+		                    </a>
+		                </div>
+		                <div class="menu_btn2">
 		                	<a href="${pageContext.request.contextPath}/message?usersNo=${authUser.usersNo}">
 		                    	<button type="button" class="btn btn-default">
 		                        	Messages <span class="badge"><!--메세지 갯수 입력-->3</span>
 		                    	</button>
 		                    </a>
 		                </div>
+
                     	<div class="btn-group pull-right menu_btn3">
 		                    <button type="button" class="menu_text3 btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
 		                    <span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span>
