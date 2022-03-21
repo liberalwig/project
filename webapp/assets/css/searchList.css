@@ -51,7 +51,7 @@ font-family: 'Noto Sans KR', sans-serif;
 .search_container{
 	padding-left: 0px;
 	padding-right: 0px;
-	width: 	1550px;
+	width: 	108%;
 }
 .search_flex{
   display: flex;
@@ -240,7 +240,7 @@ font-family: 'Noto Sans KR', sans-serif;
 
 #footer{
 	font-size: 12px;
-	background:  #6fb5ef !important;
+	background:  #fff !important;
 }
 
 
