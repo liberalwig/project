@@ -39,74 +39,58 @@
       				<div class="col-xs-2 padding_0">
 	     				<form action="${pageContext.request.contextPath}/searchList" method="post">
 	      					<input type="hidden" name="orderType" id="orderType" value="1" >
-	      					<input type="hidden" name="searchKeyword" id="searchKeyword" value="" >
-	      					<input type="hidden" name="searchData" id="searchData" value="" >
+	      					<input type="hidden" name="searchKeyword" id="searchKeyword" value="${requestScope.searchListVo.searchKeyword}" >
+	      					<input type="hidden" name="searchData" id="searchData" value="${requestScope.searchListVo.searchData}" >
 		      				<button class="btn btn-default" type="submit">
 			                	 청결 
 			                </button>	
 	                	</form>
-      					<!-- <button class="btn btn-default communication" data-data-sort="dorder:asc" type="button">
-	                	 		communication 
-	                	</button>	 -->
       				</div>
       				<!--2 -->
                     <div class="col-xs-2 padding_0">
 	                   	<form action="${pageContext.request.contextPath}/searchList" method="post">
 	      					<input type="hidden" name="orderType" id="orderType" value="2" >
-	      					<input type="hidden" name="searchKeyword" id="searchKeyword" value="" >
-	      					<input type="hidden" name="searchData" id="searchData" value="" >
+	      					<input type="hidden" name="searchKeyword" id="searchKeyword" value="${requestScope.searchListVo.searchKeyword}" >
+	      					<input type="hidden" name="searchData" id="searchData" value="${requestScope.searchListVo.searchData}" >
 		      				<button class="btn btn-default" type="submit">
 			                	 산책 
 			                </button>	
 		        	 	</form>
-                    
-              			<!-- <button class="btn btn-default clean" data-sort="dorder:asc" type="button">
-	                	 		clean 
-	                	</button>	 -->
                     </div>
                     <!--3 -->
                     <div class="col-xs-2 padding_0" >
                     	<form action="${pageContext.request.contextPath}/searchList" method="post">
 	      					<input type="hidden" name="orderType" id="orderType" value="3" >
-	      					<input type="hidden" name="searchKeyword" id="searchKeyword" value="" >
-	      					<input type="hidden" name="searchData" id="searchData" value="" >
+	      					<input type="hidden" name="searchKeyword" id="searchKeyword" value="${requestScope.searchListVo.searchKeyword}" >
+	      					<input type="hidden" name="searchData" id="searchData" value="${requestScope.searchListVo.searchData}" >
 		      				<button class="btn btn-default" type="submit">
 			                	 식사 
 			                </button>	
 		        	 	</form>
                     
-	              	<!-- 	<button class="btn btn-default food" data-sort="dorder:asc" type="button">
-	                	 		food 
-	                	</button> -->	
+	             
                     </div>
                     <!-- 4 -->
                     <div class="col-xs-2 padding_0">
                     	<form action="${pageContext.request.contextPath}/searchList" method="post">
 	      					<input type="hidden" name="orderType" id="orderType" value="4" >
-	      					<input type="hidden" name="searchKeyword" id="searchKeyword" value="" >
-	      					<input type="hidden" name="searchData" id="searchData" value="" >
+	      					<input type="hidden" name="searchKeyword" id="searchKeyword" value="${requestScope.searchListVo.searchKeyword}" >
+	      					<input type="hidden" name="searchData" id="searchData" value="${requestScope.searchListVo.searchData}" >
 		      				<button class="btn btn-default" type="submit">
 			                	 놀이 
 			                </button>	
 		        	 	</form>
-                    
-		           <!--   	<button class="btn btn-default play" data-sort="dorder:asc" type="button">
-	                	 		play 
-	                	</button>	 -->
                     </div>
                     <!-- 5 -->
                     <div class="col-xs-2 padding_0">
 	                   	<form action="${pageContext.request.contextPath}/searchList" method="post">
 	     					<input type="hidden" name="orderType" id="orderType" value="5" >
-	     					<input type="hidden" name="searchKeyword" id="searchKeyword" value="" >
-	     					<input type="hidden" name="searchData" id="searchData" value="" >
+	     					<input type="hidden" name="searchKeyword" id="searchKeyword" value="${requestScope.searchListVo.searchKeyword}" >
+	     					<input type="hidden" name="searchData" id="searchData" value="${requestScope.searchListVo.searchData}" >
 	      					<button class="btn btn-default" type="submit">
 		                	 		소통 
 		                	</button>	
 	                	 </form>
-	              	 <!-- 	<button class="btn btn-default walk" data-sort="dorder:asc" type="button">
-	                	 		walk 
-	                	</button>	 -->
                     </div>
                 </div>
 
@@ -272,7 +256,7 @@
 			        
 			        	// 인포윈도우를 생성합니다
 			            var infowindow = new daum.maps.InfoWindow({
-			                content :'<div style="text-align:center;font-size: 12px;height:23px;"><p>' + hostname[index] + '</p></div>',       //생성할때 주소는 넣어 줬음
+			                content :'<div style"text-align:center;font-size: 12px;height:23px;"><p>' + hostname[index] + '</p></div>',       //생성할때 주소는 넣어 줬음
 			                disableAutoPan: true
 			            });
 			         	
