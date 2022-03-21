@@ -20,6 +20,7 @@
 	<c:import url="/WEB-INF/view/includes/header.jsp"></c:import>
 	<div id="wrap">
 		<div id="container" class="clearfix">
+			<h2>강아지 쇼핑몰</h2>
 			<div id="itemArea">
 				<div class="item">
 					<a href="${pageContext.request.contextPath}/shop/info">
@@ -59,7 +60,6 @@
 			</div>
 		</div>
 	</div>
-	
 	<c:import url="/WEB-INF/view/includes/footer.jsp"></c:import>
 </body>
 </html>

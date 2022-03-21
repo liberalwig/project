@@ -32,4 +32,20 @@ public class ShopController {
 		
 		return "/shop/shopPay";
 	}
+	
+	//쇼핑 내역
+	@RequestMapping(value = "/myshoplist", method = { RequestMethod.GET, RequestMethod.POST })
+	public String myShopList(Model model) {
+		System.out.println("[ShopController.myshoplist()]");
+		
+		return "/shop/myShopList";
+	}
+	
+	//쇼핑카트 내역
+	@RequestMapping(value = "/myshopcart", method = { RequestMethod.GET, RequestMethod.POST })
+	public String myShopCart(Model model) {
+		System.out.println("[ShopController.myshopcart()]");
+		
+		return "/shop/myShopCart";
+	}
 }

@@ -21,6 +21,11 @@
                <li onclick="location.href='${pageContext.request.contextPath}/user/heartForm?usersNo=${authUser.usersNo}'">찜 목록</li>
                <li onclick="location.href='${pageContext.request.contextPath}/mydog?usersNo=${authUser.usersNo}'">내 강아지</li>
                <li onclick="location.href='${pageContext.request.contextPath}/user/userModifyForm?usersNo=${authUser.usersNo}'">회원 정보 수정</li>
+               <li class="menu">내 쇼핑<img src="/project/assets/images/aside_img.png" class="aside-img"></li>
+               <ul id="s-aside">
+                  <li onclick="location.href='${pageContext.request.contextPath}/shop/myshoplist?usersNo=${authUser.usersNo}'">상품 주문내역</li>
+                  <li onclick="location.href='${pageContext.request.contextPath}/shop/myshopcart?userNo=${authUser.usersNo}'">장바구니</li>
+               </ul>
             </ul>
          </div>
       </c:when>
@@ -38,6 +43,11 @@
                <ul id="s-aside">
                   <li onclick="location.href='${pageContext.request.contextPath}/user/userModifyForm?usersNo=${authUser.usersNo}'">회원 정보 수정</li>
                   <li onclick="location.href='${pageContext.request.contextPath}/host/modifyForm?hostNo=${authUser.hostNo}'">펫시터 정보 수정</li>
+               </ul>
+               <li class="menu">내 쇼핑<img src="/project/assets/images/aside_img.png" class="aside-img"></li>
+               <ul id="s-aside">
+                  <li onclick="location.href='${pageContext.request.contextPath}/shop/myshoplist?usersNo=${authUser.usersNo}'">상품 주문내역</li>
+                  <li onclick="location.href='${pageContext.request.contextPath}/shop/myshopcart?userNo=${authUser.usersNo}'">장바구니</li>
                </ul>
             </ul>
          </div>

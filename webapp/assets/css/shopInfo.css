@@ -63,7 +63,7 @@ a:hover {text-decoration: none; color: #000}
 		}
 	#infoArea #itemArea {
 		padding: 0px 50px 0px 50px;
-		height: 613px;
+		height: 550px;
 	}
 	#itemArea #info1{
 		margin : 0px 0px 25px 0px;
@@ -72,13 +72,6 @@ a:hover {text-decoration: none; color: #000}
 	}
 	#itemArea #info2{
 		margin : 0px 0px 25px 0px;
-	}
-	.dropdown{
-		margin : 0px 0px 25px 0px;
-	}
-	.dropdown .dropdown-toggle {
-		border-radius: 0px;
-		width: 400px;
 	}
 #buyinfo{
 	background-color: rgba(33,33,33,0.03);
@@ -89,7 +82,7 @@ a:hover {text-decoration: none; color: #000}
 #buyDetail{
 	margin: 25px 0px 25px 0px;
 }
-#buyDetail p{
+#buyDetail>p{
 	float: left;
 }
 #buyDetail>h4{

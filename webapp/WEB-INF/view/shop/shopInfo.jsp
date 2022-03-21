@@ -33,19 +33,6 @@
 						<p>따뜻하고 맛있는 여러분의 2021년 연말을 위한 홀썸의 Merry WHOLESOME Box 입니다.</p>
 						<p>모두 해피하세요!</p>
 					</div>
-					<div class="dropdown">
-						<p> 갯수 *</p>
-						<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
-					    갯수를 선택해 주세요.
-					    <span class="caret"></span>
-					  	</button>
-					  	<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-					    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Action</a></li>
-					    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Another action</a></li>
-					    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Something else here</a></li>
-					    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Separated link</a></li>
-					  	</ul>
-					</div>
 					<div id="buyinfo">
 						
 					</div>
