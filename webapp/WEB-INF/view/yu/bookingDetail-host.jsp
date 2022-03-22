@@ -51,8 +51,8 @@
 
                     <div id="btn-area1">
                     	<c:if test="${bvo.status == '펫시팅중' || bvo.status == '예약완료'}">
-                    		<button name="imgupload" class="btn btn-default add-img1" data-photodate="${pListDate[0].photoDate}">이미지 업로드</button>
-                    		<button id="messeage" data-usersno="${bvo.usersNo}" data-hostno="${bvo.hostNo}" class="btn btn-default hover-boot list-btn" type="submit">메세지보내기</button>
+                    		<button name="imgupload" class="btn btn-default add-img4" data-photodate="${pListDate[0].photoDate}">이미지 업로드</button>
+                    		<button id="h-messeage" data-usersno="${bvo.usersNo}" data-hostno="${bvo.hostNo}" class="btn btn-default hover-boot list-btn" type="submit">메세지보내기</button>
                     		<button class="btn btn-default add-img2" onclick = "window.history.back()">목록으로 돌아가기</button>
                     	</c:if>
                     	<c:if test="${bvo.status != '펫시팅중' && bvo.status != '예약완료'}">
@@ -451,11 +451,12 @@
 	                            </div>
 	
 	                            <div id="review" class="row">
-	                                <div class="col-xs-6 review-text">
+	                                <div class="col-xs-6">
 	                                    <h3 class="f-b">후기</h3>
-	                                    <p>${bvo.review}</p>
+	                                    <textarea id="review-text" disabled="disabled">${bvo.review}</textarea>
 	                                </div>
 	                            </div>
+	                            
 							</c:if>
 
                         </div>
@@ -605,7 +606,7 @@
 
 <script>
 	//메세지 버튼클릭
-	$("#messeage").on("click", function(){
+	$("#h-messeage").on("click", function(){
 		var $this = $(this);
 		var hostNo = $this.data("hostno");
 		var usersNo = $this.data("usersno");
@@ -629,7 +630,7 @@
 		//DB에 있는값과 매칭시켜서 cheaked속성 추가
 		for(var i=0; i<=4; i++) {
 			for(var j=1; j<=5; j++) {
-				if(reviewArryValue[i] == j){
+				if(reviewArryValue[i]/2 == j){
 					$("#"+ reviewArryName[i] + j).attr("checked", "checked");
 					break;
 				}

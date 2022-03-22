@@ -6,10 +6,15 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link href="/project/assets/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css">
-<link href="/project/assets/css/yu_main.css" rel="stylesheet" type="text/css">
-<link href="/project/assets/css/fullcalendar.css" rel="stylesheet" type="text/css">
-<link href="/project/assets/css/reservation.css" rel="stylesheet" type="text/css">
+	<link href="/project/assets/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css">
+	<link href="/project/assets/css/yu_main.css" rel="stylesheet" type="text/css">
+	<link href="/project/assets/css/fullcalendar.css" rel="stylesheet" type="text/css">
+	<link href="/project/assets/css/reservation.css" rel="stylesheet" type="text/css">
+	
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">	
+
 </head>
 
 <script type="text/javascript" src="/project/assets/js/jquery-1.12.4.js"></script>
@@ -47,9 +52,6 @@
 
 					<div id="r-list">
 
-						<div id="list-btn">
-							<button class="btn btn-default hover-boot" type="submit">예약거절</button>
-						</div>
 						<table class="table table-hover">
 							<colgroup>
 								<col style="width: 10%;">
@@ -75,12 +77,19 @@
 							<tbody id="bookingDetail">
 								<c:forEach items="${bList}" var="BookingVo">
 									<tr class="bRow">
-										<td id="no" class="bOne" data-bookingno="${BookingVo.bookingNo}">${BookingVo.bookingNo}</td>
-										<td class="bOne" data-bookingno="${BookingVo.bookingNo}"><img src="/project/assets/images/reservation-dog.png"></td>
-										<td class="bOne" data-bookingno="${BookingVo.bookingNo}">${BookingVo.guestName}</td>
-										<td class="bOne" data-bookingno="${BookingVo.bookingNo}">${BookingVo.checkin} ~ ${BookingVo.checkout}</td>
-										<td class="bOne" data-bookingno="${BookingVo.bookingNo}">₩ ${BookingVo.bookingDate * BookingVo.days * BookingVo.ea}</td>
-										<td class="bOne" data-bookingno="${BookingVo.bookingNo}">${BookingVo.guestHp}</td>
+										<td id="no" class="bOne cursorPointer" data-bookingno="${BookingVo.bookingNo}">${BookingVo.bookingNo}</td>
+										<c:choose>
+											<c:when test="${!empty BookingVo.guestPath}">
+												<td class="bOne cursorPointer" data-bookingno="${BookingVo.bookingNo}"><img class="img-circle" src="${pageContext.request.contextPath}/photo/${BookingVo.guestPath}"></td>
+											</c:when>
+											<c:otherwise>
+												<td class="bOne cursorPointer" data-bookingno="${BookingVo.bookingNo}"><img class="img-circle" src="${pageContext.request.contextPath}/assets/images/reservation-dog.png"></td>
+											</c:otherwise>
+										</c:choose>
+										<td class="bOne cursorPointer" data-bookingno="${BookingVo.bookingNo}">${BookingVo.guestName}</td>
+										<td class="bOne cursorPointer" data-bookingno="${BookingVo.bookingNo}">${BookingVo.checkin} ~ ${BookingVo.checkout}</td>
+										<td class="bOne cursorPointer" data-bookingno="${BookingVo.bookingNo}">₩ ${BookingVo.bookingDate * BookingVo.days * BookingVo.ea}</td>
+										<td class="bOne cursorPointer" data-bookingno="${BookingVo.bookingNo}">${BookingVo.guestHp}</td>
 										<c:choose>
 											<c:when test="${BookingVo.status == '승인대기'}">
 												<td id="reservationOk" data-bookingno="${BookingVo.bookingNo}">
