@@ -73,9 +73,9 @@ public class BookingService {
 		System.out.println(file);
 
 		// 맥 저장경로
-		String saveDir = "/Users/hs/JavaStudy/workspace_project/project/webapp/assets/upload/";
+		//String saveDir = "/Users/hs/JavaStudy/workspace_project/project/webapp/assets/upload/";
 		// 윈도우 저장경로
-		//String saveDir = "C:\\javaStudy\\photo\\";
+		String saveDir = "C:\\javaStudy\\photo\\";
 
 		// 확장자
 		String exName = file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf("."));
