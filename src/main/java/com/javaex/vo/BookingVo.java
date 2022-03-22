@@ -29,17 +29,20 @@ public class BookingVo {
 	private String adress2;
 	private String adress3;
 	private int hostView;
+	private String hostPath;
 
 	// 유저테이블(조인)
 	private String guestName;
 	private String guestHp;
+	private String guestPath;
 
 	public BookingVo() {
 	}
 
 	public BookingVo(int bookingNo, int hostNo, int usersNo, String checkin, String checkout, int ea, int bookingDate,
-			int days, String note, String status, String review, String reviewDate, int clean, int food, int play,
-			int walk, int communication) {
+			int totalCost, int days, String note, String status, String review, String reviewDate, int clean, int food,
+			int play, int walk, int communication, String hostName, String hostHp, String adress1, String adress2,
+			String adress3, int hostView, String hostPath, String guestName, String guestHp, String guestPath) {
 		this.bookingNo = bookingNo;
 		this.hostNo = hostNo;
 		this.usersNo = usersNo;
@@ -47,6 +50,7 @@ public class BookingVo {
 		this.checkout = checkout;
 		this.ea = ea;
 		this.bookingDate = bookingDate;
+		this.totalCost = totalCost;
 		this.days = days;
 		this.note = note;
 		this.status = status;
@@ -57,6 +61,16 @@ public class BookingVo {
 		this.play = play;
 		this.walk = walk;
 		this.communication = communication;
+		this.hostName = hostName;
+		this.hostHp = hostHp;
+		this.adress1 = adress1;
+		this.adress2 = adress2;
+		this.adress3 = adress3;
+		this.hostView = hostView;
+		this.hostPath = hostPath;
+		this.guestName = guestName;
+		this.guestHp = guestHp;
+		this.guestPath = guestPath;
 	}
 
 	public BookingVo(int bookingNo, int hostNo, int usersNo, String checkin, String checkout, int ea, int bookingDate,
@@ -318,6 +332,22 @@ public class BookingVo {
 
 	public void setHostView(int hostView) {
 		this.hostView = hostView;
+	}
+
+	public String getHostPath() {
+		return hostPath;
+	}
+
+	public void setHostPath(String hostPath) {
+		this.hostPath = hostPath;
+	}
+
+	public String getGuestPath() {
+		return guestPath;
+	}
+
+	public void setGuestPath(String guestPath) {
+		this.guestPath = guestPath;
 	}
 
 	// 메소드 일반

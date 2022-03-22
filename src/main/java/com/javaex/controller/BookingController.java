@@ -156,9 +156,12 @@ public class BookingController {
 		
 		//mydog
 		MyDogVo mvo = bookingService.mydogSelect(bvo.getUsersNo());
-		String[] arry = mvo.getBirth().split(" ");
-		arry[0].replace("-", ".");
-		model.addAttribute("mvo",mvo);
+		
+		if(mvo != null) {
+			String[] arry = mvo.getBirth().split(" ");
+			arry[0].replace("-", ".");
+			model.addAttribute("mvo",mvo);
+		}
 		
 		model.addAttribute("pList", pList);
 		

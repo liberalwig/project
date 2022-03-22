@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link href="${pageContext.request.contextPath}/assets/css/booking.css" rel="stylesheet" type="text/css"/>
+<link href="${pageContext.request.contextPath}/assets/css/yu_main.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
    <c:choose>

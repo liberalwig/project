@@ -65,8 +65,15 @@
 						<tbody id="bookingDetail">
 							<c:forEach items="${bList}" var="BookingVo">
 									<tr class="bRow">
-	                                   <td id="no" class="bOne cursorPointer" data-bookingno="${BookingVo.bookingNo}">${BookingVo.bookingNo}</td>
-										<td class="bOne cursorPointer" data-bookingno="${BookingVo.bookingNo}"><img src="/project/assets/images/reservation-dog.png"></td>
+	                                    <td id="no" class="bOne cursorPointer" data-bookingno="${BookingVo.bookingNo}">${BookingVo.bookingNo}</td>
+	                                   	<c:choose>
+	                                   		<c:when test="${!empty BookingVo.hostPath}">
+	                                   			<td class="bOne cursorPointer" data-bookingno="${BookingVo.bookingNo}"><img class="img-circle" src="${pageContext.request.contextPath}/photo/${BookingVo.hostPath}"></td>
+	                                   		</c:when>
+	                                   		<c:otherwise>
+	                                   			<td class="bOne cursorPointer" data-bookingno="${BookingVo.bookingNo}"><img class="img-circle" src="${pageContext.request.contextPath}/assets/images/reservation-dog.png"></td>
+	                                   		</c:otherwise>
+	                                   	</c:choose>
 										<td class="bOne cursorPointer" data-bookingno="${BookingVo.bookingNo}">${BookingVo.hostName}</td>
 										<td class="bOne cursorPointer" data-bookingno="${BookingVo.bookingNo}">${BookingVo.checkin} ~ ${BookingVo.checkout}</td>
 										<td class="bOne cursorPointer" data-bookingno="${BookingVo.bookingNo}">₩ ${BookingVo.bookingDate * BookingVo.days * BookingVo.ea}</td>
