@@ -28,7 +28,7 @@
 	<body>
 	<!-- header -->
 	<c:import url="/WEB-INF/view/includes/header.jsp"></c:import>
-	
+		
     <div id="wrap" class="container-fluid">
         <!-- main -->
         <div id="search_List" class="container-fluid">
