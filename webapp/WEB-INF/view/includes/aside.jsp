@@ -9,7 +9,7 @@
 </head>
 <body>
    <c:choose>
-      <c:when test="${authUser.usersType == 1}">
+      <c:when test="${authUser.usersType == 1}"><!--게스트 일때 -->
          <div id="aside">
             <ul id="b-aside">
                <li class="menu">예약관리<img src="${pageContext.request.contextPath}/assets/images/aside_img.png" class="aside-img"></li>
@@ -30,7 +30,7 @@
          </div>
       </c:when>
       
-      <c:otherwise>
+      <c:when test="${authUser.usersType == 2}"><!-- 펫시터 일때 -->
          <div id="aside">
             <ul id="b-aside">
                <li class="menu">예약관리<img src="/project/assets/images/aside_img.png" class="aside-img"></li>
@@ -48,6 +48,17 @@
                <ul id="s-aside">
                   <li onclick="location.href='${pageContext.request.contextPath}/shop/myshoplist?usersNo=${authUser.usersNo}'">상품 주문내역</li>
                   <li onclick="location.href='${pageContext.request.contextPath}/shop/myshopcart?userNo=${authUser.usersNo}'">장바구니</li>
+               </ul>
+            </ul>
+         </div>
+      </c:when>
+      <c:otherwise><!-- 관리자 일때 -->
+         <div id="aside">
+            <ul id="b-aside">
+               <li class="menu">쇼핑관리<img src="/project/assets/images/aside_img.png" class="aside-img"></li>
+               <ul id="s-aside">
+                  <li onclick="location.href='${pageContext.request.contextPath}/shop/writeForm'">상품등록</li>
+                  <li onclick="location.href='${pageContext.request.contextPath}/shop/admin'">상품관리</li>
                </ul>
             </ul>
          </div>
