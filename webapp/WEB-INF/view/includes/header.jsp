@@ -93,15 +93,17 @@
 		                    <button type="button" class="menu_text3 btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
 		                    <span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span>
 		                    </button>
-		                   	<ul class="dropdown-menu" role="menu">
-		                        <li id="login"><a href="${pageContext.request.contextPath}/logout">로그아웃</a></li>
+		                   	<ul class="dropdown-menu" role="menu">		                   
 		                        <c:if test="${authUser.usersType == 1}">
-		                        	<li><a href="${pageContext.request.contextPath}/bookingBeforeGuest?usersNo=${authUser.usersNo}">마이페이지</a></li>
+		                        	<li><a href="${pageContext.request.contextPath}/bookingEndGuest?usersNo=${authUser.usersNo}">예약현황</a></li>
+		                        	<li><a href="${pageContext.request.contextPath}/message?usersNo=${authUser.usersNo}">메세지</a></li>
 		                        </c:if>
 		                        <c:if test="${authUser.usersType == 2}">
-		                        	<li><a href="${pageContext.request.contextPath}/bookingEndHost?hostNo=${authUser.hostNo}">마이페이지</a></li>
+		                        	<li><a href="${pageContext.request.contextPath}/bookingEndHost?hostNo=${authUser.hostNo}">예약관리</a></li>
+		                        	<li><a href="${pageContext.request.contextPath}/message?usersNo=${authUser.usersNo}">메세지</a></li>
 		                        </c:if>
 		                        <li><a href="${pageContext.request.contextPath}/user/userModifyForm?usersNo=${authUser.usersNo}">내 정보 수정</a></li>
+		                         <li id="login"><a href="${pageContext.request.contextPath}/logout">로그아웃</a></li>
 		                   	</ul>
                     	</div>
                     </c:if>
