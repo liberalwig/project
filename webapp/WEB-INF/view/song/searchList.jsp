@@ -37,7 +37,7 @@
                 <div class="search_button_left col-md-4">
                   	<!-- 1 -->
       				<div class="col-xs-2 padding_0">
-	     				<form action="${pageContext.request.contextPath}/searchList" method="post">
+	     				<form action="${pageContext.request.contextPath}/searchList" method="get">
 	      					<input type="hidden" name="orderType" id="orderType" value="1" >
 	      					<input type="hidden" name="searchKeyword" id="searchKeyword" value="${requestScope.searchListVo.searchKeyword}" >
 	      					<input type="hidden" name="searchData" id="searchData" value="${requestScope.searchListVo.searchData}" >
@@ -48,7 +48,7 @@
       				</div>
       				<!--2 -->
                     <div class="col-xs-2 padding_0">
-	                   	<form action="${pageContext.request.contextPath}/searchList" method="post">
+	                   	<form action="${pageContext.request.contextPath}/searchList" method="get">
 	      					<input type="hidden" name="orderType" id="orderType" value="2" >
 	      					<input type="hidden" name="searchKeyword" id="searchKeyword" value="${requestScope.searchListVo.searchKeyword}" >
 	      					<input type="hidden" name="searchData" id="searchData" value="${requestScope.searchListVo.searchData}" >
@@ -59,7 +59,7 @@
                     </div>
                     <!--3 -->
                     <div class="col-xs-2 padding_0" >
-                    	<form action="${pageContext.request.contextPath}/searchList" method="post">
+                    	<form action="${pageContext.request.contextPath}/searchList" method="get">
 	      					<input type="hidden" name="orderType" id="orderType" value="3" >
 	      					<input type="hidden" name="searchKeyword" id="searchKeyword" value="${requestScope.searchListVo.searchKeyword}" >
 	      					<input type="hidden" name="searchData" id="searchData" value="${requestScope.searchListVo.searchData}" >
@@ -67,12 +67,10 @@
 			                	 식사 
 			                </button>	
 		        	 	</form>
-                    
-	             
                     </div>
                     <!-- 4 -->
                     <div class="col-xs-2 padding_0">
-                    	<form action="${pageContext.request.contextPath}/searchList" method="post">
+                    	<form action="${pageContext.request.contextPath}/searchList" method="get">
 	      					<input type="hidden" name="orderType" id="orderType" value="4" >
 	      					<input type="hidden" name="searchKeyword" id="searchKeyword" value="${requestScope.searchListVo.searchKeyword}" >
 	      					<input type="hidden" name="searchData" id="searchData" value="${requestScope.searchListVo.searchData}" >
@@ -83,7 +81,7 @@
                     </div>
                     <!-- 5 -->
                     <div class="col-xs-2 padding_0">
-	                   	<form action="${pageContext.request.contextPath}/searchList" method="post">
+	                   	<form action="${pageContext.request.contextPath}/searchList" method="get">
 	     					<input type="hidden" name="orderType" id="orderType" value="5" >
 	     					<input type="hidden" name="searchKeyword" id="searchKeyword" value="${requestScope.searchListVo.searchKeyword}" >
 	     					<input type="hidden" name="searchData" id="searchData" value="${requestScope.searchListVo.searchData}" >
@@ -157,10 +155,12 @@
 				                        </div>
 			                        </div>
 			                	</div>
+			                	
 			                	<!-- 하트 -->
 			                	<c:if test="${not empty authUser}">
 			                		<div class="heart col-md-1 bi-heart"></div>
 			                	</c:if>	
+			                	
 			                	<!-- 각항목별 점수 -->
 			                	<input class="clean" type="hidden" value="${searchListVo.clean}" data-order="1">
 			                	<input class="food" type="hidden" value="${searchListVo.food}" data-order="2">
@@ -253,12 +253,16 @@
 			                no : hostNo[index]  //호스트넘버
 			            });
 			            
+			   
+			            
 			        
 			        	// 인포윈도우를 생성합니다
 			            var infowindow = new daum.maps.InfoWindow({
-			                content :'<div style"text-align:center;font-size: 12px;height:23px;"><p>' + hostname[index] + '</p></div>',       //생성할때 주소는 넣어 줬음
+			                content :'<span class="info-title">' + hostname[index] + '</span>',       //생성할때 주소는 넣어 줬음
 			                disableAutoPan: true
 			            });
+			        	
+			          
 			         	
 
 			         	// 마커에 클릭이벤트를 등록합니다

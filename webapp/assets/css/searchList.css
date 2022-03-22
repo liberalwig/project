@@ -243,6 +243,19 @@ font-family: 'Noto Sans KR', sans-serif;
 	background:  #fff !important;
 }
 
+.info-title {
+    display: block;
+    background:  rgb(70, 134, 218);
+    left:10px;
+    color: #fff;
+    text-align: center;
+    height: 25px;
+    width:150px;
+    line-height:22px;
+    border-radius:4px;
+    padding:0px 55px;
+}
+
 
 
 
