@@ -111,6 +111,7 @@
 			},
 			success : function(count) {
 				console.log("성공")
+				alert("재고가 수정되었습니다.");
 			},
 			error : function(XHR, status, error) {
 				console.error(status + " : " + error);
@@ -131,6 +132,7 @@
 			success : function(count) {
 				console.log("성공")
 				$('#item-'+no).remove();
+				alert("상품이 삭제되었습니다.");
 			},
 			error : function(XHR, status, error) {
 				console.error(status + " : " + error);

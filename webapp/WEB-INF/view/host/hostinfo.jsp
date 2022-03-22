@@ -376,7 +376,7 @@
 		var $this = $(this);
 		var name = $this.data('name');
 		$("#tapbox ul li").removeClass("active");
-		$(this).addClass("active");
+		$this.addClass("active");
 		
 		var photoVo = {
 			hostNo : ${requestScope.hostMap.hostVo.hostNo},

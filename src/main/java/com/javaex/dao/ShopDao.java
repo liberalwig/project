@@ -20,6 +20,12 @@ public class ShopDao {
 		
 		return sqlSession.selectList("item.getItemList");
 	}
+	//판매 상품 리스트
+	public List<ItemVo> getCategoryList(String category){
+		System.out.println("[ShopDao.getCategoryList()]");
+		
+		return sqlSession.selectList("item.getCategoryList", category);
+	}
 	
 	//판매 상품 Vo
 	public ItemVo getItem(int itemNo){

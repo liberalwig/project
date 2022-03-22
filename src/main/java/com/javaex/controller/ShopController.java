@@ -35,6 +35,21 @@ public class ShopController {
 		
 		return "/shop/shopList";
 	}
+	//상품 카테고리 선택
+	@ResponseBody
+	@RequestMapping(value = "/categorylist", method = { RequestMethod.GET, RequestMethod.POST })
+	public List<ItemVo> getCategory(@RequestParam("category") String category) {
+		System.out.println("[ShopController.shopListForm()]");
+		System.out.println(category);
+		
+		if(("전체").equals(category)) {
+			List<ItemVo> itemList = shopService.getItemList();
+			return itemList;
+		} else {
+			List<ItemVo> itemList = shopService.getCategoryList(category);
+			return itemList;
+		}
+	}
 	
 	//상품 상세 정보 폼
 	@RequestMapping(value = "/info", method = { RequestMethod.GET, RequestMethod.POST })
@@ -111,17 +126,21 @@ public class ShopController {
 	//판매자 - 상품 등록
 	@RequestMapping(value = "/write", method = { RequestMethod.GET, RequestMethod.POST })
 	public String write(@ModelAttribute ItemVo itemVo,
-						@RequestParam("file") MultipartFile file) {
+						@RequestParam("file") MultipartFile file,
+						@RequestParam("file2") MultipartFile file2) {
 		System.out.println("[ShopController.write()]");
-		
 		shopService.write(itemVo, file);
 		
 		return "redirect:/shop/list";
 	}
 	//판매자 - 상품 수정폼
 	@RequestMapping(value = "/modifyForm", method = { RequestMethod.GET, RequestMethod.POST })
-	public String modifyForm() {
+	public String modifyForm(@RequestParam("itemNo") int itemNo,
+						     Model model) {
 		System.out.println("[ShopController.modifyForm()]");
+		
+		ItemVo itemVo = shopService.getItem(itemNo);
+		model.addAttribute("itemVo", itemVo);
 		
 		return "/shop/modifyForm";
 	}
@@ -131,7 +150,7 @@ public class ShopController {
 						@RequestParam("file") MultipartFile file) {
 		System.out.println("[ShopController.modify()]");
 		
-		shopService.write(itemVo, file);
+		//shopService.write(itemVo, file);
 		
 		return "redirect:/shop/list";
 	}

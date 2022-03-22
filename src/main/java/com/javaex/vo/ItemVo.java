@@ -13,6 +13,7 @@ public class ItemVo {
 	private String title;
 	private String info;
 	private int cost;
+	private String stringcost;
 	private int ea;
 	private String path;
 	private String status;
@@ -174,7 +175,13 @@ public class ItemVo {
 	public void setPoint(double point) {
 		this.point = point;
 	}
-
+	public String getStringcost() {
+		return stringcost;
+	}
+	public void setStringcost(String stringcost) {
+		this.stringcost = stringcost;
+	}
+	
 	//메소드 일반
 	@Override
 	public String toString() {

@@ -11,14 +11,14 @@
 			       title,
 			       info,
 			       ea,
-			       cost,
+			       to_char(cost, '999,999,999') stringcost,
 			       path
 			from   item
 			where  views = 1
 		]]>
 	</select>
 	<!-- (카테고리)상품 리스트 가져오기 -->
-	<select id="getItemListCate" resultType="ItemVo">
+	<select id="getCategoryList" parameterType="String" resultType="ItemVo">
 		<![CDATA[
 			select itemNo,
 			       usersNo,
@@ -26,7 +26,7 @@
 			       title,
 			       info,
 			       ea,
-			       cost,
+			       to_char(cost, '999,999,999') stringcost,
 			       path
 			from   item
 			where  views = 1
@@ -42,7 +42,7 @@
 			       title,
 			       info,
 			       ea,
-			       cost,
+			       to_char(cost, '999,999,999') stringcost,
 			       path
 			from   item
 			where  itemNo = #{itemNo}
@@ -56,7 +56,7 @@
 				   h.usersNo,
                    h.historytitle as title,
                    h.historyhp as hp,
-                   h.historycost as cost,
+                   to_char(h.historycost, '999,999,999') as stringcost,
                    to_char(h.historydate, 'YYYY-MM-DD') as itemdate,
                    h.historystatus as status,
                    h.historyea as ea,
@@ -117,7 +117,7 @@
 	</update>
 	
 	<!-- 재고 -1  -->
-	<update id="setea" parameterType="ItemVo">
+	<update id="useEa" parameterType="int">
 		<![CDATA[
 			update item
 			set    ea-1

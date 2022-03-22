@@ -54,8 +54,7 @@
                    	</div>
                 </c:if>
                     <c:if test="${authUser.usersNo != null}">
-                    	<c:choose>
-                    		<c:when test="${authUser.usersType == 2}">
+                    		<c:if test="${authUser.usersType == 2}">
                    				<div class="menu_btn1">
                    					<a href="${pageContext.request.contextPath}/host/info/${authUser.hostNo}" style="color:#000">
 					                    <button type="button" class="btn btn-default">
@@ -63,8 +62,8 @@
 					                    </button>
 				                    </a>
 				                </div>
-                    		</c:when>
-	                    	<c:otherwise >
+                    		</c:if>
+	                    	<c:if test="${authUser.usersType == 1}">
 				                <div class="menu_btn1">
 				                	<a href="${pageContext.request.contextPath}/host/hostjoin" style="color:#000">
 					                    <button type="button" class="btn btn-default">
@@ -72,8 +71,7 @@
 					                    </button>
 				                    </a>
 				                </div>
-			                </c:otherwise>
-		                </c:choose>
+			                </c:if>
 		                <div class="menu_btn2">
 		                	<a href="${pageContext.request.contextPath}/shop/list">
 		                    	<button type="button" class="btn btn-default">
@@ -97,13 +95,18 @@
 		                        <c:if test="${authUser.usersType == 1}">
 		                        	<li><a href="${pageContext.request.contextPath}/bookingEndGuest?usersNo=${authUser.usersNo}">예약현황</a></li>
 		                        	<li><a href="${pageContext.request.contextPath}/message?usersNo=${authUser.usersNo}">메세지</a></li>
+		                        	<li><a href="${pageContext.request.contextPath}/user/userModifyForm?usersNo=${authUser.usersNo}">내 정보 수정</a></li>
 		                        </c:if>
 		                        <c:if test="${authUser.usersType == 2}">
 		                        	<li><a href="${pageContext.request.contextPath}/bookingEndHost?hostNo=${authUser.hostNo}">예약관리</a></li>
 		                        	<li><a href="${pageContext.request.contextPath}/message?usersNo=${authUser.usersNo}">메세지</a></li>
+		                        	<li><a href="${pageContext.request.contextPath}/user/userModifyForm?usersNo=${authUser.usersNo}">내 정보 수정</a></li>
 		                        </c:if>
-		                        <li><a href="${pageContext.request.contextPath}/user/userModifyForm?usersNo=${authUser.usersNo}">내 정보 수정</a></li>
-		                         <li id="login"><a href="${pageContext.request.contextPath}/logout">로그아웃</a></li>
+		                        <c:if test="${authUser.usersType == 3}">
+		                        	<li><a href="${pageContext.request.contextPath}/shop/writeForm">상품등록</a></li>
+		                        	<li><a href="${pageContext.request.contextPath}/shop/admin">상품관리</a></li>
+		                        	<li><a href="${pageContext.request.contextPath}/logout">로그아웃</a></li>
+		                        </c:if>
 		                   	</ul>
                     	</div>
                     </c:if>

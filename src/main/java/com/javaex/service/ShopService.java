@@ -26,6 +26,14 @@ public class ShopService {
 		
 		return shopDao.getItemList();
 	}
+	
+	//카테고리 상품 리스트
+	public List<ItemVo> getCategoryList(String category){
+		System.out.println("[ShopService.getCategoryList()]");
+		
+		return shopDao.getCategoryList(category);
+	}
+	
 	//get 판매 상품 Vo
 	public ItemVo getItem(int itemNo){
 		System.out.println("[ShopService.getItem()]");

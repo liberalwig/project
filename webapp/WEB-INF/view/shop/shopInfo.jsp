@@ -27,7 +27,7 @@
 				<div id="itemArea" class="col-xs-6">
 					<div id="info1">
 						<h3 class="lead">${requestScope.itemVo.title}</h3>
-						<h3 class="lead">${requestScope.itemVo.cost}원</h3>
+						<h3 class="lead">${requestScope.itemVo.stringcost}원</h3>
 					</div>
 					<div id="info2">
 						<p>${requestScope.itemVo.info}</p>
@@ -35,11 +35,11 @@
 					<div id="buyinfo">
 						<p>${requestScope.itemVo.title}</p>
 						<input id="ea" type="number" value="1"><h3>개</h3>
-						<h4>${requestScope.itemVo.cost}원</h4>
+						<h4>${requestScope.itemVo.stringcost}원</h4>
 					</div>
 					<div id="buyDetail" class="clearfix">
 						<p>총 상품금액(1개)</p>
-						<h4>${requestScope.itemVo.cost}원</h4>
+						<h4>${requestScope.itemVo.stringcost}원</h4>
 					</div>
 					<div id="buttonArea">
 						<c:if test="${requestScope.itemVo.ea > 0}">
@@ -55,6 +55,16 @@
 						<button id="addcart" type="button" class="btn btn-default">장바구니</button>
 					</div>
 				</div>
+			</div>
+			<div id="tapArea" style="margin: 0px 0px 0px 170px;">
+				<div class="btn-group" role="group" aria-label="...">
+				  <button type="button" class="btn btn-default">상세정보</button>
+				  <button type="button" class="btn btn-default">구매평</button>
+				  <button type="button" class="btn btn-default">Q&A</button>
+				</div>
+			</div>
+			<div id="detailArea" style="padding: 0px 0px 0px 330px;">
+				<img src="${pageContext.request.contextPath}/photo/shopinfo_2.jpeg">
 			</div>
 		</div>
 	</div>

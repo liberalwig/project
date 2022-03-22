@@ -40,32 +40,42 @@
 								<form id="form-image" action="${pageContext.request.contextPath}/shop/write" method="post" enctype="multipart/form-data">
 								
 								<div class="form-group">
-									<label class="form-text" for="txt-title">상품명<span class="label label-danger">필수</span></label> <input type="text" id="txt-title" name="title" value="" placeholder="상품명을 입력해 주세요">
+									<label class="form-text" for="txt-title">상품명</label> <input type="text" id="txt-title" name="title" value="" placeholder="상품명을 입력해 주세요">
 								</div>
 								<!-- 판매가  -->
 								<div class="form-group">
-									<label class="form-text" for="txt-cost">판매가<span class="label label-danger">필수</span></label> <input type="text" id="txt-cost" name="cost" value="" placeholder="가격을 입력해 주세요">
+									<label class="form-text" for="txt-cost">판매가</label> <input type="number" id="txt-cost" name="cost" value="" placeholder="가격을 입력해 주세요">
 								</div>
 								<!-- 카테고리  -->
 								<div class="form-group">
-									<label class="form-text" for="txt-category">카테고리</label> <input type="text" id="txt-category" name="category" value="" placeholder="카테고리를 입력해 주세요(사료, 간식, 용품)">
+									<label class="form-text" for="txt-category">카테고리</label>
+									<select name="category">
+										<option value="사료">사료</option>
+										<option value="간식">간식</option>
+										<option value="용품">용품</option>
+									</select>
 								</div>
 								<!-- 재고  -->
 								<div class="form-group">
-									<label class="form-text" for="txt-ea">재고</label> <input type="text" id="txt-ea" name="ea" value="" placeholder="재고를 입력해 주세요">
+									<label class="form-text" for="txt-ea">재고</label> <input type="number" id="txt-ea" name="ea" value="" placeholder="재고를 입력해 주세요">
 								</div>
 								<!-- 이미지  -->
-									<div class="form-group">
-										<label class="form-text" for="txt-image">대표이미지</label> <input type="file" id="txt-image" name="file" value="" placeholder="제목을 입력해 주세요">
-									</div>
-								
+								<div class="form-group">
+									<label class="form-text" for="txt-image">대표이미지</label> <input type="file" id="txt-image" name="file" value="" placeholder="제목을 입력해 주세요">
+								</div>
+								<!-- 이미지  -->
+								<div class="form-group">
+									<label class="form-text" for="txt-image">내용이미지</label> <input type="file" id="txt-image" name="file2" value="" placeholder="제목을 입력해 주세요">
+								</div>
 								<!-- 상품요약설명  -->
 								<div class="form-group">
-									<label class="form-text" for="txt-info">상품설명</label> <textarea name="info" id="txt-info"></textarea>
+									<label class="form-text" for="txt-info">상품요약설명</label> <textarea name="info" id="txt-info"></textarea>
 								</div>
-								<a id="btn_cancel" href="">취소</a>
-								<button id="btn_add" type="submit">등록</button>
-								<input type="hidden" name="usersNo" value="1004">
+								<div id="btnArea">
+									<a id="btn_cancel" href="">취소</a>
+									<button id="btn_add" type="submit">등록</button>
+									<input type="hidden" name="usersNo" value="${sessionScope.authUser.usersNo}">
+								</div>
 							</form>
 							<!-- //form -->
 						</div>

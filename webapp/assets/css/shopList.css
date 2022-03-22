@@ -48,8 +48,9 @@ a:hover {text-decoration: none; color: #000}
 .lead{
 	margin: 0px;
 }
-#container>h2{
-	padding: 50px 0px 20px 630px;
+#titleArea{
+	margin: 50px 400px 0px 450px;
+	padding: 30px 50px 30px 200px;
 }
 
 #categoryArea{
@@ -60,8 +61,13 @@ a:hover {text-decoration: none; color: #000}
 	float: left;
 	margin: 10px 10px 10px 10px;
 	padding: 10px 0px 10px 0px;
+	border-radius: 30px;
 	width: 100px;
 	text-align: center;
+}
+#categoryArea .cate:hover{
+	background: #EEE;
+	cursor: pointer;
 }
 
 #categoryArea .cate.active{
