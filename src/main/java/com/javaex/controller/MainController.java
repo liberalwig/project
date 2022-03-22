@@ -12,10 +12,10 @@ public class MainController {
 			return "song/index";
 		}
 
-		@RequestMapping("loginForm")
+		@RequestMapping("admin")
 		public String joinForm() {
 			
-			return "song/logininForm";
+			return "song/admin";
 		}
 }	
 	
