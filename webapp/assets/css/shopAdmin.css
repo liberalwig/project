@@ -147,12 +147,20 @@ a:hover {text-decoration: none; color: #000}
   font-size: 23px;  
 }
 
-#itemhistory{
-	margin: 0px 0px 0px 50px;
+.title-img{
+	float: left;
+	width: 60px;
+	height: 60px;
 }
-	.title-img{
-		float: left;
-		width: 60px;
-		height: 60px;
-	}
+.input-ea{
+	width: 50px;
+}
+td{
+	vertical-align:middle !important;
+}
+td>p{
+	padding: 15px 0px 0px 0px;
+}
+
+
 

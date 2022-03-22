@@ -33,16 +33,25 @@
 						<p>${requestScope.itemVo.info}</p>
 					</div>
 					<div id="buyinfo">
-						
+						<p>${requestScope.itemVo.title}</p>
+						<input id="ea" type="number" value="1"><h3>개</h3>
+						<h4>${requestScope.itemVo.cost}원</h4>
 					</div>
 					<div id="buyDetail" class="clearfix">
 						<p>총 상품금액(1개)</p>
 						<h4>${requestScope.itemVo.cost}원</h4>
 					</div>
 					<div id="buttonArea">
-						<a href="${pageContext.request.contextPath}/shop/pay?itemNo=${requestScope.itemVo.itemNo}">
-							<button id="buy" type="button" class="btn btn-primary color">구매하기</button>
-						</a>
+						<c:if test="${requestScope.itemVo.ea > 0}">
+							<a href="${pageContext.request.contextPath}/shop/pay?itemNo=${requestScope.itemVo.itemNo}">
+								<button id="buy" type="button" class="btn btn-primary color">구매하기</button>
+							</a>
+						</c:if>
+						<c:if test="${requestScope.itemVo.ea == 0}">
+							<a href="${pageContext.request.contextPath}/shop/pay?itemNo=${requestScope.itemVo.itemNo}">
+								<button id="buy" type="button" class="btn btn-primary color">품절된 상품 입니다</button>
+							</a>
+						</c:if>
 						<button id="addcart" type="button" class="btn btn-default">장바구니</button>
 					</div>
 				</div>

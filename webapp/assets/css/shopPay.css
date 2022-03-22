@@ -48,18 +48,54 @@ a:hover {text-decoration: none; color: #000}
 .lead{
 	margin: 0px;
 }
-#container>h3{
+#container>h2{
 	margin: 50px 0px 50px 660px;
 }
 #payArea{
-	padding: 50px 0px 0px 200px;
+	padding: 50px 0px 0px 460px;
 }
 #payArea #iteminfo{
 	border:1px solid #DDD;
 	width: 500px;
 	height: 200px;
+	padding: 10px 0px 10px 10px;
 }
+	#payArea #iteminfo h3{
+	margin: 0px 0px 20px 0px;
+	}
+	#payArea #iteminfo .info{
+		margin: 30px 0px 0px 0px;
+	}
 	#payArea #iteminfo img{
 		width:90px;
 		float:left;
+		margin: 0px 10px 0px 0px;
 	}
+#payArea #userinfo{
+	border:1px solid #DDD;
+	padding: 10px 0px 10px 10px;
+	width: 500px;
+	height: 200px;
+}
+	#payArea #userinfo h3{
+	margin: 0px 0px 20px 0px;
+	}
+	#uinfo{
+	margin: 0px 0px 0px 80px;
+	}
+	#uinfo input{
+		margin: 0px 0px 10px 0px;
+		border-radius: 0px;
+		border: 1px solid #BBB;
+	}
+	#uinfo #sample4_jibunAddress{
+		width: 305px;
+	}
+	#uinfo #sample4_detailAddress{
+		width: 305px;
+	}
+#payArea #payinfo{
+	border:1px solid #DDD;
+	width: 500px;
+	height: 200px;
+}

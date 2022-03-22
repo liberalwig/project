@@ -5,6 +5,7 @@ public class ItemVo {
 	//필드
 	private int itemNo;
 	private int usersNo;
+	private int sellerNo;
 	private int cartNo;
 	private int historyNo;
 	private int itemphotoNo;
@@ -15,14 +16,23 @@ public class ItemVo {
 	private int ea;
 	private String path;
 	private String status;
+	private int views;
+	private String hp;
+	private String address1;
+	private String address2;
+	private String review;
+	private String itemdate;
+	private double point;
 	
 	//생성자
 	public ItemVo() {
 	}
-	public ItemVo(int itemNo, int usersNo, int cartNo, int historyNo, int itemphotoNo, String category, String title,
-			String info, int cost, int ea, String path, String status) {
+	public ItemVo(int itemNo, int usersNo, int sellerNo, int cartNo, int historyNo, int itemphotoNo, String category,
+			String title, String info, int cost, int ea, String path, String status, int views, String hp,
+			String address1, String address2, String review, String itemdate, double point) {
 		this.itemNo = itemNo;
 		this.usersNo = usersNo;
+		this.sellerNo = sellerNo;
 		this.cartNo = cartNo;
 		this.historyNo = historyNo;
 		this.itemphotoNo = itemphotoNo;
@@ -33,8 +43,16 @@ public class ItemVo {
 		this.ea = ea;
 		this.path = path;
 		this.status = status;
+		this.views = views;
+		this.hp = hp;
+		this.address1 = address1;
+		this.address2 = address2;
+		this.review = review;
+		this.itemdate = itemdate;
+		this.point = point;
 	}
-	
+
+
 	//메소드 g/s
 	public int getItemNo() {
 		return itemNo;
@@ -47,6 +65,12 @@ public class ItemVo {
 	}
 	public void setUsersNo(int usersNo) {
 		this.usersNo = usersNo;
+	}
+	public int getSellerNo() {
+		return sellerNo;
+	}
+	public void setSellerNo(int sellerNo) {
+		this.sellerNo = sellerNo;
 	}
 	public int getCartNo() {
 		return cartNo;
@@ -108,15 +132,56 @@ public class ItemVo {
 	public void setStatus(String status) {
 		this.status = status;
 	}
+	public int getViews() {
+		return views;
+	}
+	public void setViews(int views) {
+		this.views = views;
+	}
+	public String getHp() {
+		return hp;
+	}
+	public void setHp(String hp) {
+		this.hp = hp;
+	}
+	public String getAddress1() {
+		return address1;
+	}
+	public void setAddress1(String address1) {
+		this.address1 = address1;
+	}
+	public String getAddress2() {
+		return address2;
+	}
+	public void setAddress2(String address2) {
+		this.address2 = address2;
+	}
+	public String getReview() {
+		return review;
+	}
+	public void setReview(String review) {
+		this.review = review;
+	}
+	public String getItemdate() {
+		return itemdate;
+	}
+	public void setItemdate(String itemdate) {
+		this.itemdate = itemdate;
+	}
+	public double getPoint() {
+		return point;
+	}
+	public void setPoint(double point) {
+		this.point = point;
+	}
 
-	
 	//메소드 일반
 	@Override
 	public String toString() {
-		return "ItemVo [itemNo=" + itemNo + ", usersNo=" + usersNo + ", cartNo=" + cartNo + ", historyNo=" + historyNo
-				+ ", itemphotoNo=" + itemphotoNo + ", category=" + category + ", title=" + title + ", info=" + info
-				+ ", cost=" + cost + ", ea=" + ea + ", path=" + path + ", status=" + status + "]";
+		return "ItemVo [itemNo=" + itemNo + ", usersNo=" + usersNo + ", sellerNo=" + sellerNo + ", cartNo=" + cartNo
+				+ ", historyNo=" + historyNo + ", itemphotoNo=" + itemphotoNo + ", category=" + category + ", title="
+				+ title + ", info=" + info + ", cost=" + cost + ", ea=" + ea + ", path=" + path + ", status=" + status
+				+ ", views=" + views + ", hp=" + hp + ", address1=" + address1 + ", address2=" + address2 + ", review="
+				+ review + ", itemdate=" + itemdate + ", point=" + point + "]";
 	}
-	
-	
 }

@@ -21,6 +21,12 @@
 	<div id="wrap">
 		<div id="container" class="clearfix">
 			<h2>강아지 쇼핑몰</h2>
+			<div id="categoryArea" class="clearfix">
+					<div class="cate active">전체</div>
+					<div class="cate">사료</div>
+					<div class="cate">간식</div>
+					<div class="cate">용품</div>
+			</div>
 			<div id="itemArea">
 				<c:forEach items="${requestScope.itemList}" var="vo">
 					<div class="item">
@@ -29,6 +35,9 @@
 						</a>
 						<h4>${vo.title}</h4>
 						<p>${vo.cost}원</p>
+						<c:if test="${vo.ea == 0}">
+							<h5><span class="label label-default">SOLD OUT</span></h5>
+						</c:if>
 					</div>
 				</c:forEach>
 			</div>

@@ -38,9 +38,9 @@
 					<div id="itemhistory">
 						<table class="table" style="border-bottom:1px solid #EEE;">
 						     <colgroup>
-	                            <col width="100px">
-	                            <col width="140px">
-	                            <col width="140px">
+	                            <col width="70px">
+	                            <col width="70px">
+	                            <col width="200px">
 	                            <col width="70px">
 	                            <col width="70px">
 	                            <col width="70px">
@@ -54,22 +54,19 @@
 								<th class="text-center">배송상태</th>
 								<th class="text-center">가격</th>
 							</tr>
-							<tr style="height:100px;">
-								<td class="text-center">2022032101</td>
-								<td class="text-center">2022-03-12</td>
-								<td>허브페스토</td>
-								<td class="text-center">1개</td>
-								<td class="text-center">배송완료</td>
-								<td class="text-center">65,000원</td>
-							</tr>
-							<tr style="height:100px;">
-								<td class="text-center">2022032101</td>
-								<td class="text-center">2022-03-12</td>
-								<td>허브페스토</td>
-								<td class="text-center">1개</td>
-								<td class="text-center">배송완료</td>
-								<td class="text-center">65,000원</td>
-							</tr>
+							<c:forEach items="${requestScope.itemList}" var="vo">
+								<tr style="height:100px;">
+									<td class="text-center">${vo.historyNo}</td>
+									<td class="text-center">${vo.itemdate}</td>
+									<td>
+										<img class="title-img" src="${pageContext.request.contextPath}/photo/${vo.path}">
+										${vo.title}
+									</td>
+									<td class="text-center">${vo.ea}개</td>
+									<td class="text-center">${vo.status}</td>
+									<td class="text-center">${vo.cost}원</td>
+								</tr>
+							</c:forEach>
 						</table>
 					</div>
 				</div><!-- //content-main -->

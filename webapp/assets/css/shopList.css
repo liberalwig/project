@@ -51,6 +51,25 @@ a:hover {text-decoration: none; color: #000}
 #container>h2{
 	padding: 50px 0px 20px 630px;
 }
+
+#categoryArea{
+	padding: 0px 0px 0px 80px;
+}
+
+#categoryArea .cate{
+	float: left;
+	margin: 10px 10px 10px 10px;
+	padding: 10px 0px 10px 0px;
+	width: 100px;
+	text-align: center;
+}
+
+#categoryArea .cate.active{
+	background: #3D9BE9;
+	color : #FFFFFF;
+	border-radius: 30px;
+}
+
 #itemArea {
 	padding: 50px 0px 0px 100px;
 }
