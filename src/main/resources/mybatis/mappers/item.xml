@@ -33,6 +33,7 @@
 			and    category = #{category}
 		]]>
 	</select>
+	
 	<!-- 상품정보 가져오기 -->
 	<select id="getItem" resultType="ItemVo">
 		<![CDATA[
@@ -43,7 +44,8 @@
 			       info,
 			       ea,
 			       to_char(cost, '999,999,999') stringcost,
-			       path
+			       path,
+			       infopath
 			from   item
 			where  itemNo = #{itemNo}
 		]]>
@@ -87,7 +89,7 @@
 	<insert id="itemInsert" parameterType="ItemVo">
 		<![CDATA[
 			insert into item
-			values(seq_item_no.nextval, #{usersNo}, #{category}, #{title}, #{info}, #{cost}, #{ea}, #{path}, 1)
+			values(seq_item_no.nextval, #{usersNo}, #{category}, #{title}, #{info}, #{cost}, #{ea}, #{path}, #{infopath} 1)
 		]]>
 	</insert>
 
@@ -120,7 +122,7 @@
 	<update id="useEa" parameterType="int">
 		<![CDATA[
 			update item
-			set    ea-1
+			set    ea = ea-1
 			where  itemNo = #{itemNo}
 		]]>
 	</update>

@@ -73,13 +73,19 @@
 								</td>
 								<td class="text-center">
 									<div class="btn-group" role="group" aria-label="...">
-										<button type="button" class="btn btn-default setea-btn" data-no="${vo.itemNo}">재고수정</button>
+										<button type="button" class="btn btn-default setea-btn" data-no="${vo.itemNo}">재고 수정</button>
 										<div class="btn-group" role="group">
 											<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
 											옵션
 											<span class="caret"></span>
 											</button>
 											<ul class="dropdown-menu" role="menu">
+												<c:if test="${vo.views == 1}">
+													노출 OFF
+												</c:if>
+												<c:if test="${vo.views == 2}">
+													노출 ON
+												</c:if>
 												<li><a href="#">수정</a></li>
 												<li class="delete-btn" data-no="${vo.itemNo}"><a>삭제</a></li>
 											</ul>

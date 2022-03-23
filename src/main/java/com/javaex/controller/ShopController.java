@@ -129,7 +129,7 @@ public class ShopController {
 						@RequestParam("file") MultipartFile file,
 						@RequestParam("file2") MultipartFile file2) {
 		System.out.println("[ShopController.write()]");
-		shopService.write(itemVo, file);
+		shopService.write(itemVo, file, file2);
 		
 		return "redirect:/shop/list";
 	}

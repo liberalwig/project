@@ -64,7 +64,7 @@
 				</div>
 			</div>
 			<div id="detailArea" style="padding: 0px 0px 0px 330px;">
-				<img src="${pageContext.request.contextPath}/photo/shopinfo_2.jpeg">
+				<img src="${pageContext.request.contextPath}/photo/${requestScope.itemVo.infopath}">
 			</div>
 		</div>
 	</div>

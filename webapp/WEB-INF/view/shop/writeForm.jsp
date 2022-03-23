@@ -65,7 +65,7 @@
 								</div>
 								<!-- 이미지  -->
 								<div class="form-group">
-									<label class="form-text" for="txt-image">내용이미지</label> <input type="file" id="txt-image" name="file2" value="" placeholder="제목을 입력해 주세요">
+									<label class="form-text" for="txt-image">설명이미지</label> <input type="file" id="txt-image" name="file2" value="" placeholder="제목을 입력해 주세요">
 								</div>
 								<!-- 상품요약설명  -->
 								<div class="form-group">
@@ -89,26 +89,6 @@
 	<c:import url="/WEB-INF/view/includes/footer.jsp"></c:import>
 </body>
 <script>
-	//등록버튼을 눌렀을때
-/* 	$('#btn_add').on("click", function(){
-		$.ajax({
-			url : "${pageContext.request.contextPath}/shop/write",    
-			type : "post",
-			data : {
-				title : $("#txt-title").val(),
-				cost : $("#txt-cost").val(),
-				category : $("#txt-category").val(),
-				ea : $("#txt-ea").val(),
-				image : $("#txt-image").val(),
-				info : $("#txt-info").text() 
-			},
-			success : function(count) {
-				window.location.replace("${pageContext.request.contextPath}/shop/list");
-			},
-			error : function(XHR, status, error) {
-				console.error(status + " : " + error);
-			}
-		}); 
-	}); */
+
 </script>
 </html>

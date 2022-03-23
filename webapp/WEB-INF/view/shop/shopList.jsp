@@ -21,7 +21,7 @@
 	<div id="wrap">
 		<div id="container" class="clearfix">
 			<div id="titleArea">
-				<h2>Welcome <strong>GairBnB Shop</strong>!</h2>
+				<h2><strong>개어비엔비 쇼핑몰</strong></h2>
 			</div>
 			<div id="categoryArea" class="clearfix">
 				<div class="cate active" data-name="전체">전체</div>
@@ -63,7 +63,6 @@
 				$("#itemArea").html(" ");
 				if(!itemList.length){
 					$("#itemArea").html("<h2 style='padding:50px 0px 100px 450px'>조건에 맞는 상품이 없습니다.</h2>");
-					console.log("널");
 				}
 				for (var i = 0; i<itemList.length; i++){
 					render(itemList[i]);

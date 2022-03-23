@@ -69,17 +69,24 @@ public class ShopService {
 	}
 	
 	//판매상품 등록
-	public int write(ItemVo itemVo, MultipartFile file) {
+	public int write(ItemVo itemVo, MultipartFile file, MultipartFile file2) {
 		System.out.println("[ShopService.write()]");
 		
 		//맥
 		String saveDir = "/Users/hs/JavaStudy/workspace_project/project/webapp/assets/upload/";
 		//윈도우
 		//String saveDir = "C:\\javaStudy\\photo\\";
+		
+		//이미지 1
 		String orgName = file.getOriginalFilename();
 		String exName = orgName.substring(orgName.lastIndexOf("."));
 		String saveName = System.currentTimeMillis() + UUID.randomUUID().toString() + exName;
 		String filePath = saveDir + saveName;
+		//이미지 2
+		String orgName2 = file2.getOriginalFilename();
+		String exName2 = orgName2.substring(orgName2.lastIndexOf("."));
+		String saveName2 = System.currentTimeMillis() + UUID.randomUUID().toString() + exName2;
+		String filePath2 = saveDir + saveName2;
 		// 파일 저장
 		try {
 			byte[] fileData = file.getBytes();
@@ -91,8 +98,20 @@ public class ShopService {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		// 파일 저장
+		try {
+			byte[] fileData = file2.getBytes();
+			OutputStream out = new FileOutputStream(filePath2);// 어떤 경로에 파일을 저장할건지?
+			BufferedOutputStream bout = new BufferedOutputStream(out);
+
+			bout.write(fileData);
+			bout.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		
 		itemVo.setPath(saveName);
+		itemVo.setInfopath(saveName2);
 		
 		return shopDao.write(itemVo);
 	}

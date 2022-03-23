@@ -16,6 +16,7 @@ public class ItemVo {
 	private String stringcost;
 	private int ea;
 	private String path;
+	private String infopath;
 	private String status;
 	private int views;
 	private String hp;
@@ -29,8 +30,8 @@ public class ItemVo {
 	public ItemVo() {
 	}
 	public ItemVo(int itemNo, int usersNo, int sellerNo, int cartNo, int historyNo, int itemphotoNo, String category,
-			String title, String info, int cost, int ea, String path, String status, int views, String hp,
-			String address1, String address2, String review, String itemdate, double point) {
+			String title, String info, int cost, String stringcost, int ea, String path, String infopath, String status,
+			int views, String hp, String address1, String address2, String review, String itemdate, double point) {
 		this.itemNo = itemNo;
 		this.usersNo = usersNo;
 		this.sellerNo = sellerNo;
@@ -41,8 +42,10 @@ public class ItemVo {
 		this.title = title;
 		this.info = info;
 		this.cost = cost;
+		this.stringcost = stringcost;
 		this.ea = ea;
 		this.path = path;
+		this.infopath = infopath;
 		this.status = status;
 		this.views = views;
 		this.hp = hp;
@@ -52,7 +55,6 @@ public class ItemVo {
 		this.itemdate = itemdate;
 		this.point = point;
 	}
-
 
 	//메소드 g/s
 	public int getItemNo() {
@@ -181,14 +183,21 @@ public class ItemVo {
 	public void setStringcost(String stringcost) {
 		this.stringcost = stringcost;
 	}
+	public String getInfopath() {
+		return infopath;
+	}
+	public void setInfopath(String infopath) {
+		this.infopath = infopath;
+	}
 	
-	//메소드 일반
+	//
 	@Override
 	public String toString() {
 		return "ItemVo [itemNo=" + itemNo + ", usersNo=" + usersNo + ", sellerNo=" + sellerNo + ", cartNo=" + cartNo
 				+ ", historyNo=" + historyNo + ", itemphotoNo=" + itemphotoNo + ", category=" + category + ", title="
-				+ title + ", info=" + info + ", cost=" + cost + ", ea=" + ea + ", path=" + path + ", status=" + status
-				+ ", views=" + views + ", hp=" + hp + ", address1=" + address1 + ", address2=" + address2 + ", review="
-				+ review + ", itemdate=" + itemdate + ", point=" + point + "]";
+				+ title + ", info=" + info + ", cost=" + cost + ", stringcost=" + stringcost + ", ea=" + ea + ", path="
+				+ path + ", infopath=" + infopath + ", status=" + status + ", views=" + views + ", hp=" + hp
+				+ ", address1=" + address1 + ", address2=" + address2 + ", review=" + review + ", itemdate=" + itemdate
+				+ ", point=" + point + "]";
 	}
 }
