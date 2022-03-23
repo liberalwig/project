@@ -82,4 +82,14 @@
     </div>
 
 	</body>
+	
+	<script type="text/javascript">
+		//모바일
+		function Mobile(){
+		return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);}
+		
+	    if (Mobile()){// 모바일일 경우
+	    	location.assign('${pageContext.request.contextPath}/m/main');
+	    }
+	</script>
 </html>
