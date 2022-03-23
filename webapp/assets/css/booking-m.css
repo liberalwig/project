@@ -1,7 +1,7 @@
 @charset "UTF-8";
 
 #submit-m {
-	margin: 100px 0px 0px 320px;
+	margin: 110px 0px 0px 320px;
 	width: 700px;
 	height: 100px;
 	font-size: 40px;
@@ -15,7 +15,7 @@
 
 #u-idPass input {
 	width: 700px;
-	height: 150px;
+	height: 120px;
 }
 
 #u-idPass div {
@@ -27,7 +27,7 @@
 }
 
 #wellcome {
-	margin: 300px 0px 0px 0px;
+	margin: 300px 0px 30px 0px;
 	font-size: 50px;
 	text-align: center;
 }
@@ -37,7 +37,13 @@
 	height: 350px;
 	font-size: 70px;
 	margin: 800px 0px 0px 300px;
-	background-color: #dadada;
+}
+
+#logout-m {
+	width: 800px;
+	height: 350px;
+	font-size: 70px;
+	margin: 800px 0px 0px 300px;
 }
 
 .header {

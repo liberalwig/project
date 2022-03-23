@@ -39,11 +39,11 @@
         
             <div id="content" class="clearfix">
 
-				<c:if test="${!empty authUser.usersNo}">
-					<button id="login-m" class="btn btn-default">로그인</button>
-				</c:if>
 				<c:if test="${empty authUser.usersNo}">
-					<button id="login-m" class="btn btn-default">로그아웃</button>
+					<button id="login-m" class="btn btn-primary">로그인</button>
+				</c:if>
+				<c:if test="${!empty authUser.usersNo}">
+					<button id="logout-m" class="btn btn-primary">로그아웃</button>
 				</c:if>
             </div>
             
@@ -87,6 +87,11 @@
 </body>
 
 <script>
+
+$("#logout-m").on("click", function(){
+	
+	location.href = "${pageContext.request.contextPath}/logout";
+});
 
 /* 로그인버튼누름 */
 $("#login-m").on("click", function(){
