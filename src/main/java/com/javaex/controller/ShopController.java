@@ -90,7 +90,6 @@ public class ShopController {
 	public String payment(@ModelAttribute ItemVo itemVo) {
 		System.out.println("[ShopController.payment()]");
 		
-		System.out.println(itemVo);
 		shopService.payment(itemVo);
 		
 		return "redirect:/shop/myshoplist?usersNo="+itemVo.getUsersNo();
@@ -104,7 +103,7 @@ public class ShopController {
 		
 		List<ItemVo> itemList = shopService.getHistoryList(usersNo);
 		model.addAttribute("itemList", itemList);
-		
+		System.out.println(itemList);
 		return "/shop/myShopList";
 	}
 	

@@ -64,7 +64,7 @@
 									</td>
 									<td class="text-center">${vo.ea}개</td>
 									<td class="text-center">${vo.status}</td>
-									<td class="text-center">${vo.cost}원</td>
+									<td class="text-center">${vo.stringcost}원</td>
 								</tr>
 							</c:forEach>
 						</table>

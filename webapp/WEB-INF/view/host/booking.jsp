@@ -103,8 +103,8 @@
                         <div id="check2" class="col-xs-6">
                         	<h4><span id="date"><span id="checkin"></span> - <span id="checkout"></span></span></h4>
                             <h4><span id="days">- </span><span>일</span></h4>
-                            <h4><span id="bookingDate">${requestScope.hostVo.hostcost}</span><span>원</span> X <span id="ea">1</span><span>마리</span></h4>
-                            <h4><span id="hostcost">${requestScope.hostVo.hostcost}</span><span>원</span></h4>
+                            <h4><span id="bookingDate">${requestScope.hostVo.stringcost}</span><span>원</span> X <span id="ea">1</span><span>마리</span></h4>
+                            <h4><span id="hostcost">${requestScope.hostVo.stringcost}</span><span>원</span></h4>
                         </div>
                     </div>
                     <div class="row">

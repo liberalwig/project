@@ -28,7 +28,6 @@
 	<body>
 	<!-- header -->
 	<c:import url="/WEB-INF/view/includes/header.jsp"></c:import>
-		
     <div id="wrap" class="container-fluid">
         <!-- main -->
         <div id="search_List" class="container-fluid">
@@ -207,12 +206,36 @@
     <!--지도-->
 	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=b041f9ad62c37064e496f0bc81216407&&libraries=services,clusterer"></script>
 		<script>
-						
+		 $('#cbtn').on("click", function(){
+			 console.log("클릭");
+			 $("#map div div div div img").remove();
+			 var arr1 = [{x:32.450701, y:126.570667}, {x: 35.17403275838313, y: 129.05328714015042}];
+			 console.log(arr1);
+			 for(var r=0; r < arr1.length; r++){
+			 var marker = new kakao.maps.Marker({
+				    map: map,
+				    position: new kakao.maps.LatLng(arr1[i].x, arr1[i].y)
+				});
+			 };
+			 //var moveLatLng = new kakao.maps.LatLng(arr1[0].x, arr1[0].y);  
+			 //map.panTo(moveLatLng);
+		 });
+		 $('#cbtn2').on("click", function(){
+			 console.log("클릭");
+			 $("#map div div div div img").remove();
+			 var marker = new kakao.maps.Marker({
+				    map: map,
+				    position: new kakao.maps.LatLng(32.450701, 126.570667)
+				});
+			 var moveLatLng = new kakao.maps.LatLng(32.450580, 126.574942);   
+			 map.panTo(moveLatLng);
+		 });
+		 
 		 	var mapContainer = document.getElementById('map');
 			var mapOption = {
 					//시작시 지도 위치 
 			    center: new daum.maps.LatLng(35.17403275838313, 129.05328714015042),
-			    level: 5
+			    level: 8	
 			};
 			var map = new daum.maps.Map(mapContainer, mapOption); 
 			
@@ -246,14 +269,14 @@
 			        if (status === daum.maps.services.Status.OK) {
 			            var coords = new daum.maps.LatLng(result[0].y, result[0].x);
 	
-			            var marker = new daum.maps.Marker({
+			            	var marker = new daum.maps.Marker({
 			                map: map,
 			                position: coords,
 			                image: markerImage, // 마커이미지 설정 
 			                no : hostNo[index]  //호스트넘버
 			            });
 			            
-			   
+
 			            
 			        
 			        	// 인포윈도우를 생성합니다
@@ -323,10 +346,8 @@
 		    	  });
 		    	});
 		    
-		   <!--솔팅-->
-		   var mixer = mixitup('.mix-wrapper');
 		    
-			 
+
 		</script>
 		
 	</body>

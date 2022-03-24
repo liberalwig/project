@@ -82,7 +82,7 @@
 		                <div class="menu_btn2">
 		                	<a href="${pageContext.request.contextPath}/message?usersNo=${authUser.usersNo}">
 		                    	<button type="button" class="btn btn-default">
-		                        	Messages <span class="badge"><!--메세지 갯수 입력-->3</span>
+		                        	Messages <span class="badge"><!--메세지 갯수 입력-->0</span>
 		                    	</button>
 		                    </a>
 		                </div>
@@ -115,8 +115,7 @@
                     </c:if>
                
            	</div>
-           	
-           	
+
            	 <!--menu  로그아웃
            	  
            	<div class="menu col-md-2">
@@ -160,20 +159,20 @@
 	        <div class="modal-body" class="container-fluid">
 	            <div id="u-idPass" class="row">
 	                <div>
-	                    <input id="join-u-id" name="id" type="text" placeholder="아이디">
+	                    <input id="join-u-id" name="id" type="text" placeholder="아이디" autocomplete="off">
 	                </div>
 	                <button id="overlap">중복확인</button>
 	                <p></p>
 	            </div>
 	            
 	            <div class="row">
-	                    <input id="join-u-pass" name="password" type="password" placeholder="비밀번호">
-	                    <input id="join-u-name" name="name" type="text" placeholder="이름">
+	                    <input id="join-u-pass" name="password" type="password" placeholder="비밀번호" autocomplete="off">
+	                    <input id="join-u-name" name="name" type="text" placeholder="이름" autocomplete="off">
 	                    <p>정부 발급 신분증에 표시된 이름과 일치하는지 확인하세요.</p>
 	            </div>
 	
 	            <div class="row">
-	                <input id="join-u-hp" name="hp" type="text" placeholder="휴대폰번호">
+	                <input id="join-u-hp" name="hp" type="text" placeholder="휴대폰번호" autocomplete="off">
 	                <p>11자리의 숫자를 일렬로 입력해주세요.</p>
 	            </div>
 	
@@ -208,10 +207,10 @@
 				<form action="${pageContext.request.contextPath}/login" method="post">
 		            <div id="u-idPass" class="row">
 		                <div>
-		                	<input id="u-id" name="id" type="text" placeholder="아이디">
+		                	<input id="u-id" name="id" type="text" placeholder="아이디" autocomplete="off">
 		                </div>
 		                <div>
-		                	<input id="u-pass" name="password" type="password" placeholder="비밀번호">
+		                	<input id="u-pass" name="password" type="password" placeholder="비밀번호" autocomplete="off">
 		                </div>
 		            </div>
 		            <div class="row paddingLogin">

@@ -51,7 +51,7 @@ public class ShopDao {
 	//결제
 	public int payment(ItemVo itemVo){
 		System.out.println("[ShopDao.payment()]");
-		
+		System.out.println(itemVo);
 		return sqlSession.insert("item.historyInsert", itemVo);
 	}
 	//수량 -1

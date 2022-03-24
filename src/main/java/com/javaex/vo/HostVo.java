@@ -17,6 +17,7 @@ public class HostVo {
 	private String intro;
 	private String asking;
 	private int hostcost;
+	private String stringcost;
 	private int reviewcount;
 	private int hostview;
 	
@@ -26,7 +27,7 @@ public class HostVo {
 	}
 	public HostVo(int hostNo, int usersNo, String name, String hp, String path, int zipcode, String adress1,
 			String adress2, String adress3, double x, double y, String intro, String asking, int hostcost,
-			int reviewcount, int hostview) {
+			String stringcost, int reviewcount, int hostview) {
 		this.hostNo = hostNo;
 		this.usersNo = usersNo;
 		this.name = name;
@@ -41,10 +42,12 @@ public class HostVo {
 		this.intro = intro;
 		this.asking = asking;
 		this.hostcost = hostcost;
+		this.stringcost = stringcost;
 		this.reviewcount = reviewcount;
 		this.hostview = hostview;
 	}
-	
+
+
 	//메소드 g/s
 	public int getHostNo() {
 		return hostNo;
@@ -142,7 +145,13 @@ public class HostVo {
 	public void setHostview(int hostview) {
 		this.hostview = hostview;
 	}
-
+	public String getStringcost() {
+		return stringcost;
+	}
+	public void setStringcost(String stringcost) {
+		this.stringcost = stringcost;
+	}
+	
 	//메소드 일반
 	@Override
 	public String toString() {

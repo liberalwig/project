@@ -35,12 +35,12 @@
 				<div id="userinfo">
 					<h3>주문자 정보</h3>
 					<div id="uinfo">
-						<input id="text-name" name="name" type="text" value="" placeholder="주문자 이름">
-						<input id="text-hp" name="hp" type="text" value="" placeholder="연락처"><br>
-						<input type="text" id="sample4_postcode" class="zipcode" placeholder="우편번호">
+						<input id="text-name" name="name" type="text" value="" placeholder="주문자 이름" autocomplete="off">
+						<input id="text-hp" name="hp" type="text" value="" placeholder="연락처" autocomplete="off"><br>
+						<input type="text" id="sample4_postcode" class="zipcode" placeholder="우편번호" autocomplete="off">
 						<input type="button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기"><br>
-						<input type="text" name="address1" id="sample4_jibunAddress" class="adress1" placeholder="지번주소"><br>
-						<input type="text" name="address2" id="sample4_detailAddress" class="adress2" placeholder="상세주소">
+						<input type="text" name="address1" id="sample4_jibunAddress" class="adress1" placeholder="지번주소" autocomplete="off"><br>
+						<input type="text" name="address2" id="sample4_detailAddress" class="adress2" placeholder="상세주소" autocomplete="off">
 						<input id="usersNo" name="usersNo" type="hidden" value="${sessionScope.authUser.usersNo}">
 						<input id="sellerNo" name="sellerNo" type="hidden" value="${requestScope.itemVo.usersNo}">
 						<input id="itemNo" name="itemNo" type="hidden" value="${requestScope.itemVo.itemNo}">

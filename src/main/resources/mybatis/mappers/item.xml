@@ -27,6 +27,7 @@
 			       info,
 			       ea,
 			       to_char(cost, '999,999,999') stringcost,
+			       cost,
 			       path
 			from   item
 			where  views = 1
@@ -44,6 +45,7 @@
 			       info,
 			       ea,
 			       to_char(cost, '999,999,999') stringcost,
+			       cost,
 			       path,
 			       infopath
 			from   item
@@ -59,6 +61,7 @@
                    h.historytitle as title,
                    h.historyhp as hp,
                    to_char(h.historycost, '999,999,999') as stringcost,
+                   cost,
                    to_char(h.historydate, 'YYYY-MM-DD') as itemdate,
                    h.historystatus as status,
                    h.historyea as ea,

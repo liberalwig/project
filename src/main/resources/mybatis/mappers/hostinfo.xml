@@ -25,6 +25,7 @@
 			       ho.intro,
 			       ho.asking,
 			       ho.hostcost,
+			       to_char(ho.hostcost, '999,999,999') stringcost,
 			       co.reviewcount,
 			       ho.hostview
 			from   users us, host ho, (select count(review) reviewcount
