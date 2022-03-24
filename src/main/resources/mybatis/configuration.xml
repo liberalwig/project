@@ -14,6 +14,7 @@
 		<typeAlias alias="HeartVo" type="com.javaex.vo.HeartVo" />
 		<typeAlias alias="MyDogVo" type="com.javaex.vo.MyDogVo" />
 		<typeAlias alias="MessageVo" type="com.javaex.vo.MessageVo" />
+		<typeAlias alias="ItemVo" type="com.javaex.vo.ItemVo" />
 	</typeAliases>
 	<mappers>
 		<mapper resource="mybatis/mappers/booking.xml" />
@@ -24,5 +25,6 @@
 		<mapper resource="mybatis/mappers/user.xml" />
 		<mapper resource="mybatis/mappers/mydog.xml" />
 		<mapper resource="mybatis/mappers/message.xml" />
+		<mapper resource="mybatis/mappers/item.xml" />
 	</mappers>
 </configuration>

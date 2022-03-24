@@ -17,7 +17,7 @@
 		<!--search-->
 		<div class="searchbox col-md-4">
 		    <!-- Topbar Search -->
-             <form action="${pageContext.request.contextPath}/searchList" method="post" class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+             <form action="${pageContext.request.contextPath}/searchList" method="get" class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
                  <div class="input-group input-group-joined border-0">
                      <div class="searchboxin_1 input-group input-group-joined"> 
                          <input type="text" name="searchKeyword" id="searchKeyword" value="" class="search_text1 small form-control ps-0 pointer" placeholder="어디를 찾으세요?" aria-label="Search" aria-describedby="basic-addon2" autocomplete="off">
@@ -35,6 +35,13 @@
             <!--menu  로그인-->
            <div class="menu col-md-2">
                 <c:if test="${authUser.usersNo == null}">
+               		<div class="menu_btn2">
+	                	<a href="${pageContext.request.contextPath}/shop/list">
+	                    	<button type="button" class="btn btn-default">
+	                        	<span class="glyphicon glyphicon-shopping-cart"></span>Shop
+	                    	</button>
+	                    </a>
+	                </div>
 	                <div class="btn-group pull-right menu_btn3">
 	                    <button type="button" class="menu_text3 btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
 	                    <span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span>
@@ -47,8 +54,7 @@
                    	</div>
                 </c:if>
                     <c:if test="${authUser.usersNo != null}">
-                    	<c:choose>
-                    		<c:when test="${authUser.usersType == 2}">
+                    		<c:if test="${authUser.usersType == 2}">
                    				<div class="menu_btn1">
                    					<a href="${pageContext.request.contextPath}/host/info/${authUser.hostNo}" style="color:#000">
 					                    <button type="button" class="btn btn-default">
@@ -56,8 +62,8 @@
 					                    </button>
 				                    </a>
 				                </div>
-                    		</c:when>
-	                    	<c:otherwise >
+                    		</c:if>
+	                    	<c:if test="${authUser.usersType == 1}">
 				                <div class="menu_btn1">
 				                	<a href="${pageContext.request.contextPath}/host/hostjoin" style="color:#000">
 					                    <button type="button" class="btn btn-default">
@@ -65,8 +71,14 @@
 					                    </button>
 				                    </a>
 				                </div>
-			                </c:otherwise>
-		                </c:choose>
+			                </c:if>
+		                <div class="menu_btn2">
+		                	<a href="${pageContext.request.contextPath}/shop/list">
+		                    	<button type="button" class="btn btn-default">
+		                        	<span class="glyphicon glyphicon-shopping-cart"></span>Shop
+		                    	</button>
+		                    </a>
+		                </div>
 		                <div class="menu_btn2">
 		                	<a href="${pageContext.request.contextPath}/message?usersNo=${authUser.usersNo}">
 		                    	<button type="button" class="btn btn-default">
@@ -74,19 +86,27 @@
 		                    	</button>
 		                    </a>
 		                </div>
+
                     	<div class="btn-group pull-right menu_btn3">
 		                    <button type="button" class="menu_text3 btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
 		                    <span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span>
 		                    </button>
-		                   	<ul class="dropdown-menu" role="menu">
-		                        <li id="login"><a href="${pageContext.request.contextPath}/logout">로그아웃</a></li>
+		                   	<ul class="dropdown-menu" role="menu">		                   
 		                        <c:if test="${authUser.usersType == 1}">
-		                        	<li><a href="${pageContext.request.contextPath}/bookingBeforeGuest?usersNo=${authUser.usersNo}">마이페이지</a></li>
+		                        	<li><a href="${pageContext.request.contextPath}/bookingEndGuest?usersNo=${authUser.usersNo}">예약현황</a></li>
+		                        	<li><a href="${pageContext.request.contextPath}/message?usersNo=${authUser.usersNo}">메세지</a></li>
+		                        	<li><a href="${pageContext.request.contextPath}/user/userModifyForm?usersNo=${authUser.usersNo}">내 정보 수정</a></li>
 		                        </c:if>
 		                        <c:if test="${authUser.usersType == 2}">
-		                        	<li><a href="${pageContext.request.contextPath}/bookingEndHost?hostNo=${authUser.hostNo}">마이페이지</a></li>
+		                        	<li><a href="${pageContext.request.contextPath}/bookingEndHost?hostNo=${authUser.hostNo}">예약관리</a></li>
+		                        	<li><a href="${pageContext.request.contextPath}/message?usersNo=${authUser.usersNo}">메세지</a></li>
+		                        	<li><a href="${pageContext.request.contextPath}/user/userModifyForm?usersNo=${authUser.usersNo}">내 정보 수정</a></li>
 		                        </c:if>
-		                        <li><a href="${pageContext.request.contextPath}/user/userModifyForm?usersNo=${authUser.usersNo}">내 정보 수정</a></li>
+		                        <c:if test="${authUser.usersType == 3}">
+		                        	<li><a href="${pageContext.request.contextPath}/shop/writeForm">상품등록</a></li>
+		                        	<li><a href="${pageContext.request.contextPath}/shop/admin">상품관리</a></li>
+		                        	<li><a href="${pageContext.request.contextPath}/logout">로그아웃</a></li>
+		                        </c:if>
 		                   	</ul>
                     	</div>
                     </c:if>

@@ -72,14 +72,22 @@
 	margin: 0px 0px 20px 0px;
 }
 
-#messeage {
-	font-size: 15px;
-	margin: 0px 0px 20px 895px;
-}
-
 .add-img3 {
 	font-size: 15px;
 	margin: 0px 0px 20px 0px;
+}
+
+.add-img4 {
+	font-size: 15px;
+	margin: 0px 0px 20px 780px;
+}
+
+#h-messeage {
+	margin-bottom: 20px;
+}
+
+#messeage {
+	margin: 0px 0px 20px 900px; 
 }
 
 #galleryArea {
@@ -157,6 +165,20 @@
 	align-items: center;
 	font-weight: bold;
 }
+
+#review-text {
+	margin-left: 20px;
+	resize: none;
+	width: 350px;
+	height: 300px;
+	border: none;
+	background-color: white;
+}
+
+
+
+
+
 
 
 /* 별 */

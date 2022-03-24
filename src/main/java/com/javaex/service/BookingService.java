@@ -73,7 +73,7 @@ public class BookingService {
 		System.out.println(file);
 
 		// 맥 저장경로
-		//String saveDir = "/Users/hs/javaStudy/photo/";
+		//String saveDir = "/Users/hs/JavaStudy/workspace_project/project/webapp/assets/upload/";
 		// 윈도우 저장경로
 		String saveDir = "C:\\javaStudy\\photo\\";
 
@@ -239,7 +239,7 @@ public class BookingService {
 
 		UserVo authUser = bookingDao.loginGuest(uvo);
 
-		if ((authUser.getUsersType()) != 1) {
+		if ((authUser.getUsersType()) == 2) {
 			return bookingDao.loginHost(uvo);
 		} else {
 			return authUser;

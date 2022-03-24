@@ -445,8 +445,8 @@
 		                            <div id="review" class="row">
 		                                <div class="col-xs-6 review-text">
 		                                    <h3 class="f-b">후기</h3>
-		                                    <p>${bvo.review}</p>
-		                                </div>
+		                                    <textarea id="review-text" disabled="disabled">${bvo.review}</textarea>
+	                                </div>
 		                            </div>
                             	</c:if>
 
@@ -519,7 +519,7 @@
 <script type="text/javascript">
 
 	//메세지 버튼클릭
-	$("#messeage").on("click", function(){
+	$("#g-messeage").on("click", function(){
 		var $this = $(this);
 		var hostNo = $this.data("hostno");
 		var usersNo = $this.data("usersno");
@@ -543,7 +543,7 @@
 		//DB에 있는값과 매칭시켜서 cheaked속성 추가
 		for(var i=0; i<=4; i++) {
 			for(var j=1; j<=5; j++) {
-				if(reviewArryValue[i] == j){
+				if(reviewArryValue[i]/2 == j){
 					$("#"+ reviewArryName[i] + j).attr("checked", "checked");
 					break;
 				}

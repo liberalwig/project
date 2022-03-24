@@ -5,11 +5,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link href="${pageContext.request.contextPath}/assets/css/booking.css" rel="stylesheet" type="text/css"/>
+<link href="${pageContext.request.contextPath}/assets/css/yu_main.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
    <c:choose>
-      <c:when test="${authUser.usersType == 1}">
+      <c:when test="${authUser.usersType == 1}"><!--게스트 일때 -->
          <div id="aside">
             <ul id="b-aside">
                <li class="menu">예약관리<img src="${pageContext.request.contextPath}/assets/images/aside_img.png" class="aside-img"></li>
@@ -21,11 +21,16 @@
                <li onclick="location.href='${pageContext.request.contextPath}/user/heartForm?usersNo=${authUser.usersNo}'">찜 목록</li>
                <li onclick="location.href='${pageContext.request.contextPath}/mydog?usersNo=${authUser.usersNo}'">내 강아지</li>
                <li onclick="location.href='${pageContext.request.contextPath}/user/userModifyForm?usersNo=${authUser.usersNo}'">회원 정보 수정</li>
+               <li class="menu">내 쇼핑<img src="/project/assets/images/aside_img.png" class="aside-img"></li>
+               <ul id="s-aside">
+                  <li onclick="location.href='${pageContext.request.contextPath}/shop/myshoplist?usersNo=${authUser.usersNo}'">상품 주문내역</li>
+                  <li onclick="location.href='${pageContext.request.contextPath}/shop/myshopcart?userNo=${authUser.usersNo}'">장바구니</li>
+               </ul>
             </ul>
          </div>
       </c:when>
       
-      <c:otherwise>
+      <c:when test="${authUser.usersType == 2}"><!-- 펫시터 일때 -->
          <div id="aside">
             <ul id="b-aside">
                <li class="menu">예약관리<img src="/project/assets/images/aside_img.png" class="aside-img"></li>
@@ -38,6 +43,22 @@
                <ul id="s-aside">
                   <li onclick="location.href='${pageContext.request.contextPath}/user/userModifyForm?usersNo=${authUser.usersNo}'">회원 정보 수정</li>
                   <li onclick="location.href='${pageContext.request.contextPath}/host/modifyForm?hostNo=${authUser.hostNo}'">펫시터 정보 수정</li>
+               </ul>
+               <li class="menu">내 쇼핑<img src="/project/assets/images/aside_img.png" class="aside-img"></li>
+               <ul id="s-aside">
+                  <li onclick="location.href='${pageContext.request.contextPath}/shop/myshoplist?usersNo=${authUser.usersNo}'">상품 주문내역</li>
+                  <li onclick="location.href='${pageContext.request.contextPath}/shop/myshopcart?userNo=${authUser.usersNo}'">장바구니</li>
+               </ul>
+            </ul>
+         </div>
+      </c:when>
+      <c:otherwise><!-- 관리자 일때 -->
+         <div id="aside">
+            <ul id="b-aside">
+               <li class="menu">쇼핑관리<img src="/project/assets/images/aside_img.png" class="aside-img"></li>
+               <ul id="s-aside">
+                  <li onclick="location.href='${pageContext.request.contextPath}/shop/writeForm'">상품등록</li>
+                  <li onclick="location.href='${pageContext.request.contextPath}/shop/admin'">상품관리</li>
                </ul>
             </ul>
          </div>

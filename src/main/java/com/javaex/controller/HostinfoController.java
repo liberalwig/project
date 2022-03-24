@@ -230,15 +230,5 @@ public class HostinfoController {
 		
 		return count;
 	}
-	
-	//찜 삭제
-	@ResponseBody
-	@RequestMapping(value = "/heartdelete", method = { RequestMethod.GET, RequestMethod.POST })
-	public int heartdelete(@ModelAttribute HeartVo heartVo) {
-		System.out.println("[hostinfoController.heartinsert()]");
-		
-		int count = hostinfoService.heartdelete(heartVo);
-		
-		return count;
-	}
+
 }

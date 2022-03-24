@@ -7,11 +7,11 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 	<!--CSS-->
-    <link href="/project/assets/yu/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css">
-    <link href="/project/assets/css/yu_main.css" rel="stylesheet" type="text/css">
-    <link href="/project/assets/css/booking.css" rel="stylesheet" type="text/css"/>
-	<link href="/project/assets/css/poto-upload.css" rel="stylesheet" type="text/css"/>
-	<link href="/project/assets/css/myDog.css" rel="stylesheet" type="text/css">
+    <link href="${pageContext.request.contextPath}/assets/yu/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css">
+    <link href="${pageContext.request.contextPath}/assets/css/yu_main.css" rel="stylesheet" type="text/css">
+    <link href="${pageContext.request.contextPath}/assets/css/booking.css" rel="stylesheet" type="text/css"/>
+	<link href="${pageContext.request.contextPath}/assets/css/poto-upload.css" rel="stylesheet" type="text/css"/>
+	<link href="${pageContext.request.contextPath}/assets/css/myDog.css" rel="stylesheet" type="text/css">
 	
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -51,8 +51,8 @@
 
                     <div id="btn-area1">
                     	<c:if test="${bvo.status == '펫시팅중' || bvo.status == '예약완료'}">
-                    		<button name="imgupload" class="btn btn-default add-img1" data-photodate="${pListDate[0].photoDate}">이미지 업로드</button>
-                    		<button id="messeage" data-usersno="${bvo.usersNo}" data-hostno="${bvo.hostNo}" class="btn btn-default hover-boot list-btn" type="submit">메세지보내기</button>
+                    		<button name="imgupload" class="btn btn-default add-img4" data-photodate="${pListDate[0].photoDate}">이미지 업로드</button>
+                    		<button id="h-messeage" data-usersno="${bvo.usersNo}" data-hostno="${bvo.hostNo}" class="btn btn-default hover-boot list-btn" type="submit">메세지보내기</button>
                     		<button class="btn btn-default add-img2" onclick = "window.history.back()">목록으로 돌아가기</button>
                     	</c:if>
                     	<c:if test="${bvo.status != '펫시팅중' && bvo.status != '예약완료'}">
@@ -451,11 +451,12 @@
 	                            </div>
 	
 	                            <div id="review" class="row">
-	                                <div class="col-xs-6 review-text">
+	                                <div class="col-xs-6">
 	                                    <h3 class="f-b">후기</h3>
-	                                    <p>${bvo.review}</p>
+	                                    <textarea id="review-text" disabled="disabled">${bvo.review}</textarea>
 	                                </div>
 	                            </div>
+	                            
 							</c:if>
 
                         </div>
@@ -557,30 +558,28 @@
  </div><!--/.modal-->
 	  
 	<!-- 이미지보기 팝업(모달)창 -->
-	<form action="">
-		<div class="modal fade" id="viewModal">
-			<div class="modal-dialog">
-				<div class="modal-content">
-					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-							<span aria-hidden="true">&times;</span>
-						</button>
-						<h4 class="modal-title">이미지보기</h4>
+	<div class="modal fade" id="viewModal">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title">이미지보기</h4>
+				</div>
+				<div class="modal-body">
+					<div class="formgroup">
+						<img id="viewModelImg" src="">
+						<!-- ajax로 처리 : 이미지출력 위치-->
 					</div>
-					<div class="modal-body">
-						<div class="formgroup">
-							<img id="viewModelImg" src="">
-							<!-- ajax로 처리 : 이미지출력 위치-->
-						</div>
-						<div class="formgroup">
-							<p id="viewModelContent"></p>
-						</div>
-						<input type="hidden" id="listNo" val="">
+					<div class="formgroup">
+						<p id="viewModelContent"></p>
 					</div>
-				</div> <!-- /.modal-content -->
-			</div> <!-- /.modal-dialog -->
-		</div> <!-- /.modal -->
-	</form>
+					<input type="hidden" id="listNo" val="">
+				</div>
+			</div> <!-- /.modal-content -->
+		</div> <!-- /.modal-dialog -->
+	</div> <!-- /.modal -->
 
 	<!--class="modal fade"-->
 	<div class="modal fade" id="galleryModal">
@@ -604,8 +603,17 @@
 </body>
 
 <script>
+
+	//모바일
+	function Mobile(){
+	return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);}
+	
+    if (Mobile()){// 모바일일 경우
+    	location.assign('${pageContext.request.contextPath}/m/bookingDetailHost?bookingNo=${param.bookingNo}');
+    }
+
 	//메세지 버튼클릭
-	$("#messeage").on("click", function(){
+	$("#h-messeage").on("click", function(){
 		var $this = $(this);
 		var hostNo = $this.data("hostno");
 		var usersNo = $this.data("usersno");
@@ -629,7 +637,7 @@
 		//DB에 있는값과 매칭시켜서 cheaked속성 추가
 		for(var i=0; i<=4; i++) {
 			for(var j=1; j<=5; j++) {
-				if(reviewArryValue[i] == j){
+				if(reviewArryValue[i]/2 == j){
 					$("#"+ reviewArryName[i] + j).attr("checked", "checked");
 					break;
 				}

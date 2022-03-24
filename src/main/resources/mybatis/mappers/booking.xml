@@ -24,7 +24,8 @@
 			       walk,
 			       communication,
 			       u.name hostName,
-			       u.hp hostHp
+			       u.hp hostHp,
+			       u.path hostPath
 			from booking b, host h, users u
 			where b.hostno = h.hostno
 			and h.usersno = u.usersno
@@ -55,7 +56,8 @@
 			       b.walk,
 			       b.communication,
 			       u.name guestName,
-			       u.hp guestHp
+			       u.hp guestHp,
+			       u.path guestPath
 			from booking b, users u
 			where b.usersNo = u.usersNo
 			and hostNo = #{hostNo}
@@ -85,7 +87,8 @@
 			       b.walk,
 			       b.communication,
 			       u.name guestName,
-			       u.hp guestHp
+			       u.hp guestHp,
+			       u.path guestPath
 			from booking b, users u
 			where b.usersNo = u.usersNo
 			and hostNo = #{hostNo}
@@ -216,7 +219,8 @@
 			       b.walk,
 			       b.communication,
 			       u.name guestName,
-			       u.hp guestHp
+			       u.hp guestHp,
+			       u.path guestPath
 			from booking b, users u
 			where b.usersNo = u.usersNo
 			and b.hostNo = #{hostNo}
@@ -319,7 +323,8 @@
 			       walk,
 			       communication,
 			       u.name hostName,
-			       u.hp hostHp
+			       u.hp hostHp,
+			       u.path hostPath
 			from booking b, host h, users u
 			where b.hostno = h.hostno
 			and h.usersno = u.usersno
