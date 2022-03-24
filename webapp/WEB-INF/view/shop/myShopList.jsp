@@ -36,15 +36,15 @@
 				</div><!-- //content-head -->
 				<div id="content-main">
 					<div id="itemhistory">
-						<table class="table" style="border-bottom:1px solid #EEE;">
+						<table class="table">
 						     <colgroup>
-	                            <col width="70px">
-	                            <col width="70px">
+	                            <col width="100px">
+	                            <col width="100px">
 	                            <col width="200px">
-	                            <col width="70px">
-	                            <col width="70px">
-	                            <col width="70px">
-	                            <col width="70px">
+	                            <col width="100px">
+	                            <col width="100px">
+	                            <col width="100px">
+	                            <col width="100px">
 	                        </colgroup>
 							<tr style="background-color:#EEE">
 								<th class="text-center">주문번호</th>

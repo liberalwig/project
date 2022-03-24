@@ -41,7 +41,7 @@
 							<strong>${requestScope.hostMap.hostVo.name}</strong>
 						</h3>
 						<h4 class="info">
-							<small><span class="glyphicon glyphicon-home" aria-hidden="true"></span></small> ${requestScope.hostMap.hostVo.adress1} <small><span class="glyphicon glyphicon-credit-card" aria-hidden="true"></span></small> ${requestScope.hostMap.hostVo.hostcost}원 <small>(1박)</small>
+							<small><span class="glyphicon glyphicon-home" aria-hidden="true"></span></small> ${requestScope.hostMap.hostVo.adress1} <small><span class="glyphicon glyphicon-credit-card" aria-hidden="true"></span></small> ${requestScope.hostMap.hostVo.stringcost}원 <small>(1박)</small>
 						</h4>
 						<div id="infobox">
 							<p class="info">${requestScope.hostMap.hostVo.intro}</p>
@@ -52,9 +52,9 @@
 							</c:forEach>
 						</div>
 							<div id="btnbox1">
-								<a href="${pageContext.request.contextPath}/host/booking?hostNo=${requestScope.hostMap.hostVo.hostNo}"><button id="btn1" type="button" class="btn btn-primary color">
+								<button id="btn1" type="button" class="btn btn-primary color">
 										<h4>예약 요청</h4>
-									</button></a>
+								</button>
 								<button id="btn2" type="button" class="btn btn-default">
 									<h4>
 										<span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>&nbsp;메시지 보내기
@@ -328,7 +328,7 @@
 			alert('로그인을 해주세요');
 			return;
 		} else {
-			location.replace("${pageContext.request.contextPath}/message/startM?usersNo=${sessionScope.authUser.usersNo}&target=${requestScope.hostMap.hostVo.hostNo}");
+			location.replace("${pageContext.request.contextPath}/message/getm?usersNo=${sessionScope.authUser.usersNo}&target=${requestScope.hostMap.hostVo.hostNo}");
 		}
 	});
 	$("#btn3").on("click", function(){

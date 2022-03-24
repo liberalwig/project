@@ -63,7 +63,7 @@
 				  <button type="button" class="btn btn-default">Q&A</button>
 				</div>
 			</div>
-			<div id="detailArea" style="padding: 0px 0px 0px 330px;">
+			<div id="detailArea" style="padding: 50px 0px 0px 330px;">
 				<img src="${pageContext.request.contextPath}/photo/${requestScope.itemVo.infopath}">
 			</div>
 		</div>

@@ -20,23 +20,23 @@
 	<c:import url="/WEB-INF/view/includes/header.jsp"></c:import>
 	<div id="wrap">
 		<div id="container" class="clearfix">
-			<h2>결제하기</h2>
+			<h2>상품 주문</h2>
 			<div id="payArea">
 				<div id="iteminfo">
 					<h3>주문 상품 정보</h3>
-					<img src="${pageContext.request.contextPath}/assets/images/shopinfo_sample.png">
+					<img src="${pageContext.request.contextPath}/photo/${requestScope.itemVo.path}">
 					<div class="info">
-						<h4>구운버섯 크림 & 조린사과 키쉬</h4>
+						<h4>${requestScope.itemVo.title}</h4>
 						<h4>1개</h4>
-						<h4>64000원</h4>
+						<h4>${requestScope.itemVo.stringcost}원</h4>
 					</div>
 				</div>
 				<form action="${pageContext.request.contextPath}/shop/payment" method="get">
 				<div id="userinfo">
 					<h3>주문자 정보</h3>
 					<div id="uinfo">
-						<input id="text-name" name="name" type="text" value="" placeholder="한상선">
-						<input id="text-hp" name="hp" type="text" value="" placeholder="010-000-0000"><br>
+						<input id="text-name" name="name" type="text" value="" placeholder="주문자 이름">
+						<input id="text-hp" name="hp" type="text" value="" placeholder="연락처"><br>
 						<input type="text" id="sample4_postcode" class="zipcode" placeholder="우편번호">
 						<input type="button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기"><br>
 						<input type="text" name="address1" id="sample4_jibunAddress" class="adress1" placeholder="지번주소"><br>
@@ -46,10 +46,11 @@
 						<input id="itemNo" name="itemNo" type="hidden" value="${requestScope.itemVo.itemNo}">
 						<input id="cost" name="cost" type="hidden" value="${requestScope.itemVo.cost}">
 						<input id="title" name="title" type="hidden" value="${requestScope.itemVo.title}">
-						<input id="ea" name="ea" type="hidden" value="1">
+						<input id="ea" name="ea" type="hidden" value="1"></br>
+						<button id="payment-btn" type="submit" class="btn btn-primary color">결제하기</button>
                     </div>
 				</div>
-				<button id="payment-btn" type="submit" class="btn btn-primary color">결제하기</button>
+				
 				</form>
 			</div>
 		</div><!-- container -->
