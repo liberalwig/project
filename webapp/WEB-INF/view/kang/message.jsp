@@ -53,11 +53,11 @@
 					<div class=" row clearfix">
 						<div id="list" class="col-xs-12">
 							<c:choose>
-								<c:when test="${empty requestScope.hostMap.hostVo.path}">
+								<c:when test="${empty requestScope.getType.path}">
 									<img id="hostimg" src="${pageContext.request.contextPath}/assets/images/hostinfo_sample.jpg" alt="PetSitter Image" class="profile">
 								</c:when>
 								<c:otherwise>
-									<img id="hostimg" src="${pageContext.request.contextPath}/photo/${requestScope.hostMap.hostVo.path}" alt="PetSitter Image" class="profile">
+									<img id="hostimg" src="${pageContext.request.contextPath}/photo/${requestScope.getType.path}" alt="PetSitter Image" class="profile">
 								</c:otherwise>
 							</c:choose>
 							<p>${getType.name}님</p>
@@ -68,14 +68,14 @@
                         		</c:when>
 								<c:otherwise>
 									<c:choose>
-										<c:when test="${empty requestScope.hostMap.hostVo.path}">
+										<c:when test="${empty getName.path}">
 											<img id="hostimg" src="${pageContext.request.contextPath}/assets/images/hostinfo_sample.jpg" alt="PetSitter Image" class="profile">
 										</c:when>
 										<c:otherwise>
-											<img id="hostimg" src="${pageContext.request.contextPath}/photo/${requestScope.hostMap.hostVo.path}" alt="PetSitter Image" class="profile">
+											<img id="hostimg" src="${pageContext.request.contextPath}/photo/${getName.path}" alt="Image" class="profile">
 										</c:otherwise>
 									</c:choose>
-									<p class="name">${getName.name}님과 채팅</p>
+									<p class="name">${getName.name}님과 펫채팅</p>
 								</c:otherwise>
 							</c:choose>
 						</div>
@@ -83,40 +83,20 @@
 					<div class=" row clearfix">
 						<div id="dList" class="clearfix scroll scroll1">
 							<c:forEach items="${getList}" var="list">
-								<c:choose>
-									<c:when test="${ list.usersType eq 1 }">
-										<div class="clearfix link mList" OnClick="location.href ='${pageContext.request.contextPath}/message/getm?target=${list.target}&usersNo=${list.me}'" style="cursor: pointer;">
-											<c:choose>
-												<c:when test="${empty requestScope.hostMap.hostVo.path}">
-													<img id="hostimg" src="${pageContext.request.contextPath}/assets/images/hostinfo_sample.jpg" alt="PetSitter Image" class="profile">
-												</c:when>
-												<c:otherwise>
-													<img id="hostimg" src="${pageContext.request.contextPath}/photo/${requestScope.hostMap.hostVo.path}" alt="PetSitter Image" class="profile">
-												</c:otherwise>
-											</c:choose>
-											<p class="name">${list.name}님</p>
-											<div>
-												<p class="timeL">${list.sendDate}</p>
-											</div>
+									<div class="clearfix link mList" OnClick="location.href ='${pageContext.request.contextPath}/message/getm?target=${list.target}&usersNo=${list.me}'" style="cursor: pointer;">
+										<c:choose>
+											<c:when test="${empty list.path}">
+												<img id="hostimg" src="${pageContext.request.contextPath}/assets/images/hostinfo_sample.jpg" alt="PetSitter Image" class="profile">
+											</c:when>
+											<c:otherwise>
+												<img id="hostimg" src="${pageContext.request.contextPath}/photo/${list.path}" alt="Image" class="profile">
+											</c:otherwise>
+										</c:choose>
+										<p class="name">${list.name}님</p>
+										<div>
+											<p class="timeL">${list.sendDate}</p>
 										</div>
-									</c:when>
-									<c:otherwise>
-										<div class="clearfix link mList" OnClick="location.href ='${pageContext.request.contextPath}/message/getm?target=${list.target}&usersNo=${list.me}'" style="cursor: pointer;">
-											<c:choose>
-												<c:when test="${empty requestScope.hostMap.hostVo.path}">
-													<img id="hostimg" src="${pageContext.request.contextPath}/assets/images/hostinfo_sample.jpg" alt="PetSitter Image" class="profile">
-												</c:when>
-												<c:otherwise>
-													<img id="hostimg" src="${pageContext.request.contextPath}/photo/${requestScope.hostMap.hostVo.path}" alt="PetSitter Image" class="profile">
-												</c:otherwise>
-											</c:choose>
-											<p class="name">${list.name}님</p>
-											<div>
-												<p class="timeL">${list.sendDate}</p>
-											</div>
-										</div>
-									</c:otherwise>
-								</c:choose>
+									</div>
 								
 							</c:forEach>
 						</div>
