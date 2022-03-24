@@ -95,12 +95,15 @@
 		                        <c:if test="${authUser.usersType == 1}">
 		                        	<li><a href="${pageContext.request.contextPath}/bookingEndGuest?usersNo=${authUser.usersNo}">예약현황</a></li>
 		                        	<li><a href="${pageContext.request.contextPath}/message?usersNo=${authUser.usersNo}">메세지</a></li>
+		                        	<li><a href="${pageContext.request.contextPath}/user/heartForm">찜 목록</a></li>
 		                        	<li><a href="${pageContext.request.contextPath}/user/userModifyForm?usersNo=${authUser.usersNo}">내 정보 수정</a></li>
+		                        	<li><a href="${pageContext.request.contextPath}/logout">로그아웃</a></li>
 		                        </c:if>
 		                        <c:if test="${authUser.usersType == 2}">
 		                        	<li><a href="${pageContext.request.contextPath}/bookingEndHost?hostNo=${authUser.hostNo}">예약관리</a></li>
 		                        	<li><a href="${pageContext.request.contextPath}/message?usersNo=${authUser.usersNo}">메세지</a></li>
 		                        	<li><a href="${pageContext.request.contextPath}/user/userModifyForm?usersNo=${authUser.usersNo}">내 정보 수정</a></li>
+		                        	<li><a href="${pageContext.request.contextPath}/logout">로그아웃</a></li>
 		                        </c:if>
 		                        <c:if test="${authUser.usersType == 3}">
 		                        	<li><a href="${pageContext.request.contextPath}/shop/writeForm">상품등록</a></li>
