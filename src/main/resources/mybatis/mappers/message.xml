@@ -8,7 +8,8 @@
       <![CDATA[
          select userstype,
                name,
-               usersNo
+               usersNo,
+               path
          from users
          where usersno = #{usersNo}
       ]]>
@@ -22,7 +23,8 @@
 		       u.id,
 		       u.name,
 		       u.usersType,
-		       tg.me
+		       tg.me,
+		       u.path
 		from (
 		      (select usersTo target,
 		              usersFrom me
@@ -57,7 +59,8 @@
 	<!-- 상대방 이름 가져오기 -->
 		<select id="getName" parameterType="int" resultType="MessageVo">
 	         <![CDATA[
-	         	select name
+	         	select name,
+	         		   path
 	         	from users
 	         	where usersNo =  #{target}
 	         ]]>

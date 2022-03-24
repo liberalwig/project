@@ -51,7 +51,7 @@ public class MessageController {
 	  //상대방 이름 가져오기
 	  MessageVo getName = messageService.getName(target);
 	  model.addAttribute("getName", getName);
-	  System.out.println(getName+"가져오기");
+	  System.out.println(getName+" getName가져오기");
 	  
 	  //리스트
 	  List<MessageVo> getList = messageService.getList(usersNo);
