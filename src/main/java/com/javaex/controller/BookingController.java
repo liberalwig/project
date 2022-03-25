@@ -349,7 +349,7 @@ public class BookingController {
 	
 	//모바일 로그인
 	@RequestMapping("/m/login")
-	public String loginM(UserVo uvo, HttpSession session) {
+	public String loginM(UserVo uvo, HttpSession session, Model model) {
 		System.out.println("BookingController > loginM");
 		
 		int bookinNo = 0;
@@ -359,6 +359,9 @@ public class BookingController {
 		
 		if(authUser != null) {
 			session.setAttribute("authUser", authUser);
+		}else {
+			
+			return "redirect:m/main";
 		}
 		
 		//예약 + 게스트 리스트 가져오기
@@ -369,6 +372,7 @@ public class BookingController {
 				bookinNo = BookingList.get(i).getBookingNo();
 			}
 		}
+		
 		System.out.println(bookinNo);
 		return "redirect:/m/bookingDetailHost?bookingNo="+bookinNo;
 		

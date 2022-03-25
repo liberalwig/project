@@ -40,7 +40,8 @@
             <div id="content" class="clearfix">
 
 				<c:if test="${empty authUser.usersNo}">
-					<button id="login-m" class="btn btn-primary">로그인</button>
+					<button id="login-m" class="btn btn-primary
+					">로그인</button>
 				</c:if>
 				<c:if test="${!empty authUser.usersNo}">
 					<button id="logout-m" class="btn btn-primary">로그아웃</button>
