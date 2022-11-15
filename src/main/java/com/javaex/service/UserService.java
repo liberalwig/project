@@ -12,31 +12,31 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.javaex.dao.UserDao;
-import com.javaex.vo.HeartVo;
 import com.javaex.vo.UserVo;
 
 @Service
 public class UserService {
 
-	@Autowired
-	private UserDao userDao;
-	
-	
+	private final UserDao userDao;
+
+	public UserService(UserDao userDao) {
+		this.userDao = userDao;
+	}
+
 	// 유저_1> 유저 정보 수정폼
 	public UserVo modifyForm(int usersNo) {
 		System.out.println("UserService > modifyForm()");
 		
 		return userDao.selectUser(usersNo);
 	}
-	
-		
+
 	// 유저_2> 유저 수정
 	public int modify(UserVo userVo) {
 		System.out.println("UserService > modify()");
 
 		return userDao.updateUser(userVo);
 	}
-	
+
 	// 유저_3> 유저 정보수정 시 프로필사진 업데이트
 	public void profileUpdate(MultipartFile file, UserVo userVo) {
 		System.out.println("UserService > profileUpdate()");
@@ -65,27 +65,5 @@ public class UserService {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
-		//DB 업데이트
-		userVo.setPath(saveName);
-		System.out.println(userVo);
-		userDao.updateProfile(userVo);
 	}
-	
-	
-	// 유저_4> 찜 폼
-	public List<HeartVo> heartForm(int usersNo) {
-		System.out.println("UserService > heartForm()");
-		
-		return userDao.selectHeart(usersNo);
-	}
-	
-	
-   // 유저_6> 찜 삭제
-   public int heartDelete(int heartNo) {
-	   System.out.println("UserController > heartDelete()");
-	
-	   return userDao.heartDelete(heartNo);
-   }
-	
 }

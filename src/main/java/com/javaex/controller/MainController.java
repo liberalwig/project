@@ -9,13 +9,13 @@ public class MainController {
 		@RequestMapping("main")
 		public String Main() {
 			
-			return "song/index";
+			return "main/index";
 		}
 
 		@RequestMapping("admin")
 		public String joinForm() {
 			
-			return "song/admin";
+			return "main/admin";
 		}
-}	
+}
 	

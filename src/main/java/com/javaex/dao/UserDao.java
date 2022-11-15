@@ -6,15 +6,17 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.javaex.vo.HeartVo;
 import com.javaex.vo.UserVo;
 
 @Repository
 public class UserDao {
 
-	@Autowired
-	SqlSession sqlSession;
-	
+	final	SqlSession sqlSession;
+
+	public UserDao(SqlSession sqlSession) {
+		this.sqlSession = sqlSession;
+	}
+
 	// 유저_1> 유저 정보 수정폼
 	public UserVo selectUser(int usersNo) {
 		System.out.println("userDao > selectUserByNo()");
@@ -37,23 +39,4 @@ public class UserDao {
 		System.out.println("UserDao >updateProfile()");
 		sqlSession.update("user.updateProfile", userVo);
 	}
-	
-	
-	// 유저_5> 찜 폼
-	public List<HeartVo> selectHeart(int usersNo) {
-		System.out.println("UserDao > selectHeart()");
-		
-		List<HeartVo> heartList = sqlSession.selectList("user.selectHeartByNo", usersNo);
-		
-		return heartList;
-	}
-	
-	
-	// 유저_6> 찜 삭제
-	public int heartDelete(int heartNo) {
-		System.out.println("UserDao > heartDelete()");
-		
-		return sqlSession.delete("user.heartDelete", heartNo);
-	}
-	
 }

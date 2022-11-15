@@ -5,7 +5,7 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
 
-	<!-- Spring Labrary 의존성 추가-->
+	<!-- Spring Library 의존성 추가-->
 	<properties>
 		<org.springframework-version>4.3.3.RELEASE</org.springframework-version>
 	</properties>
@@ -85,9 +85,23 @@
 			<version>2.4</version>
 		</dependency>
 
+		<!-- 웹 소켓 2022-11-16-->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-websocket</artifactId>
+			<version>4.0.9.RELEASE</version>
+		</dependency>
+
+		<!-- 표준프레임워크 실행환경-->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>3.1.0</version>
+		</dependency>
+
 
 	</dependencies>
-	<!-- //Spring Labrary 의존성 추가-->
+	<!-- //Spring Library 의존성 추가-->
 	<build>
 		<plugins>
 			<plugin>

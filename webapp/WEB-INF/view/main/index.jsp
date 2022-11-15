@@ -8,7 +8,7 @@
 		<meta charset="UTF-8">
 	 	<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/bootstrap/css/bootstrap.css">
 	    <!-- CSS -->
-		<link rel="stylesheet"  href="${pageContext.request.contextPath}/assets/css/main.css" type="text/css">
+		<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/main.css" type="text/css">
 	    <script src="${pageContext.request.contextPath}/assets/js/jquery-1.12.4.js"></script>
 	    <script src="${pageContext.request.contextPath}/assets/bootstrap/js/bootstrap.js"></script>
 	

@@ -15,17 +15,19 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.javaex.service.UserService;
-import com.javaex.vo.HeartVo;
 import com.javaex.vo.UserVo;
 
 @Controller
 @RequestMapping(value = "/user", method = { RequestMethod.GET, RequestMethod.POST })
 public class UserController {
    
-   @Autowired
-   private UserService userService;
-   
-   // 유저_1> 유저 수정 폼
+   private final UserService userService;
+
+	public UserController(UserService userService) {
+		this.userService = userService;
+	}
+
+	// 유저_1> 유저 수정 폼
    @RequestMapping("/userModifyForm")
    public String userModifyForm(@RequestParam("usersNo") int usersNo, Model model){
       System.out.println("UserController > userModifyForm()");
@@ -72,35 +74,4 @@ public class UserController {
 		}
 		return 1;
 	};
-      
-   // 유저_4> 찜 폼
-   @RequestMapping("/heartForm")
-   public String heartForm(HttpSession session, Model model) {
-      System.out.println("UserController > heartForm()");
-      
-      UserVo authUser = (UserVo)session.getAttribute("authUser");
-      
-      int usersNo = authUser.getUsersNo();
-      
-      List<HeartVo> heartList = userService.heartForm(usersNo);
-		
-      model.addAttribute("heartList", heartList);
-
-      return"user/heart";
-   };
-
-   
-   
-   // 유저_6>찜 삭제
-   @ResponseBody
-   @RequestMapping("/heartDelete")
-   public int heartDelete(@RequestParam("heartNo") int heartNo) {
-	   System.out.println("UserController > heartDelete()");
-	   System.out.println(heartNo);
-	   
-	   return userService.heartDelete(heartNo);
-   }
-   
-
-
 }
